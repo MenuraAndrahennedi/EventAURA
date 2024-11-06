@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('event_host_logins', function (Blueprint $table) {
             $table->id();
-            $table->enum('ticket_type', ['premium', 'golden', 'silver']);
-            $table->decimal('ticket_price');
-            $table->enum('ticket_status', ['available', 'sold', 'reserved']);
-            $table->foreignId('event_id')->constrained('events')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('event_host_logins');
     }
 };

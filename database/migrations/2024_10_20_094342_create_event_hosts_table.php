@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('event_hosts', function (Blueprint $table) {
             $table->id();
-            $table->enum('ticket_type', ['premium', 'golden', 'silver']);
-            $table->decimal('ticket_price');
-            $table->enum('ticket_status', ['available', 'sold', 'reserved']);
-            $table->foreignId('event_id')->constrained('events')->onDelete('cascade');
+            $table->string('event_host_name');
+            $table->string('event_host_email');
+            $table->string('event_host_contact_no');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('event_hosts');
     }
 };

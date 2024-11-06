@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->enum('ticket_type', ['premium', 'golden', 'silver']);
-            $table->decimal('ticket_price');
-            $table->enum('ticket_status', ['available', 'sold', 'reserved']);
-            $table->foreignId('event_id')->constrained('events')->onDelete('cascade');
+            $table->string('module_name');
+            $table->string('module_description');
+            $table->string('module_image')->nullable();
+            $table->string('module_link');
+            $table->string('module_status');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('modules');
     }
 };
