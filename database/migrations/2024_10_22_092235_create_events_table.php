@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
-            $table->id();
+        Schema::create('event', function (Blueprint $table) {
+            $table->id('event_id');
             $table->string('name');
             $table->dateTime('date');
             $table->text('description');
@@ -31,7 +31,8 @@ return new class extends Migration
             $table->decimal('golden_ticket_price');
             $table->decimal('silver_ticket_price');
             $table->string('return_policies')->nullable();
-            $table->foreignId('event_host_id')->constrained('event_hosts')->onDelete('cascade');
+            $table->unsignedBigInteger('host_id'); // Ensure data type matches `event_hosts.host_id`
+            $table->foreign('host_id')->references('host_id')->on('host')->onDelete('cascade'); // Explicitly define foreign key
             $table->timestamps();
         });
     }

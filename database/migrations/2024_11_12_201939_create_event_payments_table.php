@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('host_log', function (Blueprint $table) {
-            $table->id('host_log_id');
-            $table->string('host_username');
-            $table->string('host_password');
+        Schema::create('event_payments', function (Blueprint $table) {
+            $table->id('payment_id'); 
+            $table->float('event_pay_amount');
+            $table->date('event_pay_date');
+            $table->enum('event_pay_status', ['APPROVED', 'REJECTED']);
             $table->unsignedBigInteger('host_id');
             $table->foreign('host_id')->references('host_id')->on('host')->onDelete('cascade');
+            $table->unsignedBigInteger('event_id');
+            $table->foreign('event_id')->references('event_id')->on('event')->onDelete('cascade');
             $table->timestamps();
+        
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_host_logins');
+        Schema::dropIfExists('event_payments');
     }
 };
