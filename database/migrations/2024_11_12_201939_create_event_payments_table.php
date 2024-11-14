@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('event_payments', function (Blueprint $table) {
-            $table->id('payment_id'); 
+            $table->id('event_payment_id'); 
             $table->float('event_pay_amount');
             $table->date('event_pay_date');
             $table->enum('event_pay_status', ['APPROVED', 'REJECTED']);
