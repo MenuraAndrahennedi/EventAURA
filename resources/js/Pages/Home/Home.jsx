@@ -1,10 +1,9 @@
 import React from 'react'
 import MainHeader from '../../Components/Header/MainHeader';
 import MainFooter from '../../Components/Footer/MainFooter';
- import './Home.scss';
-// import '../../Components/Header/MainHeader';
-//import '../../Components/Footer/MainFooter';
+import './Home.scss';
 import { Link  } from '@inertiajs/react';
+//import '../../style.scss';
 
 import HomeImg1 from '../../assets/Home-1.png';
 import HomeImg2 from '../../assets/Home-2.png';
@@ -35,6 +34,7 @@ import ReviewIcon from '../../assets/Logos/review.png';
                 <Link href={route('browse')} className='btn btn-primary'>Browse Event</Link>
                 <br /><Link  href={route('tb.login')}> #TB Login pg</Link> {/*Do not remove this. */}
                 <br /><Link  href={route('eh.login')}> #EH Login pg</Link> {/*Do not remove this. */}
+                <br /><Link  href={route('oth.login')}> #Other Login pg</Link> {/*Do not remove this. */}
                 <br /><Link  href={route('tb.register')}> #TB CreateAccount pg</Link> {/*Do not remove this. */}
                 <br /><Link  href={route('eh.register')}> #EH CreateAccount pg</Link> {/*Do not remove this. */}
 

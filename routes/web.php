@@ -36,6 +36,7 @@ Route::get('/browse', function () {
  Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::get('/tb-login', [AuthenticatedSessionController::class, 'create'])->name('tb.login');
 Route::get('/eh-login', [AuthenticatedSessionController::class, 'create'])->name('eh.login');
+Route::get('/other-login', [AuthenticatedSessionController::class, 'create'])->name('oth.login');
 
 Route::get('/eh-register', [RegisteredUserController::class, 'create'])->name('eh.register');
 Route::get('/tb-register', [RegisteredUserController::class, 'create'])->name('tb.register');

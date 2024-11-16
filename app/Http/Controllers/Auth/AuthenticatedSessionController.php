@@ -20,8 +20,15 @@ class AuthenticatedSessionController extends Controller
     {
 
         $routeName=$request->route()->getName();
-        $loginPage= $routeName ==='tb.login'? 'TB/TBLogin':'EventHost/EHLogin';
+        //$loginPage= $routeName ==='tb.login'? 'TB/TBLogin':'EventHost/EHLogin';
+       if($routeName ==='tb.login'){
+        $loginPage='TB/TBLogin';
 
+       }else if($routeName === 'eh.login'){
+        $loginPage = 'EventHost/EHLogin';
+       }else{
+        $loginPage ='OtherLogin/OtherLogin';
+       }
 
         return Inertia::render($loginPage, [
             'canResetPassword' => Route::has('password.request'),
