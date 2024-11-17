@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('user_status', ['active', 'inactive', 'blocked', 'deleted'])->default('active');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('telephone');
             $table->string('password');
             $table->timestamp('added_date_time')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->rememberToken();

@@ -16,9 +16,21 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): Response
+    public function create(Request $request): Response
     {
-        return Inertia::render('Auth/Login', [
+
+        $routeName=$request->route()->getName();
+        //$loginPage= $routeName ==='tb.login'? 'TB/TBLogin':'EventHost/EHLogin';
+       if($routeName ==='tb.login'){
+        $loginPage='TB/TBLogin';
+
+       }else if($routeName === 'eh.login'){
+        $loginPage = 'EventHost/EHLogin';
+       }else{
+        $loginPage ='OtherLogin/OtherLogin';
+       }
+
+        return Inertia::render($loginPage, [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
         ]);
@@ -32,6 +44,31 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        if($request->user()->role_id=== 1){
+            return redirect('programmer/dashboard');
+        }
+
+        if($request->user()->role_id=== 2){
+            return redirect('manager/dashboard');
+        }
+
+        if($request->user()->role_id=== 3){
+            return redirect('admin/dashboard');
+        }
+
+        if($request->user()->role_id=== 4){
+            return redirect('eventhost/dashboard');
+        }
+
+        if($request->user()->role_id=== 5){
+            return redirect('customer/dashboard');
+        }
+
+
+
+
+
 
         return redirect()->intended(route('dashboard', absolute: false));
     }
