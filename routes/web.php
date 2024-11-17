@@ -22,18 +22,18 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 // });
 
 Route::get('/', function () {
-    return Inertia::render('Home/Home'); 
+    return Inertia::render('Home/Home');
 });
 
 Route::get('/browse', function () {
     return Inertia::render('BrowseEvent/BrowseEvent');
 })->name('browse');
 
- Route::get('/dashboard', function () {
+Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
- })->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
- Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::get('/tb-login', [AuthenticatedSessionController::class, 'create'])->name('tb.login');
 Route::get('/eh-login', [AuthenticatedSessionController::class, 'create'])->name('eh.login');
 Route::get('/other-login', [AuthenticatedSessionController::class, 'create'])->name('oth.login');
@@ -51,15 +51,14 @@ Route::middleware('auth')->group(function () {
 
 Route::get('programmer/dashboard', function () {
     return Inertia::render('Programmer/ProgrammerDashboard');
- })->name('programmer.dashboard');
+})->name('programmer.dashboard');
 
- Route::get('programmer/dashboard', [ProgrammerController::class, 'index'])->name('programmer.dashboard')->middleware(['auth','programmer']);
- Route::get('manager/dashboard', [ManagerController::class, 'index'])->name('manager.dashboard')->middleware(['auth','manager']);
- Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware(['auth','admin']);
- Route::get('eventhost/dashboard', [EventHostController::class, 'index'])->name('eventhost.dashboard')->middleware(['auth','eventhost']);
- Route::get('customer/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard')->middleware(['auth','customer']);
+Route::get('programmer/dashboard', [ProgrammerController::class, 'index'])->name('programmer.dashboard')->middleware(['auth', 'programmer']);
+Route::get('manager/dashboard', [ManagerController::class, 'index'])->name('manager.dashboard')->middleware(['auth', 'manager']);
+Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'admin']);
+Route::get('eventhost/dashboard', [EventHostController::class, 'index'])->name('eventhost.dashboard')->middleware(['auth', 'eventhost']);
+Route::get('customer/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard')->middleware(['auth', 'customer']);
 
 
 
-require __DIR__.'/auth.php';
-
+require __DIR__ . '/auth.php';
