@@ -1,0 +1,114 @@
+//Global Colours
+$primary-color: #48CAE4;
+$secondary-color: #9BEEFF;
+$text-color: #000;
+$text-white: #FFFFFF;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+body{
+    font-family: "Rubik", sans-serif;
+}
+
+.section-1{
+    .topic{
+        background-image: url('../../assets/Home_cover.png');
+        background: linear-gradient(to left, rgba(0,0,0,0.8), rgba(0,0,0,0,)),url(src/assets/Home_cover.png);
+        min-height: 690px;
+        color: $text-white;
+        h1{
+            font-size: 4em;
+        }
+    }
+}
+
+.btn-primary{
+    background-color: $primary-color;
+    border: 1px solid $primary-color;
+    padding: 15px 20px;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 40px;    
+    margin-top:30px;
+}
+
+.section-2{
+    min-height: 300px;
+    color:#0B3A44 ;
+    margin-top: 80px; 
+    p{
+        color:$text-color;
+    }
+}
+
+.centered-line{
+    width: 90%;             
+    margin: 0 auto;          /* Centers the line */
+    border: none;            /* Removes default border */
+    border-top: 5px solid #000; /* Sets line thickness and color */
+    margin-top: 60px; 
+}
+
+.section-3{
+    margin-top: 80px;
+    background-color: #000 !important;
+    img{
+        border-radius: 40px;
+    }
+    h2{
+        color:$primary-color;
+        font-size: 3em;
+        font-weight: 500;
+        padding-bottom: 10px;
+        display: block;
+        margin-top: 80px; 
+    }
+    p{
+        color:$text-white;
+    }
+    h3{
+       
+        color:$primary-color;
+        font-size: 2em;
+        font-weight: 500;
+        padding-bottom: 10px;
+        display: block; 
+    }
+}
+
+.section-4{
+    margin-top: 80px;
+    padding: 20px 0;
+    h1{
+        color:#0B3A44;
+        font-size: 3em;
+        font-weight: 500;
+        margin-bottom: 60px;
+    }
+    
+}
+.social-icon{
+    width: 80px; 
+    height: 80px;
+    border: 2px solid $primary-color; 
+    border-radius: 40%;
+    padding: 10px; 
+    margin-bottom: 40px; 
+    }
+
+
+.Review {
+        color: #00bcd4;
+        font-size: 1.5rem;
+        font-weight: 500;
+        text-decoration: none;
+        
+      }
+
+.Review:hover {
+        text-decoration: underline;
+      }
+
+.review-icon{
+    background-image: url('../../assets/Logos/Eclipse black.png');
+}
