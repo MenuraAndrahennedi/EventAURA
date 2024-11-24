@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+<<<<<<< Updated upstream:database/migrations/2024_10_22_154714_create_events_table.php
         Schema::create('events', function (Blueprint $table) {
+=======
+        Schema::create('event', function (Blueprint $table) {
+>>>>>>> Stashed changes:database/migrations/2024_10_22_092235_create_events_table.php
             $table->id();
             $table->string('name');
             $table->dateTime('date');
@@ -31,7 +35,11 @@ return new class extends Migration
             $table->decimal('golden_ticket_price');
             $table->decimal('silver_ticket_price');
             $table->string('return_policies')->nullable();
+<<<<<<< Updated upstream:database/migrations/2024_10_22_154714_create_events_table.php
             $table->foreignId('event_host_id')->constrained('event_hosts')->onDelete('cascade');
+=======
+            $table->foreignId('event_host_id')->constrained('host')->onDelete('cascade'); // Explicitly define foreign key
+>>>>>>> Stashed changes:database/migrations/2024_10_22_092235_create_events_table.php
             $table->timestamps();
             
         });

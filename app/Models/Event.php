@@ -10,7 +10,12 @@ class event extends Model
     /** @use HasFactory<\Database\Factories\EventFactory> */
     use HasFactory;
 
+<<<<<<< Updated upstream
     public function ticket(){
         return $this->hasMany(Ticket::class);
+=======
+    function event(){
+        
+>>>>>>> Stashed changes
     }
 }

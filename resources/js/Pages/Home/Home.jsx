@@ -37,6 +37,7 @@ const Home = () => {
         </section>
 
 
+<<<<<<< Updated upstream
         {/*Section 02 */}
         <section className = 'section-2'>
         <div className = 'topic d-flex align-items-center'>
@@ -50,12 +51,28 @@ const Home = () => {
         </div>
         <hr className='centered-line' />
         </section>
+=======
+                {/*Section 02 */}
+                <section className='section-2'>
+                    <div className='topic d-flex align-items-center'>
+                        <div className='container-fluid'>
+                            <div className='text-center'>
+                                <h1>LOOKING TO PUBLISH YOUR EVENT?</h1>
+                                <p>PLanning your events and selling tickets has never benn easier with <br />EventAura's super user-friendly platform by your side!</p>
+                                <Link href={route('create')} className='btn btn-primary'>Create Event</Link >
+                            </div>
+                        </div>
+                    </div>
+                    <hr className='centered-line' />
+                </section>
+>>>>>>> Stashed changes
 
 
         {/*Section 03 */}
         <section className = 'section-3 py-5'>
             <div className= 'container py-5'>
 
+<<<<<<< Updated upstream
             <div className = 'row'>
                 <div className='col-md-6 '>
                   <h3>EASIEST EVENT HANDLING AND TICKETING PLATFORM</h3>
@@ -100,6 +117,37 @@ const Home = () => {
                     
                     <Link to="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                     <img src={FBIcon} alt='Facebook' className='social-icon mx-5' /></Link >
+=======
+                        <div className='row'>
+                            <div className='col-md-6 '>
+                                <h3>EASIEST EVENT HANDLING AND TICKETING PLATFORM</h3>
+                                <p>Planning your events and selling tickets has never been<br />
+                                    easier with EventAUra's super user-friendly platform <br />
+                                    by your side</p>
+                                <Link href={route ('about')} className='btn btn-primary'>ABOUT US</Link >
+                            </div>
+                            <div className='col-md-6 '>
+                                <img src={HomeImg2} alt="Img2" className='Img' />
+                            </div>
+                        </div>
+
+
+                        <div className='row'>
+                            <div className='col-md-6 '>
+                                <img src={HomeImg1} alt="Img1" className='Img' />
+                            </div>
+                            <div className='col-md-6 '>
+                                <h2>NEED HELP</h2>
+                                <p>Our user-friendly TicketLeap help center is always <br />
+                                    buzzing with the latest updates to empower you to plan <br />
+                                    your next event with confidence! It's also a handy <br />
+                                    resource to use to answer ticket buyer questions.Trust <br />
+                                    us to provide the unwavering support you need for <br />
+                                    a successful event!</p>
+                                <Link href={route ('help')} className='btn btn-primary'>HELP CENTRE</Link >
+                            </div>
+                        </div>
+>>>>>>> Stashed changes
 
                     <Link to="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
                     <img src={InstargramIcon} alt='Instagram' className='social-icon mx-5' /></Link >

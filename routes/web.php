@@ -22,10 +22,43 @@ Route::get('/',function(){
         'phpVersion' => PHP_VERSION,
     ]);
 });
+<<<<<<< Updated upstream
 Route::get('/dashboard',function(){
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
  
+=======
+
+Route::get('/browse', function () {
+    return Inertia::render('BrowseEvent/BrowseEvent');
+})->name('browse');
+
+Route::get('/create', function () {
+    return Inertia::render('CreateEvent/CreateEvent');
+})->name('create');
+
+Route::get('/about', function(){
+    return Inertia::render('AboutUS/AboutUS');
+})->name('about');
+
+Route::get('/help', function(){
+    return Inertia::render('HelpCentre/HelpCentre');
+})->name('help');
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::get('/tb-login', [AuthenticatedSessionController::class, 'create'])->name('tb.login');
+Route::get('/eh-login', [AuthenticatedSessionController::class, 'create'])->name('eh.login');
+Route::get('/other-login', [AuthenticatedSessionController::class, 'create'])->name('oth.login');
+
+Route::get('/eh-register', [RegisteredUserController::class, 'create'])->name('eh.register');
+Route::get('/tb-register', [RegisteredUserController::class, 'create'])->name('tb.register');
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+
+>>>>>>> Stashed changes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -38,8 +71,15 @@ Route::get('/browse',function(){
     return Inertia::render('BrowseEvent');
 });
 
+<<<<<<< Updated upstream
 Route::get('/home',function(){
     return Inertia::render('Home');
 });
 
 require __DIR__.'/auth.php';
+=======
+Route::get('/searchEvent', [EventController::class, 'search'])->name('event.search');
+Route::get('/filterEvent', [EventController::class, 'index'])->name('event.filter');
+
+require __DIR__ . '/auth.php';
+>>>>>>> Stashed changes

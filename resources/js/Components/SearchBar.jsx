@@ -28,6 +28,7 @@ const SearchBar = () => {
               </Dropdown.Menu>
             </Dropdown>
 
+<<<<<<< Updated upstream
             <FormControl
               placeholder="Search events"
               value={search}
@@ -37,6 +38,17 @@ const SearchBar = () => {
             <InputGroup.Text>
               <BsSearch />
             </InputGroup.Text>
+=======
+                        <FormControl
+                            placeholder="Search events"
+                            value={search}
+                            onChange={handleSearchChange}
+                        />
+                    
+                        <InputGroup.Text>
+                            <BsSearch />
+                        </InputGroup.Text>
+>>>>>>> Stashed changes
 
           </InputGroup>
         </div>
