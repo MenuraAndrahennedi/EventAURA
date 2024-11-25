@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from '@inertiajs/react';
-import '../../style.scss';
+import '../../../css/style.scss';
 import Logo from '../../assets/Logo.png';
 
 const AdminHeader = () => {
