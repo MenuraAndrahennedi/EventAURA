@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../style.scss';
+import '../../../css/style.scss';
 import { Link } from '@inertiajs/react';
 
 import FB from '../../assets/Logos/fb black.png';

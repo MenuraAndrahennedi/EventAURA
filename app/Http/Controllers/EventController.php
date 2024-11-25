@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Models\Event;
 
 class EventController extends Controller
 {
@@ -19,7 +21,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('CreateEvent/CreateEvent');
     }
 
     /**
@@ -27,7 +29,48 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:225',
+            'date' => 'required|date',
+            'description' => 'required|string',
+            'location' => 'required|string',
+            'image' => 'required|image',
+            'city' => 'required|string',
+            'venue' => 'required|string',
+            'artists' => 'required|string',
+            'agenda_pdf' => 'nullable|file|mimes:pdf',
+            'event_video' => 'nullable|file|mimes:mp4,avi,mkv',
+            'organizer' =>'required|string',
+            'bronze_ticket_count' => 'integer|min:0',
+            'golden_ticket_count' => 'integer|min:0',
+           'silver_ticket_count' => 'integer|min:0',
+            'bronze_ticket_price' => 'required|numeric|min:0',
+            'golden_ticket_price' => 'required|numeric|min:0',
+           'silver_ticket_price' => 'required|numeric|min:0',
+           'return_policies' => 'nullable|string',
+           'startTime' => 'required|date_format:H:i',
+           'endTime' => 'required|date_format:H:i|after:startTime'
+        ]);
+
+        $validated['image']= $request->file('image')->store('images','public');
+        $validated['agenda_pdf'] = $request->file('agenda_pdf')?->store('pdfs','public');
+        $validated['event_video'] = $request->file('event_video')?->store('videos','public');
+
+        $validated['event_host_id'] = auth()->id();
+
+        Event::create($validated);
+
+        return redirect()->route('eventhost.dashboard')->with('success','Event Created Successfully and is pending approval');
+    }
+
+    public function getApprovedEvents() {
+        $approvedEvents = Event:: where ('event_status', 'approved')
+        ->get()
+        ->map (function ($event) {
+            $event->image = asset('storage/' . $event->image);
+            return $event;
+        });
+        return response()->json($approvedEvents);
     }
 
     /**

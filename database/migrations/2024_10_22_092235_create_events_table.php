@@ -14,24 +14,27 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->dateTime('date');
+            $table->date('date');
+            $table->time('startTime');
+            $table->time('endTime');
             $table->text('description');
             $table->string('location');
             $table->string('image');
-            $table->integer('premium_ticket_count')->default(0);
+            $table->integer('bronze_ticket_count')->default(0);
             $table->integer('golden_ticket_count')->default(0);
             $table->integer('silver_ticket_count')->default(0);
-            $table->enum('event_status', ['approved', 'pending', 'rejected', 'completed', 'cancelled', 'postponed', 'rescheduled']);
+            $table->enum('event_status', ['approved', 'pending', 'rejected', 'completed', 'cancelled', 'postponed', 'rescheduled'])->default('pending');
             $table->string('city');
             $table->string('venue');
+            $table->string('organizer');
             $table->string('artists');
             $table->string('agenda_pdf')->nullable();
             $table->string('event_video')->nullable();
-            $table->decimal('premium_ticket_price');
+            $table->decimal('bronze_ticket_price');
             $table->decimal('golden_ticket_price');
             $table->decimal('silver_ticket_price');
             $table->string('return_policies')->nullable();
-            $table->foreignId('event_host_id')->constrained('event_hosts')->onDelete('cascade');
+            $table->foreignId('event_host_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

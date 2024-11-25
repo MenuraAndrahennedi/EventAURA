@@ -2,13 +2,13 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from '@inertiajs/react';
-import '../../style.scss';
+import '../../../css/style.scss';
 import Logo from '../../assets/Logo.png';
 
 const TBHeader = () => {
   return (
     <header>
-        <div classNmae='container py-3'>
+        <div className='container py-3'>
             <Navbar expand="lg" className="bg-dark navbar-dark">
                 <Navbar.Brand as={Link} to="/" className = 'logo'><img src={Logo} alt="Logo" className="logo-img" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

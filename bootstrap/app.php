@@ -22,6 +22,8 @@ return Application::configure(basePath: dirname(__DIR__))
          'admin'=> \App\Http\Middleware\Admin::class,
          'eventhost'=> \App\Http\Middleware\Eventhost::class,
          'customer'=> \App\Http\Middleware\Customer::class,
+         'eventCreation' => \App\Http\Middleware\EventCreationMiddleware::class,
+         
          
         ]);
 

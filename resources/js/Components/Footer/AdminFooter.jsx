@@ -1,6 +1,5 @@
 import React from 'react'
-import '../../style.scss';
-
+import '../../../css/style.scss';
 const AdminFooter = () => {
   return (
     <>

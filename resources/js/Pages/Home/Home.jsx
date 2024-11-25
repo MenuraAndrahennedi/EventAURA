@@ -1,8 +1,8 @@
-import React from 'react'
+import React , {useState} from 'react'
 import MainHeader from '../../Components/Header/MainHeader';
 import MainFooter from '../../Components/Footer/MainFooter';
-import './Home.scss';
-import { Link  } from '@inertiajs/react';
+import '../../../css/Home.scss';
+import { Link , usePage  } from '@inertiajs/react';
 //import '../../style.scss';
 
 import HomeImg1 from '../../assets/Home-1.png';
@@ -16,6 +16,9 @@ import BlueCircle from '../../assets/Logos/Eclipse blue.svg';*/}
 import ReviewIcon from '../../assets/Logos/review.png';
 
  export default function Home (){
+
+  const { flash = {} } = usePage().props;
+  const [showError , setShowError] = useState(!!flash.error);
   return (
     <>
       <header>
@@ -23,6 +26,20 @@ import ReviewIcon from '../../assets/Logos/review.png';
       </header>
       
       <main>
+
+         {/* Flash message */}
+         {showError && flash.error && (
+          <div className="alert alert-danger alert-dismissible fade show text-center" role="alert">
+            {flash.error}
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+              onClick={() => setShowError(false)} // Hide the alert on click
+            ></button>
+          </div>
+        )}
 
         {/*Section 01 */}
         <section className = 'section-1'>
@@ -51,7 +68,7 @@ import ReviewIcon from '../../assets/Logos/review.png';
             <div className='text-center'>
               <h1>LOOKING TO PUBLISH YOUR EVENT?</h1>
               <p>PLanning your events and selling tickets has never benn easier with <br />EventAura's super user-friendly platform by your side!</p>
-              <Link to='/create' className='btn btn-primary'>Create Event</Link >
+              <Link  href={route('event.create')} className='btn btn-primary'>Create Event</Link >
             </div>
           </div>
         </div>

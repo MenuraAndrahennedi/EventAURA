@@ -11,6 +11,7 @@ use App\Http\Controllers\EventHostController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\EventController;
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -33,7 +34,7 @@ Route::get('/browse', function () {
     return Inertia::render('Dashboard');
  })->middleware(['auth', 'verified'])->name('dashboard');
 
- Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+ //Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::get('/tb-login', [AuthenticatedSessionController::class, 'create'])->name('tb.login');
 Route::get('/eh-login', [AuthenticatedSessionController::class, 'create'])->name('eh.login');
 Route::get('/other-login', [AuthenticatedSessionController::class, 'create'])->name('oth.login');
@@ -59,7 +60,10 @@ Route::get('programmer/dashboard', function () {
  Route::get('eventhost/dashboard', [EventHostController::class, 'index'])->name('eventhost.dashboard')->middleware(['auth','eventhost']);
  Route::get('customer/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard')->middleware(['auth','customer']);
 
+ Route::get('event/create', [EventController::class, 'create'])->name('event.create');
+ Route::post('event/store', [EventController::class, 'store'])->name('event.store');
 
+ Route::get('/api/events', [EventController::class, 'getApprovedEvents']);
 
 require __DIR__.'/auth.php';
 

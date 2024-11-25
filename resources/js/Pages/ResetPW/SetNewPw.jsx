@@ -1,6 +1,6 @@
 import React from 'react'
 import './ResetPW.scss';
-import { Link } from 'react-router-dom';
+import { Link } from '@inertiajs/react';
 import MainHeader from '../../Components/Header/MainHeader';
 import SubFooter from '../../Components/Footer/SubFooter';
 

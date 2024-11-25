@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Form, FormControl, InputGroup, Dropdown } from 'react-bootstrap';
-import '../style.scss';
+import '../../css/style.scss';
 import { BsSearch } from 'react-icons/bs';
 
 const SearchBar = () => {

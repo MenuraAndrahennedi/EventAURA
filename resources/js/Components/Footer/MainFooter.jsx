@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@inertiajs/react';
-import '../../style.scss';
+import '../../../css/style.scss';
 
 const MainFooter = () => {
   return (
