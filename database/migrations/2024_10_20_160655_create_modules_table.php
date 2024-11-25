@@ -12,12 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('modules', function (Blueprint $table) {
-            $table->id();
+            $table->id('module_id');
             $table->string('module_name');
-            $table->string('module_description');
-            $table->string('module_image')->nullable();
-            $table->string('module_link');
-            $table->string('module_status');
+            $table->text('module_description')->nullable();
+            $table->enum('module_status', ['ACTIVE', 'INACTIVE']);
             $table->timestamps();
         });
     }
