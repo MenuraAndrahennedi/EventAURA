@@ -33,6 +33,25 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+// Manager
+Route::get('/manager', function () {
+    return Inertia::render('Manager/ManagerDashboard');
+})->name('manager');
+
+Route::get('/managerCreateRequest', function () {
+    return Inertia::render('Manager/PendingRequests/CreateRequest');
+})->name('managerCreateRequest');
+
+Route::get('/managerUpdateRequest', function () {
+    return Inertia::render('Manager/PendingRequests/UpdateRequest');
+})->name('managerUpdateRequest');
+
+Route::get('/managerDeleteRequest', function () {
+    return Inertia::render('Manager/PendingRequests/DeleteRequest');
+})->name('managerDeleteRequest');
+
+
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::get('/tb-login', [AuthenticatedSessionController::class, 'create'])->name('tb.login');
 Route::get('/eh-login', [AuthenticatedSessionController::class, 'create'])->name('eh.login');
