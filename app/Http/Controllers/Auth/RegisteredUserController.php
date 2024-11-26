@@ -54,6 +54,21 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        switch ($user->role_id){
+            case 1:
+                return redirect()->route('programmer.dashboard');
+            case 2:
+                return redirect()->route('manager.dashboard');
+            case 3:
+                return redirect()->route('admin.dashboard');
+            case 4:
+                return redirect()->route('eventhost.dashboard');
+            case 5:
+                return redirect()->route('customer.dashboard');
+            default:
+                return redirect()->route('/', absolute: false);
+        }
+
+       // return redirect(route('dashboard', absolute: false));
     }
 }

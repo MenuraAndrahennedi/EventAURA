@@ -2,8 +2,11 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from '@inertiajs/react';
+
+
 import '../../../css/style.scss';
-import Logo from '../../assets/Images/Logo.png';
+import Logo from '../../assets/Logo.png';
+
 
 const MainHeader = () => {
     return (

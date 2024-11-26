@@ -2,7 +2,7 @@ import React from 'react'
 import MainHeader from '../../Components/Header/MainHeader'
 import SubFooter from './../../Components/Footer/SubFooter';
 import './ResetPW.scss';
-import { Link } from 'react-router-dom';
+import { Link } from '@inertiajs/react';
 
 const ForgotPW = () => {
   return (

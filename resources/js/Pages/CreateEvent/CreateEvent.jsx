@@ -1,10 +1,8 @@
-import React from 'react'
-import SubFooter from './../../Components/Footer/SubFooter';
-import EHHeader from './../../Components/Header/EHHeader';
-import './CreateEvent.scss';
-import { Link } from '@inertiajs/react';
-
-
+import React from "react";
+import SubFooter from "./../../Components/Footer/SubFooter";
+import EHHeader from "./../../Components/Header/EHHeader";
+import "./CreateEvent.scss";
+import { Link } from "@inertiajs/react";
 
 const CreateEvent = () => {
     return (
@@ -15,34 +13,53 @@ const CreateEvent = () => {
 
             {/*form */}
             <main className="create-event">
-
-                <h1><b>Create Event</b></h1>
+                <h1>
+                    <b>Create Event</b>
+                </h1>
 
                 <form className="event-form">
                     <section className="event-details">
-
                         <div className="header-container">
-                            <h2><b>1. Event Details</b></h2>
+                            <h2>
+                                <b>1. Event Details</b>
+                            </h2>
                         </div>
                         <hr />
                         <div className="input-group">
                             <label>Event Title*</label>
-                            <input type="text" placeholder="Enter event title" />
+                            <input
+                                type="text"
+                                placeholder="Enter event title"
+                            />
                         </div>
 
                         <div className="input-group">
                             <div className="date-input">
                                 <label htmlFor="eventDate">Date*</label>
-                                <input type="date" name="eventDate" id="eventDate" />
+                                <input
+                                    type="date"
+                                    name="eventDate"
+                                    id="eventDate"
+                                />
                             </div>
                             <div className="time-inputs">
                                 <div className="start-time">
-                                    <label htmlFor="startTime">Start Time*</label>
-                                    <input type="time" name="startTime" id="startTime" />
+                                    <label htmlFor="startTime">
+                                        Start Time*
+                                    </label>
+                                    <input
+                                        type="time"
+                                        name="startTime"
+                                        id="startTime"
+                                    />
                                 </div>
                                 <div className="end-time">
                                     <label htmlFor="endTime">End Time*</label>
-                                    <input type="time" name="endTime" id="endTime" />
+                                    <input
+                                        type="time"
+                                        name="endTime"
+                                        id="endTime"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -69,7 +86,9 @@ const CreateEvent = () => {
                                 <label>Agenda*</label>
                                 <div className="file-upload">
                                     <input type="file" accept=".pdf" />
-                                    <button className="upload-btn">Upload</button>
+                                    <button className="upload-btn">
+                                        Upload
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -97,24 +116,34 @@ const CreateEvent = () => {
 
                         <div className="input-group">
                             <label>Event Organizer*</label>
-                            <input type="text" placeholder="Enter organizer's name" />
+                            <input
+                                type="text"
+                                placeholder="Enter organizer's name"
+                            />
                         </div>
 
                         <div className="input-group">
                             <label>Artists*</label>
                             <div className="artist-section">
-                                <input type="text" placeholder="Enter artists" />
-                                <button className="add-artist">Add Artist</button>
-                                <button className="remove-artist">Remove Artist</button>
+                                <input
+                                    type="text"
+                                    placeholder="Enter artists"
+                                />
+                                <button className="add-artist">
+                                    Add Artist
+                                </button>
+                                <button className="remove-artist">
+                                    Remove Artist
+                                </button>
                             </div>
                         </div>
-
                     </section>
 
                     <section className="ticket-categories">
-
                         <div className="header-container">
-                            <h3><b>2. Tickets Categories</b></h3>
+                            <h3>
+                                <b>2. Tickets Categories</b>
+                            </h3>
                         </div>
                         <hr />
 
@@ -123,15 +152,23 @@ const CreateEvent = () => {
                             <div>
                                 <label>Golden Tickets</label>
                                 <div className="ticket-inputs">
-                                    <input type="number" min="0" placeholder="Count" />
-                                    <input type="text" placeholder='Price' />
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        placeholder="Count"
+                                    />
+                                    <input type="text" placeholder="Price" />
                                 </div>
                             </div>
 
                             <div>
                                 <label>Silver Tickets</label>
                                 <div className="ticket-inputs">
-                                    <input type="number" min="0" placeholder="Count" />
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        placeholder="Count"
+                                    />
                                     <input type="text" placeholder="Price" />
                                 </div>
                             </div>
@@ -139,7 +176,11 @@ const CreateEvent = () => {
                             <div>
                                 <label>Bronze Tickets</label>
                                 <div className="ticket-inputs">
-                                    <input type="number" min="0" placeholder="Count" />
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        placeholder="Count"
+                                    />
                                     <input type="text" placeholder="Price" />
                                 </div>
                             </div>
@@ -147,22 +188,21 @@ const CreateEvent = () => {
                         <div className="center-content">
                             <button type="button">Add Tickets</button>
                         </div>
-
                     </section>
                     <div className="center-content">
                         <h4>Submit event creation request</h4>
-                        <button type="submit" className="submit-btn">Submit</button>
+                        <button type="submit" className="submit-btn">
+                            Submit
+                        </button>
                     </div>
                 </form>
             </main>
-
 
             <footer>
                 <SubFooter />
             </footer>
         </>
+    );
+};
 
-    )
-}
-
-export default CreateEvent
+export default CreateEvent;
