@@ -214,6 +214,3 @@ const BrowseEvent = () => {
 }
 
 export default BrowseEvent
-
-
-
