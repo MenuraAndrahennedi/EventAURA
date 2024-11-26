@@ -3,7 +3,14 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventHostController;
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProgrammerController;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
