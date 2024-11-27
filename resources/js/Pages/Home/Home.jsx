@@ -1,7 +1,7 @@
 import React from "react";
 import MainHeader from "../../Components/Header/MainHeader";
 import MainFooter from "../../Components/Footer/MainFooter";
-import "./Home.scss";
+import "../../../css/Home.scss";
 import { Link } from "@inertiajs/react";
 //import '../../style.scss';
 

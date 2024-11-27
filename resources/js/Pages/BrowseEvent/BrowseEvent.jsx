@@ -1,7 +1,7 @@
 import React from "react";
 import TBHeader from "../../Components/Header/TBHeader.jsx";
 import MainFooter from "./../../Components/Footer/MainFooter";
-import "./BrowseEvent.scss";
+import "../../../css/BrowseEvent.scss";
 import { Link } from "@inertiajs/react";
 
 import Banner from "../../assets/Images/banner.png";
