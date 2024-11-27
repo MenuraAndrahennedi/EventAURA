@@ -12,11 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('customer_log', function (Blueprint $table) {
-            $table->id('customer_log_id');
-            $table->string('customer_username');
-            $table->string('customer_password');
-            $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('customer_id')->on('customer')->onDelete('cascade');
+            $table->id();
+            
             $table->timestamps();
         });
     }

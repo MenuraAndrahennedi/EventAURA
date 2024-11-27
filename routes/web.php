@@ -76,8 +76,13 @@ Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.da
 Route::get('eventhost/dashboard', [EventHostController::class, 'index'])->name('eventhost.dashboard')->middleware(['auth', 'eventhost']);
 Route::get('customer/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard')->middleware(['auth', 'customer']);
 
+
+ Route::get('event/create', [EventController::class, 'create'])->name('event.create')->middleware(['auth','eventCreation']);
+ Route::post('event/store', [EventController::class, 'store'])->name('event.store');
+
 Route::get('event/create', [EventController::class, 'create'])->name('event.create');
 Route::post('event/store', [EventController::class, 'store'])->name('event.store');
+
 
 Route::get('/api/events', [EventController::class, 'getApprovedEvents']);
 
