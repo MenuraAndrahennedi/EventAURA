@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('modules', function (Blueprint $table) {
-            $table->id('module_id');
-            $table->string('module_name');
-            $table->text('module_description')->nullable();
-            $table->enum('module_status', ['ACTIVE', 'INACTIVE']);
+            $table->id();
+            
             $table->timestamps();
         });
     }
