@@ -2,11 +2,13 @@ import React , {useState} from 'react'
 import MainHeader from '../../Components/Header/MainHeader';
 import MainFooter from '../../Components/Footer/MainFooter';
 import '../../../css/Home.scss';
+
 import { Link , usePage  } from '@inertiajs/react';
 //import '../../style.scss';
 
-import HomeImg1 from '../../assets/Home-1.png';
-import HomeImg2 from '../../assets/Home-2.png';
+
+import HomeImg1 from '../../assets/Images/Home-1.png';
+import HomeImg2 from '../../assets/Images/Home-2.png';
 import FBIcon from '../../assets/Logos/fb.png';
 import InstargramIcon from '../../assets/Logos/Instargram.png';
 import XIcon from '../../assets/Logos/logo X.png';
@@ -14,6 +16,7 @@ import LinkedInIcon from '../../assets/Logos/linkedIn.png';
 {/*import WhiteCircle from '../../assets/Logos/Eclipse white.svg';
 import BlueCircle from '../../assets/Logos/Eclipse blue.svg';*/}
 import ReviewIcon from '../../assets/Logos/review.png';
+
 
  export default function Home (){
 
@@ -153,6 +156,7 @@ import ReviewIcon from '../../assets/Logos/review.png';
       </footer>
     </>
   )
+
 }
 
 //export default Home
