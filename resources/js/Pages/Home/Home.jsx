@@ -1,10 +1,10 @@
-import React , {useState} from 'react'
-import MainHeader from '../../Components/Header/MainHeader';
-import MainFooter from '../../Components/Footer/MainFooter';
-import '../../../css/Home.scss';
-
-import { Link , usePage  } from '@inertiajs/react';
+import React from "react";
+import MainHeader from "../../Components/Header/MainHeader";
+import MainFooter from "../../Components/Footer/MainFooter";
+import "../../../css/Home.scss";
+import { Link } from "@inertiajs/react";
 //import '../../style.scss';
+
 
 
 import HomeImg1 from '../../assets/Images/Home-1.png';
@@ -156,6 +156,7 @@ import ReviewIcon from '../../assets/Logos/review.png';
       </footer>
     </>
   )
+
 
 }
 
