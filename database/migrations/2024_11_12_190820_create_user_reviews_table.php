@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_reviews', function (Blueprint $table) {
-            $table->id('review_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('host_id');
-            $table->foreign('user_id')->references('user_id')->on('user')->onDelete('cascade');
-            $table->foreign('host_id')->references('host_id')->on('host')->onDelete('cascade');
-            $table->integer('review_rating')->check('review_rating >= 1 AND review_rating <= 5'); // Assuming rating is between 1 and 5
-            $table->text('review_comments')->nullable();
+            $table->id();
+            // $table->unsignedBigInteger('user_id');
+            // $table->unsignedBigInteger('host_id');
+            // $table->foreign('user_id')->references('user_id')->on('user')->onDelete('cascade');
+            // $table->foreign('host_id')->references('host_id')->on('host')->onDelete('cascade');
+            // $table->integer('review_rating')->check('review_rating >= 1 AND review_rating <= 5'); // Assuming rating is between 1 and 5
+            // $table->text('review_comments')->nullable();
             $table->timestamps();
             
         });

@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from 'react'
 import TBHeader from './../../Components/Header/TBHeader';
 import MainFooter from './../../Components/Footer/MainFooter';
+import SubFooter from './../../Components/Footer/SubFooter';
 
 import '../../../css/BrowseEvent.scss';
 import { Link } from '@inertiajs/react';
@@ -36,7 +37,8 @@ const BrowseEvent = () => {
             {/*Search Bar */}
             <SearchBar />
 
-
+          <section className = 'section-2 bg-light py-5'>
+            <div className='container'>
           {/*1st Row*/}
           <div className = 'row pt-3'>
             {events.map ((event) => (
@@ -62,7 +64,7 @@ const BrowseEvent = () => {
             </div>
             ))}
             
-           {/* <div className = 'col-md-4'>
+            {/*<div className = 'col-md-4'>
               <div className = 'card shadow border-0'>
                 <div className = 'card-img-top'>
                     <img src = {Banner} alt="Banner1" className = 'w-100'/>
@@ -125,7 +127,7 @@ const BrowseEvent = () => {
 
                     </div>
 
-                    {/*2nd Row*/}
+                   
                     <div className='row pt-3'>
                         <div className='col-md-4'>
                             <div className='card shadow border-0'>
@@ -191,13 +193,12 @@ const BrowseEvent = () => {
                 </div>
 
               </div>
+*/}
             </div> 
-         */}
+         
           </div>
-        </div>
-
-
-            </section>
+               
+          </section>
 
             <section className='section-5'>
                 <div className='text-center'>

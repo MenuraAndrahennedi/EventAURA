@@ -47,7 +47,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    protected $primaryKey = 'user_id';  // Set 'user_id' as the primary key
+    //protected $primaryKey = 'user_id';  // Set 'user_id' as the primary key
     public $incrementing = true;  // Set this to true if 'user_id' is auto-incrementing
     protected $keyType = 'int';  // The primary key is an integer
 

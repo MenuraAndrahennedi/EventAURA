@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import { Link } from '@inertiajs/react';
 import '../../../css/style.scss';
 
-import Logo from '../../assets/Logo.png';
+import Logo from '../../assets/Images/Logo.png';
 
 const TBHeader = () => {
   return (
@@ -29,4 +29,4 @@ const TBHeader = () => {
 
 }
 
-export default MainHeader
+export default TBHeader

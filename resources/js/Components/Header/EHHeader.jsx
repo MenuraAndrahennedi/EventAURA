@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from '@inertiajs/react';
 import '../../../css/style.scss';
-import Logo from '../../assets/Logo.png';
+import Logo from '../../assets/Images/Logo.png';
 
 const EHHeader = () => {
   return (
