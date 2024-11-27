@@ -1,7 +1,7 @@
 import React from "react";
 import SubFooter from "./../../Components/Footer/SubFooter";
 import EHHeader from "./../../Components/Header/EHHeader";
-import "./CreateEvent.scss";
+import "../../../css/CreateEvent.scss";
 import { Link } from "@inertiajs/react";
 
 const CreateEvent = () => {
