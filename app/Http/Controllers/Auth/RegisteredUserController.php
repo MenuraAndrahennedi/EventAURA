@@ -21,8 +21,8 @@ class RegisteredUserController extends Controller
     public function create(Request $request): Response
     {
 
-        $routeName=$request->route()->getName();
-        $registerPage= $routeName ==='tb.register'? 'TB/TBCreateAccount':'EventHost/EHCreateAccount';
+        $routeName = $request->route()->getName();
+        $registerPage = $routeName === 'tb.register' ? 'TB/TBCreateAccount' : 'EventHost/EHCreateAccount';
         return Inertia::render($registerPage);
     }
 
@@ -35,17 +35,17 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'telephone' => 'required|string|max:15',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role_id' =>'required|integer',
-           
+            'role_id' => 'required|integer',
+
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'telephone' =>$request->telephone,
+            'telephone' => $request->telephone,
             'password' => Hash::make($request->password),
             'role_id' => $request->role_id,
         ]);
@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        switch ($user->role_id){
+        switch ($user->role_id) {
             case 1:
                 return redirect()->route('programmer.dashboard');
             case 2:
@@ -66,9 +66,9 @@ class RegisteredUserController extends Controller
             case 5:
                 return redirect()->route('browse');
             default:
-                return redirect()->route('/', absolute: false);
+                return redirect()->route('/', ['absolute' => false]);
         }
 
-       // return redirect(route('dashboard', absolute: false));
+        // return redirect(route('dashboard', absolute: false));
     }
 }
