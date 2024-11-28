@@ -1,4 +1,3 @@
-//
 import React, { useEffect, useState } from "react";
 import TBHeader from "./../../Components/Header/TBHeader";
 import MainFooter from "./../../Components/Footer/MainFooter";
@@ -36,7 +35,7 @@ const BrowseEvent = () => {
 
             <section className="py-5 section-2 bg-light">
                 <div className="container">
-                    {/1st Row/}
+                    {/*1st Row*/}
                     <div className="pt-3 row">
                         {events.map((event) => (
                             <div className="col-md-4" key={event.id}>
