@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('customer', function (Blueprint $table) {
-            $table->id();
-           
+            $table->id('customer_id');
+            $table->string('customer_first_name');
+            $table->string('customer_last_name');
+            $table->string('customer_email')->unique();
+            $table->string('customer_contact_no');
+            $table->unsignedBigInteger('role_id'); // Define as unsignedBigInteger
+            $table->foreign('role_id')->references('role_id')->on('roles')->onDelete('cascade'); // Explicitly set foreign key
             $table->timestamps();
         });
     }

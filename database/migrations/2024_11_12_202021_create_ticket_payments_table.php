@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('ticket_payments', function (Blueprint $table) {
             $table->id(); // Primary key
-           
+            // $table->unsignedBigInteger('ticket_id');
+            // $table->foreign('ticket_id')->references('ticket_id')->on('ticket')->onDelete('cascade');
+            // $table->decimal('pay_amount', 8, 2); // Use decimal for precise monetary values
+            // $table->date('pay_date');
+            // $table->enum('pay_status', ['APPROVED', 'REJECTED']);
             $table->timestamps();
         });
     }

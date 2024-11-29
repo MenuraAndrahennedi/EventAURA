@@ -10,6 +10,8 @@ class Event extends Model
     /** @use HasFactory<\Database\Factories\EventFactory> */
     use HasFactory;
 
+    protected $table = 'event';
+
     protected $fillable = [
         'name','date','startTime','endTime','description','location','image','city','venue','artists',
         'agenda_pdf','organizer','event_video','bronze_ticket_count',
