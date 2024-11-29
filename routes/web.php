@@ -28,6 +28,15 @@ Route::get('/', function () {
 Route::get('/browse', function () {
     return Inertia::render('BrowseEvent/BrowseEvent');
 })->name('browse');
+Route::get('/eventdetails', function () {
+    return Inertia::render('EventDetails/TBEventDetails');
+})->name('eventdetails');
+Route::get('/buytickets', function () {
+    return Inertia::render('BuyTickets/BuyTickets');
+})->name('buytickets');
+Route::get('/buyticketscart', function () {
+    return Inertia::render('Cart/TBCart/TBCart');
+})->name('buyticketscart');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -76,14 +85,16 @@ Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.da
 Route::get('eventhost/dashboard', [EventHostController::class, 'index'])->name('eventhost.dashboard')->middleware(['auth', 'eventhost']);
 Route::get('customer/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard')->middleware(['auth', 'customer']);
 
-
- Route::get('event/create', [EventController::class, 'create'])->name('event.create')->middleware(['auth','eventCreation']);
- Route::post('event/store', [EventController::class, 'store'])->name('event.store');
+Route::get('event/create', [EventController::class, 'create'])->name('event.create')->middleware(['auth', 'eventCreation']);
+Route::post('event/store', [EventController::class, 'store'])->name('event.store');
 
 Route::get('event/create', [EventController::class, 'create'])->name('event.create');
 Route::post('event/store', [EventController::class, 'store'])->name('event.store');
 
-
 Route::get('/api/events', [EventController::class, 'getApprovedEvents']);
+
+Route::get('/hosteventcart', function () {
+    return Inertia::render('Cart/EHCart/EHCart');
+})->name('hosteventcart');
 
 require __DIR__ . '/auth.php';
