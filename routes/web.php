@@ -97,4 +97,7 @@ Route::get('/hosteventcart', function () {
     return Inertia::render('Cart/EHCart/EHCart');
 })->name('hosteventcart');
 
+Route::get('/event/{id}', [EventController::class, 'show'])->name('event.show');
+Route::get('/event/{id}/buytickets', [EventController::class, 'buyTickets'])->name('event.buyTickets');
+
 require __DIR__ . '/auth.php';

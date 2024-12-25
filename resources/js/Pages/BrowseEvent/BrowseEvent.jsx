@@ -72,7 +72,7 @@ const BrowseEvent = () => {
                                                 </span>
                                             </p>
                                             <Link
-                                                to="/eventDetails"
+                                                 href={`/event/${event.id}`}
                                                 className="btn btn-primary"
                                             >
                                                 Book Now

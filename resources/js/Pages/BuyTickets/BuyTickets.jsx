@@ -4,13 +4,31 @@ import MainFooter from "../../Components/Footer/MainFooter";
 import SubFooter from "../../Components/Footer/SubFooter";
 
 import "../../../css/BuyTickets.scss";
-import { Link } from "@inertiajs/react";
+import { Link , usePage } from "@inertiajs/react";
 import axios from "axios";
 
 import SearchBar from "../../Components/SearchBar";
 import HostImage from "../../assets/Logos/HostLogo.png";
 
 const BuyTickets = () => {
+    const { event } = usePage().props; 
+    const [ticketCount, setTicketCount] = useState(1);
+    const [cart, setCart] = useState([]);
+
+    const handleAddToCart = () => {
+        const ticketDetails = {
+            eventId: event.id,
+            eventName: event.name,
+            ticketCount: ticketCount,
+            //BTprice: event.bronze_ticket_price,
+            //STprice: event.silver_ticket_price,
+            //GTprice: event.gold_ticket_price,
+        };
+
+        // Add ticket details to the cart
+        setCart((prevCart) => [...prevCart, ticketDetails]);
+        console.log(`Added ${ticketCount} tickets for ${event.name} to the cart.`);
+    };
     return (
         <>
             <header>
@@ -26,10 +44,10 @@ const BuyTickets = () => {
             <section className="event-Details">
                 <div className="banner">
                     <h1 className="banner-title">
-                        <b>SKY HEROES</b>
+                        <b>{event.name}</b>
                     </h1>
                 </div>
-
+{/*...................................................................................*/}
                 <Link to="/TBEventDetails" className="view-event">
                     View Event Details
                 </Link>
@@ -37,18 +55,11 @@ const BuyTickets = () => {
                 <div className="event-info">
                     <div className="event-description">
                         <p>
-                            Join us for an unforgettable night of live music at
-                            Rythms Under the Stars! Featuring renowned
-                            artistsacross genres like rock.pop and indie.This
-                            concert will be held in the beautiful setting of
-                            National Youth Service Council Auditorium,
-                            Maharagama.Enjoy mesmerizing performance under the
-                            night sky with delicious food stalls,cozy seating
-                            and vibrant atmosphere.
+                            {event.description}
                         </p>
                         <div className="event-meta">
                             <p>
-                                <strong>Date:</strong> 01 April 2025
+                                <strong>Date:</strong> {event.date}
                             </p>
                             <p>
                                 <strong>Venue:</strong> National Youth Service
@@ -96,9 +107,9 @@ const BuyTickets = () => {
                             </div>
                             <div className="ticket-select">
                                 <span className="ticket-price">
-                                    15,000 LKR per ticket
+                                    {event.golden_ticket_price}per ticket
                                 </span>
-                                <span className="ticket-price">50</span>
+                                <span className="ticket-price">{event.golden_ticket_count}</span>
                                 <input
                                     type="number"
                                     min="0"
@@ -121,9 +132,9 @@ const BuyTickets = () => {
                             </div>
                             <div className="ticket-select">
                                 <span className="ticket-price">
-                                    10,000 LKR per ticket
+                                {event.golden_ticket_price}per ticket
                                 </span>
-                                <span className="ticket-price">50</span>
+                                <span className="ticket-price">{event.golden_ticket_count}</span>
                                 <input
                                     type="number"
                                     min="0"
@@ -146,9 +157,9 @@ const BuyTickets = () => {
                             </div>
                             <div className="ticket-select">
                                 <span className="ticket-price">
-                                    05,000 LKR per ticket
+                                {event.golden_ticket_price} per ticket
                                 </span>
-                                <span className="ticket-price">50</span>
+                                <span className="ticket-price">{event.golden_ticket_count}</span>
                                 <input
                                     type="number"
                                     min="0"
@@ -156,10 +167,14 @@ const BuyTickets = () => {
                                 />
                             </div>
                         </div>
-
+                        <button onClick={handleAddToCart} className="btn btn-primary">
+                        Add to Cart
+                        </button>
+                       {/*
                         <Link to="/TBCart">
                             <button className="add-to-cart">Add to Cart</button>
                         </Link>
+                        */}
                     </div>
                 </div>
             </section>

@@ -4,7 +4,7 @@ import MainFooter from "../../Components/Footer/MainFooter";
 import SubFooter from "../../Components/Footer/SubFooter";
 
 import "../../../css/TBEventDetails.scss";
-import { Link } from "@inertiajs/react";
+import { Link , usePage } from "@inertiajs/react";
 import axios from "axios";
 
 import SearchBar from "../../Components/SearchBar";
@@ -12,6 +12,8 @@ import BannerImage from "../../assets/Images/banner.png";
 import HostImage from "../../assets/Logos/HostLogo.png";
 
 const TBEventDetails = () => {
+    const { event } = usePage().props; 
+
     return (
         <>
             <header>
@@ -27,36 +29,29 @@ const TBEventDetails = () => {
             <section className="event-details">
                 <div className="banner">
                     <h1 className="banner-title">
-                        <b>SKY HEROES</b>
+                        <b>{event.name}</b>
                     </h1>
                 </div>
 
                 <div className="event-info">
                     <div className="event-poster">
-                        <img src={BannerImage} alt="Event Poster" />
+                        <img src={event.image} alt="Event Poster" />
                     </div>
 
                     <div className="event-description">
                         <p>
-                            Join us for an unforgettable night of live music at
-                            Rythms Under the Stars! Featuring renowned
-                            artistsacross genres like rock.pop and indie.This
-                            concert will be held in the beautiful setting of
-                            National Youth Service Council Auditorium,
-                            Maharagama.Enjoy mesmerizing performance under the
-                            night sky with delicious food stalls,cozy seating
-                            and vibrant atmosphere.
+                            {event.description}
                         </p>
                         <div className="event-meta">
                             <p>
-                                <strong>Date:</strong> 01 April 2025
+                                <strong>Date:</strong>{event.date} 
                             </p>
                             <p>
-                                <strong>Venue:</strong> National Youth Service
-                                Council Auditorium | Maharagama
+                                <strong>Venue:</strong> {event.location}
+                                
                             </p>
                             <p>
-                                <strong>Organizer:</strong>Eventmela
+                                <strong>Organizer:</strong>{event.organizer}
                             </p>
                             <div className="button-row">
                                 <a
@@ -69,7 +64,7 @@ const TBEventDetails = () => {
                                 </a>
                                 {/* Download PDF */}
                                 <a
-                                    href="/path/to/agenda.pdf"
+                                    href={`/storage/${event.agenda_pdf}`}
                                     download
                                     className="button-link"
                                 >
@@ -79,7 +74,7 @@ const TBEventDetails = () => {
                             </div>
                         </div>
                         <div className="event-buttons">
-                            <Link to="/BuyTickets" className="buy-tickets">
+                            <Link href={`/event/${event.id}/buytickets`} className="buy-tickets">
                                 Buy Tickets
                             </Link>
                             <Link

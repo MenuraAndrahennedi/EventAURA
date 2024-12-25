@@ -13,7 +13,12 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+
+        $events = Event::all(); // Fetch all events from the database
+
+        return Inertia::render('Events', [
+            'events' => $events,
+        ]);
     }
 
     /**
@@ -77,9 +82,25 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $id)
     {
-        //
+       
+        $event = Event::findOrFail($id);
+        $event->image = asset('storage/' . $event->image); // Ensure the image URL is accessible
+
+        return Inertia::render('EventDetails/TBEventDetails', [
+        'event' => $event,
+        ]);
+    }
+        
+        public function buyTickets($id)
+    {
+        $event = Event::findOrFail($id);
+        $event->image = asset('storage/' . $event->image); // Ensure the image URL is accessible
+
+        return Inertia::render('BuyTickets/BuyTickets', [
+            'event' => $event,
+        ]);
     }
 
     /**
