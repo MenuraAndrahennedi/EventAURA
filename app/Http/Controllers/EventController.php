@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
 
 class EventController extends Controller
 {
@@ -57,7 +60,7 @@ class EventController extends Controller
         $validated['event_video'] = $request->file('event_video')?->store('videos','public');
 
         $validated['event_host_id'] = auth()->id();
-
+  
         Event::create($validated);
 
         return redirect()->route('eventhost.dashboard')->with('success','Event Created Successfully and is pending approval');
@@ -73,12 +76,158 @@ class EventController extends Controller
         return response()->json($approvedEvents);
     }
 
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        $filter = $request->input('filter', 'All');
+
+        $query = Event::query();
+
+        if (!empty($searchTerm)) {
+           $query->where('name', 'LIKE', "%{$searchTerm}%")
+           ;
+        }
+    
+        if ($filter === 'Upcoming') {
+            $query->where('date', '>', now());
+        } elseif ($filter === 'Past') {
+            $query->where('date', '<', now());
+        }
+
+        $events = $query->get()->map(function ($event) {
+            return [
+                'id' => $event->id,
+                'name' => $event->name,
+                'date' => $event->date,
+                'startTime' => $event->startTime,
+                'location' => $event->location,
+                'bronze_ticket_price' => $event->bronze_ticket_price,
+                'image' => asset('storage/' . $event->image), 
+            ];
+        });
+
+        return response()->json($events);
+
+    }
+
+    public function searchDetails(Request $request)
+    {
+        return Inertia::render('EventDetails/TBEventDetails');
+    }
+
+    public function searchResults(Request $request)
+    {
+        $searchTerm = $request->input('search', '');
+        $filter = $request->input('filter', 'All');
+
+        $query = Event::query();
+
+        if (!empty($searchTerm)) {
+            $query->where('name', 'LIKE', "%{$searchTerm}%");
+        }
+
+        if ($filter === 'Upcoming') {
+            $query->where('date', '>', now());
+        } elseif ($filter === 'Past') {
+            $query->where('date', '<', now());
+        } 
+
+        $events = $query->get()->map(function ($event) {
+            return [
+                'id' => $event->id,
+                'name' => $event->name,
+                'date' => $event->date,
+                'startTime' => $event->startTime,
+                'location' => $event->location,
+                'bronze_ticket_price' => $event->bronze_ticket_price,
+                'image' => asset('storage/' . $event->image), 
+            ];
+        });
+
+    return Inertia::render('SearchResult/SearchResult', [
+        'events' => $events,
+        'searchTerm' => $searchTerm,
+        'filter' => $filter,
+    ]);
+    }
+    
+    public function ongoingEvents()
+    {
+        $user = Auth::user();
+
+        if ($user->role_id == 4) {
+            $ongoingevents = Event::where('event_host_id', $user->id)
+                            ->where('event_status', 'approved')  
+                            ->get()
+                            ->map (function ($event) {
+                                $event->image = asset('storage/' . $event->image);
+                                return $event;
+                            })
+                            ->toArray(); 
+                            
+        }               
+        
+        return Inertia::render('EventHost/OngoingEvents', [
+            'events' => $ongoingevents
+        ]);
+       
+    }
+    
+    public function updateEvent(Request $request, $eventId)
+    {
+        $request->validate([
+            'date' => 'nullable|date',
+            'startTime' => 'nullable|date_format:H:i',
+            'endTime' => 'nullable|date_format:H:i|after:startTime',
+            'city' => 'nullable|string',
+            'venue' => 'nullable|string',
+            'location' => 'nullable|string',
+            'artist' => 'nullable|string',
+            'bronze_ticket_count' => 'integer|min:0',
+            'golden_ticket_count' => 'integer|min:0',
+            'silver_ticket_count' => 'integer|min:0',
+            'bronze_ticket_price' => 'nullable|numeric|min:0',
+            'golden_ticket_price' => 'nullable|numeric|min:0',
+            'silver_ticket_price' => 'nullable|numeric|min:0',
+        ]);
+
+        $event = Event::findOrFail($eventId);
+
+        $event->update([
+            'date' => $request->date,
+            'startTime' => $request->startTime,
+            'endTime' => $request->endTime,
+            'city' => $request->city,
+            'venue' => $request->venue,
+            'location' => $request->location,
+            'artist' => $request->artist,
+            'bronze_ticket_count' => $request->bronze_ticket_count,
+            'golden_ticket_count' => $request->golden_ticket_count,
+            'silver_ticket_count' => $request->silver_ticket_count,
+            'bronze_ticket_price' => $request->bronze_ticket_price,
+            'golden_ticket_price' => $request->golden_ticket_price,
+            'silver_ticket_price' => $request->silver_ticket_price,
+        ]);
+
+    return redirect()->back()->with('success', 'Event updated successfully.');
+    }
+
+    public function profiles()
+    {
+        $user = Auth::user();
+
+        return Inertia::render('UserProfile/EH-Profiles/EHProfile', [
+            'user' => $user,
+        ]);
+    }
+    
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return inertia('CommonPages/ViewEvent/EHViewEvent', ['event' => $event]);
     }
 
     /**
@@ -86,13 +235,14 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return inertia('EventHost/UpdateEvent', ['event' => $event]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -100,8 +250,17 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $event->delete();
+        return Redirect::route('eventhost.home')->with('success', 'Event deleted successfully!');
+        
+    }
+
+    public function delete(string $id)
+    {
+        $event = Event::findOrFail($id);
+        return inertia('CommonPages/DeleteEvent/EHDeleteEvent', ['event' => $event]);
     }
 }
