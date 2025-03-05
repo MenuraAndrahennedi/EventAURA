@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "@inertiajs/react";
 import TBHeader from "../../Components/Header/TBHeader";
 import SubFooter from "../../Components/Footer/SubFooter";
 import "../../../css/BrowseEvent.scss";
-import { Link } from "@inertiajs/react";
 import axios from "axios";
 
 import Banner from "../../assets/Images/banner.png";

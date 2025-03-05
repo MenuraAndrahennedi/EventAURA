@@ -51,6 +51,12 @@ Route::get('/userdetails', function () {return Inertia::render('UserDetails/User
 Route::get('/ehdetails', function () {return Inertia::render('UserDetails/EHDetails');})->name('EHDetails');
 Route::get('/tbdetails', function () {return Inertia::render('UserDetails/TBDetails');})->name('TBDetails');
 
+//ViewEvent
+Route::get('/ehviewevent', function () {return Inertia::render('ViewEvent/EHViewEvent');})->name('EHViewEvent');
+Route::get('/managerviewevent', function () {return Inertia::render('ViewEvent/ManagerViewEvent');})->name('ManagerViewEvent');
+Route::get('/userviewevent', function () {return Inertia::render('ViewEvent/UserViewEvent');})->name('UserViewEvent');
+
+
 // Manager
 //Route::get('/manager', function () {return Inertia::render('Manager/ManagerDashboard');})->name('manager');
 //Route::get('/managerCreateRequest', function () {return Inertia::render('Manager/PendingRequests/CreateRequest');})->name('managerCreateRequest');
