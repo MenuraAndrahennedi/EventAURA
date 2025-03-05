@@ -42,6 +42,11 @@ Route::get('/ehdelete', function () {return Inertia::render('Delete/EHDelete');}
 Route::get('/ehcart', function () {return Inertia::render('Cart/EHCart');})->name('EHCart');
 Route::get('/tbcart', function () {return Inertia::render('Cart/TBCart');})->name('TBCart');
 
+//User Details
+Route::get('/userdetails', function () {return Inertia::render('UserDetails/UserDetails');})->name('UserDetails');
+Route::get('/ehdetails', function () {return Inertia::render('UserDetails/EHDetails');})->name('EHDetails');
+Route::get('/tbdetails', function () {return Inertia::render('UserDetails/TBDetails');})->name('TBDetails');
+
 // Manager
 //Route::get('/manager', function () {return Inertia::render('Manager/ManagerDashboard');})->name('manager');
 //Route::get('/managerCreateRequest', function () {return Inertia::render('Manager/PendingRequests/CreateRequest');})->name('managerCreateRequest');
