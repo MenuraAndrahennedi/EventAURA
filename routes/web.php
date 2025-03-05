@@ -38,6 +38,10 @@ Route::get('/tbeventdetails', function () {return Inertia::render('Events/TBEven
 Route::get('/admindelete', function () {return Inertia::render('Delete/AdminDelete');})->name('AdminDelete');
 Route::get('/ehdelete', function () {return Inertia::render('Delete/EHDelete');})->name('EHDelete');
 
+//Dashboard
+Route::get('/userdashboard', function () {return Inertia::render('Dashboard/UserDashboard');})->name('UserDashboard');
+Route::get('/ehdashboard', function () {return Inertia::render('Dashboard/EHDashboard');})->name('EHDashboard');
+
 //cart
 Route::get('/ehcart', function () {return Inertia::render('Cart/EHCart');})->name('EHCart');
 Route::get('/tbcart', function () {return Inertia::render('Cart/TBCart');})->name('TBCart');
