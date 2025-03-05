@@ -21,43 +21,32 @@ use Inertia\Inertia;
 //     ]);
 // });
 
-Route::get('/', function () {
-    return Inertia::render('Home/Home');
-});
-
-Route::get('/browse', function () {
-    return Inertia::render('BrowseEvent/BrowseEvent');
-})->name('browse');
-Route::get('/eventdetails', function () {
-    return Inertia::render('EventDetails/TBEventDetails');
-})->name('eventdetails');
-Route::get('/buytickets', function () {
-    return Inertia::render('BuyTickets/BuyTickets');
-})->name('buytickets');
-Route::get('/buyticketscart', function () {
-    return Inertia::render('Cart/TBCart/TBCart');
-})->name('buyticketscart');
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', function () {return Inertia::render('Home/Home');});
+Route::get('/browse', function () {return Inertia::render('BrowseEvent/BrowseEvent');})->name('browse');
+Route::get('/eventdetails', function () {return Inertia::render('EventDetails/TBEventDetails');})->name('eventdetails');
+Route::get('/buytickets', function () {return Inertia::render('BuyTickets/BuyTickets');})->name('buytickets');
+Route::get('/buyticketscart', function () {return Inertia::render('Cart/TBCart/TBCart');})->name('buyticketscart');
+Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
 
 // Manager
-Route::get('/manager', function () {
-    return Inertia::render('Manager/ManagerDashboard');
-})->name('manager');
+Route::get('/manager', function () {return Inertia::render('Manager/ManagerDashboard');})->name('manager');
+Route::get('/managerCreateRequest', function () {return Inertia::render('Manager/PendingRequests/CreateRequest');})->name('managerCreateRequest');
+Route::get('/managerUpdateRequest', function () {return Inertia::render('Manager/PendingRequests/UpdateRequest');})->name('managerUpdateRequest');
+Route::get('/managerDeleteRequest', function () {return Inertia::render('Manager/PendingRequests/DeleteRequest');})->name('managerDeleteRequest');
 
-Route::get('/managerCreateRequest', function () {
-    return Inertia::render('Manager/PendingRequests/CreateRequest');
-})->name('managerCreateRequest');
+// Dashboard
+Route::get('programmer/dashboard', function () {return Inertia::render('Programmer/ProgrammerDashboard');})->name('programmer.dashboard');
 
-Route::get('/managerUpdateRequest', function () {
-    return Inertia::render('Manager/PendingRequests/UpdateRequest');
-})->name('managerUpdateRequest');
+//EH
+Route::get('/hosteventcart', function () {return Inertia::render('Cart/EHCart/EHCart');})->name('hosteventcart');
 
-Route::get('/managerDeleteRequest', function () {
-    return Inertia::render('Manager/PendingRequests/DeleteRequest');
-})->name('managerDeleteRequest');
+
+
+
+
+
+
+
 
 //Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 
@@ -75,9 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('programmer/dashboard', function () {
-    return Inertia::render('Programmer/ProgrammerDashboard');
-})->name('programmer.dashboard');
+//Route::get('programmer/dashboard', function () {return Inertia::render('Programmer/ProgrammerDashboard');})->name('programmer.dashboard');
 
 Route::get('programmer/dashboard', [ProgrammerController::class, 'index'])->name('programmer.dashboard')->middleware(['auth', 'programmer']);
 Route::get('manager/dashboard', [ManagerController::class, 'index'])->name('manager.dashboard')->middleware(['auth', 'manager']);
@@ -93,10 +80,7 @@ Route::post('event/store', [EventController::class, 'store'])->name('event.store
 
 Route::get('/api/events', [EventController::class, 'getApprovedEvents']);
 
-Route::get('/hosteventcart', function () {
-    return Inertia::render('Cart/EHCart/EHCart');
-})->name('hosteventcart');
-
+//Route::get('/hosteventcart', function () {return Inertia::render('Cart/EHCart/EHCart');})->name('hosteventcart');
 Route::get('/event/{id}', [EventController::class, 'show'])->name('event.show');
 Route::get('/event/{id}/buytickets', [EventController::class, 'buyTickets'])->name('event.buyTickets');
 
