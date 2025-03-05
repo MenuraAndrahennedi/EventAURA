@@ -1,12 +1,20 @@
 import React from 'react'
-import SubFooter from '../../Components/Footer/SubFooter'
+import MainHeader from './../../Components/Header/MainHeader';
+import MainFooter from './../../Components/Footer/MainFooter';
 
 const AboutUS = () => {
   return (
-    <div>
-      <h1>About us pg</h1>
-      
-    </div>
+    <>
+    <header>
+        <MainHeader />
+    </header>
+
+    <h1>About Us</h1>
+
+    {/*<footer>
+      <MainFooter />
+    </footer>*/}
+    </>
   )
 }
 

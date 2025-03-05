@@ -9,6 +9,7 @@ use App\Http\Controllers\EventHostController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgrammerController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -21,24 +22,34 @@ use Inertia\Inertia;
 //     ]);
 // });
 
-Route::get('/', function () {return Inertia::render('Home/Home');});
-Route::get('/browse', function () {return Inertia::render('BrowseEvent/BrowseEvent');})->name('browse');
-Route::get('/eventdetails', function () {return Inertia::render('EventDetails/TBEventDetails');})->name('eventdetails');
-Route::get('/buytickets', function () {return Inertia::render('BuyTickets/BuyTickets');})->name('buytickets');
-Route::get('/buyticketscart', function () {return Inertia::render('Cart/TBCart/TBCart');})->name('buyticketscart');
-Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', function () {return Inertia::render('Home/Home');})->name('home');
+Route::get('/about', function () {return Inertia::render('AboutUs/AboutUS');})->name('about');
+Route::get('/help', function () {return Inertia::render('HelpCentre/HelpCentre');})->name('help');
+
+//Events
+Route::get('/browse', function () {return Inertia::render('Events/BrowseEvent');})->name('browse');
+//Route::get('/buytickets', function () {return Inertia::render('Events/BuyTickets');})->middleware(['auth'])->name('buytickets');
+Route::get('/buytickets', function () {return Inertia::render('Events/BuyTickets');})->name('buytickets');
+//Route::get('/buyticketscart', function () {return Inertia::render('Cart/TBCart/TBCart');})->name('buyticketscart');
+//Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
+//Route::get('/eventdetails', function () {return Inertia::render('EventDetails/TBEventDetails');})->name('eventdetails');
+
+
+//cart
+Route::get('/EHCart', function () {return Inertia::render('Cart/EHCart');})->name('EHCart');
+Route::get('/TBCart', function () {return Inertia::render('Cart/TBCart');})->name('TBCart');
 
 // Manager
-Route::get('/manager', function () {return Inertia::render('Manager/ManagerDashboard');})->name('manager');
-Route::get('/managerCreateRequest', function () {return Inertia::render('Manager/PendingRequests/CreateRequest');})->name('managerCreateRequest');
-Route::get('/managerUpdateRequest', function () {return Inertia::render('Manager/PendingRequests/UpdateRequest');})->name('managerUpdateRequest');
-Route::get('/managerDeleteRequest', function () {return Inertia::render('Manager/PendingRequests/DeleteRequest');})->name('managerDeleteRequest');
+//Route::get('/manager', function () {return Inertia::render('Manager/ManagerDashboard');})->name('manager');
+//Route::get('/managerCreateRequest', function () {return Inertia::render('Manager/PendingRequests/CreateRequest');})->name('managerCreateRequest');
+//Route::get('/managerUpdateRequest', function () {return Inertia::render('Manager/PendingRequests/UpdateRequest');})->name('managerUpdateRequest');
+//Route::get('/managerDeleteRequest', function () {return Inertia::render('Manager/PendingRequests/DeleteRequest');})->name('managerDeleteRequest');
 
 // Dashboard
-Route::get('programmer/dashboard', function () {return Inertia::render('Programmer/ProgrammerDashboard');})->name('programmer.dashboard');
+//Route::get('programmer/dashboard', function () {return Inertia::render('Programmer/ProgrammerDashboard');})->name('programmer.dashboard');
 
 //EH
-Route::get('/hosteventcart', function () {return Inertia::render('Cart/EHCart/EHCart');})->name('hosteventcart');
+//Route::get('/hosteventcart', function () {return Inertia::render('Cart/EHCart/EHCart');})->name('hosteventcart');
 
 
 
