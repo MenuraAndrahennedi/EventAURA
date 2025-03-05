@@ -42,6 +42,7 @@ const BrowseEvent = () => {
                     <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
                         <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
                         <Link href={route('home')} className="btn btn-primary"> Book Now </Link>
+                        {/*<Link to = '/TBEventDetails' className='btn btn-primary'>Book Now</Link>*/}
                     </div>
                   </div>
                 </div>
