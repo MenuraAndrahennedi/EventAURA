@@ -22,9 +22,19 @@ use Inertia\Inertia;
 //     ]);
 // });
 
+
+
+//Route::get('/', function () {return Inertia::render('');})->name('');
+
 Route::get('/', function () {return Inertia::render('Home/Home');})->name('home');
 Route::get('/about', function () {return Inertia::render('AboutUs/AboutUS');})->name('about');
 Route::get('/help', function () {return Inertia::render('HelpCentre/HelpCentre');})->name('help');
+
+
+//AddNewMember
+Route::get('/addnewmember', function () {return Inertia::render('AddNewMember/AddNewMember');})->name('AddNewMember');
+Route::get('/verification01', function () {return Inertia::render('AddNewMember/Verification01');})->name('Verification01');
+Route::get('/verification02', function () {return Inertia::render('AddNewMember/Verification02');})->name('Verification02');
 
 //Events
 Route::get('/browse', function () {return Inertia::render('Events/BrowseEvent');})->name('browse');
@@ -33,6 +43,10 @@ Route::get('/buytickets', function () {return Inertia::render('Events/BuyTickets
 Route::get('/tbeventdetails', function () {return Inertia::render('Events/TBEventDetails');})->name('TBEventDetails');
 //Route::get('/buyticketscart', function () {return Inertia::render('Cart/TBCart/TBCart');})->name('buyticketscart');
 //Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
+
+//Login
+Route::get('/userlogin', function () {return Inertia::render('Login/UserLogin');})->name('UserLogin');
+
 
 //Delete
 Route::get('/admindelete', function () {return Inertia::render('Delete/AdminDelete');})->name('AdminDelete');
