@@ -47,7 +47,8 @@ Route::get('/createevent', function () {return Inertia::render('Events/CreateEve
 
 //Login
 Route::get('/userlogin', function () {return Inertia::render('Login/UserLogin');})->name('user_login');
-
+Route::get('/ehlogin', function () {return Inertia::render('Login/EHLogin');})->name('eh_login');
+Route::get('/tblogin', function () {return Inertia::render('Login/TBLogin');})->name('tb_login');
 
 //Delete
 Route::get('/admindelete', function () {return Inertia::render('Delete/AdminDelete');})->name('admin_delete');
