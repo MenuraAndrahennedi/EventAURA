@@ -38,6 +38,10 @@ Route::get('/verification02', function () {return Inertia::render('AddNewMember/
 Route::get('/ehcart', function () {return Inertia::render('Cart/EHCart');})->name('eh_cart');
 Route::get('/tbcart', function () {return Inertia::render('Cart/TBCart');})->name('tb_cart');
 
+//Create Account
+Route::get('/ehcreateaccount', function () {return Inertia::render('CreateAccount/EHCreateAcc');})->name('eh_create_acc');
+Route::get('/tbcreateaccount', function () {return Inertia::render('CreateAccount/TBCreateAcc');})->name('tb_create_acc');
+
 //Dashboard
 Route::get('/userdashboard', function () {return Inertia::render('Dashboard/UserDashboard');})->name('user_dashboard');
 Route::get('/ehdashboard', function () {return Inertia::render('Dashboard/EHDashboard');})->name('eh_dashboard');
