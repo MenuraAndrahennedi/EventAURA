@@ -26,15 +26,25 @@ use Inertia\Inertia;
 
 //Route::get('/', function () {return Inertia::render('');})->name('');
 
-Route::get('/', function () {return Inertia::render('Home/Home');})->name('home');
+//AboutUs
 Route::get('/about', function () {return Inertia::render('AboutUs/AboutUS');})->name('about');
-Route::get('/help', function () {return Inertia::render('HelpCentre/HelpCentre');})->name('help');
-
 
 //AddNewMember
 Route::get('/addnewmember', function () {return Inertia::render('AddNewMember/AddNewMember');})->name('add_new_member');
 Route::get('/verification01', function () {return Inertia::render('AddNewMember/Verification01');})->name('verification01');
 Route::get('/verification02', function () {return Inertia::render('AddNewMember/Verification02');})->name('verification02');
+
+//cart
+Route::get('/ehcart', function () {return Inertia::render('Cart/EHCart');})->name('eh_cart');
+Route::get('/tbcart', function () {return Inertia::render('Cart/TBCart');})->name('tb_cart');
+
+//Dashboard
+Route::get('/userdashboard', function () {return Inertia::render('Dashboard/UserDashboard');})->name('user_dashboard');
+Route::get('/ehdashboard', function () {return Inertia::render('Dashboard/EHDashboard');})->name('eh_dashboard');
+
+//Delete
+Route::get('/admindelete', function () {return Inertia::render('Delete/AdminDelete');})->name('admin_delete');
+Route::get('/ehdelete', function () {return Inertia::render('Delete/EHDelete');})->name('eh_delete');
 
 //Events
 Route::get('/browse', function () {return Inertia::render('Events/BrowseEvent');})->name('browse');
@@ -42,25 +52,20 @@ Route::get('/browse', function () {return Inertia::render('Events/BrowseEvent');
 Route::get('/buytickets', function () {return Inertia::render('Events/BuyTickets');})->name('buytickets');
 Route::get('/tbeventdetails', function () {return Inertia::render('Events/TBEventDetails');})->name('tb_event_details');
 Route::get('/createevent', function () {return Inertia::render('Events/CreateEvent');})->name('create_event');
-//Route::get('/buyticketscart', function () {return Inertia::render('Cart/TBCart/TBCart');})->name('buyticketscart');
-//Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
+
+//Help Centre
+Route::get('/help', function () {return Inertia::render('HelpCentre/HelpCentre');})->name('help');
+
+//Home
+Route::get('/', function () {return Inertia::render('Home/Home');})->name('home');
 
 //Login
 Route::get('/userlogin', function () {return Inertia::render('Login/UserLogin');})->name('user_login');
 Route::get('/ehlogin', function () {return Inertia::render('Login/EHLogin');})->name('eh_login');
 Route::get('/tblogin', function () {return Inertia::render('Login/TBLogin');})->name('tb_login');
 
-//Delete
-Route::get('/admindelete', function () {return Inertia::render('Delete/AdminDelete');})->name('admin_delete');
-Route::get('/ehdelete', function () {return Inertia::render('Delete/EHDelete');})->name('eh_delete');
-
-//Dashboard
-Route::get('/userdashboard', function () {return Inertia::render('Dashboard/UserDashboard');})->name('user_dashboard');
-Route::get('/ehdashboard', function () {return Inertia::render('Dashboard/EHDashboard');})->name('eh_dashboard');
-
-//cart
-Route::get('/ehcart', function () {return Inertia::render('Cart/EHCart');})->name('eh_cart');
-Route::get('/tbcart', function () {return Inertia::render('Cart/TBCart');})->name('tb_cart');
+//Review
+Route::get('/review', function () {return Inertia::render('ReviewPg/ReviewPg');})->name('review');
 
 //User Details
 Route::get('/userdetails', function () {return Inertia::render('UserDetails/UserDetails');})->name('user_details');
@@ -73,17 +78,7 @@ Route::get('/managerviewevent', function () {return Inertia::render('ViewEvent/M
 Route::get('/userviewevent', function () {return Inertia::render('ViewEvent/UserViewEvent');})->name('user_view_vvent');
 
 
-// Manager
-//Route::get('/manager', function () {return Inertia::render('Manager/ManagerDashboard');})->name('manager');
-//Route::get('/managerCreateRequest', function () {return Inertia::render('Manager/PendingRequests/CreateRequest');})->name('managerCreateRequest');
-//Route::get('/managerUpdateRequest', function () {return Inertia::render('Manager/PendingRequests/UpdateRequest');})->name('managerUpdateRequest');
-//Route::get('/managerDeleteRequest', function () {return Inertia::render('Manager/PendingRequests/DeleteRequest');})->name('managerDeleteRequest');
 
-// Dashboard
-//Route::get('programmer/dashboard', function () {return Inertia::render('Programmer/ProgrammerDashboard');})->name('programmer.dashboard');
-
-//EH
-//Route::get('/hosteventcart', function () {return Inertia::render('Cart/EHCart/EHCart');})->name('hosteventcart');
 
 
 
