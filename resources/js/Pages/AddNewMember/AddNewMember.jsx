@@ -27,7 +27,7 @@ const AddNewMember = () => {
             <input type="text" placeholder="Tele no" required /><br />
             <input type="password" placeholder="Password" required />
             <input type="password" placeholder="Confirm Password" required />
-            <Link href={route('Verification01')} className="CustomButton"> Continue </Link>
+            <Link href={route('verification01')} className="CustomButton"> Continue </Link>
           </form>
 
         </div>

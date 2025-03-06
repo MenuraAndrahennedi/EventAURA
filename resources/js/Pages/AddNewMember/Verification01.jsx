@@ -22,7 +22,7 @@ const Verification01 = () => {
             <form>
               <input type="password" placeholder="Password" required />
               
-              <Link href={route('Verification02')} className="CustomButton1">Verify </Link>
+              <Link href={route('verification02')} className="CustomButton1">Verify </Link>
               <Link href={route('home')} className="CustomButton">Sign in  </Link>
             </form>
 

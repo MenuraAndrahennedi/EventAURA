@@ -24,7 +24,7 @@ const Verification02 = () => {
               <input type="password" placeholder="Password" required />
               <h5 style={{ color: 'black' }}>Verified.</h5>
 
-                <Link href={route('Verification02')} className="CustomButton1">Verify </Link>
+                <Link href={route('verification02')} className="CustomButton1">Verify </Link>
                 <Link href={route('home')} className="CustomButton">Sign in  </Link>
             </form>
 
