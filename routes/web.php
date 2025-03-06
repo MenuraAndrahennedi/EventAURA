@@ -23,6 +23,10 @@ use Inertia\Inertia;
 // });
 
 
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 //Route::get('/', function () {return Inertia::render('');})->name('');
 
@@ -71,6 +75,10 @@ Route::get('/tblogin', function () {return Inertia::render('Login/TBLogin');})->
 //Review
 Route::get('/review', function () {return Inertia::render('ReviewPg/ReviewPg');})->name('review');
 
+//Update Event
+Route::get('/ehupdate', function () {return Inertia::render('UpdateEvent/EHUpdateEvent');})->name('eh_update');
+Route::get('/userupdate', function () {return Inertia::render('UpdateEvent/UserUpdateEvent');})->name('user_update');
+
 //User Details
 Route::get('/userdetails', function () {return Inertia::render('UserDetails/UserDetails');})->name('user_details');
 Route::get('/ehdetails', function () {return Inertia::render('UserDetails/EHDetails');})->name('eh_details');
@@ -83,6 +91,8 @@ Route::get('/userviewevent', function () {return Inertia::render('ViewEvent/User
 
 
 
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
