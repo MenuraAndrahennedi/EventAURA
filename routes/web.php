@@ -76,6 +76,10 @@ Route::get('/tblogin', function () {return Inertia::render('Login/TBLogin');})->
 Route::get('/ehongoing', function () {return Inertia::render('OngoingEvents/EHOngoing');})->name('eh_ongoing');
 Route::get('/userongoing', function () {return Inertia::render('OngoingEvents/UserOngoing');})->name('user_ongoing');
 
+//paymentGate
+Route::get('/ehpaymentgate', function () {return Inertia::render('PaymentGate/EHPaymentGate');})->name('eh_paymentgate');
+Route::get('/tbpaymentgate', function () {return Inertia::render('PaymentGate/TBPaymentGate');})->name('tb_paymentgate');
+
 //Review
 Route::get('/review', function () {return Inertia::render('ReviewPg/ReviewPg');})->name('review');
 
