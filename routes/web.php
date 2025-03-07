@@ -72,6 +72,10 @@ Route::get('/userlogin', function () {return Inertia::render('Login/UserLogin');
 Route::get('/ehlogin', function () {return Inertia::render('Login/EHLogin');})->name('eh_login');
 Route::get('/tblogin', function () {return Inertia::render('Login/TBLogin');})->name('tb_login');
 
+//Ongoing Events
+Route::get('/ehongoing', function () {return Inertia::render('OngoingEvents/EHOngoing');})->name('eh_ongoing');
+Route::get('/userongoing', function () {return Inertia::render('OngoingEvents/UserOngoing');})->name('user_ongoing');
+
 //Review
 Route::get('/review', function () {return Inertia::render('ReviewPg/ReviewPg');})->name('review');
 
