@@ -83,11 +83,11 @@ Route::get('/tbpaymentgate', function () {return Inertia::render('PaymentGate/TB
 //ResetPW
 //EHResetPW
 Route::get('/ehforgotpw', function () {return Inertia::render('ResetPW/EHResetPW/EHForgotPW');})->name('eh_forgot_pw');
-Route::get('/ehverificationpw', function () {return Inertia::render('ResetPW/EHResetPW/EHVerificationPW');})->name('eh_verification_pw');
+Route::get('/ehverifypw', function () {return Inertia::render('ResetPW/EHResetPW/EHVerificationPW');})->name('eh_verification_pw');
 Route::get('/ehnewpw', function () {return Inertia::render('ResetPW/EHResetPW/EHNewPW');})->name('eh_new_pw');
 //TBResetPW
 Route::get('/tbforgotpw', function () {return Inertia::render('ResetPW/TBResetPW/TBForgotPW');})->name('tb_forgot_pw');
-Route::get('/tbverificationpw', function () {return Inertia::render('ResetPW/TBResetPW/TBVerificationPW');})->name('tb_verification_pw');
+Route::get('/tbverifypw', function () {return Inertia::render('ResetPW/TBResetPW/TBVerificationPW');})->name('tb_verification_pw');
 Route::get('/tbnewpw', function () {return Inertia::render('ResetPW/TBResetPW/TBNewPW');})->name('tb_new_pw');
 
 
