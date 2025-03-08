@@ -65,6 +65,11 @@ Route::get('/ehpendingpayments', function () {return Inertia::render('EHProfile/
 Route::get('/ehpendingrequests', function () {return Inertia::render('EHProfile/EH-EventHistory/EHPendingRequests');})->name('eh_pending_requests');
 Route::get('/ehrejectedhistory', function () {return Inertia::render('EHProfile/EH-EventHistory/EHRejectedHistory');})->name('eh_rejected_history');
 
+//EventHistory
+Route::get('/endedevents', function () {return Inertia::render('EventHistory/EndedEventHistory');})->name('ended_events');
+Route::get('/pendinghistory', function () {return Inertia::render('EventHistory/PendingPaymentsHistory');})->name('pending_history');
+Route::get('/rejectedhistory', function () {return Inertia::render('EventHistory/RejectedEventHistory');})->name('rejected_history');
+
 //Events
 Route::get('/browse', function () {return Inertia::render('Events/BrowseEvent');})->name('browse');
 //Route::get('/buytickets', function () {return Inertia::render('Events/BuyTickets');})->middleware(['auth'])->name('buytickets');
