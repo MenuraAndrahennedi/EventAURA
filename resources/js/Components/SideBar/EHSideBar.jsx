@@ -8,11 +8,10 @@ const EHSideBar = () => {
      <div className="border-0 shadow card sidebar">
         <div className="p-4 card-body">
                 <ul className="sidebar-menu">
-                    <li><Link to='/EHaccount' className={location.pathname === '/EHaccount' ? 'active-link' : ''}>Profile Details</Link></li>
-                    <li><Link to='/EHOngoing' className={location.pathname === '/EHOngoing' ? 'active-link' : ''}>Event History</Link></li>
-                    <li><Link to='/EHChangePW' className={location.pathname === '/EHChangePW' ? 'active-link' : ''}>Change Password</Link></li>
-                    <li><Link to='/EHSignout' className={location.pathname === '/EHSignout' ? 'active-link' : ''}>Sign Out</Link></li>
-                    <li></li>
+                    <li><Link href={route('eh_profile_details')} className={route().current('eh_profile_details') ? 'active-link' : ''}>Profile Details</Link></li>
+                    <li><Link href={route('eh_ongoing_history')} className={route().current('eh_ongoing_history') ? 'active-link' : ''}>Event History</Link></li>
+                    <li><Link href={route('eh_change_pw')} className={route().current('eh_change_pw') ? 'active-link' : ''}>Change Password</Link></li>
+                    <li><Link href={route('eh_signout')} className={route().current('eh_signout') ? 'active-link' : ''}>Sign Out</Link></li>
                 </ul>
          </div>
       </div>
