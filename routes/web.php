@@ -78,6 +78,9 @@ Route::get('/help', function () {return Inertia::render('HelpCentre/HelpCentre')
 //Home
 Route::get('/', function () {return Inertia::render('Home/Home');})->name('home');
 
+//Inquiries
+Route::get('/inquiries', function () {return Inertia::render('Inquiries/Inquiries');})->name('inquiries');
+
 //Login
 Route::get('/userlogin', function () {return Inertia::render('Login/UserLogin');})->name('user_login');
 Route::get('/ehlogin', function () {return Inertia::render('Login/EHLogin');})->name('eh_login');
