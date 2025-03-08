@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "@inertiajs/react";
 import UserHeader from './../../Components/Header/UserHeader';
 import SearchBar from './../../Components/SearchBar';
-import AdminFooter from './../../Components/Footer/ManagerFooter';
+import AdminFooter from './../../Components/Footer/AdminFooter';
 import Banner from '../../assets/Images/banner.png';
 
 const UserOngoing = () => {

@@ -3,7 +3,7 @@ import { Link } from "@inertiajs/react";
 
 import '../../../css/UserLogin.scss';
 import MainHeader from './../../Components/Header/MainHeader';
-import SubFooter from './../../Components/Footer/SubFooter';
+import AdminFooter from './../../Components/Footer/AdminFooter';
 
 
 const UserLogin = () => {
@@ -35,7 +35,7 @@ const UserLogin = () => {
         </main>
       
         <footer>
-          <SubFooter />
+          <AdminFooter />
         </footer>
     </>
   )

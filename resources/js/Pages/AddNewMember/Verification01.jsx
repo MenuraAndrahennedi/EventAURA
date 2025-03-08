@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "@inertiajs/react";
 import UserHeader from './../../Components/Header/UserHeader';
-import AdminFooter from './../../Components/Footer/ManagerFooter';
+import AdminFooter from './../../Components/Footer/AdminFooter';
 import '../../../css/UserLogin.scss';
 //26
 const Verification01 = () => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "@inertiajs/react";
 import '../../../css/UserLogin.scss';
 import UserHeader from './../../Components/Header/UserHeader';
-import AdminFooter from './../../Components/Footer/ManagerFooter';
+import AdminFooter from './../../Components/Footer/AdminFooter';
 
 
 const AddNewMember = () => {
