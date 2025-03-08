@@ -107,7 +107,7 @@ Route::get('/tbverifypw', function () {return Inertia::render('ResetPW/TBResetPW
 Route::get('/tbnewpw', function () {return Inertia::render('ResetPW/TBResetPW/TBNewPW');})->name('tb_new_pw');
 
 //Review
-Route::get('/review', function () {return Inertia::render('ReviewPg/ReviewPg');})->name('review');
+Route::get('/review', function () {return Inertia::render('Review/Review');})->name('review');
 
 //TBProfile
 Route::get('/tbchangepw', function () {return Inertia::render('TBProfile/TBChangePW');})->name('tb_changepw');
