@@ -91,6 +91,11 @@ Route::get('/userongoing', function () {return Inertia::render('OngoingEvents/Us
 Route::get('/ehpaymentgate', function () {return Inertia::render('PaymentGate/EHPaymentGate');})->name('eh_paymentgate');
 Route::get('/tbpaymentgate', function () {return Inertia::render('PaymentGate/TBPaymentGate');})->name('tb_paymentgate');
 
+//PendingRequests
+Route::get('/createrequest', function () {return Inertia::render('PendingRequests/CreateRequest');})->name('create_request');
+Route::get('/deleterequest', function () {return Inertia::render('PendingRequests/DeleteRequest');})->name('delete_request');
+Route::get('/updaterequest', function () {return Inertia::render('PendingRequests/UpdateRequest');})->name('update_request');
+
 //ResetPW
 //EHResetPW
 Route::get('/ehforgotpw', function () {return Inertia::render('ResetPW/EHResetPW/EHForgotPW');})->name('eh_forgot_pw');
