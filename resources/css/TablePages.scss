@@ -1,0 +1,343 @@
+.main-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #ffffff;
+
+
+    h1 {
+        font-size: 4em;
+        margin-bottom: 50px;
+        margin-top: 50px;
+    }
+
+    .main-table {
+        width: 90%;
+        max-width: 1400px;
+        background-color: #f5f3f3;
+        padding: 30px;
+        color: #333;
+
+    }
+
+}
+
+
+// headbar
+.headbar {
+    background-color: #90E0EF;
+}
+
+.head-bar {
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+}
+
+.head-bar div {
+    border: 1px solid #ffffff;
+    font-size: 1.5rem;
+
+}
+
+
+
+.head-bar div a {
+    display: block;
+    padding: 30px;
+    color: #333;
+    text-decoration: none;
+}
+
+.head-bar div a:hover {
+    background-color: #00B4D8;
+}
+
+.head-bar div .active-link {
+    background-color: #00B4D8;
+    font-weight: bold;
+    color: #000;
+}
+
+
+.container {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+// .table-container {
+//     overflow-x: hidden;
+//     /* Default: no horizontal scrolling */
+// }
+
+// /* Add scrolling when the screen width is below 768px */
+// @media (max-width: 200px) {
+//     .table-container {
+//         overflow-x: scroll;
+//         /* Enable scrolling */
+//     }
+// }
+
+.table-container {
+    overflow-x: auto;
+    max-width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+
+}
+
+//pending request
+.request-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    min-width: 1000px;
+}
+
+
+.request-table th,
+.request-table td {
+    text-align: center;
+    padding: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.request-table th {
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #ffffff;
+}
+
+.request-table td {
+    white-space: normal;
+}
+
+.request-table td:nth-child(7) {
+    display: flex;
+    /* Use flexbox for inline buttons */
+    justify-content: center;
+    /* Center the buttons */
+    align-items: center;
+    /* Vertically align the buttons */
+    gap: 2px;
+    /* Add spacing between buttons */
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+.request-table td:nth-child(6) {
+
+    justify-content: center;
+    /* Center the buttons */
+    align-items: center;
+    /* Vertically align the buttons */
+
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+
+
+.request-table th:nth-child(1) {
+    /* Event Name */
+    width: 20%;
+}
+
+.request-table th:nth-child(2) {
+    /* Event Host */
+    width: 15%;
+}
+
+.request-table th:nth-child(3),
+.request-table th:nth-child(4) {
+    /* Date, Time, Venue */
+    width: 10%;
+}
+
+.request-table th:nth-child(5) {
+    width: 10%;
+}
+
+.request-table th:nth-child(6) {
+    /* Report */
+    width: 10%;
+
+}
+
+.request-table th:nth-child(7) {
+    /* Approval */
+    width: 25%;
+}
+
+
+
+
+//Event History
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    min-width: 1000px;
+}
+
+.history-table th,
+.history-table td {
+    text-align: center;
+    padding: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.history-table th {
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #ffffff;
+}
+
+.history-table td {
+    white-space: normal;
+}
+
+
+//Review and Inquiry Tables
+
+.review-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    min-width: 1000px;
+}
+
+.review-table th,
+.review-table td {
+    text-align: center;
+    padding: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.review-table th {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    border: 1px solid #ffffff;
+
+}
+
+.review-table td {
+    white-space: normal;
+}
+
+
+.review-table th:nth-child(even) {
+    background-color: #00B4D8;
+
+}
+
+.review-table th:nth-child(odd) {
+    background-color: #90E0EF;
+
+}
+
+//striped feature
+.striped-table {
+    overflow: hidden;
+    /* Prevent scrollbars caused by scaling */
+}
+
+.striped-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.striped-table tbody tr:nth-child(even) {
+    background-color: #d3d1d1;
+}
+
+.striped-table tbody tr {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.striped-table tbody tr:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+//Buttons
+.green-button {
+    background-color: #1baf4f;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #09826c;
+    }
+}
+
+.red-button {
+    background-color: #de4055;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #9f0c0c;
+    }
+}
+
+.blue-button {
+    background-color: #69d4e7;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #00B4D8;
+    }
+}
+
+.black-button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #414444;
+    }
+
+}

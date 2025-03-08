@@ -116,8 +116,8 @@ Route::get('/userupdate', function () {return Inertia::render('UpdateEvent/UserU
 
 //User Details
 Route::get('/userdetails', function () {return Inertia::render('UserDetails/UserDetails');})->name('user_details');
-Route::get('/ehdetails', function () {return Inertia::render('UserDetails/EHDetails');})->name('eh_details');
-Route::get('/tbdetails', function () {return Inertia::render('UserDetails/TBDetails');})->name('tb_details');
+Route::get('/ehuserdetails', function () {return Inertia::render('UserDetails/EHUserDetails');})->name('eh_user_details');
+Route::get('/tbuserdetails', function () {return Inertia::render('UserDetails/TBUserDetails');})->name('tb_user_details');
 
 //UserProfile
 Route::get('/userchangepw', function () {return Inertia::render('UserProfile/UserChangePW');})->name('user_changepw');
