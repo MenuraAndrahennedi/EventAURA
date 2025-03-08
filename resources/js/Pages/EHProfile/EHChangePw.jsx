@@ -4,7 +4,7 @@ import SubFooter from './../../Components/Footer/SubFooter';
 import EHHeader from './../../Components/Header/EHHeader';
 import '../../../css/Profile.scss';
 import profilelogo from '../../../js/assets/Images/Profile-logo.png';
-import EHSidebar from './../Manager/PendingRequests/HeadBar';
+import EHSidebar from '../../../js/Components/SideBar/EHSideBar';
 
 
 const EHChangePw = () => {
