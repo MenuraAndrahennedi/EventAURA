@@ -45,14 +45,13 @@ const EHCreateAcc = () => {
                     <button className="mb-3 btn btn-primary w-100">Continue</button>
                     
                     <div className="mb-3 text-center"><small>
-                      {/*< Link to= '/terms' >Terms and Conditions</Link>*/}<Link href={route('home')} >Terms and Conditions </Link>
+                      <Link href={route('home')} >Terms and Conditions </Link>
                     </small></div >
 
                     <hr />
 
                     <div className="mt-4 text-center">
-                      <small>Already have an account? <Link href={route('eh_login')} > Sign in</Link>
-                      {/*<Link to='/EHLogin'> Sign in</Link>*/}</small>
+                      <small>Already have an account? <Link href={route('eh_login')} > Sign in</Link></small>
                     </div>
 
                   </form>

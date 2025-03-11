@@ -140,7 +140,7 @@ Route::get('/usersignout', function () {return Inertia::render('UserProfile/User
 //ViewEvent
 Route::get('/ehviewevent', function () {return Inertia::render('ViewEvent/EHViewEvent');})->name('eh_view_event');
 Route::get('/managerviewevent', function () {return Inertia::render('ViewEvent/ManagerViewEvent');})->name('manager_view_event');
-Route::get('/userviewevent', function () {return Inertia::render('ViewEvent/UserViewEvent');})->name('user_view_vvent');
+Route::get('/userviewevent', function () {return Inertia::render('ViewEvent/UserViewEvent');})->name('user_view_event');
 
 
 

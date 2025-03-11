@@ -74,15 +74,12 @@ const TBCart = () => {
       </div>
 
       <div className="cart-buttons">
-        {/*<Link to="/TBEventDetails" className="back-button">Back to event details</Link>
-        <Link to="/BuyTickets" className="update-button">Update Cart</Link>*/}
-        <Link href={route('home')} className="back-button"> Back to event details</Link>
-        <Link href={route('home')} className="update-button"> Update Cart </Link>
+        <Link href={route('tb_event_details')} className="back-button"> Back to event details</Link>
+        <Link href={route('buytickets')} className="update-button"> Update Cart </Link>
       </div>
 
       <div className="checkout-button-container">
-        {/*<Link to="/PaymentGate" className="checkoutButtons">Checkout</Link>*/}
-        <Link href={route('home')} className="checkoutButtons"> Checkout </Link>
+        <Link href={route('tb_paymentgate')} className="checkoutButtons"> Checkout </Link>
       </div>
       
     </div>

@@ -33,7 +33,7 @@ const EHLogin = () => {
                     </div>
 
                     <div className="mb-3 text-end">
-                    <small>{/*< Link to= '/ForgotPW' >Forgot Password?</Link>*/}<Link href={route('home')} >Forgot Password?  </Link></small>
+                    <small><Link href={route('eh_forgot_pw')} >Forgot Password?  </Link></small>
                     </div>
 
                     <button className="mb-3 btn btn-primary w-100">Sign In</button>
@@ -50,8 +50,7 @@ const EHLogin = () => {
 
                     <div className="mt-4 text-center">
                       <small>Don’t have an account? 
-                        {/*<Link to='/EHCreateAccount'> Create an account</Link>*/}
-                        <Link href={route('home')} >Create an account</Link></small>
+                        <Link href={route('eh_create_acc')} >Create an account</Link></small>
                     </div>
 
                   </form>

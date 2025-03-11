@@ -52,9 +52,7 @@ const TBEventDetails = () => {
                     </div>
                   </div>
                   <div className="event-buttons">
-                    {/*<Link to="/BuyTickets" className="buy-tickets">Buy Tickets</Link>
-                    <Link to="/return-policies" className="return-policies">Return Policies</Link>*/}
-                    <Link href={route('home')} className="buy-tickets">Buy Tickets</Link>
+                    <Link href={route('buytickets')} className="buy-tickets">Buy Tickets</Link>
                     <Link href={route('home')} className="return-policies">Return Policies</Link>
                   </div>
             </div>

@@ -36,7 +36,7 @@ const UserOngoing = () => {
                     </div>
                     <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
                         <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                        <Link to = '/ViewEvent' className='btn btn-primary'>View Event</Link>
+                        <Link href={route('user_view_event')} className="btn btn-primary">View Event</Link>
                     </div>
                     </div>
                 </div>
@@ -56,8 +56,7 @@ const UserOngoing = () => {
                     </div>
                     <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
                         <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                        {/*<Link to = '/ViewEvent' className='btn btn-primary'>View Event</Link>*/}
-                         <Link href={route('home')} className="btn btn-primary">View Event</Link>
+                         <Link href={route('user_view_event')} className="btn btn-primary">View Event</Link>
                     </div>
                 </div>
                 </div>
@@ -77,8 +76,7 @@ const UserOngoing = () => {
                         </div>
                         <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
                             <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                            {/*<Link to = '/ViewEvent' className='btn btn-primary'>View Event</Link>*/}
-                            <Link href={route('home')} className="btn btn-primary">View Event</Link>
+                            <Link href={route('user_view_event')} className="btn btn-primary">View Event</Link>
                         </div>
                     </div>
                 </div>
@@ -102,8 +100,7 @@ const UserOngoing = () => {
                         </div>
                         <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
                             <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                            {/*<Link to = '/ViewEvent' className='btn btn-primary'>View Event</Link>*/}
-                            <Link href={route('home')} className="btn btn-primary">View Event</Link>
+                            <Link href={route('user_view_event')} className="btn btn-primary">View Event</Link>
                         </div>
                     </div>
                 </div>
@@ -123,8 +120,7 @@ const UserOngoing = () => {
                         </div>
                         <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
                             <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                           {/* <Link to = '/ViewEvent' className='btn btn-primary'>View Event</Link>*/}
-                            <Link href={route('home')} className="btn btn-primary">View Event</Link>
+                            <Link href={route('user_view_event')} className="btn btn-primary">View Event</Link>
                         </div>
                     </div>
                 </div>
@@ -144,8 +140,7 @@ const UserOngoing = () => {
                         </div>
                         <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
                             <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                            {/*<Link to = '/ViewEvent' className='btn btn-primary'>View Event</Link>*/}
-                            <Link href={route('home')} className="btn btn-primary">View Event</Link>
+                            <Link href={route('user_view_event')} className="btn btn-primary">View Event</Link>
                         </div>
                     </div>
                 </div>

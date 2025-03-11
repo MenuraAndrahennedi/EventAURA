@@ -1,6 +1,6 @@
 import React from 'react'
 import MainHeader from './../../Components/Header/MainHeader';
-import MainFooter from './../../Components/Footer/MainFooter';
+import SubFooter from './../../Components/Footer/SubFooter';
 
 const AboutUS = () => {
   return (
@@ -11,9 +11,9 @@ const AboutUS = () => {
 
     <h1>About Us</h1>
 
-    {/*<footer>
-      <MainFooter />
-    </footer>*/}
+    <footer>
+      <SubFooter />
+    </footer>
     </>
   )
 }

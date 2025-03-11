@@ -26,7 +26,6 @@ const TBCreateAcc = () => {
 
                 <div className="sign-up">
                   <small> <Link href={route('home')} className="custom-link">Terms and Conditions </Link>
-                    {/*<Link to='/terms' className="custom-link">Terms and Conditions</Link>*/}
                     </small>
                 </div>
 
@@ -36,7 +35,6 @@ const TBCreateAcc = () => {
               
               <div className="sign-up">
                 <small>Already Have an account ? <Link href={route('tb_login')} > Sign in</Link>
-                    {/*<Link to='/tb_login'>Sign in</Link>*/}
                     </small>
               </div>
 

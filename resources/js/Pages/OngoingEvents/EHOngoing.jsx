@@ -122,8 +122,7 @@ const EHOngoing = () => {
                     </div>
                     <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
                           <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                          {/*<Link to='/EHViewEvent' className='remaining-tickets-button'>Remaining Tickets</Link>*/}
-                           <Link href={route('home')} className="remaining-tickets-button">Remaining Tickets </Link>
+                           <Link href={route('eh_view_event')} className="remaining-tickets-button">Remaining Tickets </Link>
                     </div>
                 </div>
               </div>
@@ -143,8 +142,7 @@ const EHOngoing = () => {
                     </div>
                     <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
                           <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                          {/*<Link to='/EHViewEvent' className='remaining-tickets-button'>Remaining Tickets</Link>*/}
-                          <Link href={route('home')} className="remaining-tickets-button">Remaining Tickets </Link>
+                          <Link href={route('eh_view_event')} className="remaining-tickets-button">Remaining Tickets </Link>
                     </div>
                 </div>
               </div>

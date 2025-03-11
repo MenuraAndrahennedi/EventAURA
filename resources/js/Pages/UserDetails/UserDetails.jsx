@@ -21,8 +21,7 @@ const UserDetails = () => {
                 <div className="border-0 shadow cardd">
                   <div className="cardd-img-top">
                   <img src={Cover03} alt="Banner3" className="w-100"/> 
-                      {/*<Link to="/" className="image-overlay">Ticket Buyers</Link>*/}
-                      <Link href={route('home')} className="image-overlay"> Ticket Buyers </Link>
+                      <Link href={route('tb_user_details')} className="image-overlay"> Ticket Buyers </Link>
                   </div>
                 </div>
               </div>
@@ -31,8 +30,7 @@ const UserDetails = () => {
                 <div className="border-0 shadow cardd">
                   <div className="cardd-img-top">
                   <img src={Cover04} alt="Banner3" className="w-100"/>
-                    {/*<Link to="/" className="image-overlay">Event Hosts</Link>*/}
-                    <Link href={route('home')} className="image-overlay"> Event Hosts </Link>
+                    <Link href={route('eh_user_details')} className="image-overlay"> Event Hosts </Link>
                   </div>
                 </div>
               </div>

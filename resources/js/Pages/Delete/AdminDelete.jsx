@@ -71,8 +71,8 @@ const AdminDelete = () => {
 
         {/* Action Buttons */}
         <div className="action-buttons">
-          <Link to="/UpdateEvent" className="update-btnn">Update Event</Link>
-          <Link to="/DeleteEvent" className="delete-btnn">Delete Event</Link>
+          <Link href={route('user_update')} className="update-btnn">Update Event </Link>
+          <Link href={route('admin_delete')} className="delete-btnn">Delete Event</Link>
         </div>
       </section>
 

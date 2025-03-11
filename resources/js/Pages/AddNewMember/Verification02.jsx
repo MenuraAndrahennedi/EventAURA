@@ -22,10 +22,8 @@ const Verification02 = () => {
             <form>
               <input type="text" placeholder="Email/Username" required /><br />
               <input type="password" placeholder="Password" required />
-              <h5 style={{ color: 'black' }}>Verified.</h5>
-
-                <Link href={route('verification02')} className="CustomButton1">Verify </Link>
-                <Link href={route('home')} className="CustomButton">Sign in  </Link>
+              <button onClick={() => route('verification02')} className="CustomButton1">Verify</button>                 //verification logic
+                {/*<Link href={route('user_login')} className="CustomButton">Sign in  </Link>*/}
             </form>
 
           </div>

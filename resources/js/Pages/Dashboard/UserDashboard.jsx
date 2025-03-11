@@ -29,8 +29,7 @@ const UserDashboard = () => {
                 <div className="border-0 shadow cards">
                   <div className="cards-img-top">
                       <img src={Cover01} alt="Banner1" className="w-100"/>
-                      {/*<Link to="/AdminOngoing" className="image-overlay">Ongoing Events</Link>*/}
-                       <Link href={route('home')} className="image-overlay"> Ongoing Events</Link>
+                       <Link href={route('user_ongoing')} className="image-overlay"> Ongoing Events</Link>
                   </div>
                 </div>
               </div>
@@ -39,8 +38,7 @@ const UserDashboard = () => {
                 <div className="border-0 shadow cards">
                   <div className="cards-img-top">
                     <img src={Cover02} alt="Banner2" className="w-100"/>
-                    {/*<Link to="/" className="image-overlay">Pending Requests</Link>*/}
-                     <Link href={route('home')} className="image-overlay"> Pending Requests</Link>
+                     <Link href={route('create_request')} className="image-overlay"> Pending Requests</Link>
                   </div>
               </div>
               </div>
@@ -49,8 +47,7 @@ const UserDashboard = () => {
                 <div className="border-0 shadow cards">
                   <div className="cards-img-top">
                       <img src={Cover03} alt="Banner3" className="w-100"/>
-                      {/*<Link to="/" className="image-overlay">History</Link>*/}
-                      <Link href={route('home')} className="image-overlay"> History</Link>
+                      <Link href={route('ended_events')} className="image-overlay"> History</Link>
                   </div>
                 </div>
               </div>
@@ -61,8 +58,7 @@ const UserDashboard = () => {
                     <div className="border-0 shadow cards">
                         <div className="cards-img-top">
                             <img src={Cover04} alt="Banner4" className="w-100"/>
-                            {/*<Link to="/UserDetails" className="image-overlay">User Details</Link>*/}
-                            <Link href={route('home')} className="image-overlay"> User Details</Link>
+                            <Link href={route('user_details')} className="image-overlay"> User Details</Link>
                         </div>
                     </div>
                 </div>
@@ -71,8 +67,7 @@ const UserDashboard = () => {
                     <div className="border-0 shadow cards">
                         <div className="cards-img-top">
                         <img src={Cover05} alt="Banner5" className="w-100"/>
-                        {/*<Link to="/" className="image-overlay">Reviews</Link>*/}
-                        <Link href={route('home')} className="image-overlay">Reviews </Link>
+                        <Link href={route('review')} className="image-overlay">Reviews </Link>
                         </div>
                     </div>
                 </div>
@@ -81,8 +76,7 @@ const UserDashboard = () => {
                     <div className="border-0 shadow cards">
                         <div className="cards-img-top">
                             <img src={Cover06} alt="Banner6" className="w-100"/>
-                            {/*<Link to="/" className="image-overlay">Inquiries</Link>*/}
-                            <Link href={route('home')} className="image-overlay">Inquiries </Link>
+                            <Link href={route('inquiries')} className="image-overlay">Inquiries </Link>
                         </div>
                     </div>
                 </div>

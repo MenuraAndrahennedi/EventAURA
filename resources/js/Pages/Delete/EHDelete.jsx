@@ -67,8 +67,8 @@ const EHDelete = () => {
 
         {/* Action Buttons */}
         <div className="action-buttons">
-          <Link to="/UpdateEvent" className="update-btnn">Update Event</Link>
-          <button className="delete-btnn" onClick={() => setShowModal(true)}>Delete Event</button>
+           <Link href={route('eh_update')} className="update-btnn">Update Event </Link>
+           <Link href={route('admin_delete')} className="delete-btnn">Delete Event</Link>
         </div>
       </section>
 

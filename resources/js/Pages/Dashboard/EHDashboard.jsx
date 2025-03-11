@@ -24,8 +24,7 @@ const EHDashboard = () => {
                 <div className="border-0 shadow card">
                   <div className="card-img-top">
                       <img src={Cover01} alt="Banner1" className="w-100"/>
-                      {/*<Link to="/OngoingEvents" className="image-overlay">Ongoing Events</Link>*/}
-                      <Link href={route('home')} className="image-overlay"> Ongoing Events</Link>
+                      <Link href={route('eh_ongoing')} className="image-overlay"> Ongoing Events</Link>
                   </div>
                 </div>
               </div>
@@ -34,8 +33,7 @@ const EHDashboard = () => {
                 <div className="border-0 shadow card">
                   <div className="card-img-top">
                     <img src={Cover02} alt="Banner2" className="w-100"/>
-                    {/*<Link to="/EHaccount" className="image-overlay">Go to Profile</Link>*/}
-                    <Link href={route('home')} className="image-overlay">Go to Profile </Link>
+                    <Link href={route('eh_profile_details')} className="image-overlay">Go to Profile </Link>
                   </div>
               </div>
               </div>
@@ -44,8 +42,7 @@ const EHDashboard = () => {
                 <div className="border-0 shadow card">
                   <div className="card-img-top">
                       <img src={Cover03} alt="Banner3" className="w-100"/>
-                      {/*<Link to="/create" className="image-overlay">Create New Event</Link>*/}
-                      <Link href={route('home')} className="image-overlay"> Create New Event</Link>
+                      <Link href={route('create')} className="image-overlay"> Create New Event</Link>
                   </div>
                 </div>
               </div>

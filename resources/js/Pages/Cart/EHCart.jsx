@@ -52,15 +52,12 @@ const EHCart = () => {
       </div>
 
       <div className="cart-buttons">
-        {/*<Link to="/create" className="back-button">Back to event details</Link>
-        <Link to="/create" className="update-button">Update Cart</Link>*/}
-        <Link href={route('home')} className="back-button"> Back to event details</Link>
-        <Link href={route('home')} className="update-button"> Update Cart </Link>
+        <Link href={route('create_event')} className="back-button"> Back to edit details</Link>
+        <Link href={route('create_event')} className="update-button"> Update Cart </Link>
       </div>
 
       <div className="checkout-button-container">
-        {/*<Link to="/PaymentGate" className="checkoutButtons">Checkout</Link>*/}
-        <Link href={route('home')} className="checkoutButtons">Checkout</Link>
+        <Link href={route('eh_paymentgate')} className="checkoutButtons">Checkout</Link>
       </div>
       
     </div>

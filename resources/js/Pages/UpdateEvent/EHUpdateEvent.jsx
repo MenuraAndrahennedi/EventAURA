@@ -121,8 +121,7 @@ const EHUpdateEvent = () => {
             </section>
             <div className="center-content">
               <h4>Submit event Update request</h4>
-              {/*<Link to="/EHCart" className="submit-btn">Submit</Link>*/}
-              {/*<Link href={route('eh_cart')} className="submit-btn">Submit</Link>*/}
+              <Link href={route('eh_cart')} className="submit-btn">Submit</Link>
             </div>
           </form>
       </main>

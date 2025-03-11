@@ -18,8 +18,7 @@ const TBForgotPW = () => {
           <p>Enter your email address to reset your password</p>
           <form>
             <input type="email" placeholder="Email" required />
-            {/*<Link to="/PWVerification"><button type="submit">Reset</button></Link>*/}
-              <Link href={route('home')} ><button type="submit">Reset</button></Link>
+              <Link href={route('tb_verification_pw')} ><button type="submit">Reset</button></Link>
           </form>
         </div>
       </div>

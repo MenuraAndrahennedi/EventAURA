@@ -17,7 +17,7 @@ const TBVerificationPW = () => {
         <p>Enter the verification code that was sent to abc@gmail.com</p>
         <form>
           <input type="text" placeholder="Code" required />
-          <Link to="/SetNewPw"><button type="submit">Reset</button></Link>
+            <Link href={route('tb_new_pw')} ><button type="submit">Reset</button></Link>
         </form>
       </div>
     </div>

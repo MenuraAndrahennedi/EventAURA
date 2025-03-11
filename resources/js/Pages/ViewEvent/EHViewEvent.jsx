@@ -51,8 +51,8 @@ const EHViewEvent = () => {
     <div className="action-buttons">
       {/*<Link to="/UpdateEvent" className="update-btnn">Update Event</Link>
       <Link to="/EHDeleteEvent" className="delete-btnn">Delete Event</Link>*/}
-      <Link href={route('home')} className="update-btnn"> Update Event </Link>
-      <Link href={route('home')} className="delete-btnn">Delete Event </Link>
+      <Link href={route('eh_update')} className="update-btnn"> Update Event </Link>
+      <Link href={route('eh_delete')} className="delete-btnn">Delete Event </Link>
     </div>
   </section>
 

@@ -28,8 +28,7 @@ const BuyTickets = () => {
             <h1 className="banner-title"><b>SKY HEROES</b></h1>
           </div>
   
-          {/*<Link to="/TBEventDetails" className = 'view-event' >View Event Details</Link>*/}
-          <Link href={route('home')} className="view-event">View Event Details</Link>
+          <Link href={route('tb_event_details')} className="view-event">View Event Details</Link>
 
           <div className="event-info">
   
@@ -92,8 +91,7 @@ const BuyTickets = () => {
                       </div>
                     </div>
   
-                    {/*<Link to="/TBCart"><button className="add-to-cart">Add to Cart</button></Link>*/}
-                     <Link href={route('home')} className="add-to-cart">Add to Cart</Link>
+                     <Link href={route('tb_cart')} className="add-to-cart">Add to Cart</Link>
                     
                   </div>
   

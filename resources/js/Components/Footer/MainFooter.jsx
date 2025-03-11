@@ -16,7 +16,7 @@ const MainFooter = () => {
                                 <Link href={route('about')} className="text-white"> About US</Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link href={route('home')} className=""> </Link>
+                                <Link href={route('home')} className="text-white"> Terms</Link>
                             </li>
                             <li className="mx-3 list-inline-item">
                                 <Link href={route('home')} className="text-white"> Privacy Policies</Link>

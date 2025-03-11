@@ -36,15 +36,26 @@ const Home = () => {
                   <h1><b>FIND YOUR NEXT <br />AWESOME EVENT <br />HERE!</b></h1>
                   <p>Let EventAURA help you find the event that's just right for you! <br />Browse our awesome events for fun things to do in your area.</p>
                   <Link href={route('browse')} className="btn btn-primary">Browse Event </Link>
-                  {/*<br /><Link to='/TBLogin'> #TB Login pg</Link> 
-                  <br /><Link to='/EHLogin'> #EH Login pg</Link>
-                  <br /><Link to='/OtherLogin'> #Admin/Developer/Manager Login pg</Link> 
-                  <br /><Link to='/EHHome'> #EH Home pg</Link> 
-                  <br /><Link to='/UpdateEvent'> #Update Event pg</Link> 
-                  <br /><Link to='/UserHome'> #Admin/Developer/Manager Home pg</Link> 
-                  <br /><Link to='/AddNewMember'> #Developer-Add New Member</Link> 
-                  <br /><Link to='/EHViewEvent'> #EHViewEvent</Link>
-                  <br /><Link to='/ManagerViewEvent'> #ManagerViewEvent</Link>*/}
+                 
+                 
+                   {/*-------------------Do not remove these links---------------------------- */}
+                   <br  />
+                   <Link href={route('add_new_member')}>#Add new member </Link><br />
+                   <Link href={route('tb_login')}>##TB Login pg </Link><br />
+                   <Link href={route('eh_login')}>##EH Login pg</Link><br />
+                   <Link href={route('user_login')}>##Admin/Developer/Manager Login pg </Link><br />
+                   <Link href={route('eh_dashboard')}>##EH Dashboard </Link><br />
+                   <Link href={route('eh_update')}>##EH Update Event pg </Link><br />
+                   <Link href={route('user_update')}>##Admin Update Event pg </Link><br />
+                   <Link href={route('user_dashboard')}>##Admin/Developer/Manager Dashboard </Link><br />
+                   <Link href={route('eh_view_event')}>##EHViewEvent </Link><br />
+                   <Link href={route('manager_view_event')}>##ManagerViewEvent </Link><br />
+                   <Link href={route('user_view_event')}>##AdminViewEvent </Link><br />
+
+
+                    {/*----------------------------------------------- */}
+
+
                 </div>
               </div>
             </div>
@@ -58,7 +69,8 @@ const Home = () => {
               <div className='text-center'>
                 <h1><b>LOOKING TO PUBLISH YOUR EVENT?</b></h1>
                 <p>PLanning your events and selling tickets has never benn easier with <br />EventAura's super user-friendly platform by your side!</p>
-                <Link to='/create' className='btn btn-primary'>Create Event</Link >
+                <Link href={route('create_event')} className="btn btn-primary">Create Event </Link>
+               
               </div>
             </div>
           </div>
@@ -96,7 +108,7 @@ const Home = () => {
                     resource to use to answer ticket buyer questions.Trust <br />
                     us to provide the unwavering support you need for <br />
                     a successful event!</p>
-                    <Link href={route('help')} className="btn btn-primary">HELP CENTRE</Link>
+                    <Link href={route('home')} className="btn btn-primary">HELP CENTRE</Link>
                   </div>
               </div>
   
@@ -126,7 +138,8 @@ const Home = () => {
                       
                   </div>
                   <div className ='ReviewLink'>
-                      <Link to ='/review' className='Review '>Leave Us a Review</Link >
+                      <Link href={route('home')} className="Review">Leave Us a Review</Link>
+                   
                       <img src={ReviewIcon} alt='ReviewIcon' className='mx-2 Review-icon' />
                   </div>
                 </div>

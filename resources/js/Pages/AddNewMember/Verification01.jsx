@@ -3,8 +3,16 @@ import { Link } from "@inertiajs/react";
 import UserHeader from './../../Components/Header/UserHeader';
 import AdminFooter from './../../Components/Footer/AdminFooter';
 import '../../../css/UserLogin.scss';
-//26
+
+
+ //need the logic - when the verify button is clicked but required filed is unfilled -> keep same page and notify it .
+
+
+ 
 const Verification01 = () => {
+
+  
+
   return (
     <>
       <header>
@@ -19,11 +27,16 @@ const Verification01 = () => {
 
             <br />
 
-            <form>
-              <input type="password" placeholder="Password" required />
-              
-              <Link href={route('verification02')} className="CustomButton1">Verify </Link>
-              <Link href={route('home')} className="CustomButton">Sign in  </Link>
+            <form >
+              <input 
+              type="password" 
+              placeholder="Password" 
+              required />
+
+              <div>
+              <button onClick={() => window.location.href = route('verification02')} className="CustomButton1">Verify</button>
+              </div>
+
             </form>
 
           </div>

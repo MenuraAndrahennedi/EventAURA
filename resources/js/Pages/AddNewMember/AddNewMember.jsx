@@ -5,6 +5,9 @@ import UserHeader from './../../Components/Header/UserHeader';
 import AdminFooter from './../../Components/Footer/AdminFooter';
 
 
+//logic need -continue only when the user is logged.
+//
+
 const AddNewMember = () => {
   return (
     <>
@@ -28,6 +31,7 @@ const AddNewMember = () => {
             <input type="password" placeholder="Password" required />
             <input type="password" placeholder="Confirm Password" required />
             <Link href={route('verification01')} className="CustomButton"> Continue </Link>
+            <Link href={route('user_login')} className="CustomButton">Sign in  </Link>
           </form>
 
         </div>

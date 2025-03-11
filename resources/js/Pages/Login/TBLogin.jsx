@@ -18,7 +18,6 @@ const TBLogin = () => {
               
               <div className="guest">
                   <small>
-                    {/*<Link to="/">or continue as Guest</Link>*/}
                     <Link href={route('home')} >or continue as Guest</Link></small>
                 </div>
                 
@@ -27,8 +26,7 @@ const TBLogin = () => {
                 <input type="password" placeholder="Password" required />
                 <div className="forgot-password">
                   <small>
-                    {/*<Link to="/ForgotPW">Forgot Password?</Link>*/}
-                    <Link href={route('home')} >Forgot Password?  </Link></small>
+                    <Link href={route('tb_forgot_pw')} >Forgot Password?  </Link></small>
                 </div>
                 <button type="submit">Sign In</button>
               </form>
@@ -42,8 +40,8 @@ const TBLogin = () => {
 
               </div>
               <div className="sign-up">
-                <small>Don’t have an account?    <Link href={route('home')} >Create an account</Link>
-                {/*<Link to='/TBCreateAccount'>Create an account</Link>*/}</small>
+                <small>Don’t have an account?    <Link href={route('tb_create_acc')} >Create an account</Link>
+                </small>
               </div>
               
             </div>
