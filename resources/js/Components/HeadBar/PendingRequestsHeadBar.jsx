@@ -9,13 +9,13 @@ const PendingRequestsHeadBar = () => {
 
         <div className="head-bar row">
             <div className="p-0 text-center col">
-                <Link href='/managerCreateRequest' className={location.pathname === '/managerCreateRequest' ? 'active-link' : ''}>Create Request</Link>
+                <Link href={route('create_request')} className={location.pathname === '/createrequest' ? 'active-link' : ''}>Create Request</Link>
             </div>
             <div className="p-0 text-center col">
-                <Link href='/managerUpdateRequest' className={location.pathname === '/managerUpdateRequest' ? 'active-link' : ''}>Update Request</Link>
+                <Link href={route('update_request')} className={location.pathname === '/updaterequest' ? 'active-link' : ''}>Update Request</Link>
             </div>
             <div className="p-0 text-center col">
-                <Link href='/managerDeleteRequest' className={location.pathname === '/managerDeleteRequest' ? 'active-link' : ''}>Delete Request</Link>
+                <Link href={route('delete_request')} className={location.pathname === '/deleterequest' ? 'active-link' : ''}>Delete Request</Link>
             </div>
         </div>
 
