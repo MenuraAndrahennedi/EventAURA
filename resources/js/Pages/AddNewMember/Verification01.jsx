@@ -3,15 +3,14 @@ import { Link } from "@inertiajs/react";
 import UserHeader from './../../Components/Header/UserHeader';
 import AdminFooter from './../../Components/Footer/AdminFooter';
 import '../../../css/UserLogin.scss';
+import VerifyButton from '../../Components/Buttons/VerifyButton';
 
-
- //need the logic - when the verify button is clicked but required filed is unfilled -> keep same page and notify it .
-
+ //need the logic
 
  
 const Verification01 = () => {
 
-  
+  const [password, setPassword] = useState("");
 
   return (
     <>
@@ -31,10 +30,12 @@ const Verification01 = () => {
               <input 
               type="password" 
               placeholder="Password" 
-              required />
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)}
+               />
 
               <div>
-              <button onClick={() => window.location.href = route('verification02')} className="CustomButton1">Verify</button>
+                <VerifyButton password={password} redirectPath="verification02" />
               </div>
 
             </form>

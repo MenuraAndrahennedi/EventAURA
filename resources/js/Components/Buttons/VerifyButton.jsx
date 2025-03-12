@@ -1,36 +1,41 @@
 
 import React, { useState } from "react";
 import '../../../css/Button.scss';
+import { router } from "@inertiajs/react";
 
-const VerifyButton = ({ email, password, onSuccess }) => {
-    const [error, setError] = useState("");
-
-    const handleVerify = () => {
-      if (!email.trim() || !password.trim()) {
-        setError("Email and Password are required!"); // ✅ Show error if fields are empty
-        return;
-      }
-  
-      //  Basic email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        setError("Invalid email format!");
-        return;
-      }
-  
-      setError(""); //  Clear error if validation passes
-      onSuccess(); //  Call the success function (navigate)
-    };
-  
-    return (
-      <div>
-        {error && <p style={{ color: "red" }}>{error}</p>} {/* ✅ Show error */}
-        <button onClick={handleVerify} className="CustomButton1">
-          Verify
-        </button>
-      </div>
-    );
+const VerifyButton = ({ email, password, redirectPath }) => {
     
+  const [error, setError] = useState("");
+
+  const handleVerify = (e) => {
+    e.preventDefault(); // Prevent default form submission
+    let errorMsg = "";
+
+    // Validate email if provided
+    if (email !== undefined && !email.trim()) {
+      errorMsg = "Email is required!";
+    }
+    
+    // Validate password
+    if (!password.trim()) {
+      errorMsg = "Password is required!";
+    }
+
+    if (errorMsg) {
+      setError(errorMsg);
+      return; // Stop execution if validation fails
+    }
+
+    setError(""); // Clear error if valid
+    router.visit(route(redirectPath)); // Redirect dynamically
+  };
+
+  return (
+    <div>
+      {error && <p className="error-message">{error}</p>}
+      <button onClick={handleVerify} className="CustomButton1">Verify</button>
+    </div>
+  );
 }
 
 export default VerifyButton
