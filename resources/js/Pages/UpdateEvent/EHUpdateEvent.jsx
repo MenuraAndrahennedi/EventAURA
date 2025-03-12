@@ -18,15 +18,11 @@ const EHUpdateEvent = () => {
 
           <form className="event-form">
             <section className="event-details">
-
-              
-              <div className="input-group">
+             <div className="input-group">
                 <div className="date-input">
-                  {/*<label htmlFor="eventDate">New Date</label>*/}
                   <div className="input-with-button">
                     <label htmlFor="eventDate">New Date</label>
                      <button type="button" className="do-not-update-btn">Do not update</button>
-                     {/*<input type="date" name="eventDate" id="eventDate" />*/}
                   </div>
                   <input type="date" name="eventDate" id="eventDate" />
                 </div>
@@ -84,7 +80,7 @@ const EHUpdateEvent = () => {
             <section className="ticket-categories">
 
               <div className="header-container">
-                <h3><b>2Update Ticket Details</b></h3>
+                <h3><b>Update Ticket Details</b></h3>
               </div>
               <hr />
 

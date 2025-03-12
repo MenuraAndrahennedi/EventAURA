@@ -1,33 +1,28 @@
-/*.do-not-update-btn {
-    background-color: black;
-    color: white;
-    font-size: 0.8rem;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-bottom: 5px; // Add some spacing above the input
-    cursor: pointer;
+.input-group {
+    display: flex;
+    gap: 1rem; /* Space between date and time inputs */
   }
   
-  .do-not-update-btn:hover {
-    background-color: #333;
-  }*/
-
+  .date-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between label and input */
+  }
+  
   .input-with-button {
+    display: flex;
+    align-items: center;
     position: relative;
-    display: inline-block;
-    width: 100%;
-   
   }
   
   .input-with-button input {
+    padding-right: 90px; /* Space for the button */
     width: 100%;
-    padding-right: 90px; // Ensure space for the button
   }
   
   .do-not-update-btn {
     position: absolute;
-    right: 0px;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     background-color: black;
@@ -39,8 +34,273 @@
     cursor: pointer;
   }
   
+  .time-inputs {
+    display: flex;
+    gap: 1rem; /* Space between start and end time inputs */
+  }
+  
+  .start-time, .end-time {
+    display: flex;
+    flex-direction: column;
+  }
+  
   .do-not-update-btn:hover {
     background-color: #333;
   }
+  
+
+  .create-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+  
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+  
+    .event-form {
+      width: 80%;
+      max-width: 800px;
+      background-color: #a0a3a5;
+      padding: 30px;
+      border-radius: 10px;
+      color: #333;
+  
+      
+      .event-details {
+        display: flex;
+        flex-direction: column;
+    
+        .header-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+    
+            h2 {
+                font-size: 1.5em;
+                margin: 0;
+                padding-right: 10px;
+            }
+      }
+    
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+    
+        .horizontal-group {
+            display: flex;
+            gap: 10px;
+    
+            & > div {
+                flex: 1;
+            }
+        }
+      }
+      
+      }
+    }
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .button-link {
+      padding: 10px 20px;
+      background-color: rgb(225, 220, 220);
+      color: black;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    
+    .event-buttons {
+      display: flex;               
+      justify-content: center;     
+      align-items: center;         
+      margin-top: 20px;
+
+    }
+   
+
+    .city-input, .venue-input {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .city-input {
+      margin-right: 19.8rem; 
+    }
+    .venue-input{
+      margin-right: 2.51rem;
+    }
+    
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      text-align: left;
+      display: block;
+    }
+
+   
+    .file-upload {
+      display: flex;
+      align-items: center; 
+      gap: 0.5rem; 
+      margin-bottom: 0.2rem;
+      margin-top: 0.5rem;
+      justify-content: flex-start; 
+      width: 100%; 
+    }
+    
+    input[type="file"] {
+      padding: 0.5rem;
+    }
+    
+    input[type="text"] {
+      width: 100%; 
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .file-upload input {
+      margin-right: 2rem; /* Reduce space between input and button */
+    }
+    .upload-btn {
+      padding: 0.5rem 1rem;
+      background-color: #48CAE4;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    
+    .upload-btn:hover {
+      background-color: #0056b3;
+    }
+    .input-group {
+      display: flex;
+      /*justify-content: space-between; */
+      margin-bottom: 1rem; 
+      align-items: flex-start;
+    }
+
+    .artist-section {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem; 
+      justify-content: flex-start; 
+      width: 100%;
+    }
+    .add-artist, .remove-artist {
+      padding: 0.5rem 1rem;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    .add-artist {
+      background-color: #48CAE4; 
+    }
+    
+    .remove-artist {
+      background-color: #333; 
+    }
+    .add-artist:hover, .remove-artist:hover {
+      background-color: #0056b3;
+    }
+    .ticket-categories {
+      padding: 1rem;
+    }
+    
+    .header-container {
+      margin-bottom: 0.5rem;
+    }
+    
+    .ticket-types {
+      display: flex;
+      justify-content: space-between; 
+      gap: 1rem;
+    }
+    
+    .ticket-types div {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    
+    .ticket-types label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    
+    .ticket-inputs {
+      display: flex;
+      flex-direction: column; 
+      gap: 0.5rem;
+    }
+    
+    .ticket-inputs input[type="number"] {
+      padding: 0.5rem;
+      width: 80px; 
+    }
+    
+    button[type="button"] {
+      padding: 0.5rem 1rem;
+      background-color: #48CAE4;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    
+    button[type="button"]:hover {
+      background-color: #0056b3;
+    }
+    
+    .center-content {
+      text-align: center;
+    }
+    
+    .submit-btn {
+      padding: 0.5rem 1rem;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .submit-btn:hover {
+      background-color: #555;
+    }
+    
+    .submit-btn:active {
+      background-color: #48CAE4;
+    }
+    
+    
+    
+    
   
   
