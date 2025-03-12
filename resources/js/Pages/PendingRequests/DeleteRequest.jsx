@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/react';
 import '../../../css/TablePages.scss';
 import  HeadBar from '../../Components/HeadBar/PendingRequestsHeadBar';
 import UserHeader from './../../Components/Header/UserHeader';
-import AdminFooter from './../../Components/Footer/ManagerFooter';
+import AdminFooter from './../../Components/Footer/AdminFooter';
 
 {/************Implement the function to select the header of the page based on the
     user role ids  - manageer, admin, developer*************************/}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from '@inertiajs/react';
 import '../../../css/TablePages.scss';
-import AdminFooter from './../../Components/Footer/ManagerFooter';
+import AdminFooter from './../../Components/Footer/AdminFooter';
 import UserHeader from './../../Components/Header/UserHeader';
 
 {/************Implement the function to select the header of the page based on the
