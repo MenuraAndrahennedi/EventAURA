@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 
 class ProgrammerController extends Controller
 {
@@ -12,6 +18,11 @@ class ProgrammerController extends Controller
     public function index()
     {
         return inertia("Programmer/ProgrammerDashboard");
+    }
+
+    public function addMember()
+    {
+        return inertia("Developer-pages/AddNewMemeber");
     }
 
     /**
@@ -27,7 +38,24 @@ class ProgrammerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'role' => 'required|string',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'tele_no' => 'required|string|min:10|max:15',
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        // Create user
+        $user = User::create([
+            'role' => $request->role,
+            'name' => $request->name,
+            'email' => $request->email,
+            'tele_no' => $request->tele_no,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('verification.page')->with('success', 'Member added successfully!');
     }
 
     /**

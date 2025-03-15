@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import TBHeader from "../../Components/Header/TBHeader";
 import MainFooter from "../../Components/Footer/MainFooter";
 import SubFooter from "../../Components/Footer/SubFooter";
-
 import "../../../css/TBEventDetails.scss";
-import { Link , usePage } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
 import axios from "axios";
 
 import SearchBar from "../../Components/SearchBar";
@@ -30,16 +29,19 @@ const TBEventDetails = () => {
                 <div className="banner">
                     <h1 className="banner-title">
                         <b>{event.name}</b>
+
                     </h1>
                 </div>
 
                 <div className="event-info">
                     <div className="event-poster">
                         <img src={event.image} alt="Event Poster" />
+
                     </div>
 
                     <div className="event-description">
                         <p>
+
                             {event.description}
                         </p>
                         <div className="event-meta">
@@ -74,7 +76,9 @@ const TBEventDetails = () => {
                             </div>
                         </div>
                         <div className="event-buttons">
+
                             <Link href={`/event/${event.id}/buytickets`} className="buy-tickets">
+
                                 Buy Tickets
                             </Link>
                             <Link

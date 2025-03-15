@@ -48,6 +48,7 @@ const MainHeader = () => {
                             >
                                 Create EVENT
                             </Nav.Link>
+
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

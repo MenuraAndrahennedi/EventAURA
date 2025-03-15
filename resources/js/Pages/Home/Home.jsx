@@ -240,6 +240,4 @@ export default function Home() {
             </footer>
         </>
     );
-}
 
-//export default Home

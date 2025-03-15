@@ -9,4 +9,6 @@ class EventHost extends Model
 {
     /** @use HasFactory<\Database\Factories\EventHostFactory> */
     use HasFactory;
+
+    
 }
