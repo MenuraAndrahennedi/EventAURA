@@ -11,28 +11,30 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event', function (Blueprint $table) {
-            $table->id('event_id');
+        Schema::create('events', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
-            $table->dateTime('date');
+            $table->date('date');
+            $table->time('startTime');
+            $table->time('endTime');
             $table->text('description');
             $table->string('location');
             $table->string('image');
-            $table->integer('premium_ticket_count')->default(0);
+            $table->integer('bronze_ticket_count')->default(0);
             $table->integer('golden_ticket_count')->default(0);
             $table->integer('silver_ticket_count')->default(0);
-            $table->enum('event_status', ['approved', 'pending', 'rejected', 'completed', 'cancelled', 'postponed', 'rescheduled']);
+            $table->enum('event_status', ['approved', 'pending', 'rejected', 'completed', 'cancelled', 'postponed', 'rescheduled'])->default('pending');
             $table->string('city');
             $table->string('venue');
+            $table->string('organizer');
             $table->string('artists');
             $table->string('agenda_pdf')->nullable();
             $table->string('event_video')->nullable();
-            $table->decimal('premium_ticket_price');
+            $table->decimal('bronze_ticket_price');
             $table->decimal('golden_ticket_price');
             $table->decimal('silver_ticket_price');
             $table->string('return_policies')->nullable();
-            $table->unsignedBigInteger('host_id'); // Ensure data type matches `event_hosts.host_id`
-            $table->foreign('host_id')->references('host_id')->on('host')->onDelete('cascade'); // Explicitly define foreign key
+            $table->foreignId('event_host_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -12,11 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('host_log', function (Blueprint $table) {
-            $table->id('host_log_id');
-            $table->string('host_username');
-            $table->string('host_password');
-            $table->unsignedBigInteger('host_id');
-            $table->foreign('host_id')->references('host_id')->on('host')->onDelete('cascade');
+            $table->id();
             $table->timestamps();
         });
     }

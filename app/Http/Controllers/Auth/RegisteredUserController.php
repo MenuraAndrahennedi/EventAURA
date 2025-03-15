@@ -18,9 +18,12 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): Response
+    public function create(Request $request): Response
     {
-        return Inertia::render('Auth/Register');
+
+        $routeName = $request->route()->getName();
+        $registerPage = $routeName === 'tb.register' ? 'TB/TBCreateAccount' : 'EventHost/EHCreateAccount';
+        return Inertia::render($registerPage);
     }
 
     /**
@@ -32,22 +35,40 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
+            'telephone' => 'required|string|max:15',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-           
+            'role_id' => 'required|integer',
+
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'telephone' => $request->telephone,
             'password' => Hash::make($request->password),
-            'role_id' => 5,
+            'role_id' => $request->role_id,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        switch ($user->role_id) {
+            case 1:
+                return redirect()->route('programmer.dashboard');
+            case 2:
+                return redirect()->route('manager.dashboard');
+            case 3:
+                return redirect()->route('admin.dashboard');
+            case 4:
+                return redirect()->route('event.create');
+            case 5:
+                return redirect()->route('browse');
+            default:
+                return redirect()->route('/', ['absolute' => false]);
+        }
+
+        // return redirect(route('dashboard', absolute: false));
     }
 }

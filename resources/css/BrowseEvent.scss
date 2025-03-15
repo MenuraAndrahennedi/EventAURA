@@ -1,0 +1,77 @@
+//Global Colours
+$primary-color: #48cae4;
+$secondary-color: #9beeff;
+$text-color: #000;
+$text-white: #ffffff;
+
+.btn-primary {
+    background-color: $primary-color;
+    border: 1px solid $primary-color;
+    padding: 15px 20px;
+    font-size: 1em;
+    font-weight: 500;
+
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
+.section-2 {
+    .card {
+        border-radius: 40px;
+        img {
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+        .card-body {
+            a.title {
+                font-size: 1.4 em;
+            }
+        }
+        .event-date-time {
+            color: #0087a3;
+            font-weight: 800;
+            font-size: 1.3em;
+        }
+
+        .event-location {
+            color: #0087a3;
+            font-weight: 800;
+            font-size: 1.3em;
+        }
+
+        .event-price {
+            color: $primary-color;
+            font-weight: 700;
+        }
+    }
+}
+
+.section-5 {
+    background: transparent;
+}
+
+.Reviews {
+    color: #000;
+    font-size: 2.3rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.Review:hover {
+    text-decoration: underline;
+}
+
+.section-5 {
+    background: transparent;
+}
+
+.Reviews {
+    color: #000;
+    font-size: 2.3rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.Review:hover {
+    text-decoration: underline;
+}

@@ -12,13 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('host', function (Blueprint $table) {
-            $table->id('host_id');
-            $table->string('host_first_name');
-            $table->string('host_last_name');
-            $table->string('host_email')->unique();
-            $table->string('host_contact_no');
-            $table->unsignedBigInteger('role_id'); // Define as unsignedBigInteger
-            $table->foreign('role_id')->references('role_id')->on('roles')->onDelete('cascade'); // Explicitly set foreign key
+            $table->id();
+           
             $table->timestamps();
         });
     }
