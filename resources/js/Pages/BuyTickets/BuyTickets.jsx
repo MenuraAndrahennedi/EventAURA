@@ -1,44 +1,80 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext  } from "react";
 import TBHeader from "../../Components/Header/TBHeader";
 import MainFooter from "../../Components/Footer/MainFooter";
 import SubFooter from "../../Components/Footer/SubFooter";
+//import React, { useContext } from "re
+import { CartContext } from "../../../js/contexts/CartContext";
 
 import "../../../css/BuyTickets.scss";
-import { Link , usePage } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
 import axios from "axios";
 
 import SearchBar from "../../Components/SearchBar";
 import HostImage from "../../assets/Logos/HostLogo.png";
 
-const BuyTickets = () => {
-    const { event } = usePage().props; 
-    const [ticketCount, setTicketCount] = useState(1);
-    const [cart, setCart] = useState([]);
+const BuyTickets = ({ event }) => {
 
-    const handleAddToCart = () => {
-        const ticketDetails = {
-            eventId: event.id,
-            eventName: event.name,
-            ticketCount: ticketCount,
-            //BTprice: event.bronze_ticket_price,
-            //STprice: event.silver_ticket_price,
-            //GTprice: event.gold_ticket_price,
-        };
+    const [goldenCount, setGoldenCount] = useState(0);
+const [silverCount, setSilverCount] = useState(0);
+const [bronzeCount, setBronzeCount] = useState(0);
+const { cart, updateCart, lockedTickets } = useContext(CartContext);
 
-        // Add ticket details to the cart
-        setCart((prevCart) => [...prevCart, ticketDetails]);
-        console.log(`Added ${ticketCount} tickets for ${event.name} to the cart.`);
-    };
+const handleTicketChange = (type, value) => {
+    const count = Math.max(0, Number(value)); // Ensure non-negative values
+
+    if (!event || !event.id) {
+        console.error("Error: event or event.id is undefined");
+        return;
+    }
+    updateCart({ [type]: count }, event.id);
+
+    // updateCart({
+    //     [event.id]: {
+    //         ...cart[event.id],  // Keep existing cart data
+    //         [type]: count
+    //     }
+    // }, event.id);
+     
+     
+   
+};
+
+const calculateTotal = () => {
+    const eventCart = cart[event.id] || {};
+    return (
+        (eventCart.golden||0) * event.golden_ticket_price +
+        (eventCart.silver ||0) * event.silver_ticket_price +
+        (eventCart.bronze ||0) * event.bronze_ticket_price
+    );
+};
+
+// const updateDatabase = async () => {
+//     try {
+//         await axios.post('/update-ticket-count', {
+//             event_id: event.id,
+//             golden_count: goldenCount,
+//             silver_count: silverCount,
+//             bronze_count: bronzeCount, 
+//         });
+//         console.log('Ticket counts updated successfully!');
+//     } catch (error) {
+//         console.error('Error updating ticket counts:', error);
+//     }
+// };
+
+
+
+
     return (
         <>
             <header>
                 <TBHeader />
             </header>
-
-            {/*Search Bar */}
-            <div className="search-bar-section">
-                <SearchBar />
-            </div>
+{/* 
+            // {/*Search Bar */}
+           {/*} // <div className="search-bar-section">
+            //     <SearchBar />
+            // </div> */}
 
             {/* ticket Section */}
             <section className="event-Details">
@@ -47,30 +83,29 @@ const BuyTickets = () => {
                         <b>{event.name}</b>
                     </h1>
                 </div>
-{/*...................................................................................*/}
-                <Link to="/TBEventDetails" className="view-event">
+
+                <Link href={route('event.details',{id:event.id})} className="view-event">
                     View Event Details
                 </Link>
 
                 <div className="event-info">
                     <div className="event-description">
                         <p>
-                            {event.description}
+                        {event.description} 
                         </p>
                         <div className="event-meta">
                             <p>
                                 <strong>Date:</strong> {event.date}
                             </p>
                             <p>
-                                <strong>Venue:</strong> National Youth Service
-                                Council Auditorium | Maharagama
+                                <strong>Venue:</strong>{event.venue}
                             </p>
                             <p>
-                                <strong>Organizer:</strong>Eventmela
+                                <strong>Organizer:</strong>{event.organizer}
                             </p>
                             <div className="button-row">
                                 <a
-                                    href="https://www.google.com/maps"
+                                    href={event.location}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="button-link"
@@ -79,7 +114,7 @@ const BuyTickets = () => {
                                 </a>
                                 {/* Download PDF */}
                                 <a
-                                    href="/path/to/agenda.pdf"
+                                    href={event.agenda_pdf}
                                     download
                                     className="button-link"
                                 >
@@ -107,14 +142,21 @@ const BuyTickets = () => {
                             </div>
                             <div className="ticket-select">
                                 <span className="ticket-price">
-                                    {event.golden_ticket_price}per ticket
+                                {event.golden_ticket_price} LKR per ticket
                                 </span>
-                                <span className="ticket-price">{event.golden_ticket_count}</span>
+                                <span className="ticket-price">{Math.max(event.golden_ticket_count - (lockedTickets[event.id]?.golden || 0), 0)}</span>
+                                {event.golden_ticket_count - (lockedTickets.golden || 0) > 0 ? (     
                                 <input
                                     type="number"
                                     min="0"
+                                    value={cart[event.id]?.golden || 0}
                                     placeholder="count"
+                                    onChange={(e) => handleTicketChange('golden', e.target.value)}
                                 />
+                            ) : (
+                                <span className="sold-out">Sold Out</span>
+                            )}
+
                             </div>
                         </div>
 
@@ -132,14 +174,20 @@ const BuyTickets = () => {
                             </div>
                             <div className="ticket-select">
                                 <span className="ticket-price">
-                                {event.golden_ticket_price}per ticket
+                                {event.silver_ticket_price} LKR per ticket
                                 </span>
-                                <span className="ticket-price">{event.golden_ticket_count}</span>
+                                <span className="ticket-price">{Math.max(event.silver_ticket_count - (lockedTickets[event.id]?.silver || 0), 0)}</span>
+                                {event.silver_ticket_count - (lockedTickets.silver || 0) > 0 ? (   
                                 <input
                                     type="number"
                                     min="0"
+                                    value={cart[event.id]?.silver|| 0}
                                     placeholder="count"
+                                    onChange={(e) => handleTicketChange('silver', e.target.value)}
                                 />
+                            ) : (
+                                <span className="sold-out">Sold Out</span>
+                            )}
                             </div>
                         </div>
 
@@ -157,24 +205,26 @@ const BuyTickets = () => {
                             </div>
                             <div className="ticket-select">
                                 <span className="ticket-price">
-                                {event.golden_ticket_price} per ticket
+                                {event.bronze_ticket_price} LKR per ticket
                                 </span>
-                                <span className="ticket-price">{event.golden_ticket_count}</span>
+                                <span className="ticket-price">{Math.max(event.bronze_ticket_count - (lockedTickets[event.id]?.bronze || 0), 0)}</span>
+                                {event.bronze_ticket_count - (lockedTickets.bronze || 0) > 0 ? (    
                                 <input
                                     type="number"
                                     min="0"
                                     placeholder="count"
+                                    value={cart[event.id]?.bronze || 0}
+                                    onChange={(e) => handleTicketChange('bronze', e.target.value)}
                                 />
+                            ) : (
+                                <span className="sold-out">Sold Out</span>
+                            )}
                             </div>
                         </div>
-                        <button onClick={handleAddToCart} className="btn btn-primary">
-                        Add to Cart
-                        </button>
-                       {/*
-                        <Link to="/TBCart">
-                            <button className="add-to-cart">Add to Cart</button>
-                        </Link>
-                        */}
+
+                        {/* <Link to="/TBCart">
+                            <button onClick={updateDatabase} className="add-to-cart">Add to Cart</button>
+                        </Link> */}
                     </div>
                 </div>
             </section>
@@ -194,27 +244,27 @@ const BuyTickets = () => {
                     <tbody>
                         <tr>
                             <td>Golden Ticket</td>
-                            <td>15,000 LKR</td>
-                            <td>2</td>
-                            <td>30,000 LKR</td>
+                            <td>{event.golden_ticket_price} LKR</td>
+                            <td>{(cart[event.id]?.golden || 0)}</td>
+                            <td>{(cart[event.id]?.golden || 0) * event.golden_ticket_price} LKR</td>
                         </tr>
                         <tr>
                             <td>Silver Ticket</td>
-                            <td>10,000 LKR</td>
-                            <td>3</td>
-                            <td>30,000 LKR</td>
+                            <td>{event.silver_ticket_price} LKR</td>
+                            <td>{(cart[event.id]?.silver || 0)}</td>
+                            <td>{(cart[event.id]?.silver || 0) * event.silver_ticket_price} LKR</td>
                         </tr>
                         <tr>
                             <td>Bronze Ticket</td>
-                            <td>5,000 LKR</td>
-                            <td>4</td>
-                            <td>20,000 LKR</td>
+                            <td>{event.bronze_ticket_price} LKR</td>
+                            <td>{(cart[event.id]?.bronze || 0)}</td>
+                            <td>{(cart[event.id]?.bronze || 0) * event.bronze_ticket_price} LKR</td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colSpan="3">Total Amount</td>
-                            <td>80,000 LKR</td>
+                            <td>{calculateTotal()}  LKR</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -223,7 +273,7 @@ const BuyTickets = () => {
                     <Link to="/return-policies" className="return-policies">
                         Return Policies
                     </Link>
-                    <Link to="/TBCart" className="tbCart">
+                    <Link href= {route('buyticketscart',{id:event.id}) } className="tbCart">
                         {" "}
                         Continue
                     </Link>

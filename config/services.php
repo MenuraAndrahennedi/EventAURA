@@ -35,4 +35,37 @@ return [
         ],
     ],
 
+    'google' => [
+    'client_id' => env('GOOGLE_CLIENT_ID'),
+    'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+    'redirect' => env('GOOGLE_REDIRECT_URI'),
+],
+
+'facebook' => [
+    'client_id' => env('FACEBOOK_CLIENT_ID'),
+    'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+    'redirect' => env('FACEBOOK_REDIRECT_URI'),
+],
+
+'apple' => [
+        'client_id' => env('APPLE_CLIENT_ID'),
+        'client_secret' => env('APPLE_CLIENT_SECRET'),
+        'redirect' => env('APPLE_REDIRECT_URI'),
+    ],
+
+// 'payhere' => [
+//         'merchant_id' => env('PAYHERE_MERCHANT_ID'),
+//         'secret' => env('PAYHERE_SECRET'),
+//         'return_url' => env('PAYHERE_RETURN_URL'),
+//         'cancel_url' => env('PAYHERE_CANCEL_URL'),
+//         'notify_url' => env('PAYHERE_NOTIFY_URL'),
+//         'mode' => env('PAYHERE_MODE'),
+//     ],
+
+    'stripe' => [
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+    ],
+
+
 ];

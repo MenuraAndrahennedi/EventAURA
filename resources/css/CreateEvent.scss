@@ -56,10 +56,121 @@
             & > div {
                 flex: 1;
             }
+             .artists {
+        margin-top: 20px;
+        width: 100%;
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+    
+        .header-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+    
+          h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 0;
+          }
         }
+    
+        hr {
+          margin: 10px 0;
+          border: none;
+          border-top: 1px solid #ccc;
+        }
+    
+        .artist-input-container {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+    
+          input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+          }
+    
+          .add-artist-btn {
+            padding: 10px 20px;
+            background-color: #48CAE4;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+    
+            &:hover {
+              background-color: #0056b3;
+            }
+          }
+        }
+      }
+    }
       }
       
       }
+      .artists {
+        margin-top: 20px;
+        width: 100%;
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+    
+        .header-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+    
+          h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 0;
+          }
+        }
+    
+        hr {
+          margin: 10px 0;
+          border: none;
+          border-top: 1px solid #ccc;
+        }
+    
+        .artist-input-container {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+    
+          input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+          }
+    
+          .add-artist-btn {
+            padding: 10px 20px;
+            background-color: #48CAE4;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+    
+            &:hover {
+              background-color: #0056b3;
+            }
+          }
+        }
+      }
+    
+     
+    
     }
     .button-row {
       display: flex;
@@ -266,4 +377,4 @@
     
     
     
-    
+     

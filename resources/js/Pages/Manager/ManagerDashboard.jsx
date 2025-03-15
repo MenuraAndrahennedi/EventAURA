@@ -21,7 +21,7 @@ const ManagerDashboard = () => {
                     <div className="row justify-content-center align-items-center pt-3">
                         <div className="col-md-3 m-3 ">
                             <Link
-                                href="/browse"
+                                href="/manager/ongoing"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">
@@ -36,7 +36,7 @@ const ManagerDashboard = () => {
 
                         <div className="col-md-3 m-3">
                             <Link
-                                href="/browse"
+                                href="/manager/create-requests"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">
@@ -51,7 +51,7 @@ const ManagerDashboard = () => {
 
                         <div className="col-md-3 m-3">
                             <Link
-                                href="/browse"
+                                href="/manager/endedEventHistory"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">
@@ -69,13 +69,13 @@ const ManagerDashboard = () => {
                     <div className="row justify-content-center align-items-center pt-3 mt-4">
                         <div className="col-md-3 m-3">
                             <Link
-                                href="/browse"
+                                href="/manager/profile"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">
                                     <div className="card-body p-4">
                                         <h2>
-                                            <b>USER DETAILS</b>
+                                            <b>YOUR PROFILE</b>
                                         </h2>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@ const ManagerDashboard = () => {
                         </div>
                         <div className="col-md-3 m-3">
                             <Link
-                                href="/browse"
+                                href="/manager/reviews"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">
@@ -97,7 +97,7 @@ const ManagerDashboard = () => {
                         </div>
                         <div className="col-md-3 m-3">
                             <Link
-                                href="/browse"
+                                href="/manager/inquiries"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">

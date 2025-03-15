@@ -36,14 +36,14 @@ const MainHeader = () => {
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                href="/browse"
+                                href="/tb-login"
                                 className="nav-link"
                             >
                                 Browse EVENT
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                href="/create"
+                                href="/eh-login"
                                 className="nav-link"
                             >
                                 Create EVENT

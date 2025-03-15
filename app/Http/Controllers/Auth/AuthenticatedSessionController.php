@@ -54,7 +54,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         if($request->user()->role_id=== 2){
-            return redirect('manager/dashboard');
+            return redirect('/manager');
         }
 
         if($request->user()->role_id=== 3){

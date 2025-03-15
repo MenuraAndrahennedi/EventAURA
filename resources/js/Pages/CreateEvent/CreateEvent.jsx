@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import SubFooter from "./../../Components/Footer/SubFooter";
 import EHHeader from "./../../Components/Header/EHHeader";
+import ArtistInput from "./ArtistInput";
 import "../../../css/CreateEvent.scss";
 import { Link } from "@inertiajs/react";
 import axios from "axios";
 
 const CreateEvent = () => {
     const [formData, setFormData] = useState(new FormData());
+    const [selectedArtists, setSelectedArtists] = useState([]);
+    const [location, setLocation] = useState("");
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
-        // const updatedFormData = new FormData(formData);
+        
 
         if (files && files.length > 0) {
             formData.set(name, files[0]);
@@ -20,18 +23,94 @@ const CreateEvent = () => {
         setFormData(formData);
     };
 
+    const handleLocationClick = () => {
+        // Open Google Maps to let the user pick a location
+        const mapUrl = "https://www.google.com/maps/search/?api=1&query=40.748817,-73.985428"; // Placeholder location
+        window.open(mapUrl, "_blank", "width=800,height=600");
+    };
+
+    // const handleLocationSelection = (newLocation) => {
+    //     // Populate the location input with the selected location
+    //     setLocation(newLocation);
+    //     formData.set("location", newLocation);
+    //     setFormData(formData);
+    // };
+
+    // const handleArtistsChange = (artists) => {
+    //     setSelectedArtists(artists);
+    
+    //     const newFormData = new FormData();
+    //     artists.forEach((artist) => {
+    //     newFormData.append("artists[]", artist.id);
+    // });
+
+    //     setFormData(newFormData); 
+    // };  
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+       
+    //      // Create new formData including selected artists
+    // const newFormData = new FormData();
+    // selectedArtists.forEach((artist) => {
+    //     newFormData.append("artists[]", artist.id);
+    // });
+
+    //     // Optional: Debugging formData content
+    // for (let [key, value] of formData.entries()) {
+    //     console.log(`${key}: ${value}`);}
+
+    //     try {
+    //         await axios.post("/event/store", formData, {
+    //             headers: { "Content-Type": "multipart/form-data" },
+    //         });
+    //         alert("Event created successfully!");
+    //     } catch (error) {
+
+    //         console.error(error.response.data);
+    //         alert("Error creating event.");
+    //     }
+    // };
     const handleSubmit = async (e) => {
         e.preventDefault();
+    
+        // Create new formData including selected artists
+        const newFormData = new FormData();
+        selectedArtists.forEach((artist) => {
+            newFormData.append("artists[]", artist.id);
+        });
+    
+        // Add other fields to the formData as needed
+        for (let [key, value] of formData.entries()) {
+            newFormData.append(key, value); // Ensure previously set fields are included
+        }
+    
         try {
-            await axios.post("/event/store", formData, {
+            // Debugging formData content
+            for (let [key, value] of newFormData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+    
+            await axios.post("/event/store", newFormData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
+    
             alert("Event created successfully!");
+
+             // Reset form state
+            setFormData(new FormData());
+            setSelectedArtists([]);
+            setLocation("");
+
+            // Reset the form element visually
+        document.querySelector("form").reset();
+        
         } catch (error) {
             console.error(error.response.data);
             alert("Error creating event.");
         }
     };
+    
 
     return (
         <>
@@ -45,7 +124,7 @@ const CreateEvent = () => {
                     <b>Create Event</b>
                 </h1>
 
-                <form onSubmit={handleSubmit} className="event-form">
+                <form onSubmit={handleSubmit}  method="POST" action="/event/store" className="event-form">
                     <section className="event-details">
                         <div className="header-container">
                             <h2>
@@ -124,11 +203,15 @@ const CreateEvent = () => {
                         <div className="input-group">
                             <label>Location*</label>
                             <input
-                                type="text"
+                                type="url"
                                 name="location"
-                                placeholder="Enter location"
+                                placeholder="Enter location or select from Google Maps"
+                                //value={location}
                                 onChange={handleChange}
                             />
+                             <button type="button" onClick={handleLocationClick}>
+                        Pick from Google Maps
+                    </button>
                         </div>
 
                         <div className="input-group">
@@ -141,9 +224,7 @@ const CreateEvent = () => {
                                         accept=".pdf"
                                         onChange={handleChange}
                                     />
-                                    <button className="upload-btn">
-                                        Upload
-                                    </button>
+                                
                                 </div>
                             </div>
                         </div>
@@ -157,7 +238,7 @@ const CreateEvent = () => {
                                     accept="image/*"
                                     onChange={handleChange}
                                 />
-                                <button className="upload-btn">Upload</button>
+                               
                             </div>
                         </div>
 
@@ -170,7 +251,7 @@ const CreateEvent = () => {
                                     accept="video/*"
                                     onChange={handleChange}
                                 />
-                                <button className="upload-btn">Upload</button>
+                            
                             </div>
                         </div>
 
@@ -193,29 +274,28 @@ const CreateEvent = () => {
                             />
                         </div>
 
-                        <div className="input-group">
-                            <label>Artists*</label>
-                            <div className="artist-section">
-                                <input
-                                    type="text"
-                                    name="artists"
-                                    placeholder="Enter artists"
-                                    onChange={handleChange}
-                                />
-                                <button className="add-artist">
-                                    Add Artist
-                                </button>
-                                <button className="remove-artist">
-                                    Remove Artist
-                                </button>
-                            </div>
+                    
+                    </section>
+                    <section className="artists">
+                        <div className="header-container">
+                            <h3>
+                                <b>2. Artists</b>
+                            </h3>
+                        </div>
+                        <hr />
+                        <div className="artist-input-container">
+                        <ArtistInput
+                            selectedArtists={selectedArtists}
+
+                            setSelectedArtists={setSelectedArtists}
+                        />
                         </div>
                     </section>
 
                     <section className="ticket-categories">
                         <div className="header-container">
                             <h3>
-                                <b>2. Tickets Categories</b>
+                                <b>3. Tickets Categories</b>
                             </h3>
                         </div>
                         <hr />
@@ -279,9 +359,7 @@ const CreateEvent = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="center-content">
-                            <button type="button">Add Tickets</button>
-                        </div>
+                        
                     </section>
                     <div className="center-content">
                         <h4>Submit event creation request</h4>
@@ -298,5 +376,6 @@ const CreateEvent = () => {
         </>
     );
 };
+
 
 export default CreateEvent;

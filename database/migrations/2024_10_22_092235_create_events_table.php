@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('city');
             $table->string('venue');
             $table->string('organizer');
-            $table->string('artists');
             $table->string('agenda_pdf')->nullable();
             $table->string('event_video')->nullable();
             $table->decimal('bronze_ticket_price');
