@@ -134,6 +134,7 @@ Route::get('/hosteventcart', function () {
     return Inertia::render('Cart/EHCart/EHCart');
 })->name('hosteventcart');
 
+
 Route::get('/artists/search', [ArtistController::class, 'search']);
 Route::post('/artists', [ArtistController::class, 'store']);
 

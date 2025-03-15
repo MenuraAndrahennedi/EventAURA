@@ -350,13 +350,14 @@ public function generateRejectedEventReport($id)
      */
     public function edit(string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return inertia('EventHost/UpdateEvent', ['event' => $event]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -364,8 +365,17 @@ public function generateRejectedEventReport($id)
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $event->delete();
+        return Redirect::route('eventhost.home')->with('success', 'Event deleted successfully!');
+        
+    }
+
+    public function delete(string $id)
+    {
+        $event = Event::findOrFail($id);
+        return inertia('CommonPages/DeleteEvent/EHDeleteEvent', ['event' => $event]);
     }
 }

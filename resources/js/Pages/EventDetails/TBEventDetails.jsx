@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import TBHeader from "../../Components/Header/TBHeader";
 import MainFooter from "../../Components/Footer/MainFooter";
 import SubFooter from "../../Components/Footer/SubFooter";
-
 import "../../../css/TBEventDetails.scss";
+import { Link } from "@inertiajs/react";
 import { Link } from "@inertiajs/react";
 import axios from "axios";
 
@@ -28,6 +28,7 @@ const TBEventDetails = ({ event } ) => {
                 <div className="banner">
                     <h1 className="banner-title">
                         <b>{event.name}</b>
+
                     </h1>
                 </div>
 
