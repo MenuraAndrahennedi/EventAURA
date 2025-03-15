@@ -21,7 +21,7 @@ const MainHeader = () => {
                             <Nav.Link as={Link} href="/about" className='nav-link'>About US</Nav.Link>
                             <Nav.Link as={Link} href="/contact" className='nav-link'>Contact US</Nav.Link>
                             <Nav.Link as={Link} href="/browse" className='nav-link'>Browse EVENT</Nav.Link>
-                            <Nav.Link as={Link} href="/create" className='nav-link'>Create EVENT</Nav.Link>
+                            <Nav.Link as={Link} href="/event/create" className='nav-link'>Create EVENT</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

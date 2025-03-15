@@ -89,7 +89,7 @@ import ReviewIcon from '../../assets/Logos/review.png';
                   <p>Planning your events and selling tickets has never been<br />
                    easier with EventAUra's super user-friendly platform <br />
                    by your side</p>
-                  <Link to = '/about' className='btn btn-primary'>ABOUT US</Link >
+                  <Link href={route('about')} className='btn btn-primary'>ABOUT US</Link >
                 </div>
                 <div className='col-md-6 '>
                     <img src = {HomeImg2} alt = "Img2" className='Img'/>
@@ -109,7 +109,7 @@ import ReviewIcon from '../../assets/Logos/review.png';
                   resource to use to answer ticket buyer questions.Trust <br />
                   us to provide the unwavering support you need for <br />
                   a successful event!</p>
-                  <Link to = '/help' className='btn btn-primary'>HELP CENTRE</Link >
+                  <Link href={route('help')} className='btn btn-primary'>HELP CENTRE</Link >
                 </div>
             </div>
 

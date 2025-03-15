@@ -11,18 +11,19 @@ const EHHistory = () => {
 
   const { user } = usePage().props;
 
-  const [events , setEvents] = useState([]);
+  const { ongoingevents = [] } = usePage().props;
+  // const [events , setEvents] = useState([]);
     
-       useEffect(() => {
-        axios.get('/api/events')
-        .then (response =>{
-          setEvents(response.data);
-        })
-        .catch (error =>{
-          console.error("There was an error fetching events" , error);
+  //      useEffect(() => {
+  //       axios.get('/api/events')
+  //       .then (response =>{
+  //         setEvents(response.data);
+  //       })
+  //       .catch (error =>{
+  //         console.error("There was an error fetching events" , error);
     
-        });
-      }, []);
+  //       });
+  //     }, []);
   // const events = [
   //   { name: 'Dara 1', percentage: '50%' },
   //   { name: 'Dara 2', percentage: '65%' },
@@ -78,7 +79,7 @@ const EHHistory = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {events.map((event, index) => (
+                            {ongoingevents.map((event, index) => (
                               <tr key={index}>
                                 <td>{event.name}</td>
                                 <td>{event.percentage}</td>

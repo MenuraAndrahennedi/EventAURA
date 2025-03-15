@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('event_hosts', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email')->unique(); 
+            $table->string('telephone')->nullable();
             $table->timestamps();
         });
     }

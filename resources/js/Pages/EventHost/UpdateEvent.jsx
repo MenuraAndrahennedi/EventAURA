@@ -71,9 +71,9 @@ const UpdateEvent = () => {
                     <label htmlFor="eventDate">New Date</label>
                      <button type="button" className="do-not-update-btn"onClick={handleCancel}>Do not update</button>
                      {/*<input type="date" name="eventDate" id="eventDate" />*/}
-                  
-                  <input type="date" name="date" id="date"onChange={handleChange}/>
                   </div>
+                  <input type="date" name="date" id="date"onChange={handleChange}/>
+                  
                 </div>
                 <div className="time-inputs">
                   <div className="start-time">

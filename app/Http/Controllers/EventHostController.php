@@ -94,9 +94,15 @@ class EventHostController extends Controller
     public function ehHistory()
     {
         $user = Auth::user();
-
+        if ($user->role_id == 4) {
+            $ongoingevents = Event::where('event_host_id', $user->id)
+                                ->where('event_status', 'approved')  
+                                ->get()
+                                ->toArray(); 
+        }
         return Inertia::render('UserProfile/EH-Profiles/EH-EventHistory/EHHistory', [
             'user' => $user,
+            'ongoingevents' => $ongoingevents,
         ]);
     }
 

@@ -5,7 +5,8 @@ import { Link } from '@inertiajs/react';
 import '../../../css/style.scss';
 import Logo from '../../assets/Images/Logo.png';
 
-const ManagerHeader = () => {
+
+const UserHeader = () => {
   return (
     <header>
         <div className='container py-3'>
@@ -14,17 +15,19 @@ const ManagerHeader = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
-                    <Nav.Link as={Link} to="/ManagerDashboard" className = 'nav-link'>Dashboard</Nav.Link>
-                    <Nav.Link as={Link} to="/ongoing"className = 'nav-link'>Ongoing events</Nav.Link>
+                <Nav.Link as={Link} href={route('admin.profile')} className = 'nav-link'>Profile</Nav.Link>
+                    <Nav.Link as={Link} href={route('other.dashboard')} className = 'nav-link'>Dashboard</Nav.Link>
+                    <Nav.Link as={Link} href={route('admin.ongoingEvents')}className = 'nav-link'>Ongoing events</Nav.Link>
                     <Nav.Link as={Link} to="/pendingRequests" className = 'nav-link'>Pending requests</Nav.Link>
                     <Nav.Link as={Link} to="/inquiries" className = 'nav-link'>Inquiries</Nav.Link>
-                    <Nav.Link as={Link} to="/manager" className = 'nav-link'>Manager Account</Nav.Link>
+                    <Nav.Link as={Link} to="/OtherProfile" className = 'nav-link'>User Account</Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Navbar>
         </div>
     </header>
+    
   )
 }
 
-export default ManagerHeader
+export default UserHeader

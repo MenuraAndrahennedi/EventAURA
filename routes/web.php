@@ -32,6 +32,14 @@ Route::get('/browse', function () {
     return Inertia::render('BrowseEvent/BrowseEvent');
 })->name('browse');
 
+Route::get('/about', function () {
+    return Inertia::render('AboutUs/AboutUS');
+})->name('about');
+
+Route::get('/help', function () {
+    return Inertia::render('HelpCentre/HelpCentre');
+})->name('help');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -63,6 +71,7 @@ Route::get('manager/dashboard', [ManagerController::class, 'index'])->name('mana
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'admin']);
 Route::get('eventhost/dashboard', [EventHostController::class, 'index'])->name('eventhost.dashboard')->middleware(['auth', 'eventhost']);
 Route::get('customer/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard')->middleware(['auth', 'customer']);
+Route::get('other/dashborad', [AdminController::class, 'dashboard'])->name('other.dashboard');
 
  Route::get('event/create', [EventController::class, 'create'])->name('event.create');
  Route::post('event/store', [EventController::class, 'store'])->name('event.store');
@@ -87,9 +96,7 @@ Route::get('customer/dashboard', [CustomerController::class, 'index'])->name('cu
     Route::get('/event-host/signOut', [EventHostController::class, 'signOut'])->name('eventhost.signOut');
     
 });
-// Route::middleware(['auth'])->group(function () {
-//     Route::put('/event-hosts/{id}', [EventHostController::class, 'update'])->name('event-hosts.update');
-// });
+
 
 Route::get('/EHOngoing', [EventHostController::class, 'ehOngoing'])->name('eh.ongoing');
 Route::get('/EHPendingPayments', [EventHostController::class, 'ehPendingPayments'])->name('eh.pendingPayments');
@@ -110,5 +117,21 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/eventhost/update-password', [EventHostController::class, 'updatePassword'])->name('eventhost.updatePassword');
     Route::post('/event/update/{eventId}', [EventController::class, 'updateEvent'])->name('event.update');
 });
+
+Route::get('other/profile', [AdminController::class, 'profile'])->name('admin.profile');
+Route::post('other/updateProfile', [AdminController::class, 'updateProfile'])->name('admin.updateProfile');
+Route::get('other/changePW', [AdminController::class, 'changePW'])->name('admin.changePW');
+Route::post('other/update-password', [AdminController::class, 'updatePassword'])->name('admin.updatePassword');
+Route::get('other/signOut', [AdminController::class, 'signOut'])->name('admin.signOut');
+
+Route::get('other/ongoing', [AdminController::class, 'ongoingEvents'])->name('admin.ongoingEvents');
+Route::get('other/userDetails', [AdminController::class, 'userDetails'])->name('admin.userDetails');
+Route::get('/admindashboard', [AdminController::class, 'adminDashboard'])->name('admindashboard');
+Route::get('/admindashboard', [AdminController::class, 'adminDashboard'])->name('admindashboard');
+Route::get('/admindashboard', [AdminController::class, 'adminDashboard'])->name('admindashboard');
+
+Route::get('/events/view/{id}', [AdminController::class, 'show'])->name('admin.viewEvent');
+
+Route::get('/addMember', [ProgrammerController::class, 'addMember'])->name('add.member');
 
 require __DIR__ . '/auth.php';

@@ -80,7 +80,7 @@ const EHProfile = () => {
                         <div className="detail-label">Full Name:</div>
                         <input
                           type="text"
-                          name="fullname"
+                          name="fullName"
                           className="form-control"
                           value={data.name}
                           onChange={handleChange}

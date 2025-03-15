@@ -5,11 +5,11 @@ import AdminFooter from '../../../Components/Footer/AdminFooter';
 
 
 import './UserDetails.scss';
-import { Link } from 'react-router-dom';
+import { Link } from '@inertiajs/react';
 
 
-import Cover03 from '../../../assets/coverImage04.png';
-import Cover04 from '../../../assets/coverImage03.png';
+import Cover03 from '../../../assets/Images/coverImage04.png';
+import Cover04 from '../../../assets/Images/coverImage03.png';
 
 const UserDetails = () => {
   return (
