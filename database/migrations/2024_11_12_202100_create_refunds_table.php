@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('refunds', function (Blueprint $table) {
-            $table->id(); 
-            // $table->decimal('refund_amount'); 
+            $table->id();
+            // $table->decimal('refund_amount');
             // $table->date('refund_date');
             // $table->enum('refund_status', ['APPROVED', 'REJECTED']);
             // $table->unsignedBigInteger('payment_id');

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-
 
 class EventController extends Controller
 {
@@ -16,7 +17,12 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+
+        $events = Event::all(); // Fetch all events from the database
+
+        return Inertia::render('Events', [
+            'events' => $events,
+        ]);
     }
 
     /**
@@ -43,36 +49,37 @@ class EventController extends Controller
             'artists' => 'required|string',
             'agenda_pdf' => 'nullable|file|mimes:pdf',
             'event_video' => 'nullable|file|mimes:mp4,avi,mkv',
-            'organizer' =>'required|string',
+            'organizer' => 'required|string',
             'bronze_ticket_count' => 'integer|min:0',
             'golden_ticket_count' => 'integer|min:0',
-           'silver_ticket_count' => 'integer|min:0',
+            'silver_ticket_count' => 'integer|min:0',
             'bronze_ticket_price' => 'required|numeric|min:0',
             'golden_ticket_price' => 'required|numeric|min:0',
-           'silver_ticket_price' => 'required|numeric|min:0',
-           'return_policies' => 'nullable|string',
-           'startTime' => 'required|date_format:H:i',
-           'endTime' => 'required|date_format:H:i|after:startTime'
+            'silver_ticket_price' => 'required|numeric|min:0',
+            'return_policies' => 'nullable|string',
+            'startTime' => 'required|date_format:H:i',
+            'endTime' => 'required|date_format:H:i|after:startTime',
         ]);
 
-        $validated['image']= $request->file('image')->store('images','public');
-        $validated['agenda_pdf'] = $request->file('agenda_pdf')?->store('pdfs','public');
-        $validated['event_video'] = $request->file('event_video')?->store('videos','public');
+        $validated['image'] = $request->file('image')->store('images', 'public');
+        $validated['agenda_pdf'] = $request->file('agenda_pdf')?->store('pdfs', 'public');
+        $validated['event_video'] = $request->file('event_video')?->store('videos', 'public');
 
         $validated['event_host_id'] = auth()->id();
   
         Event::create($validated);
 
-        return redirect()->route('eventhost.dashboard')->with('success','Event Created Successfully and is pending approval');
+        return redirect()->route('eventhost.dashboard')->with('success', 'Event Created Successfully and is pending approval');
     }
 
-    public function getApprovedEvents() {
-        $approvedEvents = Event:: where ('event_status', 'approved')
-        ->get()
-        ->map (function ($event) {
-            $event->image = asset('storage/' . $event->image);
-            return $event;
-        });
+    public function getApprovedEvents()
+    {
+        $approvedEvents = Event::where('event_status', 'approved')
+            ->get()
+            ->map(function ($event) {
+                $event->image = asset('storage/' . $event->image);
+                return $event;
+            });
         return response()->json($approvedEvents);
     }
 
@@ -224,8 +231,25 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $id)
+    {      
+        $event = Event::findOrFail($id);
+        $event->image = asset('storage/' . $event->image); // Ensure the image URL is accessible
+
+        return Inertia::render('EventDetails/TBEventDetails', [
+        'event' => $event,
+        ]);
+    }
+        
+        public function buyTickets($id)
     {
+        $event = Event::findOrFail($id);
+        $event->image = asset('storage/' . $event->image); // Ensure the image URL is accessible
+
+        return Inertia::render('BuyTickets/BuyTickets', [
+            'event' => $event,
+        ]);
+
         $event = Event::findOrFail($id);
         return inertia('CommonPages/ViewEvent/EHViewEvent', ['event' => $event]);
     }

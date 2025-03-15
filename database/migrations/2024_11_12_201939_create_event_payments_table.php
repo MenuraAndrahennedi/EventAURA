@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('event_payments', function (Blueprint $table) {
-            $table->id(); 
+            $table->id();
             // $table->float('event_pay_amount');
             // $table->date('event_pay_date');
             // $table->enum('event_pay_status', ['APPROVED', 'REJECTED']);
@@ -21,7 +21,7 @@ return new class extends Migration
             // $table->unsignedBigInteger('event_id');
             // $table->foreign('event_id')->references('event_id')->on('event')->onDelete('cascade');
             $table->timestamps();
-        
+
         });
     }
 

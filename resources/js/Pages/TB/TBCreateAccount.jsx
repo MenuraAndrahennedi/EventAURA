@@ -1,77 +1,131 @@
-import React from 'react'
-import './TBLogin.scss';
-import MainHeader from './../../Components/Header/MainHeader';
-import SubFooter from './../../Components/Footer/SubFooter';
-import { Link,useForm } from '@inertiajs/react'; 
+import React from "react";
+import "./TBLogin.scss";
+import MainHeader from "./../../Components/Header/MainHeader";
+import SubFooter from "./../../Components/Footer/SubFooter";
+import { Link, useForm } from "@inertiajs/react";
 
 const TBCreateAccount = () => {
-  const { data, setData, post, processing, errors } = useForm({
-    name: '',
-    email: '',
-    telephone: '',
-    password: '',
-    password_confirmation: '',
-    role_id: 5, // Assuming 2 represents the role of "Ticket Buyer"
-  }); 
-  
-  const handleChange = (e) => {
-    setData(e.target.name, e.target.value);
-  };
+    const { data, setData, post, processing, errors } = useForm({
+        name: "",
+        email: "",
+        telephone: "",
+        password: "",
+        password_confirmation: "",
+        role_id: 5, // Assuming 2 represents the role of "Ticket Buyer"
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    post('/register'); 
-  };
-  return (
-    <>
-        <header>
-          <MainHeader/> 
-        </header>
+    const handleChange = (e) => {
+        setData(e.target.name, e.target.value);
+    };
 
-        <main>
-          <div className="TB-Loginform-container">
-            <div className="TB-Login-overlay">
-              <h2>Create your Account</h2>
-              <form onSubmit={handleSubmit}>
-                <input type="text" name="name" placeholder="Name" value={data.name} onChange={handleChange} required />
-                {errors.name && <div className="error">{errors.name}</div>}
-                
-                <input type="email" name="email" placeholder="Email" value={data.email} onChange={handleChange} required />
-                {errors.email && <div className="error">{errors.email}</div>}
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post("/register");
+    };
+    return (
+        <>
+            <header>
+                <MainHeader />
+            </header>
 
-                <input type="text" name="telephone" placeholder="Telephone No" value ={data.telephone} onChange={handleChange} required />
-                {errors.telephone && <div className="error">{errors.telephone}</div>}
+            <main>
+                <div className="TB-Loginform-container">
+                    <div className="TB-Login-overlay">
+                        <h2>Create your Account</h2>
+                        <form onSubmit={handleSubmit}>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Name"
+                                value={data.name}
+                                onChange={handleChange}
+                                required
+                            />
+                            {errors.name && (
+                                <div className="error">{errors.name}</div>
+                            )}
 
-                <input type="password" name ="password" placeholder="Password" value={data.password} onChange={handleChange} required />
-                {errors.password && <div className="error">{errors.password}</div>}
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                value={data.email}
+                                onChange={handleChange}
+                                required
+                            />
+                            {errors.email && (
+                                <div className="error">{errors.email}</div>
+                            )}
 
-                <input type="password" name="password_confirmation" placeholder="Confirm Password" value={data.password_confirmation} onChange={handleChange} required />
-                {errors.password_confirmation && <div className="error">{errors.password_confirmation}</div>}
+                            <input
+                                type="text"
+                                name="telephone"
+                                placeholder="Telephone No"
+                                value={data.telephone}
+                                onChange={handleChange}
+                                required
+                            />
+                            {errors.telephone && (
+                                <div className="error">{errors.telephone}</div>
+                            )}
 
-                <button type="submit" disabled={processing}>Continue</button>
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                value={data.password}
+                                onChange={handleChange}
+                                required
+                            />
+                            {errors.password && (
+                                <div className="error">{errors.password}</div>
+                            )}
 
-                <div className="sign-up">
-                  <small> <Link to='/terms' className="custom-link">Terms and Conditions</Link></small>
+                            <input
+                                type="password"
+                                name="password_confirmation"
+                                placeholder="Confirm Password"
+                                value={data.password_confirmation}
+                                onChange={handleChange}
+                                required
+                            />
+                            {errors.password_confirmation && (
+                                <div className="error">
+                                    {errors.password_confirmation}
+                                </div>
+                            )}
+
+                            <button type="submit" disabled={processing}>
+                                Continue
+                            </button>
+
+                            <div className="sign-up">
+                                <small>
+                                    {" "}
+                                    <Link to="/terms" className="custom-link">
+                                        Terms and Conditions
+                                    </Link>
+                                </small>
+                            </div>
+                        </form>
+
+                        <hr className="custom-hr" />
+
+                        <div className="sign-up">
+                            <small>
+                                Already Have an account ?{" "}
+                                <Link href={route("tb.login")}>Sign in</Link>
+                            </small>
+                        </div>
+                    </div>
                 </div>
+            </main>
 
-              </form>
-              
-              <hr className="custom-hr" />
-              
-              <div className="sign-up">
-                <small>Already Have an account ? <Link href={route('tb.login')}>Sign in</Link></small>
-              </div>
+            <footer>
+                <SubFooter />
+            </footer>
+        </>
+    );
+};
 
-            </div>
-          </div>
-        </main>
-      
-        <footer>
-          <SubFooter />
-        </footer>
-    </>
-    
-  )
-}
-
-export default TBCreateAccount
+export default TBCreateAccount;

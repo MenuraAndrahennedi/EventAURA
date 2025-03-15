@@ -20,7 +20,7 @@ return new class extends Migration
             // $table->integer('review_rating')->check('review_rating >= 1 AND review_rating <= 5'); // Assuming rating is between 1 and 5
             // $table->text('review_comments')->nullable();
             $table->timestamps();
-            
+
         });
     }
 

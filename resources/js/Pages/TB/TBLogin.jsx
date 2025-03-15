@@ -29,7 +29,7 @@ const TBLogin = () => {
           <div className="TB-Loginform-container">
             <div className="TB-Login-overlay">
               <h2>Sign in to EventAURA</h2>
-              <p>or continue as Guest</p>
+              <p>or <Link href= {route('browse')}>continue as Guest </Link></p>
 
               <form onSubmit={handleSubmit}>
                 <input type="text" name ="email" placeholder="Email / Username" value={data.email} onChange={handleChange} required />

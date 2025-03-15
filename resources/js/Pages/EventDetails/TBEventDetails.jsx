@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import TBHeader from "../../Components/Header/TBHeader";
 import MainFooter from "../../Components/Footer/MainFooter";
 import SubFooter from "../../Components/Footer/SubFooter";
-
 import "../../../css/TBEventDetails.scss";
 import { Link } from "@inertiajs/react";
 import axios from "axios";
@@ -12,6 +11,8 @@ import BannerImage from "../../assets/Images/banner.png";
 import HostImage from "../../assets/Logos/HostLogo.png";
 
 const TBEventDetails = () => {
+    const { event } = usePage().props; 
+
     return (
         <>
             <header>
@@ -27,36 +28,32 @@ const TBEventDetails = () => {
             <section className="event-details">
                 <div className="banner">
                     <h1 className="banner-title">
-                        <b>SKY HEROES</b>
+                        <b>{event.name}</b>
+
                     </h1>
                 </div>
 
                 <div className="event-info">
                     <div className="event-poster">
-                        <img src={BannerImage} alt="Event Poster" />
+                        <img src={event.image} alt="Event Poster" />
+
                     </div>
 
                     <div className="event-description">
                         <p>
-                            Join us for an unforgettable night of live music at
-                            Rythms Under the Stars! Featuring renowned
-                            artistsacross genres like rock.pop and indie.This
-                            concert will be held in the beautiful setting of
-                            National Youth Service Council Auditorium,
-                            Maharagama.Enjoy mesmerizing performance under the
-                            night sky with delicious food stalls,cozy seating
-                            and vibrant atmosphere.
+
+                            {event.description}
                         </p>
                         <div className="event-meta">
                             <p>
-                                <strong>Date:</strong> 01 April 2025
+                                <strong>Date:</strong>{event.date} 
                             </p>
                             <p>
-                                <strong>Venue:</strong> National Youth Service
-                                Council Auditorium | Maharagama
+                                <strong>Venue:</strong> {event.location}
+                                
                             </p>
                             <p>
-                                <strong>Organizer:</strong>Eventmela
+                                <strong>Organizer:</strong>{event.organizer}
                             </p>
                             <div className="button-row">
                                 <a
@@ -69,7 +66,7 @@ const TBEventDetails = () => {
                                 </a>
                                 {/* Download PDF */}
                                 <a
-                                    href="/path/to/agenda.pdf"
+                                    href={`/storage/${event.agenda_pdf}`}
                                     download
                                     className="button-link"
                                 >
@@ -79,7 +76,9 @@ const TBEventDetails = () => {
                             </div>
                         </div>
                         <div className="event-buttons">
-                            <Link to="/BuyTickets" className="buy-tickets">
+
+                            <Link href={`/event/${event.id}/buytickets`} className="buy-tickets">
+
                                 Buy Tickets
                             </Link>
                             <Link
@@ -172,81 +171,4 @@ const TBEventDetails = () => {
     );
 };
 
-export default TBEventDetails; 
-
-
-// import React, { useEffect, useState } from "react";
-// import TBHeader from "../../Components/Header/TBHeader";
-// import MainFooter from "../../Components/Footer/MainFooter";
-// import SubFooter from "../../Components/Footer/SubFooter";
-
-// import "../../../css/TBEventDetails.scss";
-// import { Link } from "@inertiajs/react";
-// import axios from "axios";
-
-// import SearchBar from "../../Components/SearchBar";
-// import BannerImage from "../../assets/Images/banner.png";
-// import HostImage from "../../assets/Logos/HostLogo.png";
-
-// const TBEventDetails = () => {
-//   const [events, setEvents] = useState([]); // Store search results
-
-//   // Handle search results from the SearchBar
-//   const handleSearchResults = (results) => {
-//       setEvents(results);
-//   };
-
-//   useEffect(() => {
-//     axios.get("/api/events") // Replace with your API endpoint
-//         .then((response) => {
-//             setEvents(response.data);
-//         })
-//         .catch((error) => {
-//             console.error("Error fetching events:", error);
-//         });
-// }, []);
-
-//   return (
-//       <>
-//           <header>
-//               <TBHeader />
-//           </header>
-
-//           {/* Search Bar */}
-//           <div className="search-bar-section">
-//               <SearchBar onSearchResults={handleSearchResults} />
-//           </div>
-
-//           {/* Display Search Results */}
-//           <section className="event-details">
-//               {events.length > 0 ? (
-//                   <div className="search-results">
-//                       {events.map((event) => (
-//                           <div key={event.id} className="event-card">
-//                               <h3>{event.name}</h3>
-//                               <p>{event.description}</p>
-//                               <p>
-//                                   <strong>Location:</strong> {event.location}
-//                               </p>
-//                               <p>
-//                                   <strong>Date:</strong> {event.date}
-//                               </p>
-//                               <Link to={`/events/${event.id}`} className="btn btn-primary">
-//                                   View Details
-//                               </Link>
-//                           </div>
-//                       ))}
-//                   </div>
-//               ) : (
-//                   <p></p>
-//               )}
-//           </section>
-
-//           <footer>
-//               <SubFooter />
-//           </footer>
-//       </>
-//   );
-// };
-
-// export default TBEventDetails;
+export default TBEventDetails;
