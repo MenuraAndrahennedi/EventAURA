@@ -197,7 +197,7 @@
     .date-input {
       display: flex;
       flex-direction: column;
-      margin-right: 20rem;
+      margin-right: 19rem;
       margin-bottom: 0.6rem;;
     }
     
@@ -218,10 +218,10 @@
     }
 
     .city-input {
-      margin-right: 15rem; 
+      margin-right: 14.8rem; 
     }
     .venue-input{
-      margin-right: 4.5rem;
+      margin-right: 2.49rem;
     }
     
     label {
@@ -365,6 +365,7 @@
       border-radius: 5px;
       margin-top: 1rem;
       transition: background-color 0.3s ease;
+      text-decoration: none;
     }
     
     .submit-btn:hover {

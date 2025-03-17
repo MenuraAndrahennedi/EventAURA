@@ -1,0 +1,163 @@
+.OL-LoginForm-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../js/assets/Images/BG-9.png'); 
+    /*background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url('../../assets/BG-1.png');*/
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.OL-Login-overlay {
+    background-color:transparent ;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #fff;
+    max-width: 400px;
+    width: 100%;
+}
+footer {
+    margin-top: 0;
+    padding: 0; 
+}
+.OL-Login-overlay h2 {
+  margin-bottom: 0.5rem;
+  font-size: 30px;
+  color: black
+}
+
+.OL-Login-overlay input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 0;
+  border: none;
+  background: #fff;
+  color: #333;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.OL-Login-overlay button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.OL-Login-overlay button:hover {
+  background-color: #0d6efd;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  color: #ccc;
+  font-weight: bold;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.divider span {
+  margin: 0 1rem;
+}
+
+.social-login {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+
+
+
+.sign-up {
+  margin-top: 1.5rem;
+  color: #ccc;
+}
+
+/*.CustomButton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: 100%;
+ 
+}
+
+.CustomButton:hover {
+  background-color: darkgray; 
+}
+
+.CustomButton1 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgb(71, 69, 69);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.CustomButton1:hover {
+  background-color: darkgray; 
+}*/
+
+.CustomButton,
+.CustomButton1 {
+display: inline-block;
+padding: 10px 20px;
+border-radius: 5px;
+font-size: 16px;
+text-align: center;
+transition: background-color 0.3s ease;
+width: 100%; /* Keep full width */
+margin-bottom: 10px; /* Adds space between the buttons */
+}
+
+.CustomButton {
+background-color: black;
+color: white;
+text-decoration: none;
+}
+
+.CustomButton:hover {
+background-color: darkgray;
+}
+
+.CustomButton1 {
+background-color: rgb(71, 69, 69);
+color: white;
+text-decoration: none;
+}
+
+.CustomButton1:hover {
+background-color: darkgray;
+}
+
+

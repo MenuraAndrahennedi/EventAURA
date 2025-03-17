@@ -5,7 +5,6 @@
 
     background-color: #ffffff;
 
-
     h1 {
         font-size: 4em;
         margin-bottom: 50px;
@@ -18,15 +17,12 @@
         background-color: #f5f3f3;
         padding: 30px;
         color: #333;
-
     }
-
 }
-
 
 // headbar
 .headbar {
-    background-color: #90E0EF;
+    background-color: #90e0ef;
 }
 
 .head-bar {
@@ -38,10 +34,7 @@
 .head-bar div {
     border: 1px solid #ffffff;
     font-size: 1.5rem;
-
 }
-
-
 
 .head-bar div a {
     display: block;
@@ -51,15 +44,14 @@
 }
 
 .head-bar div a:hover {
-    background-color: #00B4D8;
+    background-color: #00b4d8;
 }
 
 .head-bar div .active-link {
-    background-color: #00B4D8;
+    background-color: #00b4d8;
     font-weight: bold;
     color: #000;
 }
-
 
 .container {
     padding: 0;
@@ -87,7 +79,6 @@
     max-width: 100%;
     max-height: 300px;
     overflow-y: auto;
-
 }
 
 //pending request
@@ -97,7 +88,6 @@
     table-layout: fixed;
     min-width: 1000px;
 }
-
 
 .request-table th,
 .request-table td {
@@ -132,7 +122,6 @@
 }
 
 .request-table td:nth-child(6) {
-
     justify-content: center;
     /* Center the buttons */
     align-items: center;
@@ -141,8 +130,6 @@
     white-space: nowrap;
     /* Prevent text wrapping */
 }
-
-
 
 .request-table th:nth-child(1) {
     /* Event Name */
@@ -167,16 +154,12 @@
 .request-table th:nth-child(6) {
     /* Report */
     width: 10%;
-
 }
 
 .request-table th:nth-child(7) {
     /* Approval */
     width: 25%;
 }
-
-
-
 
 //Event History
 .history-table {
@@ -205,7 +188,6 @@
     white-space: normal;
 }
 
-
 //Review and Inquiry Tables
 
 .review-table {
@@ -227,22 +209,18 @@
     color: rgb(0, 0, 0);
     font-weight: bold;
     border: 1px solid #ffffff;
-
 }
 
 .review-table td {
     white-space: normal;
 }
 
-
 .review-table th:nth-child(even) {
-    background-color: #00B4D8;
-
+    background-color: #00b4d8;
 }
 
 .review-table th:nth-child(odd) {
-    background-color: #90E0EF;
-
+    background-color: #90e0ef;
 }
 
 //striped feature
@@ -319,7 +297,7 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-        background-color: #00B4D8;
+        background-color: #00b4d8;
     }
 }
 
@@ -339,8 +317,6 @@
     &:hover {
         background-color: #414444;
     }
-
-    
 }
 .gray-button {
     background-color: #cccccc !important;
@@ -349,5 +325,3 @@
         background-color: #cccccc !important;
     }
 }
-
-

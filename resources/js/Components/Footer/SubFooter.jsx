@@ -9,63 +9,63 @@ import LinkedIn from '../../assets/Logos/linkedIn black.png';
 
 const SubFooter = () => {
     return (
-        <footer className="sub-footer bg-dark text-white">
-            <div className="container text-center py-4">
+        <footer className="text-white sub-footer bg-dark">
+            <div className="container py-4 text-center">
                 {/* Stay Updated Section */}
                 <div className="stay-updated">
                     <h1>Connect With US</h1>
                     <Link to='/review' className='element'>Leave a Review</Link>
                     <Link to='/help' className='element'><br />Help Center</Link>
-                    <div className="social-icons d-flex justify-content-center mt-4">
+                    <div className="mt-4 social-icons d-flex justify-content-center">
                         <Link to="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                            <img src={FB} alt="Facebook" className="social-icon mx-5" />
+                            <img src={FB} alt="Facebook" className="mx-5 social-icon" />
                         </Link>
                         <Link to="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-                            <img src={Instar} alt="Instagram" className="social-icon mx-5" />
+                            <img src={Instar} alt="Instagram" className="mx-5 social-icon" />
                         </Link>
                         <Link to="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-                            <img src={X} alt="X" className="social-icon mx-5" />
+                            <img src={X} alt="X" className="mx-5 social-icon" />
                         </Link>
                         <Link to="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-                            <img src={LinkedIn} alt="LinkedIn" className="social-icon mx-5" />
+                            <img src={LinkedIn} alt="LinkedIn" className="mx-5 social-icon" />
                         </Link>
                     </div>
                 </div>
 
                 {/* Links Section */}
-                <div className="footer-links row mt-4">
-                    <div className="col-md-6 mb-3 text-center">
+                <div className="mt-4 footer-links row">
+                    <div className="mb-3 text-center col-md-6">
                         <h5>© 2024 EventAURA</h5>
                         <ul className="list-inline">
-                            <li className="list-inline-item mx-3">
-                                <Link to="/about" className="footer-link">About Us</Link>
+                            <li className="mx-3 list-inline-item">
+                                <Link href={route('about')} className="text-white"> About US</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
-                                <Link to="/terms" className="footer-link">Terms</Link>
+                            <li className="mx-3 list-inline-item">
+                                <Link href={route('home')} className="text-white">Terms </Link>
                             </li>
-                            <li className="list-inline-item mx-3">
-                                <Link to="/privacy" className="footer-link">Privacy Policies</Link>
+                            <li className="mx-3 list-inline-item">
+                                <Link href={route('home')} className="text-white"> Privacy Policies</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
-                                <Link to="/cookies" className="footer-link">Cookies</Link>
+                            <li className="mx-3 list-inline-item">
+                                <Link href={route('home')} className="text-white"> Cookies</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
-                                <Link to="/status" className="footer-link">Status</Link>
-                            </li>
+                            <li className="mx-3 list-inline-item">
+                                <Link href={route('home')} className="text-white"> Status</Link>
+                            </li>           
                         </ul>
                     </div>
 
-                    <div className="col-md-6 mb-3 text-center">
+                    <div className="mb-3 text-center col-md-6">
                         <h5>© 2024 CODECATALYSTS</h5>
                         <ul className="list-inline">
-                            <li className="list-inline-item mx-3">
-                                <Link to="/developers" className="footer-link">Developers</Link>
+                            <li className="mx-3 list-inline-item">
+                                <Link href={route('home')} className="text-white"> Developers</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
-                                <Link to="/license" className="footer-link">License & Registrations</Link>
+                            <li className="mx-3 list-inline-item">
+                               <Link href={route('home')} className="text-white"> License & Registrations</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
-                                <Link to="/privacy-terms" className="footer-link">Privacy Terms</Link>
+                            <li className="mx-3 list-inline-item">
+                                 <Link href={route('home')} className="text-white"> Privacy Terms</Link>
                             </li>
                         </ul>
                     </div>
