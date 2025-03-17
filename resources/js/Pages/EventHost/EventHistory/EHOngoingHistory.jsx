@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import '../../profile.scss';
-import profilelogo from '../../../../assets/Images/Profile-logo.png';
-import EHHeader from './../../../../Components/Header/EHHeader';
-import EHSidebar from './../EHSidebar';
-import SubFooter from './../../../../Components/Footer/SubFooter';
+import '../../../../css/profile.scss';
+import profilelogo from '../../../assets/Images/Profile-logo.png';
+import EHHeader from '../../../Components/Header/EHHeader';
+import EHSidebar from '../../UserProfile/EH-Profiles/EHSidebar';
+import SubFooter from '../../../Components/Footer/SubFooter';
 import { Link } from '@inertiajs/react';
 import { usePage } from '@inertiajs/react'
 
@@ -61,7 +61,7 @@ const EHOngoingHistory = () => {
                          {/* Tabs */}
                         <div className="d-flex justify-content-around my-3">
                           <div className="btn-group">
-                            <Link href={route('eh.ongoing')} className={`btn ${location.pathname === '/EHOngoing' ? 'btn-primary active' : 'btn-outline-primary'}`} > On going</Link>
+                            <Link href={route('eventhost.ongoingEvents')} className={`btn ${location.pathname === '/EHOngoing' ? 'btn-primary active' : 'btn-outline-primary'}`} > On going</Link>
                             <Link href={route('eh.pendingPayments')} className={`btn ${location.pathname === '/EHPendingPayments' ? 'btn-primary active' : 'btn-outline-primary'}`} > Pending payments</Link>
                             <Link href={route('eh.pendingRequests')} className={`btn ${location.pathname === '/EHPendingRequests' ? 'btn-primary active' : 'btn-outline-primary'}`} >Pending Requests </Link>
                             <Link href={route('eh.rejected')} className={`btn ${location.pathname === '/EHRejected' ? 'btn-primary active' : 'btn-outline-primary'}`} > Rejected</Link>
@@ -84,7 +84,7 @@ const EHOngoingHistory = () => {
                             {ongoingevents.map((event, index) => (
                               <tr key={index}>
                                 <td>{event.name}</td>
-                                <td>{event.percentage}</td>
+                                <td>50</td>
                                 <td><a href="/path/to/file.pdf" download className="btn btn-info btn-sm text-black">Download</a></td>
                                 <td><a href="/path/to/file.pdf" download className="btn btn-info btn-sm text-black">Download</a></td>
                               </tr>

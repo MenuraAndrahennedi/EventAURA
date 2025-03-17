@@ -1,6 +1,6 @@
 import React from 'react'
 import '../OtherLogin/OtherLogin.scss';
-import { Link } from 'react-router-dom';
+import { Link } from '@inertiajs/react';
 import UserHeader from '../../Components/Header/UserHeader';
 import AdminFooter from './../../Components/Footer/AdminFooter';
 

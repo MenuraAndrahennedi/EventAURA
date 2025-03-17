@@ -1,9 +1,10 @@
 import React, { useState} from 'react'
 import './UpdateEvent.scss';
+import '../../../../css/CreateEvent.scss';
 import { useForm ,usePage} from '@inertiajs/react';
 
-import EHHeader from './../../Components/Header/EHHeader';
-import SubFooter from './../../Components/Footer/SubFooter';
+import EHHeader from '../../../Components/Header/EHHeader';
+import SubFooter from '../../../Components/Footer/SubFooter';
 
 const UpdateEvent = () => {
 

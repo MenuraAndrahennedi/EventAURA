@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './RejectEventConfirmation.scss';
+import '../../CommonPages/RejectEventConfirmation.scss';
 
-const RejectEventConfirmation = ({
+const EventDeletionReason = ({
   isOpen,
   onClose,
   onConfirm,
@@ -35,7 +35,7 @@ const RejectEventConfirmation = ({
 
         <div className="modal-buttons">
           <button onClick={handleConfirm} className="delete-button">
-            Reject the Event Request
+            Send Delete Request
           </button>
           <button onClick={handleCancel} className="cancel-button">
             Cancel
@@ -46,4 +46,4 @@ const RejectEventConfirmation = ({
   );
 };
 
-export default  RejectEventConfirmation;
+export default  EventDeletionReason;

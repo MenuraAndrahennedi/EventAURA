@@ -11,6 +11,7 @@ use App\Models\StripePayment;
 use PDF;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use App\Models\EventDeletionRequest;
 
 
 
@@ -351,7 +352,7 @@ public function generateRejectedEventReport($id)
     public function edit(string $id)
     {
         $event = Event::findOrFail($id);
-        return inertia('EventHost/UpdateEvent', ['event' => $event]);
+        return inertia('EventHost/OngoingEvents/UpdateEvent', ['event' => $event]);
     }
 
     /**
@@ -365,17 +366,43 @@ public function generateRejectedEventReport($id)
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, $id)
-    {
-        $event = Event::findOrFail($id);
-        $event->delete();
-        return Redirect::route('eventhost.home')->with('success', 'Event deleted successfully!');
+    // public function destroy(Request $request, $id)
+    // {
+    //     $event = Event::findOrFail($id);
+    //     $event->delete();
+    //     return Redirect::route('eventhost.home')->with('success', 'Event deleted successfully!');
         
+    // }
+
+    // public function delete(string $id)
+    // {
+    //     $event = Event::findOrFail($id);
+    //     return inertia('CommonPages/DeleteEvent/EHDeleteEvent', ['event' => $event]);
+    // }
+
+    public function storeDeleteRequest(Request $request)
+{
+    $request->validate([
+        'event_id' => 'required|exists:events,id',
+        'reason' => 'required|string|max:500',
+    ]);
+
+    // Check if request already exists
+    $existingRequest = EventDeletionRequest::where('event_id', $request->event_id)
+        ->where('status', 'pending')
+        ->first();
+
+    if ($existingRequest) {
+        return response()->json(['message' => 'A delete request is already pending for this event.'], 400);
     }
 
-    public function delete(string $id)
-    {
-        $event = Event::findOrFail($id);
-        return inertia('CommonPages/DeleteEvent/EHDeleteEvent', ['event' => $event]);
-    }
+    EventDeletionRequest::create([
+        'event_id' => $request->event_id,
+        'event_host_id' => auth()->id(),
+        'reason' => $request->reason,
+        'status' => 'pending'
+    ]);
+
+    return response()->json(['message' => 'Delete request submitted successfully.'], 200);
+}
 }

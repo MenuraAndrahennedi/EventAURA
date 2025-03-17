@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@inertiajs/react';
 import './DeleteEvent.scss';
 import UserHeader from './../../../Components/Header/UserHeader';
 import AdminFooter from './../../../Components/Footer/AdminFooter';

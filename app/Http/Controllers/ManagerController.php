@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Event;
+use App\Models\Ticket;
+use App\Models\WebSiteReview;
+use App\Models\EventDeletionRequest;
+
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
@@ -86,6 +92,13 @@ class ManagerController extends Controller
         }]),
         'attendees_pdf_url' => route('api.events.attendees.pdf', $event)
     ]);
+    }
+
+    public function showDeleteRequests(){
+        $requests = EventDeletionRequest::with(['event', 'eventHost'])
+        ->get();
+        return inertia("Manager/PendingRequests/DeleteRequest", ['requests' => $requests]);
+
     }
 
     public function showManagerProfile(Request $request){
@@ -175,4 +188,53 @@ public function updateProfile(Request $request)
     // public function showReviewsPage(){
     //     return inertia("Manager/Reviews/Review");
     // }
+
+    public function getStats(){
+
+     // 1. Total Ticket Sales Per Event (Grouped by event)
+     $ticketSales = Event::withCount('tickets')->get()->map(function ($event) {
+        return [
+            'name' => $event->name, // Use 'name' instead of 'title'
+            'tickets_sold' => $event->tickets_count // Uses relation with Ticket model
+        ];
+    });
+
+     // 2. Monthly Ticket Sales Trend (Last 6 months)
+     $sixMonthsAgo = now()->subMonths(6)->format('Y-m');
+
+     $monthlySales = Ticket::select(
+        DB::raw("DATE_FORMAT(created_at, '%Y-%m') as month"),
+        DB::raw("COUNT(id) as total_tickets")
+    )
+        
+        ->where('created_at', '>=', $sixMonthsAgo) // Filter last 6 months
+        ->groupBy('month')
+        ->orderBy('month', 'ASC')
+        ->take(6)
+        ->get();
+
+          // 3. Total Revenue Overview (Pie Chart) - Revenue by Events
+          $revenueBreakdown = Ticket::join('events', 'tickets.event_id', '=', 'events.id')
+          ->select(
+              'events.name as event_name',
+              DB::raw("SUM(
+                  CASE 
+                      WHEN ticket_type = 'golden' THEN golden_ticket_price
+                      WHEN ticket_type = 'silver' THEN silver_ticket_price
+                      WHEN ticket_type = 'bronze' THEN bronze_ticket_price
+                      ELSE 0
+                  END
+              ) as total_revenue")
+          )
+          ->groupBy('events.id', 'events.name')
+          ->get();
+
+          return response()->json([
+            'ticketSales' => $ticketSales,
+            'monthlySales' => $monthlySales,
+            'revenueBreakdown' => $revenueBreakdown
+
+        ]);
+
+    }
 }
