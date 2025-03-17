@@ -1,0 +1,41 @@
+//Global Colours
+$primary-color: #48CAE4;
+$secondary-color: #9BEEFF;
+$text-color: #000;
+$text-white: #FFFFFF;
+
+.btn-primary {
+    background-color: black;
+    border: 1px solid black;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    border-radius: 20px;
+}
+
+
+.section-2 {
+    .card {
+        border-radius: 0px;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+
+        .card-body {
+            a.title {
+                font-size: 1.4 em;
+
+            }
+        }
+
+    }
+}
+
+
+.section-5 {
+    background: gray;
+    height: 500px;
+}

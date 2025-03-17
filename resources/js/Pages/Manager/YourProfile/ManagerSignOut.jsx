@@ -1,0 +1,67 @@
+import React from 'react';
+import { useForm } from "@inertiajs/react"; 
+import profilelogo from '../../../assets/Images/Profile-logo.png';
+import '../../../../css/profile.scss';
+import AdminFooter from '../../../Components/Footer/AdminFooter';
+import OtherSideBar from './ManagerSideBar';
+import UserHeader from '../../../Components/Header/UserHeader';
+
+const ManagerSignOut = ({user}) => {
+  const { post } = useForm(); 
+
+  const handleSignOut = () => {
+    post(route("logout")); // Calls the Laravel logout route
+  };
+
+  const handleKeepSignedIn = () => {
+    window.history.back(); // Goes back to the previous page
+  };
+
+  return (
+    <>
+    <header>
+      <UserHeader />
+    </header>
+
+    <main>
+      <div className="container my-5">
+            <div className="card shadow border-0">
+              <div className="card-body text-center">
+                  <h1><b>Hi {user.name}!</b></h1>
+                  <h4><b>Welcome to Your Profile</b></h4>
+                  <img src= {user.avatar || profilelogo} alt="Avatar"className="profile-avatar" />
+              </div>
+            </div>
+
+            <div className="row mt-4">
+              <div className="col-md-3">
+                <OtherSideBar />
+              </div>
+              <div className="col-md-9">
+                <div className="card shadow border-0">
+                  <div className="card-body profile-details">
+                      <h5 className="text-center"><b>Do you want to sign out?</b></h5>
+                      <p className="text-center">@{user.name}</p><br />
+                      <h5 className="text-center">Are you sure ?</h5><br />
+                    <div className=" text-end">
+                    <div className="text-center" style={{ display: "flex", justifyContent: "center", gap: "10px", marginTop: "20px" }}>
+                        <button onClick={handleSignOut} className="btn btn-primary " style={{ width: "150px", height: "45px" }}>Yes,Sign Out</button>
+                        <button onClick={handleKeepSignedIn}className="btn btn-secondary" style={{ width: "150px", height: "45px" }}>Keep,Signed in</button>
+                        </div>
+                      </div>
+                  </div>
+                  
+                </div>
+              </div>
+          </div>
+      </div>
+    </main>
+
+    <footer>
+      <AdminFooter />
+    </footer>
+  </>
+  )
+}
+
+export default ManagerSignOut

@@ -1,0 +1,28 @@
+// Variables
+$gold: #ffc107;
+$gray: #ccc;
+
+.star-rating {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    gap: 5px;
+    margin: 10px 0;
+
+    span {
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+
+        &.selected {
+            color: $gold;
+        }
+
+        &.unselected {
+            color: $gray;
+        }
+    }
+}
