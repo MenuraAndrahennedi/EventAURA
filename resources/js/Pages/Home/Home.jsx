@@ -121,7 +121,10 @@ export default function Home() {
                                     platform <br />
                                     by your side
                                 </p>
-                                <Link href={route("about")} className="btn btn-primary">
+                                <Link
+                                    href={route("about")}
+                                    className="btn btn-primary"
+                                >
                                     ABOUT US
                                 </Link>
                             </div>
@@ -156,7 +159,10 @@ export default function Home() {
                                     us to provide the unwavering support you
                                     need for <br />a successful event!
                                 </p>
-                                <Link  href={route("help")} className="btn btn-primary">
+                                <Link
+                                    href={route("help")}
+                                    className="btn btn-primary"
+                                >
                                     HELP CENTRE
                                 </Link>
                             </div>
@@ -240,4 +246,4 @@ export default function Home() {
             </footer>
         </>
     );
-
+}

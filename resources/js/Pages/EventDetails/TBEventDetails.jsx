@@ -4,14 +4,13 @@ import MainFooter from "../../Components/Footer/MainFooter";
 import SubFooter from "../../Components/Footer/SubFooter";
 import "../../../css/TBEventDetails.scss";
 import { Link } from "@inertiajs/react";
-import { Link } from "@inertiajs/react";
 import axios from "axios";
 
 import SearchBar from "../../Components/SearchBar";
 import BannerImage from "../../assets/Images/banner.png";
 import HostImage from "../../assets/Logos/HostLogo.png";
 
-const TBEventDetails = ({ event } ) => {
+const TBEventDetails = ({ event }) => {
     console.log("Event data:", event);
     // if (!event) {
     //     return <div>Loading...</div>;
@@ -22,19 +21,17 @@ const TBEventDetails = ({ event } ) => {
                 <TBHeader />
             </header>
 
-
             {/* Event Details Section */}
             <section className="event-details">
                 <div className="banner">
                     <h1 className="banner-title">
                         <b>{event.name}</b>
-
                     </h1>
                 </div>
 
                 <div className="event-info">
                     <div className="event-poster">
-                        <img src={event.image} alt={event.name}/>
+                        <img src={event.image} alt={event.name} />
                     </div>
 
                     <div className="event-description">
@@ -47,7 +44,8 @@ const TBEventDetails = ({ event } ) => {
                                 <strong>Venue:</strong> {event.venue}
                             </p>
                             <p>
-                                <strong>Organizer:</strong>{event.organizer}
+                                <strong>Organizer:</strong>
+                                {event.organizer}
                             </p>
                             <div className="button-row">
                                 <a
@@ -62,8 +60,8 @@ const TBEventDetails = ({ event } ) => {
                                 <a
                                     href={event.agenda_pdf}
                                     target="_blank" // Open in a new window
-                                rel="noopener noreferrer" // Ensure secure behavior
-                                className="button-link"
+                                    rel="noopener noreferrer" // Ensure secure behavior
+                                    className="button-link"
                                 >
                                     Agenda.pdf
                                 </a>{" "}
@@ -71,12 +69,13 @@ const TBEventDetails = ({ event } ) => {
                             </div>
                         </div>
                         <div className="event-buttons">
-                            <Link href={route('buytickets',{id:event.id})} className="buy-tickets">
+                            <Link
+                                href={route("buytickets", { id: event.id })}
+                                className="buy-tickets"
+                            >
                                 Buy Tickets
                             </Link>
-                            <Link href="#"
-                                className="return-policies"
-                            >
+                            <Link href="#" className="return-policies">
                                 Return Policies
                             </Link>
                         </div>
@@ -90,7 +89,7 @@ const TBEventDetails = ({ event } ) => {
                     <b>Artists</b>
                 </h2>
                 <div className="artist-list">
-                {event.artists.map((artist) => (
+                    {event.artists.map((artist) => (
                         <p key={artist.id}>
                             <span className="artist-name">{artist.name}</span>
                             <br />
@@ -98,27 +97,27 @@ const TBEventDetails = ({ event } ) => {
                         </p>
                     ))}
                 </div>
-                </section>
-                
-           
+            </section>
 
             {/* Video Section */}
             <section className="video-section">
-            {event.video ? (
-                    <video src={event.event_video} controls className="event-video">
+                {event.video ? (
+                    <video
+                        src={event.event_video}
+                        controls
+                        className="event-video"
+                    >
                         Your browser does not support the video tag.
                     </video>
                 ) : (
-            
                     <div className="video-placeholder">
                         <p>No video available for this event.</p>
                     </div>
                 )}
-                    {/* <p>VIDEO</p> */}
-                    {/* Placeholder text for now */}
-                    {/* <video src="path/to/event-video.mp4" controls /> */}
-                    {/* Uncomment and replace src  */}
-                
+                {/* <p>VIDEO</p> */}
+                {/* Placeholder text for now */}
+                {/* <video src="path/to/event-video.mp4" controls /> */}
+                {/* Uncomment and replace src  */}
             </section>
 
             {/* Contact Host Section */}
