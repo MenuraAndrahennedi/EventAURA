@@ -24,6 +24,19 @@ const BrowseEvent = () => {
                 console.error("There was an error fetching events", error);
             });
     }, []);
+
+    const handleBookNowClick = (eventId) => {
+        axios.post(`/event/click/${eventId}`)
+            .then(response => {
+                if (response.data.success) {
+                    console.log("Click recorded successfully");
+                }
+            })
+            .catch(error => {
+                console.error("Error recording click", error);
+            });
+    };
+
     return (
         <>
             <header>
@@ -55,7 +68,7 @@ const BrowseEvent = () => {
                                             </p>
                                             <p className="event-location">
                                                 {" "}
-                                                {event.location}{" "}
+                                                {event.venue}{" "}
                                             </p>
                                         </div>
                                         <div className="event-title">
@@ -72,8 +85,9 @@ const BrowseEvent = () => {
                                                 </span>
                                             </p>
                                             <Link
-                                                 href={`/event/${event.id}`}
+                                                 href={route('event.details',{id:event.id})}
                                                 className="btn btn-primary"
+                                                onClick={() => handleBookNowClick(event.id)}
                                             >
                                                 Book Now
                                             </Link>
@@ -83,143 +97,13 @@ const BrowseEvent = () => {
                             </div>
                         ))}
 
-                        {/*<div className = 'col-md-4'>
-              <div className = 'border-0 shadow card'>
-                <div className = 'card-img-top'>
-                    <img src = {Banner} alt="Banner1" className = 'w-100'/>
-                </div>
-                <div className = 'p-4 card-body'>
-                  <div className='event-details'>
-                     <p className='event-date-time' >20, October 2024 | 07:00 PM</p>
-                     <p className='event-location'>National Youth Council</p>
-                  </div>
-                <div className='event-title'>
-                    <h2><b>Sky Heroes</b></h2>
-                </div>
-                <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
-                    <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                    <Link to = '/eventDetails' className='btn btn-primary'>Book Now</Link>
-                </div>
-              </div>
-             </div>
-            </div>
-            <div className = 'col-md-4'>
-              <div className = 'border-0 shadow card'>
-                <div className = 'card-img-top'>
-                    <img src = {Banner} alt="Banner1" className = 'w-100'/>
-                </div>
-                <div className = 'p-4 card-body'>
-                    <div className='event-details'>
-                      <p className='event-date-time' > 20, October 2024 | 07:00 PM</p>
-                      <p className='event-location'>National Youth Council</p>
-                    </div>
-                    <div className='event-title'>
-                      <h2><b>Sky Heroes</b></h2>
-                    </div>
-                    <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
-                          <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                          <Link to = '/eventDetails' className='btn btn-primary'>Book Now</Link>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          2nd Row
-          <div className = 'pt-3 row'>
-            <div className = 'col-md-4'>
-              <div className = 'border-0 shadow card'>
-                <div className = 'card-img-top'>
-                    <img src = {Banner} alt="Banner1" className = 'w-100'/>
-                </div>
-                <div className = 'p-4 card-body'>
-                    <div className='event-details'>
-                        <p className='event-date-time' > 20, October 2024 | 07:00 PM</p>
-                        <p className='event-location'>National Youth Council</p>
-                    </div>
-                    <div className='event-title'>
-                        <h2><b>Sky Heroes</b></h2>
-                    </div>
-                    <div className = 'mt-3 event-footer d-flex justify-content-between align-items-center'>
-                          <p className='event-price'>2,000 LKR <span className="price-subtext"><br/>upwards</span></p>
-                          <Link to = '/eventDetails' className='btn btn-primary'>Book Now</Link>
-
-                    </div>
-
-                   
-                    <div className='pt-3 row'>
-                        <div className='col-md-4'>
-                            <div className='border-0 shadow card'>
-                                <div className='card-img-top'>
-                                    <img src={Banner} alt="Banner1" className='w-100' />
-                                </div>
-                                <div className='p-4 card-body'>
-                                    <div className='event-details'>
-                                        <p className='event-date-time' > 20, October 2024 | 07:00 PM</p>
-                                        <p className='event-location'>National Youth Council</p>
-                                    </div>
-                                    <div className='event-title'>
-                                        <h2><b>Sky Heroes</b></h2>
-                                    </div>
-                                    <div className='mt-3 event-footer d-flex justify-content-between align-items-center'>
-                                        <p className='event-price'>2,000 LKR <span className="price-subtext"><br />upwards</span></p>
-                                        <Link to='/TBEventDetails' className='btn btn-primary'>Book Now</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-4'>
-                            <div className='border-0 shadow card'>
-                                <div className='card-img-top'>
-                                    <img src={Banner} alt="Banner1" className='w-100' />
-                                </div>
-                                <div className='p-4 card-body'>
-                                    <div className='event-details'>
-                                        <p className='event-date-time' > 20, October 2024 | 07:00 PM</p>
-                                        <p className='event-location'>National Youth Council</p>
-                                    </div>
-                                    <div className='event-title'>
-                                        <h2><b>Sky Heroes</b></h2>
-                                    </div>
-                                    <div className='mt-3 event-footer d-flex justify-content-between align-items-center'>
-                                        <p className='event-price'>2,000 LKR <span className="price-subtext"><br />upwards</span></p>
-                                        <Link to='/TBEventDetails' className='btn btn-primary'>Book Now</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-4'>
-                            <div className='border-0 shadow card'>
-                                <div className='card-img-top'>
-                                    <img src={Banner} alt="Banner1" className='w-100' />
-                                </div>
-                                <div className='p-4 card-body'>
-                                    <div className='event-details'>
-                                        <p className='event-date-time' > 20, October 2024 | 07:00 PM</p>
-                                        <p className='event-location'>National Youth Council</p>
-                                    </div>
-                                    <div className='event-title'>
-                                        <h2><b>Sky Heroes</b></h2>
-                                    </div>
-                                    <div className='mt-3 event-footer d-flex justify-content-between align-items-center'>
-                                        <p className='event-price'>2,000 LKR <span className="price-subtext"><br />upwards</span></p>
-                                        <Link to='/TBEventDetails' className='btn btn-primary'>Book Now</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-              </div>
-*/}
                     </div>
                 </div>
             </section>
 
             <section className="section-5">
                 <div className="text-center">
-                    <Link to="/review" className="Reviews ">
+                    <Link href ="/reviews" className="Reviews ">
                         Leave Us a Review
                     </Link>
                     <img

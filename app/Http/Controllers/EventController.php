@@ -5,6 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Artist;
+use App\Models\Click;
+use App\Models\StripePayment;
+use PDF;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
+
+
+
 
 class EventController extends Controller
 {
@@ -13,12 +22,7 @@ class EventController extends Controller
      */
     public function index()
     {
-
-        $events = Event::all(); // Fetch all events from the database
-
-        return Inertia::render('Events', [
-            'events' => $events,
-        ]);
+        //
     }
 
     /**
@@ -34,15 +38,17 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+      
         $validated = $request->validate([
             'name' => 'required|string|max:225',
             'date' => 'required|date',
             'description' => 'required|string',
-            'location' => 'required|string',
+            'location' => 'required|url',
             'image' => 'required|image',
             'city' => 'required|string',
             'venue' => 'required|string',
-            'artists' => 'required|string',
+            'artists' => 'required|array',
+            'artists.*' => 'exists:artists,id',
             'agenda_pdf' => 'nullable|file|mimes:pdf',
             'event_video' => 'nullable|file|mimes:mp4,avi,mkv',
             'organizer' => 'required|string',
@@ -57,14 +63,27 @@ class EventController extends Controller
             'endTime' => 'required|date_format:H:i|after:startTime',
         ]);
 
+         // Handle file uploads
         $validated['image'] = $request->file('image')->store('images', 'public');
         $validated['agenda_pdf'] = $request->file('agenda_pdf')?->store('pdfs', 'public');
         $validated['event_video'] = $request->file('event_video')?->store('videos', 'public');
 
         $validated['event_host_id'] = auth()->id();
 
-        Event::create($validated);
 
+    // Set total ticket counts to the initial ticket counts
+    $validated['total_golden_ticket_count'] = $validated['golden_ticket_count'];
+    $validated['total_silver_ticket_count'] = $validated['silver_ticket_count'];
+    $validated['total_bronze_ticket_count'] = $validated['bronze_ticket_count'];
+
+       
+        // Create the event
+       $event = Event::create($validated);
+
+        // Attach artists
+        if (!empty($validated['artists'])) {
+            $event->artists()->sync($validated['artists']);
+        }
         return redirect()->route('eventhost.dashboard')->with('success', 'Event Created Successfully and is pending approval');
     }
 
@@ -77,44 +96,268 @@ class EventController extends Controller
                 return $event;
             });
         return response()->json($approvedEvents);
-    }
+    } 
 
     /**
      * Display the specified resource.
      */
-    public function show( $id)
+    public function show($id)
     {
+        $event = Event::with('artists')->findOrFail($id); // Fetch the event by ID
        
-        $event = Event::findOrFail($id);
-        $event->image = asset('storage/' . $event->image); // Ensure the image URL is accessible
-
-        return Inertia::render('EventDetails/TBEventDetails', [
-        'event' => $event,
-        ]);
+        return inertia('EventDetails/TBEventDetails', ['event' => $event]); // Pass data to Inertia 
     }
-        
-        public function buyTickets($id)
+
+    public function showBuyTickets($id)
     {
-        $event = Event::findOrFail($id);
-        $event->image = asset('storage/' . $event->image); // Ensure the image URL is accessible
-
-        return Inertia::render('BuyTickets/BuyTickets', [
-            'event' => $event,
-        ]);
+        $event = Event::with('artists')->findOrFail($id); // Fetch the event by ID
+       
+        return inertia('BuyTickets/BuyTickets', ['event' => $event]); // Pass data to Inertia 
     }
+
+    public function getPendingEvents()
+{
+    $pendingEvents = Event::where('event_status', 'pending')->get();
+    return inertia('Manager/PendingRequests/CreateRequest', ['events' => $pendingEvents]);
+}
+
+public function approveEvent($id)
+{
+    $event = Event::findOrFail($id);
+    $event->update(['event_status' => 'approved']);
+
+     // Add event to the clicks table with default clicks
+     \App\Models\Click::create([
+        'event_id' => $event->id,
+        'number_of_clicks' => 0, // Initially set to 0
+    ]);
+
+    return redirect()->route('manager.create.requests')->with('success', 'Event approved successfully.');
+}
+
+public function deleteEvent(Request $request, $id)
+{
+    $event = Event::findOrFail($id);
+    $event->update([
+    'event_status' => 'rejected',
+    'rejected_at' => now(),  // Store the rejection date
+    'rejection_reason' => $request->input('rejection_reason', 'No reason provided') // Store reason
+]);
+    return redirect()->route('manager.create.requests')->with('success', 'Event rejected.');
+}
+
+public function showTBCart($id)
+{
+    $event = Event::find($id);
+
+    if (!$event) {
+        return redirect()->route('browse')->with('error', 'Event not found.');
+    }
+
+    return Inertia::render('Cart/TBCart/TBCart', [
+        'event' => $event
+    ]);
+}
+
+public function getEvent(Event $event)
+{
+   // $event = Event::findOrFail($id);
+    $event->image = asset('storage/' . $event->image);
+    return response()->json($event);
+}
+
+public function getAttendees($eventId)
+{
+    $attendees = StripePayment::where('event_id', $eventId)
+        ->where('status', 'Completed')
+        ->with(['customer:id,name,email,telephone'])
+        ->get()
+        ->map(function ($payment) {
+            return $payment->customer_id ? [
+                'name' => $payment->customer->name,
+                'email' => $payment->customer->email,
+                'phone' => $payment->customer->telephone,
+                'amount' => number_format($payment->amount / 100, 2)
+            ] : [
+                'name' => $payment->guest_name,
+                'email' => $payment->guest_email,
+                'phone' => $payment->guest_phone,
+                'amount' => number_format($payment->amount / 100, 2)
+            ];
+        });
+
+    return response()->json([
+        'count' => $attendees->count(),
+        'attendees' => $attendees
+    ]);
+}
+
+public function generateAttendeesPdf($eventId)
+{
+    $attendees = StripePayment::where('event_id', $eventId)
+        ->where('status', 'Completed')
+        ->with(['customer:id,name,email,telephone'])
+        ->get()
+        ->map(function ($payment) {
+            return $payment->customer_id ? [
+                'name' => $payment->customer->name,
+                'email' => $payment->customer->email,
+                'phone' => $payment->customer->telephone,
+                'amount' => number_format($payment->amount)
+            ] : [
+                'name' => $payment->guest_name,
+                'email' => $payment->guest_email,
+                'phone' => $payment->guest_phone,
+                'amount' => number_format($payment->amount)
+            ];
+        });
+
+    $pdf = PDF::loadView('pdf.attendees', [
+        'attendees' => $attendees,
+        'event' => Event::findOrFail($eventId)
+    ]);
+
+    return $pdf->download("attendees-list-{$eventId}.pdf");
+}
+
+public function getEndedEvents()
+{
+//     $endedEvents = Event::where('date', '<', now()->toDateString())
+//                         ->where('event_status', 'completed')
+//                         ->orderBy('date', 'desc')
+//                         ->get();
+//     return inertia('Manager/History/EndedEventHistory', [
+//         'endedEvents' => $endedEvents
+//     ]);
+// }
+$today = Carbon::today(); // Get today's date
+
+$endedEvents = Event::whereDate('date', '<', $today)
+                    ->orWhere(function ($query) use ($today) {
+                        $query->whereDate('date', '=', $today)
+                              ->whereTime('endTime', '<', Carbon::now()->format('H:i:s'));
+                    })
+                    ->where('event_status', 'completed')
+                    ->orderBy('date', 'desc')
+                    ->get();
+
+if ($endedEvents->isEmpty()) {
+    return inertia('Manager/History/EndedEventHistory', ['endedEvents' => []]);
+}
+\Log::info("Ended Events Query: ", ['query' => $endedEvents->toArray()]);
+
+
+return inertia('Manager/History/EndedEventHistory', ['endedEvents' => $endedEvents]);
+}
+
+public function generateEndedEventReport($id)
+{
+    $event = Event::findOrFail($id);
+
+    $data = [
+        'event_name' => $event->name,
+        'event_date' => $event->date,
+        'start_time' => $event->startTime,
+        'end_time' => $event->endTime,
+        'venue' => $event->venue,
+        'city' => $event->city,
+        'organizer' => $event->organizer,
+        'description' => $event->description,
+        'bronze_ticket_count' => $event->bronze_ticket_count,
+        'silver_ticket_count' => $event->silver_ticket_count,
+        'golden_ticket_count' => $event->golden_ticket_count,
+        'total_bronze_ticket_count' => $event->total_bronze_ticket_count,
+        'total_silver_ticket_count' => $event->total_silver_ticket_count,
+        'total_golden_ticket_count' => $event->total_golden_ticket_count,
+        'bronze_ticket_price' => $event->bronze_ticket_price,
+        'silver_ticket_price' => $event->silver_ticket_price,
+        'golden_ticket_price' => $event->golden_ticket_price,
+        'total_revenue' => ((($event->total_bronze_ticket_count)-($event->bronze_ticket_count) )* ($event->bronze_ticket_price)) +
+                           ((($event->total_silver_ticket_count)- ($event->silver_ticket_count))* ($event->silver_ticket_price)) +
+                           ((($event->total_golden_ticket_count)-($event->golden_ticket_count)) * ($event->golden_ticket_price)),
+        'agenda_pdf' => $event->agenda_pdf,
+        'event_video' => $event->event_video,
+        'return_policies' => $event->return_policies,
+    ];
+
+    $pdf = Pdf::loadView('pdf.ended_event_report', $data);
+
+    return $pdf->download('Event_Report_'.$event->name.'.pdf');
+}
+
+public function getPendingPaymentEvents()
+{
+    return inertia('Manager/History/PendingPaymentsHistory');
+}
+
+public function getRejectedEvents()
+{
+    
+        $rejectedEvents = Event::where('event_status', 'rejected')
+            ->get()
+            ->map(function ($event) {
+                $event->image = asset('storage/' . $event->image);
+                return $event;
+            });
+        // return response()->json($approvedEvents);
+        if($rejectedEvents->isEmpty()){
+            return inertia('Manager/History/RejectedEventHistory',['rejectedEvents'=>[]]); 
+        }
+    
+    return inertia('Manager/History/RejectedEventHistory',['rejectedEvents'=>$rejectedEvents]);
+}
+
+public function generateRejectedEventReport($id)
+{
+    $event = Event::findOrFail($id);
+
+    $data = [
+        'event_name' => $event->name,
+        'event_date' => $event->date,
+        'start_time' => $event->startTime,
+        'end_time' => $event->endTime,
+        'venue' => $event->venue,
+        'city' => $event->city,
+        'organizer' => $event->organizer,
+        'description' => $event->description,
+        // 'bronze_ticket_count' => $event->bronze_ticket_count,
+        // 'silver_ticket_count' => $event->silver_ticket_count,
+        // 'golden_ticket_count' => $event->golden_ticket_count,
+        'total_bronze_ticket_count' => $event->total_bronze_ticket_count,
+        'total_silver_ticket_count' => $event->total_silver_ticket_count,
+        'total_golden_ticket_count' => $event->total_golden_ticket_count,
+        'bronze_ticket_price' => $event->bronze_ticket_price,
+        'silver_ticket_price' => $event->silver_ticket_price,
+        'golden_ticket_price' => $event->golden_ticket_price,
+        'rejected_at' => $event->rejected_at,
+        'rejection_reason' => $event->rejection_reason,
+        // 'total_revenue' => ((($event->total_bronze_ticket_count)-($event->bronze_ticket_count) )* ($event->bronze_ticket_price)) +
+        //                    ((($event->total_silver_ticket_count)- ($event->silver_ticket_count))* ($event->silver_ticket_price)) +
+        //                    ((($event->total_golden_ticket_count)-($event->golden_ticket_count)) * ($event->golden_ticket_price)),
+        'agenda_pdf' => $event->agenda_pdf,
+        'event_video' => $event->event_video,
+        'return_policies' => $event->return_policies,
+    ];
+
+    $pdf = Pdf::loadView('pdf.rejected_event_report', $data);
+
+    return $pdf->download('Rejected_Event_Report_'.$event->name.'.pdf');
+}
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return inertia('EventHost/UpdateEvent', ['event' => $event]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -122,8 +365,17 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $event->delete();
+        return Redirect::route('eventhost.home')->with('success', 'Event deleted successfully!');
+        
+    }
+
+    public function delete(string $id)
+    {
+        $event = Event::findOrFail($id);
+        return inertia('CommonPages/DeleteEvent/EHDeleteEvent', ['event' => $event]);
     }
 }

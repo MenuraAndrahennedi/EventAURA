@@ -19,6 +19,9 @@
         @viteReactRefresh
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
         @inertiaHead
+
+        <!-- <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script> -->
+
     </head>
     <body class="font-sans antialiased">
         @inertia

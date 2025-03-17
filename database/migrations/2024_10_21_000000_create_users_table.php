@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('user_status', ['active', 'inactive', 'blocked', 'deleted'])->default('active');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('telephone');
-            $table->string('password');
+            $table->string('telephone')->nullable();
+            $table->string('password')->nullable();
+            $table->string('provider')->nullable(); // Social provider (e.g., Google, Facebook, Apple)
+            $table->string('provider_id')->nullable();
+            $table->string('avatar')->nullable(); // Profile picture
             $table->rememberToken();
             $table->foreignId('role_id')->constrained('roles')->onDelete('cascade'); // Explicitly set foreign key
             $table->timestamps();

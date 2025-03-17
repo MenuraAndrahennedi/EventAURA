@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Facades\Log;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -54,7 +55,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         if($request->user()->role_id=== 2){
-            return redirect('manager/dashboard');
+            return redirect('/manager');
         }
 
         if($request->user()->role_id=== 3){

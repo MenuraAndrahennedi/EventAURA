@@ -60,9 +60,9 @@ const EHLogin = () => {
                     </div>
 
                     <div className="social-login d-flex justify-content-around">
-                      <button className="btn btn-outline-secondary">Google</button>
-                      <button className="btn btn-outline-secondary">Facebook</button>
-                      <button className="btn btn-outline-secondary">Apple</button>
+                      <a href="/login/google" className="btn btn-outline-secondary">Google</a>
+                      <a href="/login/facebook" className="btn btn-outline-secondary">Facebook</a>
+                      <a href="/login/apple" className="btn btn-outline-secondary">Apple</a>
                     </div>
 
                     <div className="text-center mt-4">

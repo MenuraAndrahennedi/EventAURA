@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('role_module', function (Blueprint $table) {
-            $table->unsignedBigInteger('role_id');
-            $table->unsignedBigInteger('module_id');
-            $table->foreign('role_id')->references('role_id')->on('roles')->onDelete('cascade');
-            $table->foreign('module_id')->references('module_id')->on('modules')->onDelete('cascade');
+        Schema::create('role_modules', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }

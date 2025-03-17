@@ -47,15 +47,16 @@ const TBLogin = () => {
               <div className="divider"><span>or login with</span></div>
               
               <div className="social-login">
-                <Link to="https://www.google.com" className="btn-google">
+             
+                <a href="/login/google" className="btn-google">
                   Google
-                </Link>
-                <Link to="https://www.facebook.com" className="btn-facebook">
+                </a>
+                <a href="/login/facebook" className="btn-facebook">
                   Facebook
-                </Link>
-                <Link to="https://www.apple.com" className="btn-apple">
+                </a>
+                <a href="/login/apple" className="btn-apple">
                   Apple
-                </Link>
+                </a>
               </div>
               <div className="sign-up">
                 <small>Don’t have an account? <Link href={route('tb.register')}>Create an account</Link></small>
