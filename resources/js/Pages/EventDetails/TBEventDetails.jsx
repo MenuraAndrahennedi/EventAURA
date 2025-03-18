@@ -4,6 +4,7 @@ import MainFooter from "../../Components/Footer/MainFooter";
 import SubFooter from "../../Components/Footer/SubFooter";
 import "../../../css/TBEventDetails.scss";
 import { Link } from "@inertiajs/react";
+//import { Link } from "@inertiajs/react";
 import axios from "axios";
 
 import SearchBar from "../../Components/SearchBar";

@@ -1,8 +1,8 @@
 import React from 'react'
 {/**used TBCart.scss -same className */}
-import { Link } from 'react-router-dom';
-import TBHeader from './../../Components/Header/TBHeader';
-import SubFooter from './../../Components/Footer/SubFooter';
+import { Link } from '@inertiajs/react';
+import TBHeader from '../../../Components/Header/TBHeader';
+import SubFooter from '../../../Components/Footer/SubFooter';
 
 const EHCart = () => {
   return (

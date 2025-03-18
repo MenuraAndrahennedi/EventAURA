@@ -17,11 +17,16 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\WebSiteReviewController;
+use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\NewMemberController;
+use App\Http\Controllers\DeleteRequestController;
+
 
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -72,7 +77,7 @@ Route::get('/dashboard', function () {
 // Manager
 Route::get('/manager', function () {
     return Inertia::render('Manager/ManagerDashboard');
-})->name('manager')->middleware(['auth', 'manager']);
+})->name('manager.dashboard')->middleware(['auth', 'manager']);
 
 // Route::get('/managerCreateRequest', function () {
 //     return Inertia::render('Manager/PendingRequests/CreateRequest');
@@ -82,9 +87,10 @@ Route::get('/managerUpdateRequest', function () {
     return Inertia::render('Manager/PendingRequests/UpdateRequest');
 })->name('managerUpdateRequest');
 
-Route::get('/managerDeleteRequest', function () {
-    return Inertia::render('Manager/PendingRequests/DeleteRequest');
-})->name('managerDeleteRequest');
+Route::get('/managerDeleteRequest',[ManagerController::class,'showDeleteRequests'])->name('managerDeleteRequest');
+Route::post('/delete-requests/update', [DeleteRequestController::class, 'update'])->name('delete-request.update');
+Route::get('/delete-request/report/{id}', [DeleteRequestController::class, 'generateReport'])->name('delete-request.report');
+
 
 //Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 
@@ -106,15 +112,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('programmer/dashboard', function () {
-    return Inertia::render('Programmer/ProgrammerDashboard');
-})->name('programmer.dashboard');
+// Route::get('programmer/dashboard', function () {
+//     return Inertia::render('Programmer/ProgrammerDashboard');
+// })->name('programmer.dashboard');
 
 Route::get('programmer/dashboard', [ProgrammerController::class, 'index'])->name('programmer.dashboard')->middleware(['auth', 'programmer']);
 //Route::get('manager/dashboard', [ManagerController::class, 'index'])->name('manager.dashboard')->middleware(['auth', 'manager']);
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'admin']);
 Route::get('eventhost/dashboard', [EventHostController::class, 'index'])->name('eventhost.dashboard')->middleware(['auth', 'eventhost']);
 //Route::get('customer/dashboard', [CustomerController::class, 'index'])->name('customer.dashboard')->middleware(['auth', 'customer']);
+
+Route::get('eventhost/ongoing', [EventHostController::class, 'ehOngoing'])->name('eventhost.ongoingEvents')->middleware(['auth', 'eventhost']);
+Route::get('eventhost/ongoing-history', [EventHostController::class, 'ehOngoingHistory'])->name('eventhost.ongoingEvents.history')->middleware(['auth', 'eventhost']);
+
+
+Route::get('eventhost/view-event/{event}', [EventHostController::class, 'showEventHostViewEvent'])->name('eventhost.view-event')->middleware(['auth', 'eventhost']);
+
+Route::get('eventhost/profile', [EventHostController::class, 'profile'])->name('eventhost.profiles')->middleware(['auth', 'eventhost']);
 
 
 
@@ -125,10 +139,27 @@ Route::get('/api/events', [EventController::class, 'getApprovedEvents']);
 
 Route::get('/api/get-event/{event}', [EventController::class, 'getEvent']);
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/event-host/profile', [EventHostController::class, 'profile'])->name('eventhost.profile');
+    Route::get('/event-host/history', [EventHostController::class, 'ehOngoing'])->name('eventhost.history');
+    Route::get('/event-host/changePW', [EventHostController::class, 'changePW'])->name('eventhost.changePW');
+    Route::get('/event-host/signOut', [EventHostController::class, 'signOut'])->name('eventhost.signOut');
+    
+});
+
+
+Route::get('/EHOngoing', [EventHostController::class, 'ehOngoing'])->name('eh.ongoing');
+Route::get('/EHPendingPayments', [EventHostController::class, 'ehPendingPayments'])->name('eh.pendingPayments');
+Route::get('/EHPendingRequests', [EventHostController::class, 'ehPendingRequests'])->name('eh.pendingRequests');
+Route::get('/EHRejected', [EventHostController::class, 'ehRejected'])->name('eh.rejected');
+Route::get('/EHHistory', [EventHostController::class, 'ehHistory'])->name('eh.history');
+
 // Get attendee count
 Route::get('/api/event/{id}/attendees', [EventController::class, 'getAttendees']);
 // Generate PDF
 Route::get('/api/event/{id}/attendees/pdf', [EventController::class, 'generateAttendeesPdf'])->name('api.events.attendees.pdf');
+
+Route::get('/events/{id}/update', [EventController::class, 'edit'])->name('update.event');
 
 Route::get('/hosteventcart', function () {
     return Inertia::render('Cart/EHCart/EHCart');
@@ -223,7 +254,7 @@ Route::post('/manager/profile/update', [ManagerController::class, 'updateProfile
 
 Route::post('/manager/change-password', [ManagerController::class, 'updateManagerPassword'])->name('manager.updatePassword');
 
-Route::get('/manager/inquiries', [ManagerController::class, 'showInquiriesPage'])->name('manager.inquiries');
+//Route::get('/manager/inquiries', [ManagerController::class, 'showInquiriesPage'])->name('manager.inquiries');
 
 //Route::get('/manager/reviews', [ManagerController::class, 'showReviewsPage'])->name('manager.reviews');
 
@@ -236,6 +267,29 @@ Route::post('/reviews/{id}/approve', [WebSiteReviewController::class, 'approve']
 Route::post('/reviews/{id}/reply', [WebSiteReviewController::class, 'reply'])->middleware('auth');
 
 Route::delete('/reviews/{id}', [WebSiteReviewController::class, 'destroy'])->middleware('auth');
+
+
+
+
+    Route::get('/inquiries', [InquiryController::class, 'index'])->name('inquiries.index');
+    Route::post('/inquiries/{id}/reply', [InquiryController::class, 'reply'])->name('inquiries.reply');
+    Route::delete('/inquiries/{id}', [InquiryController::class, 'destroy'])->name('inquiries.destroy');
+
+// Public inquiry submission route
+Route::post('/inquiries', [InquiryController::class, 'store'])->name('inquiries.store');
+
+Route::get('/connect-with-us', function () {
+    return Inertia::render('ConnectWithUs/ConnectWithUs');
+});
+
+Route::get('/manager/stats', [ManagerController::class, 'getStats']);
+
+Route::get('/add-new-member', [NewMemberController::class, 'index'])->name('add.new.memeber');
+
+Route::post('/register-new-member', [NewMemberController::class, 'store']);
+
+Route::post('/event/delete-request', [EventController::class, 'storeDeleteRequest']);
+
 
 
 

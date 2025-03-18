@@ -43,15 +43,45 @@ class EventHostController extends Controller
                                 ->toArray(); 
         }
 
-        return Inertia::render('UserProfile/EH-Profiles/EH-EventHistory/EHOngoingHistory', [
+        return Inertia::render('EventHost/OngoingEvents/OngoingEvents', [
             'user' => $user,
             'ongoingevents' => $ongoingevents,
         ]);
     }
 
-    public function ehPendingPayments()
+    public function ehOngoingHistory()
     {
         $user = Auth::user();
+
+        if ($user->role_id == 4) {
+            $ongoingevents = Event::where('event_host_id', $user->id)
+                                ->where('event_status', 'approved')  
+                                ->get()
+                                ->toArray(); 
+        }
+
+        return Inertia::render('EventHost/EventHistory/EHOngoingHistory', [
+            'user' => $user,
+            'ongoingevents' => $ongoingevents,
+        ]);
+    }
+
+
+    public function showEventHostViewEvent(Event $event){
+        // Authorization check (if using policies)
+    //$this->authorize('view', $event);
+
+    return inertia('EventHost/OngoingEvents/EHViewEvent', [
+        'event' => $event->loadCount(['stripePayments as attendees_count' => function($query) {
+            $query->where('status', 'Completed');
+        }]),
+        'attendees_pdf_url' => route('api.events.attendees.pdf', $event)
+    ]);
+    }
+
+    public function ehPendingPayments()
+    {
+        $user = Auth::user(); 
 
         return Inertia::render('UserProfile/EH-Profiles/EH-EventHistory/EHPendingPaymentsHistory', [
             'user' => $user,
