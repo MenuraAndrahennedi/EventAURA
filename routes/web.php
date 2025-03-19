@@ -290,10 +290,31 @@ Route::post('/register-new-member', [NewMemberController::class, 'store']);
 
 Route::post('/event/delete-request', [EventController::class, 'storeDeleteRequest']);
 
+Route::get('other/profile', [AdminController::class, 'profile'])->name('admin.profile');
+Route::post('other/updateProfile', [AdminController::class, 'updateProfile'])->name('admin.updateProfile');
+Route::get('other/changePW', [AdminController::class, 'changePW'])->name('admin.changePW');
+Route::post('other/update-password', [AdminController::class, 'updatePassword'])->name('admin.updatePassword');
+Route::get('other/signOut', [AdminController::class, 'signOut'])->name('admin.signOut');
 
+Route::get('other/ongoing', [AdminController::class, 'ongoingEvents'])->name('admin.ongoingEvents');
+Route::get('other/userDetails', [AdminController::class, 'userDetails'])->name('admin.userDetails');
+Route::get('/admindashboard', [AdminController::class, 'adminDashboard'])->name('admindashboard');
+Route::get('/admindashboard', [AdminController::class, 'adminDashboard'])->name('admindashboard');
+Route::get('/admindashboard', [AdminController::class, 'adminDashboard'])->name('admindashboard');
 
+Route::get('/events/view/{id}', [AdminController::class, 'show'])->name('admin.viewEvent');
 
+Route::get('/addMember', [ProgrammerController::class, 'addMember'])->name('add.member');
 
+Route::get('/events/search', [EventController::class, 'search'])->name('events.search');
+ //Route::get('/events/details', [EventController::class, 'searchDetails'])->name('events.details');
+ Route::get('/events/results', [EventController::class, 'searchResults'])->name('events.results');
+
+ Route::get('/event-host/home', [EventHostController::class, 'index'])->name('eventhost.home');
+ Route::get('/api/events/ongoing', [EventController::class, 'ongoingEvents'])->name('event.ongoingEvents');
+ Route::get('/events/{id}', [EventController::class, 'show'])->name('view.event');
+ Route::get('/events/{id}/update', [EventController::class, 'edit'])->name('update.event');
+ Route::get('event/profiles', [EventController::class, 'profiles'])->name('event.profiles');
 
 
 
