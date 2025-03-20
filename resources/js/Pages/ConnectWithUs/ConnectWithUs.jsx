@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from '@inertiajs/react';
-import './ConnectWithUs.scss'; // Add a new CSS file for styling
+import '../../../css/ConnectWithUs.scss';
 import UserHeader from '../../Components/Header/UserHeader';
 import Footer from '../../Components/Footer/MainFooter';
 import FB from '../../../js/assets/Logos/fb black.png';
