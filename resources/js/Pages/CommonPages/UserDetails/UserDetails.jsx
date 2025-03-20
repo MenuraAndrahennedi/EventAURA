@@ -4,7 +4,7 @@ import UserHeader from '../../../Components/Header/UserHeader';
 import AdminFooter from '../../../Components/Footer/AdminFooter';
 
 
-import './UserDetails.scss';
+import '../../../../css/UserDetails.scss';
 import { Link } from '@inertiajs/react';
 
 
@@ -18,10 +18,10 @@ const UserDetails = () => {
           <UserHeader />
         </header>
 
-        <h1 className="text-center my-5">User Details</h1>
-       <div className="row pt-5 px-3 gx-5">  
-              <div className="col-md-4 mb-4 position-relative"> 
-                <div className="cardd shadow border-0">
+        <h1 className="my-5 text-center">User Details</h1>
+       <div className="px-3 pt-5 row gx-5">  
+              <div className="mb-4 col-md-4 position-relative"> 
+                <div className="border-0 shadow cardd">
                   <div className="cardd-img-top">
                   <img src={Cover03} alt="Banner3" className="w-100"/> 
                       <Link to="/" className="image-overlay">Ticket Buyers</Link>
@@ -29,8 +29,8 @@ const UserDetails = () => {
                 </div>
               </div>
 
-              <div className="col-md-4 mb-4 position-relative">
-                <div className="cardd shadow border-0">
+              <div className="mb-4 col-md-4 position-relative">
+                <div className="border-0 shadow cardd">
                   <div className="cardd-img-top">
                   <img src={Cover04} alt="Banner3" className="w-100"/>
                     <Link to="/" className="image-overlay">Event Hosts</Link>
