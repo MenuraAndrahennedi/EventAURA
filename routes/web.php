@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Auth;
 //     ]);
 // });
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return Inertia::render('Home/Home');
 })->name('home');
 
@@ -85,7 +85,18 @@ Route::get('/manager', function () {
 
 Route::get('/managerUpdateRequest', function () {
     return Inertia::render('Manager/PendingRequests/UpdateRequest');
-})->name('managerUpdateRequest');
+})->name('managerUpdateRequest');*/
+
+
+//AboutUs
+Route::get('/about', function () {return Inertia::render('AboutUs/AboutUS');})->name('about');
+
+
+
+
+
+
+
 
 Route::get('/managerDeleteRequest',[ManagerController::class,'showDeleteRequests'])->name('managerDeleteRequest');
 Route::post('/delete-requests/update', [DeleteRequestController::class, 'update'])->name('delete-request.update');
