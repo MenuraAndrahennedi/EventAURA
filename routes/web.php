@@ -41,9 +41,7 @@ Route::get('/', function () {
     return Inertia::render('Home/Home');
 })->name('home');
 
-Route::get('/about', function () {
-    return Inertia::render('AboutUs/AboutUS');
-})->name('about');
+
 
 Route::get('/contact', function () {
     return Inertia::render('ContactUs/ContactUs');
@@ -89,7 +87,7 @@ Route::get('/managerUpdateRequest', function () {
 
 
 //AboutUs
-//Route::get('/about', function () {return Inertia::render('AboutUs/AboutUS');})->name('about');
+Route::get('/about', function () {return Inertia::render('AboutUs/AboutUS');})->name('about');
 
 
 

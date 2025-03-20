@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import TBHeader from "./../../Components/Header/TBHeader";
-import MainFooter from "./../../Components/Footer/MainFooter";
 import SubFooter from "./../../Components/Footer/SubFooter";
 
 import "../../../css/BrowseEvent.scss";
@@ -103,9 +102,7 @@ const BrowseEvent = () => {
 
             <section className="section-5">
                 <div className="text-center">
-                    <Link href ="/reviews" className="Reviews ">
-                        Leave Us a Review
-                    </Link>
+                    <Link to ='/review' className='Reviews '>Leave Us a Review</Link >
                     <img
                         src={ReviewIcon}
                         alt="ReviewIcon"
