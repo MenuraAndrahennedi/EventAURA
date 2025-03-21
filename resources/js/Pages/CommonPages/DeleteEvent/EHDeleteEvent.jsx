@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useForm } from '@inertiajs/react';
-import './DeleteEvent.scss';
+import '../../../../css/DeleteEvent.scss';
 import SubFooter from './../../../Components/Footer/SubFooter';
 import EHHeader from './../../../Components/Header/EHHeader';
 

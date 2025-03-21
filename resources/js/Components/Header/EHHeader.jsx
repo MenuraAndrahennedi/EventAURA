@@ -8,13 +8,13 @@ import Logo from "../../assets/Images/Logo.png";
 const EHHeader = () => {
     return (
         <header>
-            <div className="container py-3">
+            {/*<div className="container py-3">*/}
                 <Navbar expand="lg" className="bg-dark navbar-dark">
                     <Navbar.Brand as={Link} to="/" className="logo">
                         <img src={Logo} alt="Logo" className="logo-img" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <div id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <Nav.Link as={Link} to="/" className="nav-link">
                                 Home
@@ -48,9 +48,9 @@ const EHHeader = () => {
                                 EH Account
                             </Nav.Link>
                         </Nav>
-                    </Navbar.Collapse>
+                    </div>
                 </Navbar>
-            </div>
+           {/* </div>*/}
         </header>
     );
 };
