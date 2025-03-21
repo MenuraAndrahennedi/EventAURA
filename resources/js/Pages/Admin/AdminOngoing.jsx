@@ -4,8 +4,8 @@ import { Link } from '@inertiajs/react';
 import axios from 'axios';
 import Banner from '../../assets/Images/banner.png';
 import SearchBar from '../../Components/SearchBar';
-import UserHeader from './../../Components/Header/UserHeader';
-import AdminFooter from './../../Components/Footer/AdminFooter';
+import UserHeader from '../../Components/Header/UserHeader';
+import AdminFooter from '../../Components/Footer/AdminFooter';
 
 const AdminOngoing = () => {
 
@@ -45,7 +45,7 @@ const AdminOngoing = () => {
                     <div className = 'card-body p-4'>
                     <div className='event-details'>
                         <p className='event-date-time' > {event.date} | {event.startTime}</p>
-                        <p className='event-location'>{event.location}</p>
+                        <p className='event-location'>{event.venue}</p>
                     </div>
                     <div className='event-title'>
                         <h2><b>{event.name}</b></h2>

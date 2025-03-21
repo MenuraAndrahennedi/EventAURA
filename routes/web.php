@@ -308,18 +308,25 @@ Route::get('/addMember', [ProgrammerController::class, 'addMember'])->name('add.
 
 Route::get('/events/search', [EventController::class, 'search'])->name('events.search');
  //Route::get('/events/details', [EventController::class, 'searchDetails'])->name('events.details');
- Route::get('/events/results', [EventController::class, 'searchResults'])->name('events.results');
+ Route::post('/events/results', [EventController::class, 'searchResults'])->name('events.results');
 
  Route::get('/event-host/home', [EventHostController::class, 'index'])->name('eventhost.home');
  Route::get('/api/events/ongoing', [EventController::class, 'ongoingEvents'])->name('event.ongoingEvents');
- Route::get('/events/{id}', [EventController::class, 'show'])->name('view.event');
+ Route::get('/events/{id}', [EventController::class, 'showEvent'])->name('view.event');
  Route::get('/events/{id}/update', [EventController::class, 'edit'])->name('update.event');
  Route::get('event/profiles', [EventController::class, 'profiles'])->name('event.profiles');
 
+ Route::get('/events/{id}/delete', [EventController::class, 'delete'])->name('delete.event');
 
+ Route::get('other/tbUserDetails', [AdminController::class, 'tbUserDetails'])->name('tb.userDetails');
 
+ Route::get('other/ehUserDetails', [AdminController::class, 'ehUserDetails'])->name('eh.userDetails');
 
+ Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
 
+ Route::get('/users/{id}/download', [AdminController::class, 'ticketBuyerHistory'])->name('users.download');
+
+ Route::get('/users/{id}/download1', [AdminController::class, 'eventHostHistory'])->name('users.download1');
 
 
 
