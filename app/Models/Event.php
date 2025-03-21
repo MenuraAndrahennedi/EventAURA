@@ -33,4 +33,9 @@ public function stripePayments()
 {
     return $this->hasMany(StripePayment::class);
 }
+
+public function eventHost()
+    {
+        return $this->belongsTo(User::class, 'event_host_id');
+    }
 }

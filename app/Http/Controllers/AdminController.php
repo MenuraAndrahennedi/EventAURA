@@ -8,6 +8,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
+use PDF;
+use App\Models\Ticket;
 
 class AdminController extends Controller
 {
@@ -16,12 +20,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return inertia('CommonPages/UserHome/UserHome');
+        return inertia('Admin/AdminDashboard');
     }
 
     public function dashboard()
     {
-        return inertia('CommonPages/UserHome/UserHome');
+        return inertia('Admin/AdminDashboard');
     }
 
     /**
@@ -30,15 +34,72 @@ class AdminController extends Controller
 
     public function ongoingEvents()
     {
-        return inertia('CommonPages/AdminOngoing');
+        return inertia('Admin/AdminOngoing');
     }
 
 
     public function userDetails()
     {
-        return inertia('CommonPages/UserDetails/UserDetails');
+        return inertia('Admin/UserDetails/UserDetails');
+    }
+
+    public function tbUserDetails()
+    { 
+        $ticketBuyers = User::where('role_id', 5)
+                        ->get()
+                        ->map(function ($user) {
+                            
+                            $user->full_name = $user->name; 
+                            return $user;
+                        })
+                        ->toArray(); 
+
+        return Inertia::render('Admin/UserDetails/TBUserDetails', [
+            'ticketBuyers' => $ticketBuyers
+        ]);
+    }
+
+    public function ehUserDetails()
+    {
+        $eventHosts = User::where('role_id', 4)
+                        ->get()
+                        ->map(function ($user) {
+                            
+                            $user->full_name = $user->name; 
+                            return $user;
+                        })
+                        ->toArray(); 
+
+        return Inertia::render('Admin/UserDetails/EHUserDetails', [
+            'eventHosts' => $eventHosts
+        ]);
     }
      
+    public function ticketBuyerHistory($id)
+    {
+        $user = User::findOrFail($id);
+    
+    // Retrieve all tickets bought by the user
+    $tickets = Ticket::where('customer_id', $id)->get();
+
+    $pdf = PDF::loadView('pdf.ticket_buyer_history', compact('user', 'tickets'));
+
+    return $pdf->download('ticket_buyer_' . $user->id . '.pdf');
+    }
+
+    public function eventHostHistory($id)
+    {
+        $user = User::findOrFail($id);
+    
+    // Retrieve all events hosted by this user
+    $events = Event::where('event_host_id', $id)->get();
+
+    $pdf = PDF::loadView('pdf.event_host_history', compact('user', 'events'));
+
+    return $pdf->download('event_host_' . $user->id . '.pdf');
+    }
+
+    
     public function create()
     {
         //
@@ -71,12 +132,22 @@ class AdminController extends Controller
             'fullName' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . auth()->id(),
             'telephone' => 'nullable|string|max:15',
+            'avatar' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
         $admin = auth()->user();
         $admin->name = $request->fullName;
         $admin->email = $request->email;
         $admin->telephone = $request->telephone;
+
+        if ($request->hasFile('avatar')) {
+            if ($admin->avatar) {
+                Storage::disk('public')->delete($admin->avatar);
+            }
+    
+            $path = $request->file('avatar')->store('avatars', 'public');
+            $admin->avatar = $path;
+        }
         $admin->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully.');
@@ -128,7 +199,7 @@ class AdminController extends Controller
     public function show(string $id)
     {
         $event = Event::findOrFail($id);
-        return inertia('CommonPages/ViewEvent/ViewEvent', ['event' => $event]);
+        return inertia('Admin/ViewEvent', ['event' => $event]);
     }
 
     /**
@@ -152,6 +223,9 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return Redirect::back()->with('success', 'User deleted successfully.');
     }
 }

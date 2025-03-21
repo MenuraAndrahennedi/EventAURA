@@ -61,7 +61,12 @@ const SearchBar = () => {
         .get('/events/search', { params: { search, filter } })
         .then((response) => {
             if (response.data.length > 0) {
-                router.get('/events/results', { search, filter });
+                router.visit('/events/results', {
+                    method: 'post',
+                    data: { search, filter },
+                    replace: true, 
+                    preserveState: true, 
+                });
             } else {
                 alert('No events found matching your search criteria.');
             }

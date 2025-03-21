@@ -235,6 +235,12 @@ class EventController extends Controller
     return redirect()->back()->with('success', 'Event updated successfully.');
     }
 
+    public function showEvent(string $id)
+    {
+        $event = Event::findOrFail($id);
+        return inertia('Admin/EHViewEvent', ['event' => $event]);
+    }
+
     /**
      * Display the specified resource.
      */
@@ -243,6 +249,12 @@ class EventController extends Controller
         $event = Event::with('artists')->findOrFail($id); // Fetch the event by ID
        
         return inertia('EventDetails/TBEventDetails', ['event' => $event]); // Pass data to Inertia 
+    }
+
+    public function delete(string $id)
+    {
+        $event = Event::findOrFail($id);
+        return inertia('Admin/DeleteEvent', ['event' => $event]);
     }
 
     public function showBuyTickets($id)
