@@ -8,7 +8,7 @@ import Logo from "../../assets/Images/Logo.png";
 const EHHeader = () => {
     return (
         <header>
-            <div className="container py-3">
+            {/*<div className="container py-3">*/}
                 <Navbar expand="lg" className="bg-dark navbar-dark">
                     <Navbar.Brand as={Link} to="/" className="logo">
                         <img src={Logo} alt="Logo" className="logo-img" />
@@ -50,7 +50,7 @@ const EHHeader = () => {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-            </div>
+           {/* </div>*/}
         </header>
     );
 };

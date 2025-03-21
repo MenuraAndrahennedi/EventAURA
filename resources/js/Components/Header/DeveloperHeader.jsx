@@ -8,11 +8,11 @@ import Logo from '../../assets/Logo.png';
 const DeveloperHeader = () => {
   return (
     <header>
-        <div className='container py-3'>
+        {/*<div className='container py-3'>*/}
             <Navbar expand="lg" className="bg-dark navbar-dark">
                 <Navbar.Brand as={Link} to="/" className = 'logo'><img src={Logo} alt="Logo" className="logo-img" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
+                <div id="basic-navbar-nav">
                 <Nav className="ms-auto">
                     <Nav.Link as={Link} to="/DeveloperDashboard" className = 'nav-link'>Dashboard</Nav.Link>
                     <Nav.Link as={Link} to="/ongoing"className = 'nav-link'>Ongoing events</Nav.Link>
@@ -20,9 +20,9 @@ const DeveloperHeader = () => {
                     <Nav.Link as={Link} to="/inquiries" className = 'nav-link'>Inquiries</Nav.Link>
                     <Nav.Link as={Link} to="/developer" className = 'nav-link'>Developer Account</Nav.Link>
                 </Nav>
-                </Navbar.Collapse>
+                </div>
             </Navbar>
-        </div>
+        {/*</div>*/}
     </header>
   )
 }
