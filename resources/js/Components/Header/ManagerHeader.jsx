@@ -16,7 +16,7 @@ const ManagerHeader = () => {
                         <img src={Logo} alt="Logo" className="logo-img" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <div id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <Nav.Link
                                 as={Link}
@@ -54,7 +54,7 @@ const ManagerHeader = () => {
                                 Manager Account
                             </Nav.Link>
                         </Nav>
-                    </Navbar.Collapse>
+                    </div>
                 </Navbar>
             {/*</div>*/}
         </header>

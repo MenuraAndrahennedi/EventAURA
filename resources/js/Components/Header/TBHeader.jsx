@@ -15,7 +15,7 @@ const TBHeader = () => {
                         <img src={Logo} alt="Logo" className="logo-img" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <div id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <Nav.Link as={Link} to="/" className="nav-link">
                                 Home
@@ -49,7 +49,7 @@ const TBHeader = () => {
                                 TB Account
                             </Nav.Link>
                         </Nav>
-                    </Navbar.Collapse>
+                    </div>
                 </Navbar>
             
         </header>
