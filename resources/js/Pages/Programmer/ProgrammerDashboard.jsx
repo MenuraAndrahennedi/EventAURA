@@ -3,7 +3,7 @@ import React from 'react'
 import UserHeader from '../../Components/Header/UserHeader';
 import AdminFooter from '../../Components/Footer/AdminFooter';
 
-import '../../Pages/CommonPages/UserHome/UserHome.scss';
+import '../../../css/UserHome.scss';
 import { Link } from '@inertiajs/react';
 
 import Cover01 from '../../assets/Images/Tile 1.jpg';
@@ -38,7 +38,7 @@ const UserHome = () => {
                 <div className="cards shadow border-0">
                   <div className="cards-img-top">
                     <img src={Cover02} alt="Banner2" className="w-100"/>
-                    <Link to="/" className="image-overlay">Pending Requests</Link>
+                    <Link href="/manager/create-requests" className="image-overlay">Pending Requests</Link>
                   </div>
               </div>
               </div>
@@ -47,7 +47,7 @@ const UserHome = () => {
                 <div className="cards shadow border-0">
                   <div className="cards-img-top">
                       <img src={Cover03} alt="Banner3" className="w-100"/>
-                      <Link to="/" className="image-overlay">History</Link>
+                      <Link href="/manager/endedEventHistory" className="image-overlay">History</Link>
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@ const UserHome = () => {
                     <div className="cards shadow border-0">
                         <div className="cards-img-top">
                         <img src={Cover05} alt="Banner5" className="w-100"/>
-                        <Link to="/" className="image-overlay">Reviews</Link>
+                        <Link href="/manager/reviews" className="image-overlay">Reviews</Link>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ const UserHome = () => {
                     <div className="cards shadow border-0">
                         <div className="cards-img-top">
                             <img src={Cover06} alt="Banner6" className="w-100"/>
-                            <Link to="/" className="image-overlay">Inquiries</Link>
+                            <Link href="/inquiries" className="image-overlay">Inquiries</Link>
                         </div>
                     </div>
                 </div>

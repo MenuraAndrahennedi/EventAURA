@@ -3,7 +3,7 @@ import React from 'react'
 import UserHeader from '../../Components/Header/UserHeader';
 import AdminFooter from '../../Components/Footer/AdminFooter';
 
-import '../CommonPages/UserHome/UserHome.scss';
+import '../../../css/UserHome.scss';
 import { Link } from '@inertiajs/react';
 
 import Cover01 from '../../assets/Images/Tile 1.jpg';
