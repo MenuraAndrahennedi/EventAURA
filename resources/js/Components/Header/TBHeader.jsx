@@ -43,7 +43,7 @@ const TBHeader = () => {
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/TBaccount"
+                                href={route('tb-profile')}
                                 className="nav-link"
                             >
                                 TB Account
