@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventHostController;
 use App\Http\Controllers\ManagerController;
@@ -411,6 +412,43 @@ Route::get('/add-new-member', [NewMemberController::class, 'index'])->name('add.
 Route::post('/register-new-member', [NewMemberController::class, 'store']);
 
 Route::post('/event/delete-request', [EventController::class, 'storeDeleteRequest']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/tb-profile', function () {
+        return Inertia::render('UserProfile/TB-Profiles/TBProfile', [ 
+            'user' => auth()->user()
+        ]);
+    })->name('tb-profile');
+
+    Route::get('/TBPurchaseHistory', function () {
+        return Inertia::render('UserProfile/TB-Profiles/TBPurchaseHistory', [
+            'user' => auth()->user()
+        ]);  
+    
+    })->name('TBPurchaseHistory');
+
+    Route::get('/TBSignOut', function () {
+        return Inertia::render('UserProfile/TB-Profiles/TBSignOut', [
+            'user' => auth()->user()
+        ]);  
+    
+    })->name('TBSignOut');
+
+    Route::get('/TBChangePW', function () {
+        return Inertia::render('UserProfile/TB-Profiles/TBChangePW', [
+            'user' => auth()->user(),
+        ]);
+    })->name('user.change-password');
+
+
+});
+
+Route::post('/SignOut', [AuthenticatedSessionController::class, 'destroy'])->name('SignOut');
+Route::post('/profile/update', [UserController::class, 'update'])->name('profile.update');
+Route::get('/tb/purchase-history', [UserController::class, 'purchaseHistory'])->name('purchase.history');
+Route::get('/change-password', [UserController::class, 'showChangePasswordForm'])->name('user.change-password.form');
+Route::post('/change-password', [UserController::class, 'updatePassword'])->name('user.change-password');
+
 
 Route::get('other/profile', [AdminController::class, 'profile'])->name('admin.profile');
 Route::post('other/updateProfile', [AdminController::class, 'updateProfile'])->name('admin.updateProfile');
