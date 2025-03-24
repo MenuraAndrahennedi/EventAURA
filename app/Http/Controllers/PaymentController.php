@@ -29,7 +29,7 @@ class PaymentController extends Controller
 
         // Store payment details
         $payment = Payment::create([
-            'customer_id' => $customerId,
+            'customer_id' => $customerId, 
             'guest_id' => $guestId,
             'payment_id' => $request->payment_id, // PayHere payment ID
             'amount' => $request->amount,
