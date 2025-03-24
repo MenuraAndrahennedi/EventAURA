@@ -458,9 +458,6 @@ Route::get('other/signOut', [AdminController::class, 'signOut'])->name('admin.si
 
 Route::get('other/ongoing', [AdminController::class, 'ongoingEvents'])->name('admin.ongoingEvents');
 Route::get('other/userDetails', [AdminController::class, 'userDetails'])->name('admin.userDetails');
-Route::get('/admindashboard', [AdminController::class, 'adminDashboard'])->name('admindashboard');
-Route::get('/admindashboard', [AdminController::class, 'adminDashboard'])->name('admindashboard');
-Route::get('/admindashboard', [AdminController::class, 'adminDashboard'])->name('admindashboard');
 
 Route::get('/events/view/{id}', [AdminController::class, 'show'])->name('admin.viewEvent');
 
