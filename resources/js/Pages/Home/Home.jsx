@@ -93,7 +93,7 @@ export default function Home() {
                                 </p>
                                 {/*<Link  href={route('event.create')} className='btn btn-primary'>Create Event</Link > */}
                                 <Link
-                                    href={route("eh.login")}
+                                    href={route("event.create")}
                                     className="btn btn-primary"
                                 >
                                     Create Event
@@ -226,7 +226,7 @@ export default function Home() {
                                     </Link>
                                 </div>
                                 <div className="ReviewLink">
-                                    <Link to="/review" className="Review ">
+                                    <Link href ="/reviewPg" className="Review ">
                                         Leave Us a Review
                                     </Link>
                                     <img

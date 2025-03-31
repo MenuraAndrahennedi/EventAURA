@@ -21,6 +21,9 @@ use App\Http\Controllers\WebSiteReviewController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\NewMemberController;
 use App\Http\Controllers\DeleteRequestController;
+use App\Http\Controllers\EventUpdateRequestController;
+use App\Http\Controllers\EventHostPaymentController;
+
 
 
 
@@ -80,9 +83,9 @@ Route::get('/manager', function () {
 //     return Inertia::render('Manager/PendingRequests/CreateRequest');
 // })->name('managerCreateRequest');
 
-Route::get('/managerUpdateRequest', function () {
-    return Inertia::render('Manager/PendingRequests/UpdateRequest');
-})->name('managerUpdateRequest');
+// Route::get('/managerUpdateRequest', function () {
+//     return Inertia::render('Manager/PendingRequests/UpdateRequest');
+// })->name('managerUpdateRequest');
 
 
 
@@ -255,10 +258,10 @@ Route::get('eventhost/profile', [EventHostController::class, 'profile'])->name('
 
 
 
-Route::get('event/create', [EventController::class, 'create'])->name('event.create')->middleware(['auth', 'eventCreation']);
+Route::get('event/create', [EventController::class, 'create'])->name('event.create');
 Route::post('event/store', [EventController::class, 'store'])->name('event.store');
 
-Route::get('/api/events', [EventController::class, 'getApprovedEvents']);
+Route::get('/api/events', [EventController::class, 'getCompletedEvents']);
 
 Route::get('/api/get-event/{event}', [EventController::class, 'getEvent']);
 
@@ -282,7 +285,7 @@ Route::get('/api/event/{id}/attendees', [EventController::class, 'getAttendees']
 // Generate PDF
 Route::get('/api/event/{id}/attendees/pdf', [EventController::class, 'generateAttendeesPdf'])->name('api.events.attendees.pdf');
 
-Route::get('/events/{id}/update', [EventController::class, 'edit'])->name('update.event');
+//Route::get('/events/{id}/update', [EventController::class, 'edit'])->name('update.event');//////
 
 Route::get('/hosteventcart', function () {
     return Inertia::render('Cart/EHCart/EHCart');
@@ -297,7 +300,7 @@ Route::get('/buytickets/{id}', [EventController::class, 'showBuyTickets'])->name
 
 Route::get('/manager/create-requests', [EventController::class, 'getPendingEvents'])->name('manager.create.requests');
 
-Route::get('/manager/approve-event/{id}', [EventController::class, 'approveEvent'])->name('manager.approve.event');
+Route::post('/manager/approve-event/{id}', [EventController::class, 'approveEvent'])->name('manager.approve.event');
 
 Route::get('/manager/delete-event/{id}', [EventController::class, 'deleteEvent'])->name('manager.delete.event');
 
@@ -355,6 +358,9 @@ Route::get('/manager/endedEventHistory', [EventController::class, 'getEndedEvent
 
 Route::get('/manager/pendingPaymentHistory', [EventController::class, 'getPendingPaymentEvents'])->name('manager.pending.payments.events');
 
+Route::get('/manager/event-report/{id}', [EventController::class, 'generateEventReport'])
+    ->name('manager.event.report');
+
 Route::get('/manager/rejectedEventHistory', [EventController::class, 'getRejectedEvents'])->name('manager.rejected.events');
 
 Route::get('/ended-event/{id}/report', [EventController::class, 'generateEndedEventReport'])->name('ended.event.report');
@@ -371,7 +377,7 @@ Route::get('/manager/signout', [ManagerController::class, 'showManagerSignOut'])
 
 Route::get('/manager/sidebar', [ManagerController::class, 'showManagerSideBar'])->name('manager.sidebar');
 
-Route::get('/manager/profile/edit', [ManagerController::class, 'editProfile'])->name('manager.profile.edit');
+Route::get('manager/profile/edit', [ManagerController::class, 'editProfile'])->name('manager.profile.edit');
 
 Route::post('/manager/profile/update', [ManagerController::class, 'updateProfile'])->name('manager.profile.update');
 
@@ -382,6 +388,8 @@ Route::post('/manager/change-password', [ManagerController::class, 'updateManage
 //Route::get('/manager/reviews', [ManagerController::class, 'showReviewsPage'])->name('manager.reviews');
 
 Route::post('/reviews', [WebSiteReviewController::class, 'store'])->name('reviews.store');
+
+Route::get('/reviewPg', [WebSiteReviewController::class, 'showReviewPage'])->name('reviews.show');
 
 Route::get('/manager/reviews', [WebSiteReviewController::class, 'index'])->middleware('auth')->name('reviews.index');
 
@@ -403,7 +411,7 @@ Route::post('/inquiries', [InquiryController::class, 'store'])->name('inquiries.
 
 Route::get('/connect-with-us', function () {
     return Inertia::render('ConnectWithUs/ConnectWithUs');
-});
+})->name('connect-with-us');
 
 Route::get('/manager/stats', [ManagerController::class, 'getStats']);
 
@@ -470,7 +478,7 @@ Route::get('/events/search', [EventController::class, 'search'])->name('events.s
  Route::get('/event-host/home', [EventHostController::class, 'index'])->name('eventhost.home');
  Route::get('/api/events/ongoing', [EventController::class, 'ongoingEvents'])->name('event.ongoingEvents');
  Route::get('/events/{id}', [EventController::class, 'showEvent'])->name('view.event');
- Route::get('/events/{id}/update', [EventController::class, 'edit'])->name('update.event');
+ //Route::get('/events/{id}/update', [EventController::class, 'edit'])->name('update.event');
  Route::get('event/profiles', [EventController::class, 'profiles'])->name('event.profiles');
 
  Route::get('/events/{id}/delete', [EventController::class, 'delete'])->name('delete.event');
@@ -485,12 +493,39 @@ Route::get('/events/search', [EventController::class, 'search'])->name('events.s
 
  Route::get('/users/{id}/download1', [AdminController::class, 'eventHostHistory'])->name('users.download1');
 
+Route::get('/event/update/{event_id}', [EventUpdateRequestController::class, 'edit'])->name('event.update');
+
+Route::post('/event/update/{event_id}', [EventUpdateRequestController::class, 'store'])->name('event.update.store');
+
+Route::get('/event/update-requests', [EventUpdateRequestController::class, 'index'])->name('event.update.requests');
+
+Route::post('/event/update/approve/{event_update_request_id}', [EventUpdateRequestController::class, 'approve'])->name('event.update.approve');
+
+Route::get('/event/selling-ticket-report/{id}', [EventHostController::class, 'generateTicketReport']);
+
+Route::get('/event/event-attendees-list/{id}', [EventHostController::class, 'generateAttendeesList']);
+
+Route::post('/event/cancel/{id}', [EventHostController::class, 'cancelEvent']);
+
+Route::get('/event/rejection-pdf/{id}', [EventHostController::class, 'generateRejectionPDF'])->name('event.rejection-pdf');
 
 
+Route::get('/ended-event/report/{id}', [EventHostController::class, 'downloadEventReport'])
+    ->name('event.report.download');
+
+    Route::prefix('eventhost/payment')->group(function () {
+        Route::get('/checkout', [EventHostPaymentController::class, 'checkout'])->name('eventhost.payment.checkout');
+        Route::post('/process', [EventHostPaymentController::class, 'processPayment'])->name('eventhost.payment.process');
+        Route::get('/success', [EventHostPaymentController::class, 'success'])->name('eventhost.payment.success');
+        Route::get('/cancel', [EventHostPaymentController::class, 'cancel'])->name('eventhost.payment.cancel');
+    });
 
 
+    Route::get('eventhost/profile/edit', [EventHostController::class, 'editProfile'])->name('eventhost.profile.edit');
 
+    Route::post('/eventhost/profile/update', [EventHostController::class, 'updateProfile'])->name('eventhost.profile.update');
 
+    Route::post('/eventhost/profile/update-password', [EventHostController::class, 'updateEventHostPassword'])->name('eventhost.profile.update-password');
 
 
 

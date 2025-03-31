@@ -44,7 +44,7 @@ const OngoingEvents =({ongoingevents}) => {
                 <div className='card shadow border-0'>
                   <div className='card-img-top'>
                   
-                      <img src={event.image} alt="Event Banner" className='w-100' />
+                      <img src={`/storage/${event.image}`} alt="Event Banner" className='w-100' />
                  
                   </div>
                   <div className='card-body p-4'>

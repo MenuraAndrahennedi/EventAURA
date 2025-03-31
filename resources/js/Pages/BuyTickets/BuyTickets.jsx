@@ -114,8 +114,10 @@ const calculateTotal = () => {
                                 </a>
                                 {/* Download PDF */}
                                 <a
-                                    href={event.agenda_pdf}
-                                    download
+                                    
+                                    href={`/storage/${event.agenda_pdf}`}
+                                    target="_blank" // Open in a new window
+                                    rel="noopener noreferrer" // Ensure secure behavior
                                     className="button-link"
                                 >
                                     Agenda.pdf

@@ -3,7 +3,7 @@ import { Link } from  "@inertiajs/react";
 import '../../../../css/BrowseEvent.scss';
 import Banner from '../../../assets/Images/banner.png';
 import SearchBar from '../../../Components/SearchBar';
-import UserHeader from '../../../Components/Header/UserHeader';
+import UserHeader from '../../../Components/Header/ManagerHeader';
 import AdminFooter from '../../../Components/Footer/AdminFooter';
 import axios from "axios";
 

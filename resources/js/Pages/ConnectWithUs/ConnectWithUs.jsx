@@ -33,7 +33,7 @@ const ConnectWithUs = () => {
 
     return (
         <>
-            <UserHeader />
+            {/* <UserHeader /> */}
             <main className="connect-container">
                 <h1>Connect With Us</h1>
                 <p>Have questions? Contact us using the form below or reach out via email or social media.</p>

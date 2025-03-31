@@ -10,7 +10,7 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
         name: "",
         role: "",
         bio: "",
-        image: null,
+       
     });
     const [isAddingNew, setIsAddingNew] = useState(false);
 
@@ -65,7 +65,7 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
 
             const addedArtist = response.data;
             setSelectedArtists([...selectedArtists, addedArtist]);
-            setNewArtist({ name: "", role: "", bio: "", image: null });
+            setNewArtist({ name: "", role: "", bio: ""});
             setIsAddingNew(false);
         } catch (error) {
             console.error("Error adding new artist", error);
@@ -142,12 +142,12 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
                         value={newArtist.bio}
                         onChange={handleNewArtistChange}
                     ></textarea>
-                    <input
+                    {/* <input
                         type="file"
                         name="image"
                         accept="image/*"
                         onChange={handleNewArtistChange}
-                    />
+                    /> */}
                     <div className="button-group">
                     <button onClick={handleAddNewArtist}>Save Artist</button>
                     <button className="cancel-btn" onClick={() => setIsAddingNew(false)}>Cancel</button>
@@ -163,9 +163,11 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
                             <span className="artist-name">
                             {artist.name} ({artist.role})
                             </span>
-                            <button className="remove-btn" onClick={() => handleRemoveArtist(artist.id)}>
+                            <div>
+                            <button onClick={() => handleRemoveArtist(artist.id)}>
                                 Remove
                             </button>
+                            </div>
                         </li>
                     ))}
                 </ul>

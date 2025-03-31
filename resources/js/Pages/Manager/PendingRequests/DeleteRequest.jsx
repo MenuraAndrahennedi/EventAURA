@@ -1,6 +1,6 @@
 import React from 'react'
 import ManagerHeader from '../../../Components/Header/ManagerHeader'
-import ManagerFooter from '../../../Components/Footer/ManagerFooter';
+import ManagerFooter from '../../../Components/Footer/AdminFooter';
 import '../../../../css/manager.scss';
 import HeadBar from './HeadBar'
 import { Link,useForm ,router } from '@inertiajs/react';

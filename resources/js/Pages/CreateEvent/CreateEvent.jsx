@@ -10,6 +10,7 @@ const CreateEvent = () => {
     const [formData, setFormData] = useState(new FormData());
     const [selectedArtists, setSelectedArtists] = useState([]);
     const [location, setLocation] = useState("");
+    const [successMessage,setSuccessMessage] = useState ("");
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
@@ -95,7 +96,13 @@ const CreateEvent = () => {
                 headers: { "Content-Type": "multipart/form-data" },
             });
     
-            alert("Event created successfully!");
+
+            // alert("Event created successfully!");
+            setSuccessMessage("Event creation request send successfully!");
+
+            setTimeout(() => {
+                setSuccessMessage('');
+              }, 4000);
 
              // Reset form state
             setFormData(new FormData());
@@ -123,6 +130,20 @@ const CreateEvent = () => {
                 <h1>
                     <b>Create Event</b>
                 </h1>
+               
+               {/* Informational paragraph for event hosts */}
+    <p className="event-fee-info">
+        Hosting an event incurs a fee of Rs. 1000. You can pay this fee after the 
+        manager's approval. Once approved, you can view pending payments for your 
+        hosted events on your profile's "Pending Payments" page.And we will send you an email after the event approval.Thank you for choosing us!
+    </p>
+
+    {/* Success Message Section */}
+   {successMessage && (
+        <div className="success-message">{successMessage}</div>
+      )}
+
+
 
                 <form onSubmit={handleSubmit}  method="POST" action="/event/store" className="event-form">
                     <section className="event-details">
@@ -139,6 +160,7 @@ const CreateEvent = () => {
                                 name="name"
                                 placeholder="Enter event title"
                                 onChange={handleChange}
+                                required
                             />
                         </div>
 
@@ -150,6 +172,7 @@ const CreateEvent = () => {
                                     name="date"
                                     id="eventDate"
                                     onChange={handleChange}
+                                    required
                                 />
                             </div>
                             <div className="time-inputs">
@@ -186,6 +209,7 @@ const CreateEvent = () => {
                                     name="city"
                                     id="city"
                                     onChange={handleChange}
+                                    required
                                 />
                             </div>
 
@@ -196,6 +220,7 @@ const CreateEvent = () => {
                                     name="venue"
                                     id="venue"
                                     onChange={handleChange}
+                                    required
                                 />
                             </div>
                         </div>
@@ -208,6 +233,7 @@ const CreateEvent = () => {
                                 placeholder="Enter location or select from Google Maps"
                                 //value={location}
                                 onChange={handleChange}
+                                required
                             />
                              <button type="button" onClick={handleLocationClick}>
                         Pick from Google Maps
@@ -223,6 +249,7 @@ const CreateEvent = () => {
                                         name="agenda_pdf"
                                         accept=".pdf"
                                         onChange={handleChange}
+                                        required
                                     />
                                 
                                 </div>
@@ -261,6 +288,7 @@ const CreateEvent = () => {
                                 name="description"
                                 placeholder="Enter event description"
                                 onChange={handleChange}
+                                required
                             ></textarea>
                         </div>
 
@@ -271,6 +299,7 @@ const CreateEvent = () => {
                                 name="organizer"
                                 placeholder="Enter organizer's name"
                                 onChange={handleChange}
+                                required
                             />
                         </div>
 
@@ -373,6 +402,26 @@ const CreateEvent = () => {
             <footer>
                 <SubFooter />
             </footer>
+
+              {/* Success Message Styles */}
+      <style>
+        {`
+          .success-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color:rgb(137, 225, 157);
+            color:rgb(3, 65, 17) ;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s ease-in-out;
+          }
+        `}
+      </style> 
         </>
     );
 };
