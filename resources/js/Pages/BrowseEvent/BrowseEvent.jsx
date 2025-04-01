@@ -102,7 +102,7 @@ const BrowseEvent = () => {
 
             <section className="section-5">
                 <div className="text-center">
-                    <Link to ='/review' className='Reviews '>Leave Us a Review</Link >
+                    <Link href ="/reviewPg" className='Reviews '>Leave Us a Review</Link >
                     <img
                         src={ReviewIcon}
                         alt="ReviewIcon"

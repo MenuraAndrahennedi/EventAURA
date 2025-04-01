@@ -13,13 +13,13 @@ const MainHeader = () => {
         <header>
             
             <Navbar expand="lg" className="bg-dark navbar-dark ">
-                <Navbar.Brand as={Link} href ="/" className="logo">
+                <Navbar.Brand as={Link} href ={route('home')} className="logo">
                     <img src={Logo} alt="Logo" className="logo-img" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <div id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Nav.Link as={Link} href="/" className="nav-link">
+                        <Nav.Link as={Link} href={route('home')} className="nav-link">
                             Home
                         </Nav.Link>
                         <Nav.Link
@@ -31,24 +31,24 @@ const MainHeader = () => {
                         </Nav.Link>
                         <Nav.Link
                             as={Link}
-                            href="/contact"
+                            href={route('connect-with-us')}
                             className="nav-link"
                         >
                             Contact US
                         </Nav.Link>
                         <Nav.Link
                             as={Link}
-                            href="/browse"
+                            href= {route('tb.login')}
                             className="nav-link"
                         >
-                            Browse EVENT
+                            BROWSE EVENT
                         </Nav.Link>
                         <Nav.Link
                             as={Link}
-                            href="/create"
+                            href={route('event.create')}
                             className="nav-link"
                         >
-                            Create EVENT
+                            CREATE EVENT
                         </Nav.Link>
                     </Nav>
                 </div>

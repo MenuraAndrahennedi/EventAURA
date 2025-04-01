@@ -32,7 +32,7 @@ const TBLogin = () => {
               <p>or <Link href= {route('browse')}>continue as Guest </Link></p>
 
               <form onSubmit={handleSubmit}>
-                <input type="text" name ="email" placeholder="Email / Username" value={data.email} onChange={handleChange} required />
+                <input type="text" name ="email" placeholder="Email" value={data.email} onChange={handleChange} required />
                 {errors.email && <div className="error">{errors.email}</div>}
 
                 <input type="password" name="password" placeholder="Password" value={data.password} onChange={handleChange} required />

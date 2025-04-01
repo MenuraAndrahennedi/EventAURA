@@ -28,7 +28,7 @@ const EHRejectedHistory = () => {
                 <div className="card-body text-center">
                     <h1><b>Hi {user.name}!</b></h1>
                     <h4><b>Welcome to Your Profile</b></h4>
-                    <img src= {profilelogo} alt="Avatar"className="profile-avatar" />
+                    <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo} alt="Avatar"className="profile-avatar" />
                 </div>
               </div>
 
@@ -44,7 +44,7 @@ const EHRejectedHistory = () => {
                         <p className="text-center">@{user.name}</p>
                         
                          {/* Tabs */}
-                        <div className="d-flex justify-content-around my-3">
+                        {/* <div className="d-flex justify-content-around my-3">
                           <div className="btn-group">
                             <Link href={route('eh.ongoing')} className={`btn ${location.pathname === '/EHOngoing' ? 'btn-primary active' : 'btn-outline-primary'}`} > On going</Link>
                             <Link href={route('eh.pendingPayments')} className={`btn ${location.pathname === '/EHPendingPayments' ? 'btn-primary active' : 'btn-outline-primary'}`} > Pending payments</Link>
@@ -53,7 +53,17 @@ const EHRejectedHistory = () => {
                             <Link href={route('eh.history')} className={`btn ${location.pathname === '/EHHistory' ? 'btn-primary active' : 'btn-outline-primary'}`}>History</Link>
                           </div>
                         </div>
-                       
+                        */}
+                         {/* Tabs */}
+                                                <div className="d-flex justify-content-around my-3">
+                                                  <div className="btn-group">
+                                                    <Link href={route('eventhost.ongoingEvents.history')} className={`btn ${location.pathname === '/event-host/profile' ? 'btn-primary active' : 'btn-outline-primary'}`} > On going</Link>
+                                                    <Link href={route('eh.pendingPayments')} className={`btn ${location.pathname === '/EHPendingPayments' ? 'btn-primary active' : 'btn-outline-primary'}`} > Pending payments</Link>
+                                                    <Link href={route('eh.pendingRequests')} className={`btn ${location.pathname === '/EHPendingRequests' ? 'btn-primary active' : 'btn-outline-primary'}`} >Pending Requests </Link>
+                                                    <Link href={route('eh.rejected')} className={`btn ${location.pathname === '/EHRejected' ? 'btn-primary active' : 'btn-outline-primary'}`} > Rejected</Link>
+                                                    <Link href={route('eh.history')} className={`btn ${location.pathname === '/EHHistory' ? 'btn-primary active' : 'btn-outline-primary'}`}>Ended</Link>
+                                                  </div>
+                                                </div>
 
                         {/* Table */}
                         <table className="table table-striped">
@@ -68,8 +78,8 @@ const EHRejectedHistory = () => {
                             {rejectedevents.map((event, index) => (
                               <tr key={index}>
                                 <td>{event.name}</td>
-                                <td>{event.date}</td>
-                                <td><a href="/path/to/file.pdf" download className="btn btn-info btn-sm text-black">Download</a></td>
+                                <td>{new Date(event.created_at).toLocaleDateString()}</td>
+                                <td><a href={route('event.rejection-pdf', event.id)} download className="btn btn-info btn-sm text-black">Download</a></td>
                               </tr>
                             ))}
                           </tbody>

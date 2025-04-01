@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@inertiajs/react';
-import HeadBar from '../../../Components/Header/EventHistoryHeadBar';
+import HeadBar from '../../../Components/HeadBar/EventHistoryHeadBar';
 import '../../../../css/TablePages.scss';
 import AdminFooter from './../../../Components/Footer/AdminFooter';
 import UserHeader from './../../../Components/Header/UserHeader';

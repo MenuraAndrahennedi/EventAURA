@@ -40,7 +40,7 @@ const EHLogin = () => {
                   <form onSubmit={handleSubmit}>
 
                     <div className="mb-3">
-                      <input type="text" name="email" placeholder="Email / Username" className="form-control" value={data.email} onChange={handleChange} required/>
+                      <input type="text" name="email" placeholder="Email" className="form-control" value={data.email} onChange={handleChange} required/>
                       {errors.email && <div className="error text-danger">{errors.email}</div>}
                     </div>
 

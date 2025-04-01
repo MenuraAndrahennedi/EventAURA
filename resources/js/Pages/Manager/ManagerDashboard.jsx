@@ -2,7 +2,7 @@ import React,{ useEffect, useState } from "react";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import axios from "axios";
 import ManagerHeader from "@/Components/Header/ManagerHeader";
-import ManagerFooter from "../../Components/Footer/ManagerFooter";
+import ManagerFooter from "../../Components/Footer/AdminFooter";
 import "../../../css/manager.scss";
 import { Link } from "@inertiajs/react";
 import RevenuePieChart from "@/Components/Charts/RevenuePieChart";

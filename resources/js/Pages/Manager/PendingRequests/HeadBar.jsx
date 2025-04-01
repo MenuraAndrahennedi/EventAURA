@@ -13,7 +13,7 @@ const EHSidebar = () => {
                         <Link href='/manager/create-requests' className={location.pathname === '/manager/create-requests' ? 'active-link' : ''}>Create Request</Link>
                     </div>
                     <div className="col text-center p-0">
-                        <Link href='/managerUpdateRequest' className={location.pathname === '/managerUpdateRequest' ? 'active-link' : ''}>Update Request</Link>
+                        <Link href='/event/update-requests' className={location.pathname === '/event/update-requests' ? 'active-link' : ''}>Update Request</Link>
                     </div>
                     <div className="col text-center p-0">
                         <Link href='/managerDeleteRequest' className={location.pathname === '/managerDeleteRequest' ? 'active-link' : ''}>Delete Request</Link>

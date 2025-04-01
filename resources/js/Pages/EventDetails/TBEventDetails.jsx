@@ -32,7 +32,7 @@ const TBEventDetails = ({ event }) => {
 
                 <div className="event-info">
                     <div className="event-poster">
-                        <img src={event.image} alt={event.name} />
+                        <img src={`/storage/${event.image}`}  alt={event.name} />
                     </div>
 
                     <div className="event-description">
@@ -59,7 +59,7 @@ const TBEventDetails = ({ event }) => {
                                 </a>
                                 {/* Download PDF */}
                                 <a
-                                    href={event.agenda_pdf}
+                                    href={`/storage/${event.agenda_pdf}`}
                                     target="_blank" // Open in a new window
                                     rel="noopener noreferrer" // Ensure secure behavior
                                     className="button-link"
@@ -102,9 +102,9 @@ const TBEventDetails = ({ event }) => {
 
             {/* Video Section */}
             <section className="video-section">
-                {event.video ? (
+                {event.event_video ? (
                     <video
-                        src={event.event_video}
+                        src={`/storage/${event.event_video}`}
                         controls
                         className="event-video"
                     >

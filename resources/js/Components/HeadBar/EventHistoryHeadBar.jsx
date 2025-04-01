@@ -9,13 +9,13 @@ const EventHistoryHeadBar = () => {
 
         <div className="head-bar row">
             <div className="p-0 text-center col">
-                <Link href='/ended' className={location.pathname === '/ended' ? 'active-link' : ''}>Ended</Link>
+                <Link href='/manager/endedEventHistory' className={location.pathname === '/manager/endedEventHistory' ? 'active-link' : ''}>Ended</Link>
             </div>
             <div className="p-0 text-center col">
-                <Link href='/pendingPayment' className={location.pathname === '/pendingPayment' ? 'active-link' : ''}>Pending Payment</Link>
+                <Link href='/manager/pendingPaymentHistory' className={location.pathname === '/manager/pendingPaymentHistory' ? 'active-link' : ''}>Pending Payment</Link>
             </div>
             <div className="p-0 text-center col">
-                <Link href='/rejected' className={location.pathname === '/rejected' ? 'active-link' : ''}>Rejected</Link>
+                <Link href='/manager/rejectedEventHistory' className={location.pathname === '/manager/rejectedEventHistory' ? 'active-link' : ''}>Rejected</Link>
             </div>
         </div>
 

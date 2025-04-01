@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Artist extends Model
 {
-    protected $fillable = ['name', 'role', 'bio', 'image'];
+    protected $fillable = ['name', 'role', 'bio'];
 
     public function events()
     {

@@ -10,13 +10,13 @@ const EHHeader = () => {
         <header>
             {/*<div className="container py-3">*/}
                 <Navbar expand="lg" className="bg-dark navbar-dark">
-                    <Navbar.Brand as={Link} to="/" className="logo">
+                    <Navbar.Brand as={Link} href={route('home')} className="logo">
                         <img src={Logo} alt="Logo" className="logo-img" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <div id="basic-navbar-nav">
                         <Nav className="ms-auto">
-                            <Nav.Link as={Link} to="/" className="nav-link">
+                            <Nav.Link as={Link} href={route('home')} className="nav-link">
                                 Home
                             </Nav.Link>
                             <Nav.Link
@@ -28,24 +28,24 @@ const EHHeader = () => {
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/contact"
+                                href = {route('connect-with-us')}
                                 className="nav-link"
                             >
                                 Contact US
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/create"
+                               href ={route('event.create')}
                                 className="nav-link"
                             >
-                                Create EVENT
+                                CREATE EVENT
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/EHaccount"
+                                href={route('eventhost.dashboard')} 
                                 className="nav-link"
                             >
-                                EH Account
+                                Dashboard
                             </Nav.Link>
                         </Nav>
                     </div>

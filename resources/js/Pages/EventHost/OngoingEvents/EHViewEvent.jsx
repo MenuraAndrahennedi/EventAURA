@@ -113,7 +113,7 @@ const EHViewEvent = ({ event }) => {
 
         {/* Action Buttons */}
         <div className="action-buttons">
-          <Link href={route('update.event',{id:event.id})}
+          <Link href={route('event.update',{id:event.id})}
          className="update-btnn">Update Event</Link>
          <button onClick={handleOpenModal} className="delete-btnn">Delete Event</button>
         </div>
