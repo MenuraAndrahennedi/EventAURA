@@ -1,4 +1,3 @@
-
 import React from 'react'
 import "../../../css/UserDashboard.scss"
 import { Link } from '@inertiajs/react';
@@ -11,10 +10,9 @@ import Cover05 from '../../assets/Images/Tile 5.jpg';
 import Cover06 from '../../assets/Images/Tile 6.jpg';
 import UserHeader from './../../Components/Header/UserHeader';
 import AdminFooter from './../../Components/Footer/AdminFooter';
-
-const AdminDashboard = () => {
-    return (
-        <>
+const AdminHome = () => {
+  return (
+    <>
             <header>
               <UserHeader />
             </header>
@@ -87,9 +85,7 @@ const AdminDashboard = () => {
           </footer>
           
         </>
-    
-          
-      )
+  )
 }
 
-export default AdminDashboard
+export default AdminHome
