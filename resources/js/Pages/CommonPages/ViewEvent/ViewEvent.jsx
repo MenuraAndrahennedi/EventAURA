@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@inertiajs/react';
-import './ViewEvent.scss';
+import '../../../../css/ViewEvent.scss';
 import UserHeader from './../../../Components/Header/UserHeader';
 import AdminFooter from './../../../Components/Footer/AdminFooter';
 
