@@ -82,7 +82,7 @@ Route::get('/eh-create-account', function () {return Inertia::render('EventHost/
 Route::get('/eh-home', function () {return Inertia::render('EventHost/EHHome');})->name('ehhome');
 Route::get('/eh-login', function () {return Inertia::render('EventHost/EHLogin');})->name('eh-login');
 
-
+Route::get('/programmer-dashboard', function () {return Inertia::render('Programmer/ProgrammerDashboard');})->name('programmerdashboard');
 /*Route::get('/', function () {return Inertia::render('');})->name('');
 Route::get('/', function () {return Inertia::render('');})->name('');
 
