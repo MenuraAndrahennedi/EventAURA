@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Payment;
+use App\Models\StripePayment;
+use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 use Illuminate\Support\Facades\Session;
 
 
@@ -26,7 +29,7 @@ class PaymentController extends Controller
 
         // Store payment details
         $payment = Payment::create([
-            'customer_id' => $customerId,
+            'customer_id' => $customerId, 
             'guest_id' => $guestId,
             'payment_id' => $request->payment_id, // PayHere payment ID
             'amount' => $request->amount,
@@ -101,6 +104,20 @@ class PaymentController extends Controller
         }
 
         return response()->json(['message' => 'Payment updated successfully']);
+    }
+
+    public function purchaseHistory()
+    {
+        $user = Auth::user();   
+    
+        $purchases = StripePayment::where('customer_id', $user->id)
+        ->with(['event']) 
+        ->get();    
+    
+        return Inertia::render('UserProfile/TB-Profiles/TBPurchaseHistory', [
+            'user' => $user,
+            'purchases' => $purchases
+        ]);
     }
 }
 

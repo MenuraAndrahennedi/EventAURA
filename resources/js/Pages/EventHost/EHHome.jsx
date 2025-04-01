@@ -25,7 +25,7 @@ const EHHome = () => {
                 <div className="card shadow border-0">
                   <div className="card-img-top">
                       <img src={Cover01} alt="Banner1" className="w-100"/>
-                      <Link href={route('event.ongoingEvents')} className="image-overlay">Ongoing Events</Link>
+                      <Link href={route('eventhost.ongoingEvents')} className="image-overlay">Your Ongoing Events</Link>
                   </div>
                 </div>
               </div>
@@ -34,7 +34,7 @@ const EHHome = () => {
                 <div className="card shadow border-0">
                   <div className="card-img-top">
                     <img src={Cover02} alt="Banner2" className="w-100"/>
-                    <Link href={route('event.profiles')} className="image-overlay">Go to Profile</Link>
+                    <Link href={route('eventhost.profile')} className="image-overlay">Go to Profile</Link>
                   </div>
               </div>
               </div>

@@ -50,21 +50,21 @@ public function search(Request $request)
            'name' => 'required|string|max:255',
            'role' => 'required|string|max:255',
            'bio' => 'nullable|string',
-           'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB max file size
+           
        ]);
 
        // Handle file upload
-       $imagePath = null;
-       if ($request->hasFile('image')) {
-           $imagePath = $request->file('image')->store('artists', 'public');
-       }
+    //    $imagePath = null;
+    //    if ($request->hasFile('image')) {
+    //        $imagePath = $request->file('image')->store('artists', 'public');
+    //    }
 
        // Create the artist
        $artist = Artist::create([
            'name' => $validated['name'],
            'role' => $validated['role'],
            'bio' => $validated['bio'] ?? null,
-           'image' => $imagePath,
+           
        ]);
 
        return response()->json($artist, 201);

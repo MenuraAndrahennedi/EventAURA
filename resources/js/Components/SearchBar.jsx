@@ -61,7 +61,12 @@ const SearchBar = () => {
         .get('/events/search', { params: { search, filter } })
         .then((response) => {
             if (response.data.length > 0) {
-                router.get('/events/results', { search, filter });
+                router.visit('/events/results', {
+                    method: 'post',
+                    data: { search, filter },
+                    replace: true, 
+                    preserveState: true, 
+                });
             } else {
                 alert('No events found matching your search criteria.');
             }
@@ -71,6 +76,18 @@ const SearchBar = () => {
             alert('An error occurred while searching. Please try again later.');
         });
     };
+
+    const handleBookNowClick = (eventId) => {
+            axios.post(`/event/click/${eventId}`)
+                .then(response => {
+                    if (response.data.success) {
+                        console.log("Click recorded successfully");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error recording click", error);
+                });
+        };
 
     return (
         <>
@@ -121,14 +138,14 @@ const SearchBar = () => {
                             <div className = 'card-body p-4'>
                               <div className='event-details'>
                                 <p className='event-date-time' > {event.date} | {event.startTime} </p>
-                                <p className='event-location'> {event.location} </p>
+                                <p className='event-location'> {event.venue} </p>
                               </div>
                               <div className='event-title'>
                                 <h2><b> {event.name} </b></h2>
                               </div>
                               <div className = 'event-footer d-flex justify-content-between align-items-center mt-3'>
                                   <p className='event-price'>{event.bronze_ticket_price} LKR <span className="price-subtext"><br/>upwards</span></p>
-                                  <Link to = '/eventDetails' className='btn btn-primary'>Book Now</Link>
+                                  <Link href={route('event.details',{id:event.id})} className='btn btn-primary' onClick={() => handleBookNowClick(event.id)}>Book Now</Link>
                               </div>
                             </div>
                           </div>

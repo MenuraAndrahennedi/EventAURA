@@ -13,7 +13,7 @@ const EHCreateAccount = () => {
     password_confirmation: '',
     role_id: 4, // Assuming 3 represents the role of "Event Host"
   });
-
+ 
   const handleChange = (e) => {
     setData(e.target.name, e.target.value);
   };

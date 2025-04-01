@@ -9,49 +9,49 @@ import Logo from "../../assets/Images/Logo.png";
 const TBHeader = () => {
     return (
         <header>
-            <div className="container py-3">
+            
                 <Navbar expand="lg" className="bg-dark navbar-dark">
-                    <Navbar.Brand as={Link} to="/" className="logo">
+                    <Navbar.Brand as={Link} href= {route('home')} className="logo">
                         <img src={Logo} alt="Logo" className="logo-img" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <div id="basic-navbar-nav">
                         <Nav className="ms-auto">
-                            <Nav.Link as={Link} to="/" className="nav-link">
+                            <Nav.Link as={Link} href = {route('home')} className="nav-link">
                                 Home
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/about"
+                                href="/about"
                                 className="nav-link"
                             >
                                 About US
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/contact"
+                                href= {route('connect-with-us')}
                                 className="nav-link"
                             >
                                 Contact US
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/browse"
+                                href ={route('tb.login')}
                                 className="nav-link"
                             >
-                                Browse EVENT
+                                BROWSE EVENT
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/TBaccount"
+                                href={route('tb-profile')}
                                 className="nav-link"
                             >
-                                TB Account
+                                User Account
                             </Nav.Link>
                         </Nav>
-                    </Navbar.Collapse>
+                    </div>
                 </Navbar>
-            </div>
+            
         </header>
     );
 };

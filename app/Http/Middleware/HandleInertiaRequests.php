@@ -50,6 +50,11 @@ class HandleInertiaRequests extends Middleware
                     
                 ] : null,
             ],
+             // Share flash messages with Inertia
+             'flash' => [
+                'success' => session('success'),
+                'error' => session('error'),
+            ],
         ]);
     }
 }

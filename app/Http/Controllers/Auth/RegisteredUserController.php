@@ -25,7 +25,7 @@ class RegisteredUserController extends Controller
         $registerPage = $routeName === 'tb.register' ? 'TB/TBCreateAccount' : 'EventHost/EHCreateAccount';
         return Inertia::render($registerPage);
     }
-
+ 
     /**
      * Handle an incoming registration request.
      *

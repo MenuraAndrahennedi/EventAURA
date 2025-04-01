@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@inertiajs/react';
-import HeadBar from '../../../Components/Header/EventHistoryHeadBar';
+import HeadBar from '../../../Components/HeadBar/EventHistoryHeadBar';
 import '../../../../css/TablePages.scss';
 import AdminFooter from './../../../Components/Footer/AdminFooter';
 import UserHeader from './../../../Components/Header/UserHeader';
@@ -12,7 +12,7 @@ import UserHeader from './../../../Components/Header/UserHeader';
     user role manageer, admin, developer*************************/}
 
 
-const PendingPaymentsHistory = () => {
+const PendingPaymentsHistory = ({pendingPaymentEvents}) => {
   return (
     <>
     <header>
@@ -35,20 +35,36 @@ const PendingPaymentsHistory = () => {
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr>
-                            <td>hello</td>
-                            <td>hello</td>
+                    {pendingPaymentEvents.length > 0 ? (
+                                    pendingPaymentEvents.map(event => (
+                        <tr key ={event.id}>
+                            <td>{event.name}</td>
+                            <td>Rs.1000</td>
 
 
                             <td>
-                                <Link to="#" className="blue-button">
+                                {/* <Link to="#" className="blue-button">
                                     Event Report
-                                </Link>
+                                </Link> */}
+                                 <a
+                          href={`/manager/event-report/${event.id}`}
+                          className="blue-button"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Event Report
+                        </a>
                             </td>
 
                         </tr>
-                        <tr>
+                                    ))
+                                ):(
+
+                                    <tr>
+                                    <td colSpan="3" style={{ textAlign: 'center' }}>No events found.</td>
+                                </tr>
+                                )}
+                        {/* <tr>
                             <td>hello1</td>
                             <td>hello1</td>
 
@@ -58,7 +74,7 @@ const PendingPaymentsHistory = () => {
                                 </Link>
                             </td>
 
-                        </tr>
+                        </tr> */}
 
                     </tbody>
                 </table>

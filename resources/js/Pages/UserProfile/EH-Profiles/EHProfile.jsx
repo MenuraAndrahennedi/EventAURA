@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { usePage, useForm } from '@inertiajs/react';
+import { usePage, useForm,Link } from '@inertiajs/react';
 import TBHeader from '../../../Components/Header/EHHeader';
 import SubFooter from '../../../Components/Footer/SubFooter';
 import profilelogo from '../../../assets/Images/Profile-logo.png';
@@ -11,43 +11,43 @@ const EHProfile = () => {
   
   const { user } = usePage().props; 
 
-  const { data, setData, post, processing, reset, errors } = useForm({
-      fullName: user.name || '',
-      email: user.email || '',
-      telephone: user.telephone || '',
-    });
+  // const { data, setData, post, processing, reset, errors } = useForm({
+  //     fullName: user.name || '',
+  //     email: user.email || '',
+  //     telephone: user.telephone || '',
+  //   });
   
-    const [showProfileForm, setShowProfileForm] = useState(false);
+  //   const [showProfileForm, setShowProfileForm] = useState(false);
   
-    const handleChange = (e) => {
-      setData(e.target.name, e.target.value);
-    };
+  //   const handleChange = (e) => {
+  //     setData(e.target.name, e.target.value);
+  //   };
   
-    const handleSaveChanges = () => {
-      post(route('eventhost.updateProfile'), {
-        onSuccess: () => {
-          setShowProfileForm(true); 
-        },
-      });
-    };
+  //   const handleSaveChanges = () => {
+  //     post(route('eventhost.updateProfile'), {
+  //       onSuccess: () => {
+  //         setShowProfileForm(true); 
+  //       },
+  //     });
+  //   };
 
-    const handleSave = () => {
-      post(route('eventhost.updateProfile'), {
-        onSuccess: () => {
-          alert("Profile updated successfully!"); 
-          setShowProfileForm(false); 
-        },
-        onError: (errors) => {
-          console.error(errors); 
-        }
-      });
-    };
+  //   const handleSave = () => {
+  //     post(route('eventhost.updateProfile'), {
+  //       onSuccess: () => {
+  //         alert("Profile updated successfully!"); 
+  //         setShowProfileForm(false); 
+  //       },
+  //       onError: (errors) => {
+  //         console.error(errors); 
+  //       }
+  //     });
+  //   };
   
-    const handleCancel = () => {
-      reset();
-      setShowProfileForm(false);
-    };
-
+  //   const handleCancel = () => {
+  //     reset();
+  //     setShowProfileForm(false);
+  //   };
+ 
 
   return (
     <>
@@ -61,7 +61,7 @@ const EHProfile = () => {
             <div className="card-body text-center">
               <h1><b>Hi {user.name}!</b></h1> 
               <h4><b>Welcome to Your Profile</b></h4>
-              <img src={profilelogo} alt="Avatar" className="profile-avatar" />
+              <img src={user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar" className="profile-avatar" />
             </div>
           </div>
 
@@ -73,8 +73,8 @@ const EHProfile = () => {
               <div className="card shadow border-0">
                 <div className="card-body profile-details">
                   <h5 className="text-center"><b>Profile Details</b></h5>
-                  
-                  {showProfileForm ? (
+                  <p className="text-center">@{user.name}</p>
+                  {/* {showProfileForm ? (
                     
                       <div className="details-grid">
                         <div className="detail-label">Full Name:</div>
@@ -131,7 +131,21 @@ const EHProfile = () => {
                         <button className="btn btn-primary mt-3" onClick={handleSaveChanges}>Edit Profile</button>
                       </div>
                     </>
-                  )}
+                  )} */}
+                   <div className="details-grid">
+                    <div className="detail-label">Full Name:</div>
+                    <div className="detail-value">{user.name}</div>
+                    
+                    <div className="detail-label">Email:</div>
+                    <div className="detail-value">{user.email}</div>
+                    
+                    <div className="detail-label">Telephone No:</div>
+                    <div className="detail-value">{user.telephone}</div>
+                  </div>
+
+                  <div className="text-end">
+                    <Link href={route('eventhost.profile.edit') }className="btn btn-primary mt-3">Edit Profile</Link>
+                  </div>
                 </div>
               </div>
             </div>

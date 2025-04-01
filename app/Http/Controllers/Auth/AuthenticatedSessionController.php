@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use Inertia\Inertia; 
 use Inertia\Response;
 use Illuminate\Support\Facades\Log;
 
@@ -69,11 +69,6 @@ class AuthenticatedSessionController extends Controller
         if($request->user()->role_id=== 5){
             return redirect('browse');
         }
-
-
-
-
-
 
         return redirect()->intended(route('dashboard', absolute: false));
     }

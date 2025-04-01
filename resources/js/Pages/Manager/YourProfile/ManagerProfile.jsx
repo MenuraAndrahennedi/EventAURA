@@ -20,7 +20,7 @@ const ManagerProfile = () => {
                 <div className="card-body text-center">
                     <h1><b>Hi {user.name}!</b></h1>
                     <h4><b>Welcome to Your Profile</b></h4>
-                    <img src= {user.avatar || profilelogo} alt="Avatar"className="profile-avatar" />
+                    <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar"className="profile-avatar" />
                 </div>
               </div>
 
@@ -47,7 +47,7 @@ const ManagerProfile = () => {
                   </div>
 
                   <div className="text-end">
-                    <Link href="/manager/profile/edit" className="btn btn-primary mt-3">Edit Profile</Link>
+                    <Link href={route('manager.profile.edit')} className="btn btn-primary mt-3">Edit Profile</Link>
                   </div>
                     </div>
                   </div>

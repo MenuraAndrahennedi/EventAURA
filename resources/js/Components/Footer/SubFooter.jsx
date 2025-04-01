@@ -13,8 +13,9 @@ const SubFooter = () => {
             <div className="container text-center py-4">
                 {/* Stay Updated Section */}
                 <div className="stay-updated">
-                    <h1>Connect With US</h1>
-                    <Link to='/review' className='element'>Leave a Review</Link>
+                    {/* <h1>Connect With US</h1> */}
+                    <Link href="/connect-with-us"><h1>Connect With Us</h1></Link>
+                    <Link href ="/reviewPg" className='element'>Leave a Review</Link>
                     <Link to='/help' className='element'><br />Help Center</Link>
                     <div className="social-icons d-flex justify-content-center mt-4">
                         <Link to="https://www.facebook.com" target="_blank" rel="noopener noreferrer">

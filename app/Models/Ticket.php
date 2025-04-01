@@ -33,4 +33,8 @@ class Ticket extends Model
             $ticket->ticket_number = $ticket->generateTicketNumber();
         });
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'customer_id');
+    }
 }

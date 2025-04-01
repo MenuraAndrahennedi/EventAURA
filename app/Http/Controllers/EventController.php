@@ -11,6 +11,14 @@ use App\Models\StripePayment;
 use PDF;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use App\Models\EventDeletionRequest;
+use App\Mail\EventApprovedMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Session;
+
+
 
 
 
@@ -30,7 +38,11 @@ class EventController extends Controller
      */
     public function create()
     {
+        if(Auth::id()){
         return Inertia::render('CreateEvent/CreateEvent');
+        }else{
+            return redirect()->route('eh.login');
+        }
     }
 
     /**
@@ -87,16 +99,201 @@ class EventController extends Controller
         return redirect()->route('eventhost.dashboard')->with('success', 'Event Created Successfully and is pending approval');
     }
 
-    public function getApprovedEvents()
+    public function getCompletedEvents()
     {
-        $approvedEvents = Event::where('event_status', 'approved')
+        $completedEvents = Event::where('event_status', 'completed')
+        ->whereDate('date', '>', Carbon::today())
             ->get()
             ->map(function ($event) {
                 $event->image = asset('storage/' . $event->image);
                 return $event;
             });
-        return response()->json($approvedEvents);
+        return response()->json($completedEvents);
     } 
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        $filter = $request->input('filter', 'All');
+
+        $query = Event::query()
+        ->leftJoin('clicks', 'events.id', '=', 'clicks.event_id')
+        ->select('events.*', \DB::raw('COALESCE(clicks.number_of_clicks, 0) as click_count'));
+
+        if (!empty($searchTerm)) {
+           $query->where('name', 'LIKE', "%{$searchTerm}%")
+           ;
+        }
+    
+        if ($filter === 'Upcoming') {
+            $query->where('date', '>', now());
+        } elseif ($filter === 'Past') {
+            $query->where('date', '<', now());
+        }elseif ($filter === 'Popular') {
+            $maxClicks = \DB::table('clicks')->max('number_of_clicks');
+            $query->where('clicks.number_of_clicks', '=', $maxClicks);
+        }
+
+        $events = $query->get()->map(function ($event) {
+            return [
+                'id' => $event->id,
+                'name' => $event->name,
+                'date' => $event->date,
+                'startTime' => $event->startTime,
+                'location' => $event->location,
+                'bronze_ticket_price' => $event->bronze_ticket_price,
+                'image' => asset('storage/' . $event->image), 
+            ];
+        });
+
+        return response()->json($events);
+
+    }
+
+    public function searchResults(Request $request)
+    {
+        $searchTerm = $request->input('search', '');
+        $filter = $request->input('filter', 'All');
+
+        $query = Event::query();
+
+        if (!empty($searchTerm)) {
+            $query->where('name', 'LIKE', "%{$searchTerm}%");
+        }
+
+        if ($filter === 'Upcoming') {
+            $query->where('date', '>', now());
+        } elseif ($filter === 'Past') {
+            $query->where('date', '<', now());
+        } 
+
+        $events = $query->get()->map(function ($event) {
+            return [
+                'id' => $event->id,
+                'name' => $event->name,
+                'date' => $event->date,
+                'startTime' => $event->startTime,
+                'location' => $event->location,
+                'bronze_ticket_price' => $event->bronze_ticket_price,
+                'image' => asset('storage/' . $event->image), 
+            ];
+        });
+
+    return Inertia::render('SearchResult/SearchResult', [
+        'events' => $events,
+        'searchTerm' => $searchTerm,
+        'filter' => $filter,
+    ]);
+    }
+
+    public function ongoingEvents()
+    {
+        $user = Auth::user();
+
+        if ($user->role_id == 4) {
+            $ongoingevents = Event::where('event_host_id', $user->id)
+                            ->where('event_status', 'approved')  
+                            ->get()
+                            ->map (function ($event) {
+                                $event->image = asset('storage/' . $event->image);
+                                return $event;
+                            })
+                            ->toArray(); 
+                            
+        }               
+        
+        return Inertia::render('EventHost/OngoingEvents', [
+            'events' => $ongoingevents
+        ]);
+       
+    }
+    
+    // public function updateEvent(Request $request, $eventId)
+    // {
+    // //     $request->validate([
+    // //         'date' => 'nullable|date',
+    // //         'startTime' => 'nullable|date_format:H:i',
+    // //         'endTime' => 'nullable|date_format:H:i|after:startTime',
+    // //         'city' => 'nullable|string',
+    // //         'venue' => 'nullable|string',
+    // //         'location' => 'nullable|string',
+    // //         'artist' => 'nullable|string',
+    // //         'bronze_ticket_count' => 'integer|min:0',
+    // //         'golden_ticket_count' => 'integer|min:0',
+    // //         'silver_ticket_count' => 'integer|min:0',
+    // //         'bronze_ticket_price' => 'nullable|numeric|min:0',
+    // //         'golden_ticket_price' => 'nullable|numeric|min:0',
+    // //         'silver_ticket_price' => 'nullable|numeric|min:0',
+    // //     ]);
+
+    // //     $event = Event::findOrFail($eventId);
+
+    // //     $event->update([
+    // //         'date' => $request->date,
+    // //         'startTime' => $request->startTime,
+    // //         'endTime' => $request->endTime,
+    // //         'city' => $request->city,
+    // //         'venue' => $request->venue,
+    // //         'location' => $request->location,
+    // //         'artist' => $request->artist,
+    // //         'bronze_ticket_count' => $request->bronze_ticket_count,
+    // //         'golden_ticket_count' => $request->golden_ticket_count,
+    // //         'silver_ticket_count' => $request->silver_ticket_count,
+    // //         'bronze_ticket_price' => $request->bronze_ticket_price,
+    // //         'golden_ticket_price' => $request->golden_ticket_price,
+    // //         'silver_ticket_price' => $request->silver_ticket_price,
+    // //     ]);
+
+    // // return redirect()->back()->with('success', 'Event updated successfully.');
+    // $validated = $request->validate([
+    //     'date' => 'required|date',
+    //     'startTime' => 'required',
+    //     'endTime' => 'required',
+    //     'city' => 'required|string',
+    //     'venue' => 'required|string',
+    //     'location' => 'required|string',
+    //     'golden_ticket_count' => 'required|integer',
+    //     'silver_ticket_count' => 'required|integer',
+    //     'bronze_ticket_count' => 'required|integer',
+    //     'golden_ticket_price' => 'required|numeric',
+    //     'silver_ticket_price' => 'required|numeric',
+    //     'bronze_ticket_price' => 'required|numeric',
+    //     'artists' => 'array',
+    //     'agenda_pdf' => 'nullable|file|mimes:pdf',
+    //     'image' => 'nullable|image',
+    //     'event_video' => 'nullable|file',
+    // ]);
+
+    // // Handle file uploads
+    // if ($request->hasFile('agenda_pdf')) {
+    //     $validated['agenda_pdf'] = $request->file('agenda_pdf')->store('agendas');
+    // }
+    
+    // if ($request->hasFile('image')) {
+    //     $validated['image'] = $request->file('image')->store('event-images');
+    // }
+    
+    // if ($request->hasFile('event_video')) {
+    //     $validated['event_video'] = $request->file('event_video')->store('event-videos');
+    // }
+
+    // $event->update($validated);
+
+    // // Sync artists
+    // if ($request->has('artists')) {
+    //     $event->artists()->sync($request->artists);
+    // }
+
+    // return redirect()->back()->with('success', 'Event updated successfully');
+
+    // }
+
+    
+    public function showEvent(string $id)
+    {
+        $event = Event::findOrFail($id);
+        return inertia('Admin/EHViewEvent', ['event' => $event]);
+    }
 
     /**
      * Display the specified resource.
@@ -106,6 +303,12 @@ class EventController extends Controller
         $event = Event::with('artists')->findOrFail($id); // Fetch the event by ID
        
         return inertia('EventDetails/TBEventDetails', ['event' => $event]); // Pass data to Inertia 
+    }
+
+    public function delete(string $id)
+    {
+        $event = Event::findOrFail($id);
+        return inertia('Admin/DeleteEvent', ['event' => $event]);
     }
 
     public function showBuyTickets($id)
@@ -118,7 +321,14 @@ class EventController extends Controller
     public function getPendingEvents()
 {
     $pendingEvents = Event::where('event_status', 'pending')->get();
-    return inertia('Manager/PendingRequests/CreateRequest', ['events' => $pendingEvents]);
+    return inertia('Manager/PendingRequests/CreateRequest', [
+        'events' => $pendingEvents,
+        'flash' =>[
+            'success'=>session('success'),
+            'error'=>session('error'),
+        ],
+
+]);
 }
 
 public function approveEvent($id)
@@ -132,7 +342,14 @@ public function approveEvent($id)
         'number_of_clicks' => 0, // Initially set to 0
     ]);
 
-    return redirect()->route('manager.create.requests')->with('success', 'Event approved successfully.');
+     // Send email notification to the event host
+     Mail::to($event->eventHost->email)->send(new EventApprovedMail($event));
+
+     // Flash message for Inertia
+    // Session::flash('success', 'Event approved successfully.');
+
+    return redirect()->back()
+    ->with('success', 'Event approved successfully.');
 }
 
 public function deleteEvent(Request $request, $id)
@@ -287,7 +504,21 @@ public function generateEndedEventReport($id)
 
 public function getPendingPaymentEvents()
 {
-    return inertia('Manager/History/PendingPaymentsHistory');
+    $pendingPaymentEvents = Event::where('event_status', 'approved')->get();
+    return inertia('Manager/History/PendingPaymentsHistory',[
+        'pendingPaymentEvents' => $pendingPaymentEvents
+    ]
+);
+}
+
+public function generateEventReport($eventId){
+
+    $event = Event::findOrFail($eventId);
+
+    $pdf = Pdf::loadView('pdf.event_report', ['event' => $event]);
+
+    return $pdf->download('event_report_'.$event->name.'.pdf');
+
 }
 
 public function getRejectedEvents()
@@ -348,11 +579,11 @@ public function generateRejectedEventReport($id)
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        $event = Event::findOrFail($id);
-        return inertia('EventHost/UpdateEvent', ['event' => $event]);
-    }
+    // public function edit(string $id)
+    // {
+    //     $event = Event::findOrFail($id);
+    //     return inertia('EventHost/OngoingEvents/UpdateEvent', ['event' => $event]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -365,17 +596,43 @@ public function generateRejectedEventReport($id)
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, $id)
-    {
-        $event = Event::findOrFail($id);
-        $event->delete();
-        return Redirect::route('eventhost.home')->with('success', 'Event deleted successfully!');
+    // public function destroy(Request $request, $id)
+    // {
+    //     $event = Event::findOrFail($id);
+    //     $event->delete();
+    //     return Redirect::route('eventhost.home')->with('success', 'Event deleted successfully!');
         
+    // }
+
+    // public function delete(string $id)
+    // {
+    //     $event = Event::findOrFail($id);
+    //     return inertia('CommonPages/DeleteEvent/EHDeleteEvent', ['event' => $event]);
+    // }
+
+    public function storeDeleteRequest(Request $request)
+{
+    $request->validate([
+        'event_id' => 'required|exists:events,id',
+        'reason' => 'required|string|max:500',
+    ]);
+
+    // Check if request already exists
+    $existingRequest = EventDeletionRequest::where('event_id', $request->event_id)
+        ->where('status', 'pending')
+        ->first();
+
+    if ($existingRequest) {
+        return response()->json(['message' => 'A delete request is already pending for this event.'], 400);
     }
 
-    public function delete(string $id)
-    {
-        $event = Event::findOrFail($id);
-        return inertia('CommonPages/DeleteEvent/EHDeleteEvent', ['event' => $event]);
-    }
+    EventDeletionRequest::create([
+        'event_id' => $request->event_id,
+        'event_host_id' => auth()->id(),
+        'reason' => $request->reason,
+        'status' => 'pending'
+    ]);
+
+    return response()->json(['message' => 'Delete request submitted successfully.'], 200);
+}
 }

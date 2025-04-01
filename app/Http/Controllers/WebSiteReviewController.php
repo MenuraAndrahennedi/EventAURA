@@ -8,6 +8,11 @@ use Inertia\Inertia;
 
 class WebSiteReviewController extends Controller
 {
+   
+    public function showReviewPage(){
+        return Inertia::render('ReviewPg/ReviewPg');
+    }
+    
     public function store(Request $request)
     {
         $request->validate([

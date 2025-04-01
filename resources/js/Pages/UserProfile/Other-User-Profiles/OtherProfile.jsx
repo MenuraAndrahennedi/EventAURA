@@ -14,6 +14,7 @@ const OtherProfile = () => {
         fullName: user.name || '',
         email: user.email || '',
         telephone: user.telephone || '',
+        avatar:null,
       });
     
       const [showProfileForm, setShowProfileForm] = useState(false);
@@ -22,6 +23,11 @@ const OtherProfile = () => {
         setData(e.target.name, e.target.value);
       };
     
+      const handleAvatarChange = (e) => {
+        const file = e.target.files[0];
+        setData('avatar', file || null); // Only set if a file is selected
+      }; 
+
       const handleSaveChanges = () => {
         post(route('admin.updateProfile'), {
           onSuccess: () => {
@@ -59,7 +65,7 @@ const OtherProfile = () => {
                 <div className="card-body text-center">
                     <h1><b>Hi {user.name}!</b></h1>
                     <h4><b>Welcome to Your Profile</b></h4>
-                    <img src= {profilelogo} alt="Avatar"className="profile-avatar" />
+                    <img src= {user.avatar || profilelogo} alt="Avatar"className="profile-avatar" />
                 </div>
               </div>
 
@@ -103,6 +109,14 @@ const OtherProfile = () => {
                         className="form-control"
                         value={data.telephone}
                         onChange={handleChange}
+                      />
+
+                      <div className="detail-label">Profile Picture:</div>
+                      <input
+                        type="file"
+                        name="avatar"
+                        className="form-control"
+                        onChange={handleAvatarChange}
                       />
                    
                     <div className="text-end">

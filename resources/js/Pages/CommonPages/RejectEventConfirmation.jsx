@@ -13,7 +13,7 @@ const RejectEventConfirmation = ({
 
   const handleConfirm = () => {
     onConfirm(reason);
-    setReason('');
+    setReason(''); 
   };
 
   const handleCancel = () => {
