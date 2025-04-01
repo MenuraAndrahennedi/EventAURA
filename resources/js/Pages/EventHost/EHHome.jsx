@@ -1,5 +1,5 @@
 import React from 'react'
-import './EHHome.scss';
+import '../../../css/EHHome.scss';
 import { Link } from '@inertiajs/react';
 
 import EHHeader from './../../Components/Header/EHHeader';
@@ -16,13 +16,13 @@ const EHHome = () => {
             <EHHeader />
         </header>
        
-        <h1 className="text-center my-5">Monitor your work here!</h1>
+        <h1 className="my-5 text-center">Monitor your work here!</h1>
 
      
-        <div className="row pt-5 px-3 gx-5">  
+        <div className="px-3 pt-5 row gx-5">  
 
-              <div className="col-md-4 mb-4 position-relative"> 
-                <div className="card shadow border-0">
+              <div className="mb-4 col-md-4 position-relative"> 
+                <div className="border-0 shadow card">
                   <div className="card-img-top">
                       <img src={Cover01} alt="Banner1" className="w-100"/>
                       <Link href={route('eventhost.ongoingEvents')} className="image-overlay">Your Ongoing Events</Link>
@@ -30,8 +30,8 @@ const EHHome = () => {
                 </div>
               </div>
 
-              <div className="col-md-4 mb-4 position-relative">
-                <div className="card shadow border-0">
+              <div className="mb-4 col-md-4 position-relative">
+                <div className="border-0 shadow card">
                   <div className="card-img-top">
                     <img src={Cover02} alt="Banner2" className="w-100"/>
                     <Link href={route('eventhost.ongoingEvents.history')} className="image-overlay">Go to Profile</Link>
@@ -39,8 +39,8 @@ const EHHome = () => {
               </div>
               </div>
 
-              <div className="col-md-4 mb-4 position-relative">
-                <div className="card shadow border-0">
+              <div className="mb-4 col-md-4 position-relative">
+                <div className="border-0 shadow card">
                   <div className="card-img-top">
                       <img src={Cover03} alt="Banner3" className="w-100"/>
                       <Link href={route('event.create')} className="image-overlay">Create New Event</Link>

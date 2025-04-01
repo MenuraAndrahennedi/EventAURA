@@ -56,21 +56,57 @@ Route::get('/user-details', function () {return Inertia::render('CommmonPages/Us
 Route::get('/user-home', function () {return Inertia::render('CommmonPages/UserHome/UserHome');})->name('userhome');
 Route::get('/eh-view-event', function () {return Inertia::render('CommmonPages/ViewEvent/EHViewEvent');})->name('ehviewevent');
 Route::get('/view-event', function () {return Inertia::render('CommmonPages/ViewEvent/ViewEvent');})->name('viewevent');
+Route::get('/admin-ongoing', function () {return Inertia::render('CommmonPages/AdminOngoing');})->name('adminongoing');
+Route::get('/reject-event-confirmation', function () {return Inertia::render('CommmonPages/RejectEventConfirmation');})->name('rejectevent');
+
+Route::get('/connect-with-us', function () {return Inertia::render('ConnectWithUs/ConnectWithUs');})->name('connectwithus');
+Route::get('/contact-us', function () {return Inertia::render('ContactUs/ContactUs');})->name('contactus');
+//Route::get('/', function () {return Inertia::render('');})->name('');    //artist input
+Route::get('/create', function () {return Inertia::render('CreateEvent/CreateEvent');})->name('createevent');
+//Route::get('/', function () {return Inertia::render('');})->name('');        //customer dashboard
+
+Route::get('/add-new-member', function () {return Inertia::render('Developer-pages/AddNewMember');})->name('addnewmember');
+Route::get('/verification02', function () {return Inertia::render('Developer-pages/VerificationPg02');})->name('verification02');
+Route::get('/verification01', function () {return Inertia::render('Developer-pages/VerificationPg01');})->name('verification01');
+
+Route::get('/tb-event-details', function () {return Inertia::render('EventDetails/TBEventDetails');})->name('tbeventdetails');
+
+//EventHost
+Route::get('/eh-ongoing-history', function () {return Inertia::render('EventHost/EventHistory/OngoingEventHistory');})->name('ehongoinghistory');
+//Route::get('/', function () {return Inertia::render('');})->name(''); //EHCart
+Route::get('/', function () {return Inertia::render('EventHost/');})->name('');
+Route::get('/', function () {return Inertia::render('EventHost/');})->name('');
+Route::get('/', function () {return Inertia::render('EventHost/');})->name('');
+Route::get('/', function () {return Inertia::render('EventHost/');})->name('');
+Route::get('/eh-create-account', function () {return Inertia::render('EventHost/EHCreateAccount');})->name('ehcreateaccount');
+Route::get('/eh-home', function () {return Inertia::render('EventHost/EHHome');})->name('ehhome');
+Route::get('/eh-login', function () {return Inertia::render('EventHost/EHLogin');})->name('eh-login');
+
+
+Route::get('/', function () {return Inertia::render('');})->name('');
+Route::get('/', function () {return Inertia::render('');})->name('');
+
+//Manager
 Route::get('/', function () {return Inertia::render('');})->name('');
 Route::get('/', function () {return Inertia::render('');})->name('');
 Route::get('/', function () {return Inertia::render('');})->name('');
 Route::get('/', function () {return Inertia::render('');})->name('');
 Route::get('/', function () {return Inertia::render('');})->name('');
+Route::get('/', function () {return Inertia::render('');})->name('');
+Route::get('/', function () {return Inertia::render('');})->name('');
+Route::get('/', function () {return Inertia::render('');})->name('');
+Route::get('/', function () {return Inertia::render('');})->name('');
+Route::get('/', function () {return Inertia::render('');})->name('');
+Route::get('/', function () {return Inertia::render('');})->name('');
+Route::get('/', function () {return Inertia::render('');})->name('');
+Route::get('/', function () {return Inertia::render('');})->name('');
+
 //---------------js pages routes----------------------------
 
 
 Route::get('/', function () {
     return Inertia::render('Home/Home');
 })->name('home');
-
-Route::get('/contact', function () {
-    return Inertia::render('ContactUs/ContactUs');
-})->name('contact');
 
 Route::get('/help', function () {
     return Inertia::render('HelpCentre/HelpCentre');
