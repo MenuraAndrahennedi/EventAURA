@@ -54,8 +54,8 @@ Route::get('/admin-delete-event', function () {return Inertia::render('CommmonPa
 Route::get('/eh-delete-event', function () {return Inertia::render('CommmonPages/DeleteEvent/EHDeleteEvent');})->name('ehdelete');
 Route::get('/user-details', function () {return Inertia::render('CommmonPages/UserDetails/UserDetails');})->name('userdetails');
 Route::get('/user-home', function () {return Inertia::render('CommmonPages/UserHome/UserHome');})->name('userhome');
-Route::get('/eh-view-event', function () {return Inertia::render('CommmonPages/ViewEvent/EHViewEvent');})->name('ehviewevent');
-Route::get('/view-event', function () {return Inertia::render('CommmonPages/ViewEvent/ViewEvent');})->name('viewevent');
+//Route::get('/eh-view-event', function () {return Inertia::render('CommmonPages/ViewEvent/EHViewEvent');})->name('ehviewevent');
+//Route::get('/view-event', function () {return Inertia::render('CommmonPages/ViewEvent/ViewEvent');})->name('viewevent');
 Route::get('/admin-ongoing', function () {return Inertia::render('CommmonPages/AdminOngoing');})->name('adminongoing');
 Route::get('/reject-event-confirmation', function () {return Inertia::render('CommmonPages/RejectEventConfirmation');})->name('rejectevent');
 
@@ -74,16 +74,16 @@ Route::get('/tb-event-details', function () {return Inertia::render('EventDetail
 //EventHost
 Route::get('/eh-ongoing-history', function () {return Inertia::render('EventHost/EventHistory/OngoingEventHistory');})->name('ehongoinghistory');
 //Route::get('/', function () {return Inertia::render('');})->name(''); //EHCart
-Route::get('/', function () {return Inertia::render('EventHost/');})->name('');
-Route::get('/', function () {return Inertia::render('EventHost/');})->name('');
-Route::get('/', function () {return Inertia::render('EventHost/');})->name('');
-Route::get('/', function () {return Inertia::render('EventHost/');})->name('');
+Route::get('/eh-view-event', function () {return Inertia::render('EventHost/EHViewEvent');})->name('ehviewevent');
+Route::get('/eh-event-deletion-request', function () {return Inertia::render('EventHost/EventDeletionRequest');})->name('ehdeletionrequest');
+Route::get('/eh-ongoing-events', function () {return Inertia::render('EventHost/OngoingEvents/OngoingEvents');})->name('ehongoingevents');
+Route::get('/eh-update-event', function () {return Inertia::render('EventHost/OngoingEvents/UpdateEvent');})->name('ehupdateevent');
 Route::get('/eh-create-account', function () {return Inertia::render('EventHost/EHCreateAccount');})->name('ehcreateaccount');
 Route::get('/eh-home', function () {return Inertia::render('EventHost/EHHome');})->name('ehhome');
 Route::get('/eh-login', function () {return Inertia::render('EventHost/EHLogin');})->name('eh-login');
 
 
-Route::get('/', function () {return Inertia::render('');})->name('');
+/*Route::get('/', function () {return Inertia::render('');})->name('');
 Route::get('/', function () {return Inertia::render('');})->name('');
 
 //Manager
@@ -99,7 +99,7 @@ Route::get('/', function () {return Inertia::render('');})->name('');
 Route::get('/', function () {return Inertia::render('');})->name('');
 Route::get('/', function () {return Inertia::render('');})->name('');
 Route::get('/', function () {return Inertia::render('');})->name('');
-Route::get('/', function () {return Inertia::render('');})->name('');
+Route::get('/', function () {return Inertia::render('');})->name('');*/
 
 //---------------js pages routes----------------------------
 
