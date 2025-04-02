@@ -57,20 +57,20 @@ const EHProfile = () => {
 
       <main>
         <div className="container my-5">
-          <div className="card shadow border-0">
-            <div className="card-body text-center">
+          <div className="border-0 shadow card">
+            <div className="text-center card-body">
               <h1><b>Hi {user.name}!</b></h1> 
               <h4><b>Welcome to Your Profile</b></h4>
               <img src={user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar" className="profile-avatar" />
             </div>
           </div>
 
-          <div className="row mt-4">
+          <div className="mt-4 row">
             <div className="col-md-3">
               <EHSidebar />
             </div>
             <div className="col-md-9">
-              <div className="card shadow border-0">
+              <div className="border-0 shadow card">
                 <div className="card-body profile-details">
                   <h5 className="text-center"><b>Profile Details</b></h5>
                   <p className="text-center">@{user.name}</p>
@@ -107,8 +107,8 @@ const EHProfile = () => {
                         />
                      
                       <div className="text-end">
-                        <button type="submit" className="btn btn-success mt-3" onClick={handleSave}>Save</button>
-                        <button type="button" className="btn btn-secondary mt-3 ms-2" onClick={handleCancel}>Cancel</button>
+                        <button type="submit" className="mt-3 btn btn-success" onClick={handleSave}>Save</button>
+                        <button type="button" className="mt-3 btn btn-secondary ms-2" onClick={handleCancel}>Cancel</button>
                       </div>
                       </div>
 
@@ -128,7 +128,7 @@ const EHProfile = () => {
                       </div>
 
                       <div className="text-end">
-                        <button className="btn btn-primary mt-3" onClick={handleSaveChanges}>Edit Profile</button>
+                        <button className="mt-3 btn btn-primary" onClick={handleSaveChanges}>Edit Profile</button>
                       </div>
                     </>
                   )} */}
@@ -144,7 +144,7 @@ const EHProfile = () => {
                   </div>
 
                   <div className="text-end">
-                    <Link href={route('eventhost.profile.edit') }className="btn btn-primary mt-3">Edit Profile</Link>
+                    <Link href={route('eventhost.profile.edit') }className="mt-3 btn btn-blue">Edit Profile</Link>
                   </div>
                 </div>
               </div>

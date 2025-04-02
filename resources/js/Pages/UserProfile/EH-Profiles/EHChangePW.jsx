@@ -54,20 +54,20 @@ const EHChangePW = ({user,flash} ) => {
 
   //     <main>
   //       <div className="container my-5">
-  //         <div className="card shadow border-0">
-  //           <div className="card-body text-center">
+  //         <div className="border-0 shadow card">
+  //           <div className="text-center card-body">
   //             <h1><b>Hi {user.name}!</b></h1>
   //             <h4><b>Welcome to Your Profile</b></h4>
   //             <img src={profilelogo} alt="Avatar" className="profile-avatar" />
   //           </div>
   //         </div>
 
-  //         <div className="row mt-4">
+  //         <div className="mt-4 row">
   //           <div className="col-md-3">
   //             <EHSidebar />
   //           </div>
   //           <div className="col-md-9">
-  //             <div className="card shadow border-0">
+  //             <div className="border-0 shadow card">
   //               <div className="card-body profile-details">
   //                 <h5 className="text-center"><b>Change Password</b></h5>
   //                 <p className="text-center">@{user.name}</p>
@@ -87,8 +87,8 @@ const EHChangePW = ({user,flash} ) => {
   //                     {errors.telephone && <div className="text-danger">{errors.telephone}</div>}
 
   //                     <div className="text-end">
-  //                       <button className="btn btn-secondary mt-3 me-2" onClick={handleCancel}>Cancel</button>
-  //                       <button className="btn btn-primary mt-3" onClick={handleSaveChanges} disabled={processing}>Save Changes</button>
+  //                       <button className="mt-3 btn btn-secondary me-2" onClick={handleCancel}>Cancel</button>
+  //                       <button className="mt-3 btn btn-primary" onClick={handleSaveChanges} disabled={processing}>Save Changes</button>
   //                     </div>
   //                   </div>
   //                 ) : (
@@ -104,8 +104,8 @@ const EHChangePW = ({user,flash} ) => {
   //                       <input type="password" name="password_confirmation" className="form-control" value={data.password_confirmation} onChange={handleChange} placeholder="Confirm new password" />
   //                     </div>
   //                     <div className="text-end">
-  //                       <button className="btn btn-secondary mt-3 me-2" onClick={handleCancel}>Cancel</button>
-  //                       <button className="btn btn-success mt-3" onClick={handleUpdatePassword} disabled={processing}>Update Password</button>
+  //                       <button className="mt-3 btn btn-secondary me-2" onClick={handleCancel}>Cancel</button>
+  //                       <button className="mt-3 btn btn-success" onClick={handleUpdatePassword} disabled={processing}>Update Password</button>
   //                     </div>
   //                   </div>
   //                 )}
@@ -166,20 +166,20 @@ const EHChangePW = ({user,flash} ) => {
 
     <main>
       <div className="container my-5">
-            <div className="card shadow border-0">
-              <div className="card-body text-center">
+            <div className="border-0 shadow card">
+              <div className="text-center card-body">
                   <h1><b>Hi {user.name}!</b></h1>
                   <h4><b>Welcome to Your Profile</b></h4>
                   <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar"className="profile-avatar" />
               </div>
             </div>
 
-            <div className="row mt-4">
+            <div className="mt-4 row">
                 <div className="col-md-3">
                   <EHSidebar />
                 </div>
                 <div className="col-md-9">
-                  <div className="card shadow border-0">
+                  <div className="border-0 shadow card">
                     <div className="card-body profile-details">
                       <h5 className="text-center"><b>Change Password</b></h5>
 
@@ -204,8 +204,8 @@ const EHChangePW = ({user,flash} ) => {
                       </div>
 
                       <div className="text-end">
-                        <button className="btn btn-secondary mt-3 me-2">Cancel</button>
-                        <button className="btn btn-primary mt-3 ">Save Changes</button>
+                        <button className="mt-3 btn btn-secondary me-2">Cancel</button>
+                        <button className="mt-3 btn btn-primary ">Save Changes</button>
                       </div> */} 
                       <form onSubmit={handleSubmit}>
                     <div className="mb-3">
@@ -260,8 +260,8 @@ const EHChangePW = ({user,flash} ) => {
                     </div>
 
                     <div className="text-end">
-                      <button type="button" className="btn btn-secondary mt-3 me-2">Cancel</button>
-                      <button type="submit" className="btn btn-primary mt-3" disabled={processing}>
+                      <button type="button" className="btn btn-secondary me-2">Cancel</button>
+                      <button type="submit" className="btn btn-blue" disabled={processing}>
                         {processing ? 'Updating...' : 'Change Password'}
                       </button>
                     </div>
