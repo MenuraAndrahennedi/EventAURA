@@ -27,6 +27,16 @@ $text-white: #ffffff;
                 font-size: 1.4 em;
             }
         }
+        .event-title {
+            white-space: nowrap; /* Ensures text stays in one line */
+            overflow: hidden; /* Hides overflowing text */
+            text-overflow: ellipsis; /* Adds ellipsis when text overflows */
+            font-size: 1.2em; /* Adjust base font size */
+            font-weight: bold;
+            line-height: 1.4; /* Helps maintain readability */
+            max-width: 100%; /* Ensures it uses all available space */
+        }
+
         .event-date-time {
             color: #0087a3;
             font-weight: 800;
@@ -37,6 +47,10 @@ $text-white: #ffffff;
             color: #0087a3;
             font-weight: 800;
             font-size: 1.3em;
+            white-space: nowrap;
+            overflow: hidden;
+            line-height: 1.4;
+            max-width: 100%;
         }
 
         .event-price {
@@ -45,6 +59,8 @@ $text-white: #ffffff;
         }
     }
 }
+
+
 
 .section-5 {
     background: transparent;
