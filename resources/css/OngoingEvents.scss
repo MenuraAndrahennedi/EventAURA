@@ -1,0 +1,14 @@
+/* used className of BrowseEvent.scss*/
+.card {
+    height: 100%; /* maximum height */
+    display: flex;
+    flex-direction: column; 
+  }
+  
+  .card-body {
+    flex-grow: 1; 
+  }
+  
+  .event-footer {
+    margin-top: auto; 
+  }

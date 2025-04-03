@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/react";
 import StarRating from "./StarRating";// Import Star Rating Component
-import './ReviewPg.scss'; 
+import '../../../css/ReviewPg.scss'; 
 
 const ReviewPg = () => {
     const { data, setData, post, processing, reset } = useForm({
