@@ -1,5 +1,5 @@
 import React from 'react'
-import './ResetPW.scss';
+import '../../../css/ResetPW.scss';
 import { Link } from '@inertiajs/react';
 import MainHeader from '../../Components/Header/MainHeader';
 import SubFooter from '../../Components/Footer/SubFooter';
