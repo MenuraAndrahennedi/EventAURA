@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ReplyToReviewModal.scss'; // SCSS file for styling
+import '../../../../css/ReplyToReviewModal.scss'; // SCSS file for styling
 
 const ReplyToReviewModal = ({ isOpen, onClose, onConfirm, review }) => {
     const [reply, setReply] = useState('');
