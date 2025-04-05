@@ -118,7 +118,8 @@ class EventController extends Controller
 
         $query = Event::query()
         ->leftJoin('clicks', 'events.id', '=', 'clicks.event_id')
-        ->select('events.*', \DB::raw('COALESCE(clicks.number_of_clicks, 0) as click_count'));
+        ->select('events.*', \DB::raw('COALESCE(clicks.number_of_clicks, 0) as click_count'))
+        ->where('event_status', 'completed');
 
         if (!empty($searchTerm)) {
            $query->where('name', 'LIKE', "%{$searchTerm}%")
