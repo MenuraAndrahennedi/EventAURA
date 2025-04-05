@@ -7,6 +7,7 @@ import FB from '../../../js/assets/Logos/fb black.png';
 import Instar from '../../assets/Logos/Instargram black.png';
 import X from '../../assets/Logos/logo X black.png';
 import LinkedIn from '../../assets/Logos/linkedIn black.png';
+import MainHeader from './../../Components/Header/MainHeader';
 
 const ConnectWithUs = () => {
     //const { post, processing, errors } = useForm();
@@ -33,7 +34,10 @@ const ConnectWithUs = () => {
 
     return (
         <>
-            {/* <UserHeader /> */}
+           <header>
+                <MainHeader />
+            </header>
+
             <main className="connect-container">
                 <h1>Connect With Us</h1>
                 <p>Have questions? Contact us using the form below or reach out via email or social media.</p>
@@ -94,54 +98,54 @@ const ConnectWithUs = () => {
                             </button>
                         </form>
                     </div>
-                    <div className="live-chat-section">
+
+                   
     
- <div className="live-chat-section">
-    <h3>Live Chat</h3>
-    <a 
-        href="https://wa.me/+94710131042" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="whatsapp-button"
-    >
-        Chat on WhatsApp
-    </a>
+                        {/*<div className="live-chat-section">
+                            <h3>Live Chat</h3>
+                            <a 
+                                href="https://wa.me/+94710131042" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="whatsapp-button"
+                            >
+                                Chat on WhatsApp
+                            </a>
 
-     {/* Facebook Messenger Chat */}
-     <div id="fb-root"></div>
-    <script async defer crossOrigin="anonymous" 
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0" 
-        nonce="YOUR_NONCE">
-    </script>
+                           
+                            <div id="fb-root"></div>
+                            <script async defer crossOrigin="anonymous" 
+                                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0" 
+                                nonce="YOUR_NONCE">
+                            </script>
 
-    <div className="fb-customerchat"
-        attribution="biz_inbox"
-        page_id="YOUR_PAGE_ID"><span className="messenger-button">Chat On Messenger</span>
-    </div>
+                            <div className="fb-customerchat"
+                                attribution="biz_inbox"
+                                page_id="YOUR_PAGE_ID"><span className="messenger-button">Chat On Messenger</span>
+                            </div>
 
-    </div>
-
-</div>
+                        </div> */}
 
 
-                    <div className="contact-info">
-                        <h2>Contact Information</h2>
-                        <p><strong>Email:</strong> support@yourwebsite.com</p>
-                        <p><strong>Phone:</strong> +94 71 234 5678</p>
-                        <p><strong>Location:</strong> Colombo, Sri Lanka</p>
 
-                        <h3>Follow Us</h3>
-                        <div className="social-links">
-                            <img src={FB} alt="Facebook" />
-                            <a href="https://facebook.com" target="_blank">Facebook</a>
-                            <img src={X} alt="X"/>
-                            <a href="https://twitter.com" target="_blank">X</a>
-                            <img src={Instar} alt="Instagram" />
-                            <a href="https://instagram.com" target="_blank">Instagram</a>
-                            <img src={LinkedIn} alt="LinkedIn" />
-                            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-                        </div>
-                    </div>
+                                           {/*<div className="contact-info">
+                                                <h2>Contact Information</h2>
+                                                <p><strong>Email:</strong> support@yourwebsite.com</p>
+                                                <p><strong>Phone:</strong> +94 71 234 5678</p>
+                                                <p><strong>Location:</strong> Colombo, Sri Lanka</p>
+
+                                                <h3>Follow Us</h3>
+                                                <div className="social-links">
+                                                    <img src={FB} alt="Facebook" />
+                                                    <a href="https://facebook.com" target="_blank">Facebook</a>
+                                                    <img src={X} alt="X"/>
+                                                    <a href="https://twitter.com" target="_blank">X</a>
+                                                    <img src={Instar} alt="Instagram" />
+                                                    <a href="https://instagram.com" target="_blank">Instagram</a>
+                                                    <img src={LinkedIn} alt="LinkedIn" />
+                                                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                                                </div>
+                                            </div>*/}
                 </div>
             </main>
             <Footer />

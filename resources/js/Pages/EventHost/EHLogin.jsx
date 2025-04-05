@@ -1,5 +1,5 @@
 import React from 'react'
-import './EHLogin.scss';
+import '../../../css/EHLogin.scss';
 import MainHeader from './../../Components/Header/MainHeader';
 import SubFooter from './../../Components/Footer/SubFooter';
 import { Link,useForm } from '@inertiajs/react';
@@ -33,9 +33,9 @@ const EHLogin = () => {
           
           <div className="login-form-section d-flex justify-content-center ">
             <div className="login-form">
-              <div className="card border-0 shadow">
-                <div className="card-body p-4">
-                  <h2 className="text-center mb-4">Sign in to EventAURA</h2>
+              <div className="border-0 shadow card">
+                <div className="p-4 card-body">
+                  <h2 className="mb-4 text-center">Sign in to EventAURA</h2>
 
                   <form onSubmit={handleSubmit}>
 
@@ -53,7 +53,7 @@ const EHLogin = () => {
                     <small>< Link href={route('password.request')}>Forgot Password?</Link></small>
                     </div>
 
-                    <button type="submit" className="btn btn-primary w-100 mb-3" disabled={processing}>Sign In</button>
+                    <button type="submit" className="mb-3 btn btn-primary w-100" disabled={processing}>Sign In</button>
                     
                     <div className="divider">
                       <span className="text-center">or login with</span>
@@ -65,7 +65,7 @@ const EHLogin = () => {
                       <a href="/login/apple" className="btn btn-outline-secondary">Apple</a>
                     </div>
 
-                    <div className="text-center mt-4">
+                    <div className="mt-4 text-center">
                       <small>Don’t have an account? <Link href={route('eh.register')}> Create an account</Link></small>
                     </div>
 

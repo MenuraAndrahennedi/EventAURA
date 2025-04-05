@@ -1,5 +1,5 @@
 import React from "react";
-import './StarRating.scss';
+import '../../../css/StarRating.scss';
 
 const StarRating = ({ value, onChange }) => {
     return (

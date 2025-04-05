@@ -1,5 +1,5 @@
 import React from 'react'
-import './TBLogin.scss';
+import '../../../css/TBLogin.scss';
 import MainHeader from './../../Components/Header/MainHeader';
 import SubFooter from './../../Components/Footer/SubFooter';
 import { Link,useForm } from '@inertiajs/react';//here

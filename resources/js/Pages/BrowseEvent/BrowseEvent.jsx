@@ -36,6 +36,7 @@ const BrowseEvent = () => {
             });
     };
 
+    
     return (
         <>
             <header>
@@ -50,7 +51,7 @@ const BrowseEvent = () => {
                     {/*1st Row*/}
                     <div className="pt-3 row">
                         {events.map((event) => (
-                            <div className="col-md-4" key={event.id}>
+                            <div className="col-md-3" key={event.id}>
                                 <div className="border-0 shadow card">
                                     <div className="card-img-top">
                                         <img
@@ -100,7 +101,7 @@ const BrowseEvent = () => {
                 </div>
             </section>
 
-            <section className="section-5">
+            {/*<section className="section-5">
                 <div className="text-center">
                     <Link href ="/reviewPg" className='Reviews '>Leave Us a Review</Link >
                     <img
@@ -109,7 +110,7 @@ const BrowseEvent = () => {
                         className="mx-2 Review-icon"
                     />
                 </div>
-            </section>
+            </section>*/}
 
             <footer>
                 <SubFooter />

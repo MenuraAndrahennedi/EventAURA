@@ -63,7 +63,7 @@ const handleAvatarChange = (e) => {
               <EHSidebar />
             </div>
             <div className="col-md-9">
-              <div className="card shadow border-0">
+              <div className="border-0 shadow card">
                 <div className="card-body">
                   <h5 className="text-center"><b>Edit Profile</b></h5>
                   <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -74,25 +74,25 @@ const handleAvatarChange = (e) => {
                       {errors.name && <small className="text-danger">{errors.name}</small>}
                     </div>
 
-                    <div className="form-group mt-3">
+                    <div className="mt-3 form-group">
                       <label>Email</label>
                       <input type="email" name="email" value={data.email} onChange={(e) => setData('email', e.target.value)} className="form-control" />
                       {errors.email && <small className="text-danger">{errors.email}</small>}
                     </div>
 
-                    <div className="form-group mt-3">
+                    <div className="mt-3 form-group">
                       <label>Telephone</label>
                       <input type="text" name="telephone" value={data.telephone} onChange={(e) => setData('telephone', e.target.value)} className="form-control" />
                       {errors.telephone && <small className="text-danger">{errors.telephone}</small>}
                     </div>
 
-                    <div className="form-group mt-3">
+                    <div className="mt-3 form-group">
                       <label>Profile Picture</label>
                       <input type="file" name="avatar" onChange={handleAvatarChange} className="form-control" />
                       {errors.avatar && <small className="text-danger">{errors.avatar}</small>}
                     </div>
 
-                    <div className="text-end mt-4">
+                    <div className="mt-4 text-end">
                       <button type="submit" className="btn btn-primary" disabled={processing}> {processing ? 'Updating...' : 'Update Profile'}</button>
                     </div>
 

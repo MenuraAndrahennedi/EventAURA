@@ -7,14 +7,17 @@ $dark-background: #000;
 $border-radius: 8px;
 $transition-speed: 0.3s;
 
+
+
 .connect-container {
     max-width: 900px;
     margin: 50px auto;
     padding: 40px;
-    background: #fff;
+    background: #f2f6f7;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: $border-radius;
     text-align: center;
+    //background: linear-gradient(to right, #e7e9eb, #f6fafe);
 
     h1 {
         font-size: 2em;
@@ -42,6 +45,7 @@ $transition-speed: 0.3s;
         h2 {
             font-size: 1.5em;
             margin-bottom: 15px;
+            text-align: center;
         }
     }
 }
@@ -83,7 +87,7 @@ form {
     transition: background $transition-speed;
 
     &:hover {
-        background: darken($primary-color, 10%);
+        background: #0087a3;
     }
 }
 
@@ -179,3 +183,5 @@ form {
         align-items: stretch;
     }
 }
+
+

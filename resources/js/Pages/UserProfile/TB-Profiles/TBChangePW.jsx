@@ -3,7 +3,8 @@ import { useForm } from '@inertiajs/react';
 import TBHeader from './../../../Components/Header/TBHeader';
 import TBSidebar from './TBSidebar';
 import SubFooter from './../../../Components/Footer/SubFooter';
-import '../profile.scss';
+import '../../../../css/profile.scss';
+import profilelogo from '../../../assets/Logos/Profile-logo.jpg';
 
 const TBChangePW = ({ user, success }) => {
   const { data, setData, post, processing, errors } = useForm({
@@ -25,24 +26,25 @@ const TBChangePW = ({ user, success }) => {
 
       <main>
         <div className="container my-5">
-          <div className="card shadow border-0">
-            <div className="card-body text-center">
+          <div className="border-0 shadow card">
+            <div className="text-center card-body">
               <h1><b>Hi {user.name}!</b></h1>
               <h4><b>Welcome to Your Profile</b></h4>
+              <img src= {profilelogo} alt="Avatar"className="profile-avatar" />
             </div>
           </div>
 
-          <div className="row mt-4">
+          <div className="mt-4 row">
             <div className="col-md-3">
               <TBSidebar />
             </div>
             <div className="col-md-9">
-              <div className="card shadow border-0">
+              <div className="border-0 shadow card">
                 <div className="card-body profile-details">
                   <h5 className="text-center"><b>Change Password</b></h5>
 
                   {/* Success Message */}
-                  {success && <div className="alert alert-success text-center">{success}</div>}
+                  {success && <div className="text-center alert alert-success">{success}</div>}
 
                   <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -85,7 +87,7 @@ const TBChangePW = ({ user, success }) => {
                     </div>
 
                     <div className="text-end">
-                      <button type="submit" className="btn btn-primary mt-3" disabled={processing}>Save Changes</button>
+                      <button type="submit" className=" btn btn-blue" disabled={processing}>Save Changes</button>
                     </div>
                   </form>
                 </div>

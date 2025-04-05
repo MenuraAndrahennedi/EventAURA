@@ -1,7 +1,7 @@
 import React from 'react'
 import MainHeader from '../../Components/Header/MainHeader'
 import SubFooter from './../../Components/Footer/SubFooter';
-import './ResetPW.scss';
+import '../../../css/ResetPW.scss';
 import { Link } from '@inertiajs/react';
 
 const ForgotPW = () => {

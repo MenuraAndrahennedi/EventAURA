@@ -58,9 +58,26 @@
     }
   }
   
-  .btn-primary {
-    border: none;
+  .btn-blue{
+    background-color: #48cae4;
+    border: 1px solid #48cae4;
+    padding: 15px 20px;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 40px;    
+    margin-top:30px;
+    
   }
+  .btn-blue:hover {
+    background-color: #007bff; /* Darker shade of blue */
+    border-color: #007bff;
+    transform: scale(1.05); /* Slightly enlarges the button */
+}
+
+.btn-blue:active {
+    transform: scale(0.98); /* Slightly shrinks when clicked */
+}
+
   .btn-secondary{
     background-color: #000;
     border: 1px solid #000;
@@ -78,4 +95,4 @@
   .row {
     margin: 0; 
   }
-  
+  /**/
