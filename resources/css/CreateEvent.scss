@@ -355,6 +355,8 @@
     
     .center-content {
       text-align: center;
+      font-weight: bold;
+      font-style:italic;
     }
     
     .submit-btn {
@@ -370,7 +372,7 @@
     }
     
     .submit-btn:hover {
-      background-color: #555;
+      background-color: #48CAE4;
     }
     
     .submit-btn:active {

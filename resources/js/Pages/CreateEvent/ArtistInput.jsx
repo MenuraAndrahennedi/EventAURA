@@ -80,7 +80,7 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
     return (
         <div className="artist-input">
            <div className="header-container">
-        <h3>Artists</h3>
+        <h3></h3>
     </div>
             {!isAddingNew ? (
                 <>

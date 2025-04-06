@@ -35,6 +35,11 @@
     border: 2px solid #96E7F8;
   }
   
+  .profile-heading {
+    font-weight: 800; 
+    font-size: 2rem; 
+  }
+  
   .profile-details {
     background-color: #D7ECFF;
     padding: 20px;
@@ -71,14 +76,15 @@
   .btn-blue:hover {
     background-color: #007bff; /* Darker shade of blue */
     border-color: #007bff;
-    transform: scale(1.05); /* Slightly enlarges the button */
+    transform: scale(1.05);
+    color: white; /* Slightly enlarges the button */
 }
 
 .btn-blue:active {
     transform: scale(0.98); /* Slightly shrinks when clicked */
 }
 
-  .btn-secondary{
+  .btn-secondaryy{
     background-color: #000;
     border: 1px solid #000;
     padding: 15px 20px;
@@ -86,8 +92,15 @@
     font-weight: 500;
     margin-bottom: 40px;    
     margin-top:30px;
+    color: white;
 }
-  
+.btn-secondaryy:hover {
+  background-color: #007bff; /* Darker shade of blue */
+  border-color: #007bff;
+  transform: scale(1.05);
+  color: white; /* Slightly enlarges the button */
+}
+
   .container {
     padding: 0; 
   }
@@ -96,3 +109,11 @@
     margin: 0; 
   }
   /**/
+
+  @media (max-width: 576px) {
+    .btn-group .btn {
+      flex: 1 1 100%; // each button takes full width on mobile
+      margin-bottom: 0.5rem;
+    }
+  }
+  

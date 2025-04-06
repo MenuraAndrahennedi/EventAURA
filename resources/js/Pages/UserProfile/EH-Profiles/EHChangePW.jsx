@@ -168,7 +168,7 @@ const EHChangePW = ({user,flash} ) => {
       <div className="container my-5">
             <div className="border-0 shadow card">
               <div className="text-center card-body">
-                  <h1><b>Hi {user.name}!</b></h1>
+                  <h1 className="profile-heading"><b>Hi {user.name}!</b></h1>
                   <h4><b>Welcome to Your Profile</b></h4>
                   <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar"className="profile-avatar" />
               </div>
@@ -260,7 +260,7 @@ const EHChangePW = ({user,flash} ) => {
                     </div>
 
                     <div className="text-end">
-                      <button type="button" className="btn btn-secondary me-2">Cancel</button>
+                      <button type="button" className="btn btn-secondaryy me-2">Cancel</button>
                       <button type="submit" className="btn btn-blue" disabled={processing}>
                         {processing ? 'Updating...' : 'Change Password'}
                       </button>
