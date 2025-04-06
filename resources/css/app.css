@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* === GLOBAL QUICK FIX FOR RESPONSIVENESS === */
+
+/* Make all images responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Force Bootstrap cols to stack on small screens */
+  @media (max-width: 768px) {
+    .col-md-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  
+    .row {
+      flex-direction: column;
+    }
+  
+    .image-overlay {
+      font-size: 14px;
+      padding: 8px;
+      text-align: center;
+    }
+  
+    /* Add margin if too tight */
+    .cards {
+      margin-bottom: 1rem;
+    }
+  }
+  

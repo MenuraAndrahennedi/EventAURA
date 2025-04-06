@@ -26,10 +26,10 @@ const UserHome = () => {
             <Link href={route('admin.profile')} className="image-overlay">Admin Profile</Link>
         </div> */}
 
-        <div className="row pt-5 px-3 gx-5">  
+        <div className="px-3 pt-5 row gx-5">  
           
-              <div className="col-md-4 mb-4 position-relative"> 
-                <div className="cards shadow border-0">                  
+              <div className="mb-4 col-md-4 position-relative"> 
+                <div className="border-0 shadow cards">                  
                   <div className="cards-img-top">
                       <img src={Cover01} alt="Banner1" className="w-100"/>
                       <Link href={route('admin.ongoingEvents')} className="image-overlay">Ongoing Events</Link>
@@ -37,8 +37,8 @@ const UserHome = () => {
                 </div>
               </div>
 
-              <div className="col-md-4 mb-4 position-relative">
-                <div className="cards shadow border-0">
+              <div className="mb-4 col-md-4 position-relative">
+                <div className="border-0 shadow cards">
                   <div className="cards-img-top">
                     <img src={Cover02} alt="Banner2" className="w-100"/>
                     <Link href="/manager/create-requests" className="image-overlay">Pending Requests</Link>
@@ -46,8 +46,8 @@ const UserHome = () => {
               </div>
               </div>
 
-              <div className="col-md-4 mb-4 position-relative">
-                <div className="cards shadow border-0">
+              <div className="mb-4 col-md-4 position-relative">
+                <div className="border-0 shadow cards">
                   <div className="cards-img-top">
                       <img src={Cover03} alt="Banner3" className="w-100"/>
                       <Link href="/manager/endedEventHistory" className="image-overlay">History</Link>
@@ -56,9 +56,9 @@ const UserHome = () => {
               </div>
           </div>
           
-            <div className="row pt-5 px-3 gx-5">  
-                <div className="col-md-4 mb-4 position-relative"> 
-                    <div className="cards shadow border-0">
+            <div className="px-3 pt-5 row gx-5">  
+                <div className="mb-4 col-md-4 position-relative"> 
+                    <div className="border-0 shadow cards">
                         <div className="cards-img-top">
                             <img src={Cover04} alt="Banner4" className="w-100"/>
                             <Link href={route('admin.userDetails')} className="image-overlay">User Details</Link>
@@ -66,8 +66,8 @@ const UserHome = () => {
                     </div>
                 </div>
 
-                <div className="col-md-4 mb-4 position-relative">
-                    <div className="cards shadow border-0">
+                <div className="mb-4 col-md-4 position-relative">
+                    <div className="border-0 shadow cards">
                         <div className="cards-img-top">
                         <img src={Cover05} alt="Banner5" className="w-100"/>
                         <Link href="/manager/reviews" className="image-overlay">Reviews</Link>
@@ -75,8 +75,8 @@ const UserHome = () => {
                     </div>
                 </div>
 
-                <div className="col-md-4 mb-4 position-relative">
-                    <div className="cards shadow border-0">
+                <div className="mb-4 col-md-4 position-relative">
+                    <div className="border-0 shadow cards">
                         <div className="cards-img-top">
                             <img src={Cover06} alt="Banner6" className="w-100"/>
                             <Link href="/inquiries" className="image-overlay">Inquiries</Link>

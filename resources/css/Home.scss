@@ -24,6 +24,8 @@ body {
         color: $text-white;
         h1 {
             font-size: 4em;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
         }
     }
 }
@@ -46,6 +48,11 @@ body {
     p {
         color: $text-color;
     }
+    h1 {
+        
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+    }
 }
 
 .centered-line {
@@ -66,10 +73,10 @@ body {
         color: $primary-color;
 
         font-size: 3em;
-        font-weight: 500;
         padding-bottom: 10px;
         display: block;
-
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
         margin-top: 80px;
     }
     p {
@@ -78,9 +85,10 @@ body {
     h3 {
         color: $primary-color;
         font-size: 2em;
-        font-weight: 500;
         padding-bottom: 10px;
         display: block;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
     }
 }
 
@@ -89,9 +97,10 @@ body {
     padding: 20px 0;
     h1 {
         color: #0b3a44;
-
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
         font-size: 3em;
-        font-weight: 500;
+       
         margin-bottom: 60px;
     }
 }
