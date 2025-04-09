@@ -18,6 +18,7 @@ const BuyTickets = ({ event }) => {
 const [silverCount, setSilverCount] = useState(0);
 const [bronzeCount, setBronzeCount] = useState(0);
 const { cart, updateCart, lockedTickets } = useContext(CartContext);
+const [showReturnPolicy, setShowReturnPolicy] = useState(false);
 
 const handleTicketChange = (type, value) => {
     const count = Math.max(0, Number(value)); // Ensure non-negative values
@@ -62,6 +63,8 @@ const calculateTotal = () => {
 //     }
 // };
 
+const openReturnPolicy = () => setShowReturnPolicy(true);
+const closeReturnPolicy = () => setShowReturnPolicy(false);
 
 
 
@@ -229,6 +232,8 @@ const calculateTotal = () => {
                         </Link> */}
                     </div>
                 </div>
+                
+
             </section>
 
             {/* Cart Details */}
@@ -272,14 +277,29 @@ const calculateTotal = () => {
                 </table>
 
                 <div className="event-buttons">
-                    <Link to="/return-policies" className="return-policies">
+                    {/* <Link to="/return-policies" className="return-policies">
                         Return Policies
-                    </Link>
+                    </Link> */}<button className="return-policies" onClick={openReturnPolicy}>
+    Return Policies
+</button>
+
                     <Link href= {route('buyticketscart',{id:event.id}) } className="tbCart">
                         {" "}
                         Continue
                     </Link>
                 </div>
+
+                {showReturnPolicy && (
+    <div className="modal-overlay" onClick={closeReturnPolicy}>
+        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={closeReturnPolicy}>×</button>
+            <h2>Return Policies</h2>
+            <p>
+               {event.return_policies}
+            </p>
+        </div>
+    </div>
+)}
             </section>
 
             {/* Contact Host Section */}

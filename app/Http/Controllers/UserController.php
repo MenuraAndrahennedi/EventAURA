@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Ticket;
 
 
 
@@ -34,29 +35,52 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'telephone' => 'nullable|string',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        // $request->validate([
+        //     'email' => 'required|email',
+        //     'telephone' => 'nullable|string',
+        //     'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // ]);
 
+        // $user = auth()->user();
+
+        // // 
+        // if ($request->hasFile('avatar')) {
+        //     $path = $request->file('avatar')->store('avatars', 'public');
+        //     $validated['avatar'] = $path;
+        // } else {
+        //     // Keep the existing avatar if no new file is uploaded
+        //     $validated['avatar'] = $user->avatar;
+        // }
+    
+
+    
+        // $user->update([
+        //     'email' => $request->email,
+        //     'telephone' => $request->telephone,
+        // ]);
+
+        // return back()->with('success', 'Profile updated successfully!');
         $user = auth()->user();
 
-        if ($request->hasFile('avatar')) {
-            $imagePath = $request->file('avatar')->store('avatar', 'public');
+    $validated = $request->validate([
+        //'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+        'telephone' => 'nullable|string|max:15',
+        'avatar' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+    ]);
 
-        if ($user->avatar) {
-            Storage::disk('public')->delete($user->avatar);
-        }
-        $user->avatar = $imagePath;
-
+    if ($request->hasFile('avatar')) {
+        $path = $request->file('avatar')->store('avatars', 'public');
+        $validated['avatar'] = $path;
+    } else {
+        // Keep the existing avatar if no new file is uploaded
+        $validated['avatar'] = $user->avatar;
     }
-        $user->update([
-            'email' => $request->email,
-            'telephone' => $request->telephone,
-        ]);
 
-        return back()->with('success', 'Profile updated successfully!');
+    $user->update($validated);
+
+    return back()->with('success', 'Profile updated successfully!');
+
     }
 
     public function store(string $id)
@@ -104,18 +128,36 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-//        // Fetch user's purchase history
-//        $purchases = DB::table('stripe_payments')
-//            ->join('events', 'stripe_payments.event_id', '=', 'events.id')
-//            ->where(function ($query) use ($user) {
-//                $query->where('stripe_payments.customer_id', $user->id)
-//                      ->orWhere('stripe_payments.customer_id', session('guest_id'));
-//            })
-//            ->select('events.name', 'stripe_payments.amount', 'stripe_payments.status', 'stripe_payments.created_at')
-//            ->get();//
+         // Get all tickets with event and payment data
+    $tickets = Ticket::with(['event', 'payment'])
+    ->where('customer_id', $user->id)
+    ->get();
 
-        return inertia('TBPurchaseHistory', ['purchases' => $purchases]);
+// Group tickets by event and payment
+$grouped = $tickets->groupBy(function ($ticket) {
+    return $ticket->event_id . '-' . $ticket->payment_id;
+});
+
+// Format data for frontend
+$purchases = $grouped->map(function ($group) {
+    $first = $group->first(); // all in group have same event/payment
+
+    return [
+        'event_name' => optional($first->event)->name ?? 'N/A',
+        'golden_tickets' => $group->where('ticket_type', 'golden')->count(),
+        'silver_tickets' => $group->where('ticket_type', 'silver')->count(),
+        'bronze_tickets' => $group->where('ticket_type', 'bronze')->count(),
+        'amount' => optional($first->payment)->amount ?? 0,
+        'currency' => optional($first->payment)->currency ?? 'LKR',
+    ];
+})->values(); // reset keys
+
+        return inertia('UserProfile/TB-Profiles/TBPurchaseHistory' ,[
+            'user' => $user,
+            'purchases' => $purchases,
+        ]);
     }
+
 
     public function updatePassword(Request $request)
     {

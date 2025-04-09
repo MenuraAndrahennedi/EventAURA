@@ -1,7 +1,7 @@
 import React,{ useEffect, useState } from "react";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import axios from "axios";
-import ManagerHeader from "@/Components/Header/ManagerHeader";
+import UserHeader from "@/Components/Header/UserHeader";
 import ManagerFooter from "../../Components/Footer/AdminFooter";
 import "../../../css/manager.scss";
 import { Link } from "@inertiajs/react";
@@ -26,7 +26,7 @@ const ManagerDashboard = () => {
     return (
         <>
             <header>
-                <ManagerHeader />
+                <UserHeader />
             </header>
 
             {/*Body Content */}
@@ -36,7 +36,7 @@ const ManagerDashboard = () => {
                     <div className="row justify-content-center align-items-center pt-3">
                         <div className="col-md-3 m-3 ">
                             <Link
-                                href="/manager/ongoing"
+                                href="/ongoing"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">
@@ -51,7 +51,7 @@ const ManagerDashboard = () => {
 
                         <div className="col-md-3 m-3">
                             <Link
-                                href="/manager/create-requests"
+                                href="/event/create-requests"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">
@@ -66,7 +66,7 @@ const ManagerDashboard = () => {
 
                         <div className="col-md-3 m-3">
                             <Link
-                                href="/manager/endedEventHistory"
+                                href="/ended-event-history"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">
@@ -84,7 +84,7 @@ const ManagerDashboard = () => {
                     <div className="row justify-content-center align-items-center pt-3 mt-4">
                         <div className="col-md-3 m-3">
                             <Link
-                                href="/manager/profile"
+                                href="/other/profile-show"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">
@@ -98,7 +98,7 @@ const ManagerDashboard = () => {
                         </div>
                         <div className="col-md-3 m-3">
                             <Link
-                                href="/manager/reviews"
+                                href="/show-reviews"
                                 className="text-decoration-none"
                             >
                                 <div className="card shadow border-0">
@@ -144,7 +144,7 @@ const ManagerDashboard = () => {
              {/* Ticket Sales Per Event */}
              <div className="row justify-content-center">
              <div className="col-md-4">
-             <div style={{backgroundColor:"#555",
+             <div style={{backgroundColor:"#2c3e50",
     padding: "15px",
     borderRadius: "10px",
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)"}}>
@@ -152,9 +152,12 @@ const ManagerDashboard = () => {
                 <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={ticketSales}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#ccc"  />
-                        <XAxis dataKey="name" stroke="#ffffff" />
+                        <XAxis dataKey="name" stroke="#ffffff" tick={false}/>
                         <YAxis stroke="#ffffff" />
-                        <Tooltip contentStyle={{ backgroundColor: "#222", color: "#fff" }}/>
+                        <Tooltip 
+                         formatter={(value) => [`${value} tickets`, 'Tickets Sold']}
+                         labelFormatter={(label) => `Event: ${label}`}
+                        contentStyle={{ backgroundColor: "#222", color: "#fff" }}/>
                         <Legend wrapperStyle={{ color: "#ffffff" }}  />
                         <Bar dataKey="tickets_sold" fill="#4CAF50"  barSize={30} />
                     </BarChart>
@@ -166,7 +169,7 @@ const ManagerDashboard = () => {
            
             {/* Monthly Sales Trend */}
               <div className="col-md-4">
-              <div style={{backgroundColor:"#555",
+              <div style={{backgroundColor:"#2c3e50",
     padding: "15px",
     borderRadius: "10px",
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)"}}> 

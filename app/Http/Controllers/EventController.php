@@ -38,13 +38,31 @@ class EventController extends Controller
      */
     public function create()
     {
-        if(Auth::id()){
-        return Inertia::render('CreateEvent/CreateEvent');
-        }else{
-            return redirect()->route('eh.login');
-        }
+        if(!Auth::check()){
+           return redirect()->route('eh.login');
+         }
+
+         $user = Auth::user();
+         if($user->role_id == 4){
+            return Inertia::render('CreateEvent/CreateEvent');
+         }else{
+            return redirect()->route('home');
+         }
     }
 
+    public function showBrowseEvents(){
+        if (!Auth::check()) {
+            return redirect()->route('tb.login');
+        }
+    
+        $user = Auth::user();
+    
+        if ($user->role_id == 5) {
+            return Inertia::render('BrowseEvent/BrowseEvent');
+        }
+    
+        return redirect()->route('tb.login');  
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -70,7 +88,7 @@ class EventController extends Controller
             'bronze_ticket_price' => 'required|numeric|min:0',
             'golden_ticket_price' => 'required|numeric|min:0',
             'silver_ticket_price' => 'required|numeric|min:0',
-            'return_policies' => 'nullable|string',
+            'return_policies' => 'required|string',
             'startTime' => 'required|date_format:H:i',
             'endTime' => 'required|date_format:H:i|after:startTime',
         ]);

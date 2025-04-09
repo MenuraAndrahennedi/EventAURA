@@ -47,7 +47,7 @@ const ManagerProfile = () => {
                   </div>
 
                   <div className="text-end">
-                    <Link href={route('manager.profile.edit')} className="btn btn-primary mt-3">Edit Profile</Link>
+                    <Link href={route('other.profile.edit')} className="btn btn-primary mt-3">Edit Profile</Link>
                   </div>
                     </div>
                   </div>

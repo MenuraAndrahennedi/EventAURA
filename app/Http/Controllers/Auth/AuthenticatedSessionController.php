@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia; 
 use Inertia\Response;
 use Illuminate\Support\Facades\Log;
+use App\Models\UserLogin; // Import the UserLogin model
 
 class AuthenticatedSessionController extends Controller
 {
@@ -46,7 +47,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $request->authenticate(); 
+
+         // Log the login event
+    UserLogin::create([
+        'user_id' => $request->user()->id,
+        'login_time' => now(),
+        'ip_address' => $request->ip(),
+    ]);
+
 
         $request->session()->regenerate();
 
@@ -78,6 +87,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+       // Find the latest login record for the current user
+    $userLogin = UserLogin::where('user_id', Auth::id())
+    ->whereNull('logout_time') // Ensure it's the active session
+    ->latest()
+    ->first();
+
+// Update the logout time
+if ($userLogin) {
+$userLogin->update([
+'logout_time' => now(),
+]);
+}
+       
+       
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

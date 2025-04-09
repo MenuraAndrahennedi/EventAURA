@@ -15,6 +15,10 @@ const TBEventDetails = ({ event }) => {
     console.log("Event data:", event);
     // if (!event) {
     //     return <div>Loading...</div>;
+    const [showReturnPolicy, setShowReturnPolicy] = useState(false);
+
+const openReturnPolicy = () => setShowReturnPolicy(true);
+const closeReturnPolicy = () => setShowReturnPolicy(false);
     // }
     return (
         <>
@@ -76,9 +80,12 @@ const TBEventDetails = ({ event }) => {
                             >
                                 Buy Tickets
                             </Link>
-                            <Link href="#" className="return-policies">
+                            {/* <Link href="#" className="return-policies">
                                 Return Policies
-                            </Link>
+                            </Link> */}
+                            <button className="return-policies" onClick={openReturnPolicy}>
+    Return Policies
+</button>
                         </div>
                     </div>
                 </div>
@@ -140,6 +147,18 @@ const TBEventDetails = ({ event }) => {
                         about the event.
                     </p>
                 </div>
+
+                {showReturnPolicy && (
+    <div className="modal-overlay" onClick={closeReturnPolicy}>
+        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={closeReturnPolicy}>×</button>
+            <h2>Return Policies</h2>
+            <p>
+               {event.return_policies}
+            </p>
+        </div>
+    </div>
+)}
             </section>
 
             <footer>

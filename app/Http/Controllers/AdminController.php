@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\User;
+use App\Models\UserLogin;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use PDF;
 use App\Models\Ticket;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -80,11 +82,13 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
     
     // Retrieve all tickets bought by the user
-    $tickets = Ticket::where('customer_id', $id)->get();
+    $tickets = Ticket::where('customer_id', $id)->with('event')->get();
+    // Retrieve the login history of the user
+    $logins = UserLogin::where('user_id', $id)->get(); // Fetch all logins for the user
 
-    $pdf = PDF::loadView('pdf.ticket_buyer_history', compact('user', 'tickets'));
+    $pdf = PDF::loadView('pdf.ticket_buyer_history', compact('user', 'tickets', 'logins'));
 
-    return $pdf->download('ticket_buyer_' . $user->id . '.pdf');
+    return $pdf->download('ticket_buyer_' . $user->name . '.pdf');
     }
 
     public function eventHostHistory($id)
@@ -93,10 +97,11 @@ class AdminController extends Controller
     
     // Retrieve all events hosted by this user
     $events = Event::where('event_host_id', $id)->get();
+    $logins = UserLogin::where('user_id', $id)->get(); // Fetch all logins for the user
 
-    $pdf = PDF::loadView('pdf.event_host_history', compact('user', 'events'));
+    $pdf = PDF::loadView('pdf.event_host_history', compact('user', 'events' , 'logins'));
 
-    return $pdf->download('event_host_' . $user->id . '.pdf');
+    return $pdf->download('event_host_' . $user->name . '.pdf');
     }
 
     
@@ -221,11 +226,35 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
+       
+        \Log::info( "delete user details:",$request->all());
         $user = User::findOrFail($id);
-        $user->delete();
+         // Check if a reason was provided and store it
+        $reason = $request->input('deletion_reason', 'No reason provided');
+        $user->user_status = 'deleted';
+        $user->deletion_reason = $reason; // You need to add this field to the users table
+        $user->save();
 
-        return Redirect::back()->with('success', 'User deleted successfully.');
+        return Redirect::back()->with('success', 'User status set to deleted successfully.');
     }
+
+    public function getMonthlyUserRegistrationsByRole()
+    {
+        $monthlyRegistrations = DB::table('users')
+            ->select(
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'),
+                'role_id',
+                DB::raw('COUNT(*) as count')
+            )
+            ->whereIn('role_id', [4, 5]) // Event Host = 4, Ticket Buyer = 5
+            ->groupBy('month', 'role_id')
+            ->orderBy('month')
+            ->get();
+    
+        return response()->json($monthlyRegistrations);
+    }  
+
+
 }

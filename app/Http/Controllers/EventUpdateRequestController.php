@@ -105,7 +105,7 @@ public function approve(Request $request, $event_update_request_id)
         'bronze_ticket_price' => $updateData['bronze_ticket_price'],
         'golden_ticket_price' => $updateData['golden_ticket_price'],
         'silver_ticket_price' => $updateData['silver_ticket_price'],
-        //'return_policies' => $updateData['return_policies'],
+        'return_policies' => $updateData['return_policies'],
         // 'event_status' => $updateData['event_status'],
     ]);
 

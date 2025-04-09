@@ -142,12 +142,12 @@ const UpdateArtists = ({ selectedArtists ,setSelectedArtists }) => {
                         value={newArtist.bio}
                         onChange={handleNewArtistChange}
                     ></textarea>
-                    <input
+                    {/* <input
                         type="file"
                         name="image"
                         accept="image/*"
                         onChange={handleNewArtistChange}
-                    />
+                    /> */}
                     <div className="button-group">
                     <button onClick={handleAddNewArtist}>Save Artist</button>
                     <button className="cancel-btn" onClick={() => setIsAddingNew(false)}>Cancel</button>
