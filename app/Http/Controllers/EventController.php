@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Artist;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Session;
+use App\Mail\HostContactMail;
 
 
 
@@ -289,6 +291,34 @@ class EventController extends Controller
 
     // }
 
+    public function showPage($id)
+    {
+        $event = Event::findOrFail($id);
+
+        return inertia('EventDetails/HostContact', ['event' => $event]);
+    }
+
+    public function send(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'telephone' => 'required',
+            'message' => 'required',
+            'event_id' => 'required|exists:events,id',
+        ]);
+        
+        $event = Event::with('eventHost')->find($validated['event_id']);
+
+        if (!$event || !$event->eventHost) {
+            return redirect()->back()->with('error', 'Event host not found.');
+        }
+
+        Mail::to($event->eventHost->email)->send(new HostContactMail($request->all()));
+        \Log::info('Email sent to: ' . $event->eventHost->email);
+        
+        return redirect()->back()->with('success', 'Message sent successfully!');
+    }
     
     public function showEvent(string $id)
     {
