@@ -2,7 +2,7 @@ import React from 'react';
 import { Link ,usePage  } from "@inertiajs/react";
 // import MainHeader from '../../Components/Header/MainHeader';
 // import MainFooter from '../../Components/Footer/MainFooter';
-import '../../PaymentGate/PaymentCancel.scss';  // SCSS file for styling
+import '../../../../css/PaymentCancel.scss';  // SCSS file for styling
 
 const PaymentCancel = () => {
   const { event, cart, message } = usePage().props;

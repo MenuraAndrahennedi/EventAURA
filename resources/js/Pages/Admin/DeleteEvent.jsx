@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from '@inertiajs/react';
-import '../CommonPages/DeleteEvent/DeleteEvent.scss';
+import '../../../css/DeleteEvent.scss';
 import UserHeader from '../../Components/Header/UserHeader';
 import AdminFooter from '../../Components/Footer/AdminFooter';
 

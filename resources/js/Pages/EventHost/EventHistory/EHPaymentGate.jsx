@@ -4,7 +4,7 @@ import axios from 'axios';
 import MainHeader from '../../../Components/Header/MainHeader';
 import MainFooter from '../../../Components/Footer/MainFooter';
 import { usePage ,router} from "@inertiajs/react"; // Get Laravel props from Inertia.js
-import '../../PaymentGate/PaymentGate.scss'
+import '../../../../css/PaymentGate.scss'
 
 const stripePromise = loadStripe("pk_test_51QwdwpPxzbr1WYso8H9OFdQvYi78pwIi5w1qExB1MO4edWNeO22QesA0ClJI7p5Z8tiscBdMXPrzM2KOC9xe3pLk00kg3VIPUz");
 

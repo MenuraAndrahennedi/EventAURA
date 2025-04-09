@@ -1,5 +1,5 @@
 import React from 'react'
-import '../OtherLogin/OtherLogin.scss';
+import '../../../css/OtherLogin.scss';
 import { Link } from '@inertiajs/react';
 import UserHeader from '../../Components/Header/UserHeader';
 import AdminFooter from './../../Components/Footer/AdminFooter';

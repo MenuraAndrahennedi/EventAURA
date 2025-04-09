@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePage } from "@inertiajs/react";
-import "../../PaymentGate/PaymentSuccess.scss";
+import "../../../../css/PaymentSuccess.scss";
 import { Link } from "@inertiajs/react";
 
 const PaymentSuccess = () => {
