@@ -412,6 +412,8 @@ Route::get('/ended-event/report/{id}', [EventHostController::class, 'downloadEve
 
     Route::post('/eventhost/profile/update-password', [EventHostController::class, 'updateEventHostPassword'])->name('eventhost.profile.update-password');
 
+    Route::get('/host-contact/{id}', [EventController::class, 'showPage'])->name('host.contact.page');
+    Route::post('/host-contact', [EventController::class, 'send'])->name('host.contact');
 
 Route::get('/admin/monthly-user-registrations-by-role', [AdminController::class, 'getMonthlyUserRegistrationsByRole']);
 

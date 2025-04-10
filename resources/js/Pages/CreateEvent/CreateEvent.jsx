@@ -132,11 +132,11 @@ const CreateEvent = () => {
                 </h1>
                
                {/* Informational paragraph for event hosts */}
-    <p className="event-fee-info">
-        Hosting an event incurs a fee of Rs. 1000. You can pay this fee after the 
-        manager's approval. Once approved, you can view pending payments for your 
-        hosted events on your profile's "Pending Payments" page.And we will send you an email after the event approval.Thank you for choosing us!
-    </p>
+            <p className="event-fee-info">
+                Hosting an event incurs a fee of Rs. 1000. You can pay this fee after the 
+                manager's approval. Once approved, you can view pending payments for your 
+                hosted events on your profile's "Pending Payments" page.And we will send you an email after the event approval.Thank you for choosing us!
+            </p>
 
     {/* Success Message Section */}
    {successMessage && (
@@ -230,7 +230,7 @@ const CreateEvent = () => {
                             <input
                                 type="url"
                                 name="location"
-                                placeholder="Enter location or select from Google Maps"
+                                placeholder=" select from Google Maps as a link"
                                 //value={location}
                                 onChange={handleChange}
                                 required

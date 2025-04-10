@@ -25,27 +25,27 @@ const EHPendingPaymentsHistory = () => {
 
       <main>
         <div className="container my-5">
-              <div className="card shadow border-0">
-                <div className="card-body text-center">
-                    <h1><b>Hi {user.name}!</b></h1>
+              <div className="border-0 shadow card">
+                <div className="text-center card-body">
+                    <h1 className="profile-heading"><b>Hi {user.name}!</b></h1>
                     <h4><b>Welcome to Your Profile</b></h4>
                     <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo}alt="Avatar"className="profile-avatar" />
                 </div>
               </div>
 
-              <div className="row mt-4">
+              <div className="mt-4 row">
                 <div className="col-md-3">
                   <EHSidebar />
                 </div>
 
                 <div className="col-md-9">
-                  <div className="card shadow border-0">
+                  <div className="border-0 shadow card">
                     <div className="card-body profile-details">
                         <h5 className="text-center"><b>Event History</b></h5>
                         <p className="text-center">@{user.name}</p>
                         
                          {/* Tabs
-                        <div className="d-flex justify-content-around my-3">
+                        <div className="my-3 d-flex justify-content-around">
                           <div className="btn-group">
                             <Link href={route('eh.ongoing')}className={`btn ${location.pathname === '/EHOngoing' ? 'btn-primary active' : 'btn-outline-primary'}`} > On going</Link>
                             <Link href={route('eh.pendingPayments')} className={`btn ${location.pathname === '/EHPendingPayments' ? 'btn-primary active' : 'btn-outline-primary'}`} > Pending payments</Link>
@@ -55,8 +55,8 @@ const EHPendingPaymentsHistory = () => {
                           </div>
                         </div> */}
                          {/* Tabs */}
-                                                <div className="d-flex justify-content-around my-3">
-                                                  <div className="btn-group">
+                                                <div className="my-3 ">
+                                                  <div className="flex-wrap btn-group d-flex justify-content-center">
                                                     <Link href={route('eventhost.ongoingEvents.history')} className={`btn ${location.pathname === '/event-host/profile' ? 'btn-primary active' : 'btn-outline-primary'}`} > On going</Link>
                                                     <Link href={route('eh.pendingPayments')} className={`btn ${location.pathname === '/EHPendingPayments' ? 'btn-primary active' : 'btn-outline-primary'}`} > Pending payments</Link>
                                                     <Link href={route('eh.pendingRequests')} className={`btn ${location.pathname === '/EHPendingRequests' ? 'btn-primary active' : 'btn-outline-primary'}`} >Pending Requests </Link>
@@ -85,7 +85,7 @@ const EHPendingPaymentsHistory = () => {
                               <tr key={index}>
                                 <td>{event.name}</td>
                                 <td>Rs.1000.00</td>
-                                <td> <Link href = 'eventhost/payment/checkout' className='btn btn-info btn-sm text-black'>Make Payments</Link ></td>
+                                <td> <Link href = 'eventhost/payment/checkout' className='text-black btn btn-info btn-sm'>Make Payments</Link ></td>
                               </tr>
                             ))}
                           </tbody>

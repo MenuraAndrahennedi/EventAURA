@@ -125,7 +125,7 @@ useEffect(() => {
               onChange={(e) => setData("password_confirmation", e.target.value)} 
               required />{errors.password_confirmation && <div className="text-danger">{errors.password_confirmation}</div>}
 
-              <button type='submit' className='btn btn-primary w-100 mb-3' style={{backgroundColor:"black",padding:"5px",borderRadius:"50px"}}  disabled={processing}> {processing ? "Processing..." : "Add Member"}</button >
+              <button type='submit' className='mb-3 btn btn-primary w-100' style={{backgroundColor:"black",padding:"5px",borderRadius:"50px"}}  disabled={processing}> {processing ? "Processing..." : "Add Member"}</button >
               
             </form>
 
