@@ -1,14 +1,14 @@
-{{-- Laravel Mix assets --}}
-<link rel="stylesheet" href="{{ mix('css/app.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/chatify/css/chatify.css') }}">
 
+<div id ="chatifyWrapper">
 @include('Chatify::layouts.headLinks')
-
 <div class="messenger">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView {{ !!$id ? 'conversation-active' : '' }}">
         {{-- Header and search bar --}}
         <div class="m-header">
+       
+
+
             <nav>
                 <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES</span> </a>
                 {{-- header buttons --}}
@@ -115,6 +115,7 @@
 
 @include('Chatify::layouts.modals')
 @include('Chatify::layouts.footerLinks')
-<script src="{{ mix('js/app.js') }}" defer></script>
-<script src="{{ asset('vendor/chatify/js/chatify.js') }}"></script>
 
+
+
+</div>

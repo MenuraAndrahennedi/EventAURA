@@ -1,11 +1,13 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import { Link } from "@inertiajs/react";
+import { Link ,usePage} from "@inertiajs/react";
 import "../../../css/style.scss";
 import Logo from "../../assets/Images/Logo.png";
 
 const EHHeader = () => {
+    const { props } = usePage();
+    const hasUnreadMessages = props.hasUnreadMessages;
     return (
         <header>
             {/*<div className="container py-3">*/}
@@ -46,6 +48,18 @@ const EHHeader = () => {
                                 className="nav-link"
                             >
                                 Dashboard
+                            </Nav.Link>
+                            <Nav.Link
+                                as={Link}
+                                href="/chatify" 
+                                className="nav-link position-relative"
+                            >
+                             View Messages
+                             {hasUnreadMessages && (
+        <span className="position-absolute top-0 start-100 translate-middle p-1 bg-primary rounded-circle">
+            <span className="visually-hidden">New messages</span>
+        </span>
+    )}
                             </Nav.Link>
                         </Nav>
                     </div>

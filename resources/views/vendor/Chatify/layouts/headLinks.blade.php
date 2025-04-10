@@ -27,4 +27,8 @@
     :root {
         --primary-color: {{ $messengerColor }};
     }
+
+    
+
+
 </style>
