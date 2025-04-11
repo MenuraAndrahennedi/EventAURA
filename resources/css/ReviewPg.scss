@@ -15,11 +15,14 @@ $shadow: 0 4px 10px rgba(0, 0, 255, 0.1);
     border-radius: $border-radius;
     box-shadow: $shadow;
     text-align: center;
+    background: #e3edef;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
     h2 {
-        color: $primary-color;
+        color: #000;
         font-size: 24px;
         margin-bottom: 15px;
+        font-weight: bold;
     }
 
     input,
@@ -31,11 +34,12 @@ $shadow: 0 4px 10px rgba(0, 0, 255, 0.1);
         border-radius: 5px;
         font-size: 16px;
         transition: 0.3s;
+        border: 1px solid #ccc;
 
         &:focus {
             outline: none;
             border-color: $hover-color;
-            box-shadow: 0 0 5px rgba(0, 91, 255, 0.5);
+            box-shadow: 0 0 5px rgba(15, 15, 16, 0.5);
         }
     }
 
@@ -97,3 +101,28 @@ $shadow: 0 4px 10px rgba(0, 0, 255, 0.1);
         color: #721c24;
     }  
 }
+footer {
+    position: absolute;
+    bottom: 100;
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  
+    .row {
+      padding: 10px;
+    }
+  
+    .col-md-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }  
+
+  .text-responsive {
+    font-size: 5vw; /* 5% of viewport width */
+  }
+    

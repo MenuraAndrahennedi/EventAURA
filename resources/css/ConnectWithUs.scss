@@ -21,8 +21,9 @@ $transition-speed: 0.3s;
 
     h1 {
         font-size: 2em;
-        color: $primary-color;
+        color: #000;
         margin-bottom: 10px;
+        font-weight: bold;
     }
 
     p {
@@ -46,6 +47,8 @@ $transition-speed: 0.3s;
             font-size: 1.5em;
             margin-bottom: 15px;
             text-align: center;
+            color: $primary-color;
+            font-weight: bold;
         }
     }
 }
@@ -88,7 +91,7 @@ form {
     transition: background $transition-speed;
 
     &:hover {
-        background: #1c1e1e;
+        background: #007bff;
         color: rgb(253, 248, 248);
         font-weight: bold;
     }
@@ -139,11 +142,11 @@ form {
   
   .info-box {
     background-color: #c1e5ec;
-    color: rgb(16, 16, 16);
+    color: rgb(60, 63, 85);
     text-align: left;
   
     h2 {
-      font-size: 1.5em;
+      font-size: 1.4rem;
       margin-bottom: 10px;
       font-weight: bold;
     }
@@ -194,8 +197,9 @@ form {
     margin-top: 0; // Removed extra spacing
     justify-content: center;
     align-items: center;
+    color: rgb(60, 63, 85);
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 10px;
       font-weight: bold;
     }
