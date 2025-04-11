@@ -169,3 +169,10 @@ footer {
 .custom-link:hover {
     text-decoration: underline; // Optional: underline on hover
 }
+@media (min-width: 768px) {
+    .TB-Login-overlay {
+      padding: 3rem;
+      max-width: 500px;
+    }
+  }
+  

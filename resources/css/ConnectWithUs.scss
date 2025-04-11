@@ -13,7 +13,7 @@ $transition-speed: 0.3s;
     max-width: 900px;
     margin: 50px auto;
     padding: 40px;
-    background: #f2f6f7;
+    background: #e3edef;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: $border-radius;
     text-align: center;
@@ -78,16 +78,19 @@ form {
 
 .submit-button {
     background: $primary-color;
-    color: white;
+    color: rgb(10, 9, 9);
+    font-weight: bold;
     padding: 12px;
     border: none;
     border-radius: $border-radius;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
     transition: background $transition-speed;
 
     &:hover {
-        background: #0087a3;
+        background: #1c1e1e;
+        color: rgb(253, 248, 248);
+        font-weight: bold;
     }
 }
 
@@ -97,91 +100,161 @@ form {
     margin-top: 10px;
 }
 
-.contact-info {
-    background: $secondary-color;
-    padding: 20px;
-    border-radius: $border-radius;
-    text-align: left;
 
-    h2 {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-    }
 
-    p {
-        font-size: 1rem;
-        margin: 5px 0;
-    }
-}
 
-.social-links {
+.contact-section-container {
     display: flex;
-    gap: 15px;
-    align-items: center;
+    flex-direction: column;
+    gap: 0; // Removed space between sections
+    width: 100%;
+   
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-top: 60px;
+    max-width: 1000px;
+  }
+  
+  .top-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: stretch;
+    box-shadow: 0px 4px 10px rgba(152, 193, 217, 0.1);
+    margin-bottom: 0; // No bottom margin
+  }
+  
+  .info-box,
+  .chat-box {
+    flex: 1;
+    min-width: 250px;
+    padding: 1rem;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; // Equal height alignment
+    //background-color: #cdecf3;
+    //border: 1px solid #999;
+  }
+  
+  .info-box {
+    background-color: #c1e5ec;
+    color: rgb(16, 16, 16);
+    text-align: left;
+  
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  
+    p {
+      font-size: 1rem;
+      margin: 5px 0;
+    }
+  }
+  
+  
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 75px;
+    flex-wrap: wrap; // Optional: helps on smaller screens
     margin-top: 15px;
-
+  }
+  
+  .social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: normal;
+  
     img {
-        width: 30px;
-        height: auto;
+      width: 30px;
+      height: auto;
     }
-
+  
     a {
-        text-decoration: none;
-        color: $text-color;
-        transition: color $transition-speed;
-
-        &:hover {
-            color: $primary-color;
-        }
+      margin-top: 5px;
+      text-decoration: none;
+      color: $text-color;
+      transition: color $transition-speed;
+  
+      &:hover {
+        color: $primary-color;
+      }
     }
-}
-
-.live-chat-section {
-    margin-top: 20px;
+  }
+  
+  
+  .chat-box {
+    background-color: #c8e0eb;
     text-align: center;
-
+    margin-top: 0; // Removed extra spacing
+    justify-content: center;
+    align-items: center;
     h3 {
-        font-size: 1.3em;
-        margin-bottom: 10px;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  
+
+    .whatsapp-button,
+    .messenger-button {
+    width: 100%;
+    max-width: 250px; 
+    min-width: 250px; // Ensures both have the same length
+  box-sizing: border-box;
+    text-align: center;
+    color: white;
+    padding: 10px 15px;
+    border-radius: $border-radius;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background $transition-speed;
+    display: inline-block;
+    
+    
     }
 
     .whatsapp-button {
-        display: inline-block;
-        background: #25D366;
-        color: white;
-        padding: 10px 15px;
-        border-radius: $border-radius;
-        text-decoration: none;
-        font-size: 1rem;
-        transition: background $transition-speed;
-
-        &:hover {
-            background: darken(#25D366, 10%);
-        }
+      background: #25D366;
+      margin-bottom: 5%;
+      &:hover {
+        background: darken(#0ba340, 10%);
+      }
     }
-
+  
     .messenger-button {
-        display: inline-block;
-        background: #006AFF;
-        color: white;
-        padding: 10px 15px;
-        border-radius: $border-radius;
-        text-decoration: none;
-        font-size: 1rem;
-        transition: background $transition-speed;
-
-        &:hover {
-            background: darken(#006AFF, 10%);
-        }
+      background: #006AFF;
+     
+      &:hover {
+        background: darken(#3168b5, 10%);
+      }
     }
-
-}
-
-@media (max-width: 768px) {
+  }
+  
+  .social-box {
+    background-color: #c6d0d8;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0;
+    margin-top: 0; // No extra space above this box
+    font-weight: bold;
+    align-items: center;
+    h3 {
+        font-size: 1.2rem;
+        //font-weight: bold;
+      }
+    
+  }
+  
+  @media (max-width: 768px) {
     .contact-section {
-        flex-direction: column;
-        align-items: stretch;
+      flex-direction: column;
+      align-items: stretch;
     }
-}
-
-
+  }
+  
