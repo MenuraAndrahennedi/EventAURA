@@ -229,11 +229,7 @@ export default function Home() {
                                     <Link href ="/reviewPg" className="Review ">
                                         Leave Us a Review
                                     </Link>
-                                    <img
-                                        src={ReviewIcon}
-                                        alt="ReviewIcon"
-                                        className="mx-2 Review-icon"
-                                    />
+                                    
                                 </div>
                             </div>
                         </div>

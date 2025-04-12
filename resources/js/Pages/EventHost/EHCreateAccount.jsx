@@ -1,5 +1,5 @@
 import React from 'react'
-import './EHLogin.scss';
+import '../../../css/EHLogin.scss';
 import MainHeader from './../../Components/Header/MainHeader';
 import SubFooter from './../../Components/Footer/SubFooter';
 import { Link ,useForm} from '@inertiajs/react';
@@ -34,9 +34,9 @@ const EHCreateAccount = () => {
           
           <div className="login-form-section d-flex justify-content-center align-items-center">
             <div className="login-form">
-              <div className="card border-0 shadow">
-                <div className="card-body p-4">
-                  <h2 className="text-center mb-4"> Create Your account</h2>
+              <div className="border-0 shadow card">
+                <div className="p-4 card-body">
+                  <h2 className="mb-4 text-center"> Create Your account</h2>
 
                   <form onSubmit={handleSubmit}>
 
@@ -65,7 +65,7 @@ const EHCreateAccount = () => {
                       {errors.password_confirmation && <div className="error">{errors.password_confirmation}</div>}
                     </div>
 
-                    <button type="submit" disabled={processing} className="btn btn-primary w-100 mb-3">Continue</button>
+                    <button type="submit" disabled={processing} className="mb-3 btn btn-primary w-100">Continue</button>
                     
                     <div className="mb-3 text-center"><small>
                       < Link to= '/terms' >Terms and Conditions</Link>
@@ -73,7 +73,7 @@ const EHCreateAccount = () => {
 
                     <hr />
 
-                    <div className="text-center mt-4">
+                    <div className="mt-4 text-center">
                       <small>Already have an account? <Link href={route('eh.login')}> Sign in</Link></small>
                     </div>
 

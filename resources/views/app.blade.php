@@ -21,7 +21,7 @@
         @inertiaHead
 
         <!-- <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script> -->
-
+        
     </head>
     <body class="font-sans antialiased">
         @inertia

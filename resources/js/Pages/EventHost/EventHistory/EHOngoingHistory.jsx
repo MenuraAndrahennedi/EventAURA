@@ -26,7 +26,7 @@ const EHOngoingHistory = () => {
         <div className="container my-5">
               <div className="border-0 shadow card">
                 <div className="text-center card-body">
-                    <h1><b>Hi {user.name}!</b></h1>
+                    <h1 className="profile-heading"><b>Hi {user.name}!</b></h1>
                     <h4><b>Welcome to Your Profile</b></h4>
                     <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo} alt="Avatar"className="profile-avatar" />
                 </div>
@@ -44,8 +44,8 @@ const EHOngoingHistory = () => {
                         <p className="text-center">@{user.name}</p>
                         
                          {/* Tabs */}
-                        <div className="my-3 d-flex justify-content-around">
-                          <div className="btn-group">
+                        <div className="my-3 ">
+                          <div className="flex-wrap btn-group d-flex justify-content-center">
                             <Link href={route('eventhost.ongoingEvents.history')} className={`btn ${location.pathname === '/event-host/profile' ? 'btn-primary active' : 'btn-outline-primary'}`} > On going</Link>
                             <Link href={route('eh.pendingPayments')} className={`btn ${location.pathname === '/EHPendingPayments' ? 'btn-primary active' : 'btn-outline-primary'}`} > Pending payments</Link>
                             <Link href={route('eh.pendingRequests')} className={`btn ${location.pathname === '/EHPendingRequests' ? 'btn-primary active' : 'btn-outline-primary'}`} >Pending Requests </Link>

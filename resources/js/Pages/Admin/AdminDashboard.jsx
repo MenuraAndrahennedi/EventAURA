@@ -5,14 +5,15 @@ import UserHeader from '../../Components/Header/UserHeader';
 import AdminFooter from '../../Components/Footer/AdminFooter';
 import RevenuePieChart from "@/Components/Charts/RevenuePieChart";
 import '../../../css/UserHome.scss';
+
 import { Link } from '@inertiajs/react';
 
-import Cover01 from '../../assets/Images/Tile 1.jpg';
-import Cover02 from '../../assets/Images/Tile 2.jpg';
-import Cover03 from '../../assets/Images/Tile 3.jpg';
-import Cover04 from '../../assets/Images/Tile 4.jpg';
-import Cover05 from '../../assets/Images/Tile 5.jpg';
-import Cover06 from '../../assets/Images/Tile 6.jpg';
+//import Cover01 from '../../assets/Images/Tile 1.jpg';
+//import Cover02 from '../../assets/Images/Tile 2.jpg';
+//import Cover03 from '../../assets/Images/Tile 3.jpg';
+//import Cover04 from '../../assets/Images/Tile 4.jpg';
+//import Cover05 from '../../assets/Images/Tile 5.jpg';
+//import Cover06 from '../../assets/Images/Tile 6.jpg';
 
 
 
@@ -66,8 +67,10 @@ const UserHome = () => {
             <Link href={route('admin.profile')} className="image-overlay">Admin Profile</Link>
         </div> */}
 
-        <div className="row pt-5 px-3 gx-5">  
+
+        <div className="px-3 pt-5 row gx-5">  
           
+
               <div className="col-md-4 mb-4 position-relative"> 
                 <div className="cards shadow border-0">                  
                   <div className="cards-img-top">
@@ -75,7 +78,11 @@ const UserHome = () => {
                       <Link href={route('ongoing')} className="image-overlay">Ongoing Events</Link>
                   </div>
                 </div>
+
               </div>
+            </div>
+          </div>
+
 
               <div className="col-md-4 mb-4 position-relative">
                 <div className="cards shadow border-0">
@@ -84,7 +91,11 @@ const UserHome = () => {
                     <Link href="/event/create-requests" className="image-overlay">Pending Requests</Link>
                   </div>
               </div>
+
               </div>
+          </div>
+          </div>
+
 
               <div className="col-md-4 mb-4 position-relative">
                 <div className="cards shadow border-0">
@@ -93,8 +104,11 @@ const UserHome = () => {
                       <Link href="/ended-event-history" className="image-overlay">History</Link>
                   </div>
                 </div>
+
               </div>
+            </div>
           </div>
+
           
             <div className="row pt-5 px-3 gx-5">  
                 <div className="col-md-4 mb-4 position-relative"> 
@@ -103,8 +117,11 @@ const UserHome = () => {
                             {/* <img src={Cover04} alt="Banner4" className="w-100"/> */}
                             <Link href={route('admin.userDetails')} className="image-overlay">User Details</Link>
                         </div>
+
                     </div>
                 </div>
+            </div>
+
 
                 <div className="col-md-4 mb-4 position-relative">
                     <div className="cards shadow border-0">
@@ -112,8 +129,11 @@ const UserHome = () => {
                         {/* <img src={Cover05} alt="Banner5" className="w-100"/> */}
                         <Link href="/show-reviews" className="image-overlay">Reviews</Link>
                         </div>
+
                     </div>
                 </div>
+            </div>
+
 
                 <div className="col-md-4 mb-4 position-relative">
                     <div className="cards shadow border-0">
@@ -121,9 +141,12 @@ const UserHome = () => {
                             {/* <img src={Cover06} alt="Banner6" className="w-100"/> */}
                             <Link href="/inquiries" className="image-overlay">Inquiries</Link>
                         </div>
+
                     </div>
                 </div>
             </div>
+        </div>
+
 
              <section className="section-5">
                             <h1 className="text-center" style={{ color: "#ffffff", fontSize: "3.5rem", fontWeight: "bold" }}>
