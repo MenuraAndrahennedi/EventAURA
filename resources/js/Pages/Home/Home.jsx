@@ -108,7 +108,7 @@ export default function Home() {
                 <section className="py-5 section-3">
                     <div className="container py-5">
                         <div className="row">
-                            <div className="col-md-6 ">
+                            <div className="mb-4 col-12 col-md-6 ">
                                 <h3>
                                     EASIEST EVENT HANDLING AND TICKETING
                                     PLATFORM
@@ -128,24 +128,24 @@ export default function Home() {
                                     ABOUT US
                                 </Link>
                             </div>
-                            <div className="col-md-6 ">
+                            <div className="mb-4 col-12 col-md-6">
                                 <img
                                     src={HomeImg2}
                                     alt="Img2"
-                                    className="Img"
+                                    className="Img-fluid"
                                 />
                             </div>
                         </div>
 
                         <div className="row">
-                            <div className="col-md-6 ">
+                            <div className="mb-4 col-12 col-md-6 ">
                                 <img
                                     src={HomeImg1}
                                     alt="Img1"
                                     className="Img"
                                 />
                             </div>
-                            <div className="col-md-6 ">
+                            <div className="mb-4 col-12 col-md-6 ">
                                 <h2>NEED HELP</h2>
                                 <p>
                                     Our user-friendly TicketLeap help center is
@@ -176,7 +176,7 @@ export default function Home() {
                         <div className="container-fluid">
                             <div className="text-center">
                                 <h1>STAY UPDATED</h1>
-                                <div className="mt-4 d-flex justify-content-center">
+                                <div className="flex-wrap gap-2 d-flex justify-content-center">
                                     <Link
                                         to="https://www.facebook.com"
                                         target="_blank"
