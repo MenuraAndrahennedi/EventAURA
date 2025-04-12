@@ -121,9 +121,30 @@
       flex: 0 0 100%;
       max-width: 100%;
     }
-  }  
+
+  }
+  
+  .section-5 {
+    background-color: #444; /* Dark background */
+    padding: 30px;
+    border-radius: 10px;
+}
+
+h1, h4 {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.chart-container {
+    background-color: #555;
+    //padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 
   .text-responsive {
     font-size: 5vw; /* 5% of viewport width */
   }
   
+

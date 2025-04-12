@@ -25,6 +25,7 @@ const UpdateEvent = () => {
     golden_ticket_price: event.golden_ticket_price,
     silver_ticket_price: event.silver_ticket_price,
     bronze_ticket_price: event.bronze_ticket_price,
+    return_policies: event.return_policies,
   });
   
   const [selectedArtists, setSelectedArtists] = useState(event.artists);
@@ -360,6 +361,17 @@ selectedArtists.forEach((artist, index) => {
                                 name="description"
                                 placeholder="Enter event description"
                                 value={formData.description}
+                                onChange={handleChange}
+                               
+                            ></textarea>
+                        </div>
+
+                        <div className="input-group">
+                            <label>Return Policies*</label>
+                            <textarea
+                                name="return_policies"
+                                placeholder="Enter return policies"
+                                value={formData.return_policies }
                                 onChange={handleChange}
                                
                             ></textarea>

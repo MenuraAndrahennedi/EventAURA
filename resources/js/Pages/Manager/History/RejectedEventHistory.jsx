@@ -59,7 +59,7 @@ const RejectedEventHistory = ({rejectedEvents=[]}) => {
                                  ))
                                 ) : (
                                     <tr>
-                                        <td colSpan="3" style={{ textAlign: 'center' }}>No ended events found.</td>
+                                        <td colSpan="3" style={{ textAlign: 'center' }}>No rejected events found.</td>
                                     </tr>
                                 )}  
                                 {/* // <tr>

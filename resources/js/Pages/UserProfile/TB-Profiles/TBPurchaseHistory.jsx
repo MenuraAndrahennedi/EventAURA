@@ -7,8 +7,8 @@ import '../profile.scss';
 import { usePage } from '@inertiajs/react';
 
 const TBPurchaseHistory = () => {
-    const { user, purchases = [] } = usePage().props; 
-    console.log(purchases);
+     const { user,purchases } = usePage().props; 
+    // console.log(purchases);
 
     return (
         <>
@@ -20,7 +20,7 @@ const TBPurchaseHistory = () => {
                 <div className="container my-5">
                     <div className="card shadow border-0">
                         <div className="card-body text-center">
-                            <h1><b>Hi {user.name || 'Guest User'}!</b></h1>
+                            <h1><b>Hi {user.name }!</b></h1>
                             <h4><b>Welcome to Your Purchase History</b></h4>
                             <img 
                                 src={user.avatar ? `/storage/${user.avatar}` : profilelogo} 
@@ -46,7 +46,7 @@ const TBPurchaseHistory = () => {
                                                 <th>Golden Tickets</th>
                                                 <th>Silver Tickets</th>
                                                 <th>Bronze Tickets</th>
-                                                <th>Amount</th>
+                                                <th>Payment Amount</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -54,7 +54,7 @@ const TBPurchaseHistory = () => {
                                                 purchases.length >= 0 ? (
                                                     purchases.map((purchase, index) => (
                                                         <tr key={index}>
-                                                            <td>{purchase.event ? purchase.event.name : 'N/A'}</td>
+                                                            <td>{ purchase.event_name || " "}</td>
                                                             <td>{purchase.golden_tickets || 0}</td>
                                                             <td>{purchase.silver_tickets || 0}</td>
                                                             <td>{purchase.bronze_tickets || 0}</td>

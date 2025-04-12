@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use App\Models\ChMessage;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -47,6 +48,7 @@ class HandleInertiaRequests extends Middleware
                     'name' => $request->user()->name,
                     'email' => $request->user()->email,
                     'phone' => $request->user()->telephone,
+                    'role_id' => $request->user()->role_id,
                     
                 ] : null,
             ],
@@ -55,6 +57,13 @@ class HandleInertiaRequests extends Middleware
                 'success' => session('success'),
                 'error' => session('error'),
             ],
+
+            'hasUnreadMessages' => fn () => auth()->check()
+            ? ChMessage::where('to_id', auth()->id())
+                ->where('seen', 0)
+                ->exists()
+            : false,
+
         ]);
     }
 }

@@ -271,7 +271,20 @@ const CreateEvent = () => {
                             ></textarea>
                         </div>
 
+
                         <div className="mb-3">
+                          
+                        <div className="input-group">
+                            <label>Return Policies*</label>
+                            <textarea
+                                name="return_policies"
+                                placeholder="Enter return policies"
+                                onChange={handleChange}
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div className="input-group">
                             <label>Event Organizer*</label>
                             <input
                                 type="text"
@@ -281,6 +294,8 @@ const CreateEvent = () => {
                                 onChange={handleChange}
                                 required
                             />
+                        </div>
+                        
                         </div>
                     </section>
 

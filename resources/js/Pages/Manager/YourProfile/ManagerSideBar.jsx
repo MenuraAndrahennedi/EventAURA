@@ -9,9 +9,9 @@ const ManagerSideBar = () => {
      <div className="card shadow border-0 sidebar">
         <div className="card-body p-4">
                 <ul className="sidebar-menu">
-                    <li><Link href ='/manager/profile' className={url === '/manager/profile' ? 'active-link' : ''}>Profile Details</Link></li>
-                    <li><Link href ='/manager/changePW' className={url === '/manager/changePW' ? 'active-link' : ''}>Change Password</Link></li>
-                    <li><Link href ='/manager/signout' className={url === '/manager/signout' ? 'active-link' : ''}>Sign Out</Link></li>
+                    <li><Link href ='/other/profile-show' className={url === '/other/profile-show' ? 'active-link' : ''}>Profile Details</Link></li>
+                    <li><Link href ='/other/change-password' className={url === '/other/change-password' ? 'active-link' : ''}>Change Password</Link></li>
+                    <li><Link href ='/other/logout' className={url === '/other/logout' ? 'active-link' : ''}>Sign Out</Link></li>
                 </ul>
          </div>
       </div>

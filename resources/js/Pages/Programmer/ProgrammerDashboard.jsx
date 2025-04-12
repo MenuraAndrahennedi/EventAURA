@@ -28,8 +28,8 @@ const UserHome = () => {
               <div className="mb-4 col-12 col-md-4 position-relative"> 
                 <div className="border-0 shadow cards">
                   <div className="cards-img-top">
-                      {/*<img src={Cover01} alt="Banner1" className="w-100"/>*/}
-                      <Link href={route('admin.ongoingEvents')} className="image-overlay">Ongoing Events</Link>
+                      {/* <img src={Cover01} alt="Banner1" className="w-100"/> */}
+                      <Link href={route('ongoing')} className="image-overlay">Ongoing Events</Link>
                   </div>
                 </div>
               </div>
@@ -37,8 +37,8 @@ const UserHome = () => {
               <div className="mb-4 col-12 col-md-4 position-relative">
                 <div className="border-0 shadow cards">
                   <div className="cards-img-top">
-                    {/*<img src={Cover02} alt="Banner2" className="w-100"/>*/}
-                    <Link href="/manager/create-requests" className="image-overlay">Pending Requests</Link>
+                    {/* <img src={Cover02} alt="Banner2" className="w-100"/> */}
+                    <Link href="/event/create-requests" className="image-overlay">Pending Requests</Link>
                   </div>
               </div>
               </div>
@@ -46,8 +46,9 @@ const UserHome = () => {
               <div className="mb-4 col-12 col-md-4 position-relative">
                 <div className="border-0 shadow cards">
                   <div className="cards-img-top">
-                      {/*<img src={Cover03} alt="Banner3" className="w-100"/>*/}
-                      <Link href="/manager/endedEventHistory" className="image-overlay">History</Link>
+
+                      {/* <img src={Cover03} alt="Banner3" className="w-100"/> */}
+                      <Link href="/ended-event-history" className="image-overlay">History</Link>
                   </div>
                 </div>
               </div>
@@ -57,7 +58,6 @@ const UserHome = () => {
                 <div className="mb-4 col-12 col-md-4 position-relative"> 
                     <div className="border-0 shadow cards">
                         <div className="cards-img-top">
-                            {/*<img src={Cover04} alt="Banner4" className="w-100"/>*/}
                             <Link href={route('admin.userDetails')} className="image-overlay">User Details</Link>
                         </div>
                     </div>
@@ -66,8 +66,8 @@ const UserHome = () => {
                 <div className="mb-4 col-12 col-md-4 position-relative">
                     <div className="border-0 shadow cards">
                         <div className="cards-img-top">
-                        {/*<img src={Cover05} alt="Banner5" className="w-100"/>*/}
-                        <Link href="/manager/reviews" className="image-overlay">Reviews</Link>
+                        {/* <img src={Cover05} alt="Banner5" className="w-100"/> */}
+                        <Link href="/show-reviews" className="image-overlay">Reviews</Link>
                         </div>
                     </div>
                 </div>
@@ -75,18 +75,22 @@ const UserHome = () => {
                 <div className="mb-4 col-12 col-md-4 position-relative">
                     <div className="border-0 shadow cards">
                         <div className="cards-img-top">
-                            {/*<img src={Cover06} alt="Banner6" className="w-100"/>*/}
                             <Link href="/inquiries" className="image-overlay">Inquiries</Link>
                         </div>
                     </div>
                 </div>
             </div>
 
+<section className="section-4 d-flex justify-content-center pt-3">
+                <Link href="/add-new-member" className="btn btn-primary">
+                    Add New Team Member
+                </Link>
+            </section>
 
 
         <footer>
           <AdminFooter />
-          <Link href={route('add.member')} >Add</Link>
+         
       </footer>
       
     </>

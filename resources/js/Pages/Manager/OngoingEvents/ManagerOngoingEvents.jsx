@@ -3,7 +3,7 @@ import { Link } from  "@inertiajs/react";
 import '../../../../css/BrowseEvent.scss';
 import Banner from '../../../assets/Images/banner.png';
 import SearchBar from '../../../Components/SearchBar';
-import UserHeader from '../../../Components/Header/ManagerHeader';
+import UserHeader from '../../../Components/Header/UserHeader';
 import AdminFooter from '../../../Components/Footer/AdminFooter';
 import axios from "axios";
 
@@ -67,7 +67,7 @@ const ManagerOngoingEvents = () => {
                                 <br/>upwards
                                 </span>
                                 </p>
-                        <Link href={route('manager.viewevent',{id:event.id})} className='btn btn-primary'>View Event</Link>
+                        <Link href={route('viewevent',{id:event.id})} className='btn btn-primary'>View Event</Link>
                     </div>
                     </div>
                 </div>

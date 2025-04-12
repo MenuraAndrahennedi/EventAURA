@@ -39,7 +39,7 @@ const MainHeader = () => {
                         </Nav.Link>
                         <Nav.Link
                             as={Link}
-                            href= {route('tb.login')}
+                            href= {route('browse')}
                             className="nav-link"
                         >
                             BROWSE EVENT

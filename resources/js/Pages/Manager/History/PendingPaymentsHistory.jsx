@@ -47,7 +47,7 @@ const PendingPaymentsHistory = ({pendingPaymentEvents}) => {
                                     Event Report
                                 </Link> */}
                                  <a
-                          href={`/manager/event-report/${event.id}`}
+                          href={`/pending/event-report/${event.id}`}
                           className="blue-button"
                           target="_blank"
                           rel="noopener noreferrer"

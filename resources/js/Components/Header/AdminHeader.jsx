@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from '@inertiajs/react';
 import '../../../css/style.scss';
-import Logo from '../../assets/Logo.png';
+import Logo from '../../assets/Images/Logo.png';
 
 const AdminHeader = () => {
   return (
@@ -14,10 +14,10 @@ const AdminHeader = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <div id="basic-navbar-nav">
                 <Nav className="ms-auto">
-                    <Nav.Link as={Link} to="/AdminDashboard" className = 'nav-link'>Dashboard</Nav.Link>
-                    <Nav.Link as={Link} to="/ongoing"className = 'nav-link'>Ongoing events</Nav.Link>
-                    <Nav.Link as={Link} to="/pendingRequests" className = 'nav-link'>Pending requests</Nav.Link>
-                    <Nav.Link as={Link} to="/inquiries" className = 'nav-link'>Inquiries</Nav.Link>
+                    <Nav.Link as={Link} href ={route('admin.dashboard')} className = 'nav-link'>Dashboard</Nav.Link>
+                    <Nav.Link as={Link} href="/manager/ongoing" className = 'nav-link'>Ongoing events</Nav.Link>
+                    <Nav.Link as={Link} href="/manager/create-requests" className = 'nav-link'>Pending requests</Nav.Link>
+                    <Nav.Link as={Link} href="/inquiries" className = 'nav-link'>Inquiries</Nav.Link>
                     <Nav.Link as={Link} to="/admin" className = 'nav-link'>Admin Account</Nav.Link>
                 </Nav>
                 </div>

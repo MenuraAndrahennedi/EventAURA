@@ -26,6 +26,14 @@
             <th>Telephone</th>
             <td>{{ $user->telephone }}</td>
         </tr>
+        <tr>
+            <th>Account Created At:</th>
+            <td>{{ $user->created_at->format('d-m-Y H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>User Status:</th>
+            <td> {{ $user->user_status }}</td>
+        </tr>
     </table>
 
     <h2>Hosted Events</h2>
@@ -46,6 +54,26 @@
                 <td>{{ $event->venue }}</td>
                 <td>{{ $event->event_status }}</td>
             </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <h2>Login History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Login Time</th>
+                <th>Logout Time</th>
+                <th>IP Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($logins as $login)
+                <tr>
+                    <td>{{ $login->login_time ? $login->login_time->format('Y-m-d H:i:s') : 'N/A' }}</td>
+                    <td>{{ $login->logout_time ? $login->logout_time->format('Y-m-d H:i:s') : 'N/A' }}</td>
+                    <td>{{ $login->ip_address }}</td>
+                </tr>
             @endforeach
         </tbody>
     </table>

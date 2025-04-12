@@ -14,7 +14,7 @@ class Event extends Model
         'name', 'date', 'startTime', 'endTime', 'description', 'location', 'image', 'city', 'venue',
         'agenda_pdf', 'organizer', 'event_video', 'bronze_ticket_count',
         'golden_ticket_count', 'silver_ticket_count', 'event_status',
-        'bronze_ticket_price', 'golden_ticket_price', 'silver_ticket_price','total_golden_ticket_count', 'total_silver_ticket_count', 'total_bronze_ticket_count','rejected_at','rejection_reason',
+        'bronze_ticket_price', 'golden_ticket_price', 'silver_ticket_price','total_golden_ticket_count', 'total_silver_ticket_count', 'total_bronze_ticket_count','rejected_at','return_policies','rejection_reason',
         'event_host_id',
     ];
 

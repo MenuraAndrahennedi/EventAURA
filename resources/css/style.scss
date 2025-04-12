@@ -169,4 +169,12 @@ header {
 }
 
 
+.nav-link-active {
+  background-color: #4ed5ec; // light blue
+  color: #000 !important;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
 

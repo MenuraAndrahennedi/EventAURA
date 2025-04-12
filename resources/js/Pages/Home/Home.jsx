@@ -59,7 +59,7 @@ export default function Home() {
                                 </p>
                                 {/* <Link href={route('browse')} className='btn btn-primary'>Browse Event</Link> */}
                                 <Link
-                                    href={route("tb.login")}
+                                    href={route("browse")}
                                     className="btn btn-primary"
                                 >
                                     Browse Event

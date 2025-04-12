@@ -24,6 +24,7 @@ class User extends Authenticatable
         'role_id',
         'telephone',
         'avatar',
+        'deletion_reason',
     ];
 
     /**
@@ -53,5 +54,11 @@ class User extends Authenticatable
     //protected $primaryKey = 'user_id';  // Set 'user_id' as the primary key
     public $incrementing = true;  // Set this to true if 'user_id' is auto-incrementing
     protected $keyType = 'int';  // The primary key is an integer
+
+    public function tickets()
+{
+    return $this->hasMany(Ticket::class, 'customer_id');
+}
+
 
 }

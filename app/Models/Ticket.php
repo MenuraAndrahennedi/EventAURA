@@ -37,4 +37,14 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class, 'customer_id');
     }
+
+    public function event()
+{
+    return $this->belongsTo(Event::class, 'event_id');
+}
+
+public function payment()
+{
+    return $this->belongsTo(StripePayment::class, 'payment_id');
+}
 }
