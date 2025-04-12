@@ -80,8 +80,6 @@ const UserHome = () => {
                 </div>
 
               </div>
-            </div>
-          </div>
 
 
               <div className="col-md-4 mb-4 position-relative">
@@ -93,8 +91,6 @@ const UserHome = () => {
               </div>
 
               </div>
-          </div>
-          </div>
 
 
               <div className="col-md-4 mb-4 position-relative">
@@ -106,7 +102,6 @@ const UserHome = () => {
                 </div>
 
               </div>
-            </div>
           </div>
 
           
@@ -120,7 +115,6 @@ const UserHome = () => {
 
                     </div>
                 </div>
-            </div>
 
 
                 <div className="col-md-4 mb-4 position-relative">
@@ -132,7 +126,6 @@ const UserHome = () => {
 
                     </div>
                 </div>
-            </div>
 
 
                 <div className="col-md-4 mb-4 position-relative">
@@ -145,8 +138,79 @@ const UserHome = () => {
                     </div>
                 </div>
             </div>
-        </div>
 
+             <section className="section-5">
+                            <h1 className="text-center" style={{ color: "#ffffff", fontSize: "3.5rem", fontWeight: "bold" }}>
+                                <b>STATISTICS</b>
+                            </h1>
+            
+                            
+                            <div className="container mt-4">
+                       
+                         {/* User registrtions within months */}
+                         <div className="row justify-content-center">
+                         
+                        <div className="col-md-4">
+                        <div className='chart-container' style={{
+                         backgroundColor: "#2c3e50",
+                         padding: "15px",
+                         borderRadius: "10px",
+                         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)"
+                       }}>
+                       <h5 className="text-center" style={{ color: "#ffffff" }}>
+                       Monthly User Registrations
+                           </h5>
+                    <ResponsiveContainer width="100%" height={300}>
+                  <LineChart data={monthlyUsersByRole}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
+                  <XAxis dataKey="month" stroke="#ffffff" />
+                  <YAxis stroke="#ffffff" />
+                  <Tooltip contentStyle={{ backgroundColor: "#222", color: "#fff" }} />
+                 <Legend wrapperStyle={{ color: "#ffffff" }} />
+                <Line type="monotone" dataKey="event_hosts" stroke="#3498DB" strokeWidth={2} name="Event Hosts" />
+                <Line type="monotone" dataKey="ticket_buyers" stroke="#2ECC71" strokeWidth={2} name="Ticket Buyers" />
+               </LineChart>
+               </ResponsiveContainer>
+
+
+  </div>
+  </div>
+                        
+                    
+                       
+                        {/* Monthly Sales Trend */}
+                          <div className="col-md-4">
+                          <div style={{backgroundColor:"#2c3e50",
+                padding: "15px",
+                borderRadius: "10px",
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)"}}> 
+                            <h5 className="text-center" style={{ color: "#ffffff" }}>Monthly Ticket Sales Trend</h5>
+                            <ResponsiveContainer width="100%" height={300}>
+                                <LineChart data={monthlySales}>
+                                    <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
+                                    <XAxis dataKey="month"stroke="#ffffff" />
+                                    <YAxis stroke="#ffffff" />
+                                    <Tooltip contentStyle={{ backgroundColor: "#222", color: "#fff" }} />
+                                    <Legend wrapperStyle={{ color: "#ffffff" }}  />
+                                    <Line type="monotone" dataKey="total_tickets" stroke="#FF5733" strokeWidth={3} />
+                                </LineChart>
+                            </ResponsiveContainer>
+                        </div>
+                        </div>
+                        
+                 
+                                <div className="col-md-4">
+                                    <RevenuePieChart />
+                                </div>
+                            </div>
+            
+                    </div>
+            
+            
+            
+            
+            
+                        </section>
 
              <section className="section-5">
                             <h1 className="text-center" style={{ color: "#ffffff", fontSize: "3.5rem", fontWeight: "bold" }}>

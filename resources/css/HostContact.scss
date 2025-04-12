@@ -1,80 +1,308 @@
+// /* resources/css/HostContact.scss */
+
+// .contact-form-container {
+//     width: 100%;
+//     max-width: 600px;
+//     margin: 0 auto;
+//     padding: 20px;
+//     background-color: #f9f9f9;
+//     border-radius: 8px;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//     text-align: center;
+// }
+
+// .contact-form-container h1 {
+//     font-size: 2em;
+//     color: #333;
+//     margin-bottom: 20px;
+// }
+
+// .contact-form-container p {
+//     font-size: 1.2em;
+//     color: #666;
+//     margin-bottom: 30px;
+// }
+
+// .contact-form {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 15px;
+// }
+
+// .form-input,
+// .form-textarea {
+//     width: 100%;
+//     padding: 12px;
+//     font-size: 1em;
+//     border: 1px solid #ddd;
+//     border-radius: 6px;
+//     margin-bottom: 10px;
+// }
+
+// .form-input:focus,
+// .form-textarea:focus {
+//     border-color: #007bff;
+//     outline: none;
+// }
+
+// .form-textarea {
+//     height: 150px;
+//     resize: vertical;
+// }
+
+// .submit-button {
+//     padding: 12px 20px;
+//     background-color: #007bff;
+//     color: #fff;
+//     border: none;
+//     border-radius: 6px;
+//     font-size: 1.2em;
+//     cursor: pointer;
+//     width: 200px;
+//     margin-left: 200px;
+//     transition: background-color 0.3s ease;
+// }
+
+// .submit-button:hover {
+//     background-color: #0056b3;
+// }
+
+// .submit-button:disabled {
+//     background-color: #ccc;
+//     cursor: not-allowed;
+// }
+
+// .error {
+//     color: red;
+//     font-size: 0.9em;
+//     margin-top: -5px;
+//     margin-bottom: 10px;
+// }
+
+// // HostContact.scss
+// .chat-section {
+//     margin-top: 2rem;
+//     text-align: center;
+// }
+
+// .live-chat-button {
+//     display: inline-block;
+//     padding: 12px 24px;
+//     background-color: #007bff;
+//     color: white;
+//     border-radius: 5px;
+//     text-decoration: none;
+//     transition: background-color 0.3s;
+
+//     &:hover {
+//         background-color: #0056b3;
+//     }
+// }
+
+// .auth-prompt {
+//     margin-top: 1rem;
+//     color: #666;
+// }
+
+// .auth-link {
+//     color: #007bff;
+//     text-decoration: none;
+//     font-weight: 500;
+
+//     &:hover {
+//         text-decoration: underline;
+//     }
+// }
+
 /* resources/css/HostContact.scss */
 
 .contact-form-container {
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    padding: 30px 25px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .contact-form-container h1 {
-    font-size: 2em;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 10px;
 }
 
 .contact-form-container p {
-    font-size: 1.2em;
-    color: #666;
-    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 25px;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
+    padding-left : 100px;
+    padding-right : 100px;
+    padding-top : 0px;
+
+}
+h1{
+    font-size: 2.5rem;
+    color: #333;
+   // margin-bottom: 20px;
+   text-align: center;
+   margin-top: 50px;
+}
+
+p{
+    font-size: 1.2rem;
+    color: #666;
+   // margin-bottom: 30px;
+   text-align: center;
+   
+   padding:50px;
+}
+
+.Host-icon {
+    width: 50px;
+    height: auto;
+    margin-left: 990px;
+    margin-top: -50px;
 }
 
 .form-input,
 .form-textarea {
     width: 100%;
-    padding: 12px;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    margin-bottom: 10px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
 }
 
 .form-input:focus,
 .form-textarea:focus {
-    border-color: #007bff;
+    border-color: #3b82f6;
     outline: none;
+    background-color: #fff;
 }
 
 .form-textarea {
-    height: 150px;
+    height: 140px;
     resize: vertical;
 }
 
 .submit-button {
-    padding: 12px 20px;
-    background-color: #007bff;
-    color: #fff;
+    padding: 14px;
+    //background: linear-gradient(to right, hsl(199, 91%, 60%), #2563eb);
+    background: hsl(191, 76%, 48%);
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 1rem;
     border: none;
-    border-radius: 6px;
-    font-size: 1.2em;
+    border-radius: 10px;
     cursor: pointer;
-    width: 200px;
-    margin-left: 200px;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .submit-button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right, #2563eb, #1d4ed8);
+    transform: translateY(-2px);
 }
 
 .submit-button:disabled {
-    background-color: #ccc;
+    background-color: #b0b0b0;
     cursor: not-allowed;
 }
 
+.success-message,
+.error-message {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+    transition: opacity 1s ease;
+  opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+.success-message {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.error-message {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
 .error {
-    color: red;
-    font-size: 0.9em;
-    margin-top: -5px;
-    margin-bottom: 10px;
+    color: #ef4444;
+    font-size: 0.9rem;
+    margin-top: -8px;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+// Chat Section
+.chat-section {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.live-chat-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #10b981;
+    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-top:0;
+    margin-bottom:20px;
+
+    &:hover {
+        background-color: #059669;
+    }
+}
+
+.auth-prompt {
+    margin-top: 1rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.auth-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .contact-form-container {
+        padding: 20px 15px;
+    }
+
+    .submit-button {
+        width: 100%;
+        margin-left: 0;
+    }
 }

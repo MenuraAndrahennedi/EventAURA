@@ -4,6 +4,7 @@ import axios from 'axios';
 import MainHeader from '../../../Components/Header/MainHeader';
 import MainFooter from '../../../Components/Footer/MainFooter';
 import { usePage ,router} from "@inertiajs/react"; // Get Laravel props from Inertia.js
+
 import '../../../../css/PaymentGate.scss';
 
 
