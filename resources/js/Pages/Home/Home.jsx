@@ -142,7 +142,7 @@ export default function Home() {
                                 <img
                                     src={HomeImg1}
                                     alt="Img1"
-                                    className="Img"
+                                    className="Img-fluid"
                                 />
                             </div>
                             <div className="mb-4 col-12 col-md-6 ">

@@ -14,12 +14,16 @@ footer {
     background-size: cover;
     width: 50vw;
     height: 100vh;
+    min-height: 300px;
 }
 
 .login-form-section {
     flex: 1;
     display: flex;
-    align-items: stretch;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50vw;
     height: 100vh;
     background-color: #f8f9fa;
@@ -33,6 +37,7 @@ footer {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    max-width: 600px;
 }
 
 .card {
@@ -116,3 +121,53 @@ hr {
     background-color: black;
     margin: 2rem 0;
 }
+
+@media (max-width: 768px) {
+    .login-form {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0;
+      
+    }
+  
+    .card {
+      border-radius: 0;
+      box-shadow: none;
+    }
+  
+    .login-form-section {
+      padding: 1.5rem 1rem;
+      min-height: auto;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: auto;
+    }
+  
+    .login-page {
+      min-height: 100vh;
+    }
+  }
+  .forgot-password-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .forgot-password-link:hover {
+    color: #171a1c;
+    text-decoration: underline;
+  }
+  
+  .create-account-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .create-account-link:hover {
+    color: #101011;
+    text-decoration: underline;
+  }
+  
+  
