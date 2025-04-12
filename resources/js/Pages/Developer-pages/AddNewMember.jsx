@@ -1,5 +1,8 @@
 import React, { useState,useEffect }  from 'react'
-import '.././../../css/OtherLogin.scss';
+
+
+import '../../../css/OtherLogin.scss';
+
 import { Link ,useForm,usePage} from '@inertiajs/react';
 import AdminFooter from '../../Components/Footer/AdminFooter';
 import UserHeader from '../../Components/Header/UserHeader';

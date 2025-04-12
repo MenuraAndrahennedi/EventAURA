@@ -46,6 +46,7 @@ const UserHome = () => {
               <div className="mb-4 col-12 col-md-4 position-relative">
                 <div className="border-0 shadow cards">
                   <div className="cards-img-top">
+
                       {/* <img src={Cover03} alt="Banner3" className="w-100"/> */}
                       <Link href="/ended-event-history" className="image-overlay">History</Link>
                   </div>
@@ -57,7 +58,6 @@ const UserHome = () => {
                 <div className="mb-4 col-12 col-md-4 position-relative"> 
                     <div className="border-0 shadow cards">
                         <div className="cards-img-top">
-                            {/* <img src={Cover04} alt="Banner4" className="w-100"/> */}
                             <Link href={route('admin.userDetails')} className="image-overlay">User Details</Link>
                         </div>
                     </div>
@@ -75,7 +75,6 @@ const UserHome = () => {
                 <div className="mb-4 col-12 col-md-4 position-relative">
                     <div className="border-0 shadow cards">
                         <div className="cards-img-top">
-                            {/* <img src={Cover06} alt="Banner6" className="w-100"/> */}
                             <Link href="/inquiries" className="image-overlay">Inquiries</Link>
                         </div>
                     </div>
