@@ -11,38 +11,46 @@ body{
     font-family: "Rubik", sans-serif;
 }
  
-/*Header*/
- header{
-  
-    nav{
-        .nav-link{
+/* Header */
+header {
+  nav {
+    background-color: #000; 
 
-            font-size: 1em;
-            color: #FFFFFF;
-            font-weight: 450;
-            margin-left: 30px;
+    .nav-link {
+      font-size: 1em;
+      color: #fff !important; /* Ensure text color is white */
+      font-weight: 500;
+      margin-left: 30px;
+      text-decoration: none;
 
-            span{
-
-                color: $primary-color;
-            }
-        }
-
-
-        .logo{
-           font-size: 2em; 
-           font-weight: 500;
-           margin-left: 20px;
-        }
+      &:hover {
+        color: #4ed0f0; /* Optional: Add hover effect */
+      }
     }
- }
 
- .logo-img {
-    width: 120px; 
-    height: auto; 
+    .logo {
+      font-size: 2em;
+      font-weight: 600;
+      margin-left: 20px;
+    }
   }
+}
 
-  
+/* Logo image size */
+.logo-img {
+  width: 120px;
+  height: auto;
+}
+
+/* Additional Fix for Nav Links Visibility */
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff !important; /* Ensuring nav link color is white */
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #4ed0f0 !important; /* Ensuring hover effect works */
+}
+
  /*Main Footer*/
  footer{
     margin-top:60px;
@@ -64,6 +72,13 @@ body{
         padding: 0 190px;
       }
  }
+
+ footer {
+  position: absolute;
+  bottom: 100;
+  width: 100%;
+}
+
 
  /*Sub Footer*/
  .sub-footer {
@@ -153,6 +168,7 @@ body{
     color: white !important;
 }
 
+
 .nav-link-active {
   background-color: #4ed5ec; // light blue
   color: #000 !important;
@@ -161,3 +177,4 @@ body{
   font-weight: 500;
   transition: background-color 0.3s ease;
 }
+

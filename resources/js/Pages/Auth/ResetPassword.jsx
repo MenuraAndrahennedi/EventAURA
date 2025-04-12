@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from '@inertiajs/react';
-import '../ResetPW/ResetPW.scss';
+import '../../../css/ResetPW.scss';
 import MainHeader from '../../Components/Header/MainHeader';
 import SubFooter from '../../Components/Footer/SubFooter';
 import InputError from '@/Components/InputError';
@@ -22,7 +22,7 @@ const SetNewPw = ({ token, email }) => {
     };
 
     return (
-        <>
+        <div className="page-container">
             <header>
                 <MainHeader />
             </header>
@@ -64,7 +64,7 @@ const SetNewPw = ({ token, email }) => {
             <footer>
                 <SubFooter />
             </footer>
-        </>
+        </div>
     );
 };
 

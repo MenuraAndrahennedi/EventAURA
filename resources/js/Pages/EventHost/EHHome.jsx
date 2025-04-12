@@ -16,33 +16,33 @@ const EHHome = () => {
             <EHHeader />
         </header>
        
-        <h1 className="my-5 text-center">Monitor your work here!</h1>
+        <h1 className="my-5 text-3xl font-bold text-center">Monitor your work here!</h1>
 
      
         <div className="px-3 pt-5 row gx-5">  
 
-              <div className="mb-4 col-md-4 position-relative"> 
+              <div className="mb-4 col-md-4 position-relative style={{ maxWidth: '200px' }}"> 
                 <div className="border-0 shadow card">
                   <div className="card-img-top">
-                      <img src={Cover01} alt="Banner1" className="w-100"/>
+                      <img src={Cover01} alt="Banner1" className="w-100 card-img-small"/>
                       <Link href={route('eventhost.ongoingEvents')} className="image-overlay">Your Ongoing Events</Link>
                   </div>
                 </div>
               </div>
 
-              <div className="mb-4 col-md-4 position-relative">
+              <div className="mb-4 col-md-4 position-relative style={{ maxWidth: '200px' }}">
                 <div className="border-0 shadow card">
                   <div className="card-img-top">
-                    <img src={Cover02} alt="Banner2" className="w-100"/>
+                    <img src={Cover02} alt="Banner2" className="w-100 card-img-small" />
                     <Link href={route('eventhost.profile')} className="image-overlay">Go to Profile</Link>
                   </div>
               </div>
               </div>
 
-              <div className="mb-4 col-md-4 position-relative">
+              <div className="mb-4 col-md-4 position-relative style={{ maxWidth: '200px' }}">
                 <div className="border-0 shadow card">
                   <div className="card-img-top">
-                      <img src={Cover03} alt="Banner3" className="w-100"/>
+                      <img src={Cover03} alt="Banner3" className="w-100 card-img-small"/>
                       <Link href={route('event.create')} className="image-overlay">Create New Event</Link>
                   </div>
                 </div>

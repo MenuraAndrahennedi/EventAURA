@@ -126,172 +126,154 @@ const CreateEvent = () => {
             </header>
 
             {/*form */}
-            <main className="create-event">
-                <h1>
-                    <b>Create Event</b>
-                </h1>
-               
-               {/* Informational paragraph for event hosts */}
-            <p className="event-fee-info">
-                Hosting an event incurs a fee of Rs. 1000. You can pay this fee after the 
-                manager's approval. Once approved, you can view pending payments for your 
-                hosted events on your profile's "Pending Payments" page.And we will send you an email after the event approval.Thank you for choosing us!
-            </p>
+            <main className="container py-4 create-event">
+                <h1 className="mb-4 text-center"><b>Create Event</b></h1>
 
-    {/* Success Message Section */}
-   {successMessage && (
-        <div className="success-message">{successMessage}</div>
-      )}
+                <p className="event-fee-info text-muted">
+                    Hosting an event incurs a fee of Rs. 1000. You can pay this fee after the 
+                    manager's approval. Once approved, you can view pending payments for your 
+                    hosted events on your profile's "Pending Payments" page. We will send you an 
+                    email after approval. Thank you for choosing us!
+                </p>
 
+                {successMessage && (
+                    <div className="mt-3 alert alert-success">{successMessage}</div>
+                )}
 
-
-                <form onSubmit={handleSubmit}  method="POST" action="/event/store" className="event-form">
-                    <section className="event-details">
-                        <div className="header-container">
-                            <h2>
-                                <b>1. Event Details</b>
-                            </h2>
-                        </div>
+                <form onSubmit={handleSubmit} method="POST" action="/event/store" className="event-form">
+                    <section className="mb-5 event-details">
+                        <h2 className="mb-3"><b>1. Event Details</b></h2>
                         <hr />
-                        <div className="input-group">
+
+                        <div className="mb-3">
                             <label>Event Title*</label>
                             <input
                                 type="text"
                                 name="name"
+                                className="form-control"
                                 placeholder="Enter event title"
                                 onChange={handleChange}
                                 required
                             />
                         </div>
 
-                        <div className="input-group">
-                            <div className="date-input">
-                                <label htmlFor="eventDate">Date*</label>
+                        <div className="mb-3 row">
+                            <div className="mb-3 col-md-6">
+                                <label>Date*</label>
                                 <input
                                     type="date"
                                     name="date"
-                                    id="eventDate"
+                                    className="form-control"
                                     onChange={handleChange}
                                     required
                                 />
                             </div>
-                            <div className="time-inputs">
-                                <div className="start-time">
-                                    <label htmlFor="startTime">
-                                        Start Time*
-                                    </label>
-                                    <input
-                                        type="time"
-                                        name="startTime"
-                                        id="startTime"
-                                        onChange={handleChange}
-                                        step="60"
-                                    />
-                                </div>
-                                <div className="end-time">
-                                    <label htmlFor="endTime">End Time*</label>
-                                    <input
-                                        type="time"
-                                        name="endTime"
-                                        id="endTime"
-                                        onChange={handleChange}
-                                        step="60"
-                                    />
-                                </div>
+                            <div className="mb-3 col-md-3">
+                                <label>Start Time*</label>
+                                <input
+                                    type="time"
+                                    name="startTime"
+                                    className="form-control"
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="mb-3 col-md-3">
+                                <label>End Time*</label>
+                                <input
+                                    type="time"
+                                    name="endTime"
+                                    className="form-control"
+                                    onChange={handleChange}
+                                />
                             </div>
                         </div>
 
-                        <div className="input-group">
-                            <div className="city-input">
-                                <label htmlFor="city">City*</label>
+                        <div className="mb-3 row">
+                            <div className="mb-3 col-md-6">
+                                <label>City*</label>
                                 <input
                                     type="text"
                                     name="city"
-                                    id="city"
+                                    className="form-control"
                                     onChange={handleChange}
                                     required
                                 />
                             </div>
-
-                            <div className="venue-input">
-                                <label htmlFor="venue">Venue*</label>
+                            <div className="mb-3 col-md-6">
+                                <label>Venue*</label>
                                 <input
                                     type="text"
                                     name="venue"
-                                    id="venue"
+                                    className="form-control"
                                     onChange={handleChange}
                                     required
                                 />
                             </div>
                         </div>
 
-                        <div className="input-group">
-                            <label>Location*</label>
+                        <div className="mb-3">
+                            <label>Location (Google Maps Link)*</label>
                             <input
                                 type="url"
                                 name="location"
-                                placeholder=" select from Google Maps as a link"
-                                //value={location}
+                                className="form-control"
+                                placeholder="Paste your Google Maps URL"
                                 onChange={handleChange}
                                 required
                             />
-                             <button type="button" onClick={handleLocationClick}>
-                        Pick from Google Maps
-                    </button>
+                            <button type="button" onClick={handleLocationClick} className="mt-2 btn btn-outline-primary">
+                                Pick from Google Maps
+                            </button>
                         </div>
 
-                        <div className="input-group">
-                            <div className="agenda-section">
-                                <label>Agenda*</label>
-                                <div className="file-upload">
-                                    <input
-                                        type="file"
-                                        name="agenda_pdf"
-                                        accept=".pdf"
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                
-                                </div>
-                            </div>
+                        <div className="mb-3">
+                            <label>Agenda (PDF)*</label>
+                            <input
+                                type="file"
+                                name="agenda_pdf"
+                                accept=".pdf"
+                                className="form-control"
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
 
-                        <div className="input-group">
+                        <div className="mb-3">
                             <label>Event Banner*</label>
-                            <div className="file-upload">
-                                <input
-                                    type="file"
-                                    name="image"
-                                    accept="image/*"
-                                    onChange={handleChange}
-                                />
-                               
-                            </div>
+                            <input
+                                type="file"
+                                name="image"
+                                accept="image/*"
+                                className="form-control"
+                                onChange={handleChange}
+                            />
                         </div>
 
-                        <div className="input-group">
+                        <div className="mb-3">
                             <label>Event Video</label>
-                            <div className="file-upload">
-                                <input
-                                    type="file"
-                                    name="event_video"
-                                    accept="video/*"
-                                    onChange={handleChange}
-                                />
-                            
-                            </div>
+                            <input
+                                type="file"
+                                name="event_video"
+                                accept="video/*"
+                                className="form-control"
+                                onChange={handleChange}
+                            />
                         </div>
 
-                        <div className="input-group">
+                        <div className="mb-3">
                             <label>Event Description*</label>
                             <textarea
                                 name="description"
+                                className="form-control"
                                 placeholder="Enter event description"
                                 onChange={handleChange}
                                 required
                             ></textarea>
                         </div>
 
+
+                        <div className="mb-3">
+                          
                         <div className="input-group">
                             <label>Return Policies*</label>
                             <textarea
@@ -307,102 +289,122 @@ const CreateEvent = () => {
                             <input
                                 type="text"
                                 name="organizer"
+                                className="form-control"
                                 placeholder="Enter organizer's name"
                                 onChange={handleChange}
                                 required
                             />
                         </div>
-
-                    
-                    </section>
-                    <section className="artists">
-                        <div className="header-container">
-                            <h3>
-                                <b>2. Artists</b>
-                            </h3>
+                        
                         </div>
+                    </section>
+
+                    <section className="mb-5 artists">
+                        <h3 className="mb-3"><b>2. Artists</b></h3>
                         <hr />
                         <div className="artist-input-container">
-                        <ArtistInput
-                            selectedArtists={selectedArtists}
-
-                            setSelectedArtists={setSelectedArtists}
-                        />
+                            <ArtistInput
+                                selectedArtists={selectedArtists}
+                                setSelectedArtists={setSelectedArtists}
+                            />
                         </div>
                     </section>
 
-                    <section className="ticket-categories">
-                        <div className="header-container">
+                    <section className="px-3 py-4 ticket-categories">
+                        <div className="mb-3 header-container">
                             <h3>
                                 <b>3. Tickets Categories</b>
                             </h3>
                         </div>
-                        <hr />
+                        <hr className="mb-4" />
 
-                        <p>Fill ticket count:</p>
+                        <p className="mb-3">Fill ticket count:</p>
+
                         <div className="ticket-types">
-                            <div>
-                                <label>Golden Tickets</label>
-                                <div className="ticket-inputs">
-                                    <input
-                                        type="number"
-                                        name="golden_ticket_count"
-                                        min="0"
-                                        placeholder="Count"
-                                        onChange={handleChange}
-                                    />
-                                    <input
-                                        type="text"
-                                        name="golden_ticket_price"
-                                        placeholder="Price"
-                                        onChange={handleChange}
-                                    />
+                            {/* Golden Tickets */}
+                            <div className="mb-4">
+                                <label className="form-label fw-medium">Golden Tickets</label>
+                                <div className="row g-3">
+                                    <div className="col-12 col-sm-6">
+                                        <input
+                                            type="number"
+                                            name="golden_ticket_count"
+                                            min="0"
+                                            placeholder="Count"
+                                            className="form-control"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div className="col-12 col-sm-6">
+                                        <input
+                                            type="text"
+                                            name="golden_ticket_price"
+                                            placeholder="Price"
+                                            className="form-control"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div>
-                                <label>Silver Tickets</label>
-                                <div className="ticket-inputs">
-                                    <input
-                                        type="number"
-                                        name="silver_ticket_count"
-                                        min="0"
-                                        placeholder="Count"
-                                        onChange={handleChange}
-                                    />
-                                    <input
-                                        type="text"
-                                        name="silver_ticket_price"
-                                        placeholder="Price"
-                                        onChange={handleChange}
-                                    />
+                            {/* Silver Tickets */}
+                            <div className="mb-4">
+                                <label className="form-label fw-medium">Silver Tickets</label>
+                                <div className="row g-3">
+                                    <div className="col-12 col-sm-6">
+                                        <input
+                                            type="number"
+                                            name="silver_ticket_count"
+                                            min="0"
+                                            placeholder="Count"
+                                            className="form-control"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div className="col-12 col-sm-6">
+                                        <input
+                                            type="text"
+                                            name="silver_ticket_price"
+                                            placeholder="Price"
+                                            className="form-control"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div>
-                                <label>Bronze Tickets</label>
-                                <div className="ticket-inputs">
-                                    <input
-                                        type="number"
-                                        name="bronze_ticket_count"
-                                        min="0"
-                                        placeholder="Count"
-                                        onChange={handleChange}
-                                    />
-                                    <input
-                                        type="text"
-                                        name="bronze_ticket_price"
-                                        placeholder="Price"
-                                        onChange={handleChange}
-                                    />
+                            {/* Bronze Tickets */}
+                            <div className="mb-4">
+                                <label className="form-label fw-medium">Bronze Tickets</label>
+                                <div className="row g-3">
+                                    <div className="col-12 col-sm-6">
+                                        <input
+                                            type="number"
+                                            name="bronze_ticket_count"
+                                            min="0"
+                                            placeholder="Count"
+                                            className="form-control"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div className="col-12 col-sm-6">
+                                        <input
+                                            type="text"
+                                            name="bronze_ticket_price"
+                                            placeholder="Price"
+                                            className="form-control"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
                     </section>
-                    <div className="center-content">
-                        <h4>Submit event creation request</h4>
-                        <button type="submit" className="submit-btn">
+
+
+                    <div className="text-center">
+                        <h4 className="mb-3">Submit event creation request</h4>
+                        <button type="submit" className="px-4 py-2 btn btn-primary">
                             Submit
                         </button>
                     </div>

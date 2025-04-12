@@ -115,7 +115,11 @@
 // }
 
 /* resources/css/HostContact.scss */
-
+footer {
+    position: absolute;
+    bottom: 100;
+    width: 100%;
+  }
 .contact-form-container {
     width: 100%;
     max-width: 600px;

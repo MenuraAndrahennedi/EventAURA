@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "@inertiajs/react";
 import StarRating from "./StarRating";// Import Star Rating Component
 import '../../../css/ReviewPg.scss'; 
+import MainHeader from './../../Components/Header/MainHeader';
+import MainFooter from './../../Components/Footer/MainFooter';
 
 const ReviewPg = () => {
     const { data, setData, post, processing, reset } = useForm({
@@ -24,6 +26,11 @@ const ReviewPg = () => {
     };
 
     return (
+        <>
+            <header>
+                <MainHeader />
+            </header>
+
         <div className="review-form">
             <h2>Leave Us a Review</h2>
 
@@ -65,6 +72,10 @@ const ReviewPg = () => {
                 </button>
             </form>
         </div>
+         
+        
+       
+        </>
     );
 };
 

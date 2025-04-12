@@ -73,7 +73,7 @@ const EHUserDetails = ({eventHosts}) => {
   </div>
 )}
 
-                <h1><b>EVENT HOSTS</b></h1>
+                <h1><b>Event Hosts</b></h1>
                 <div className='main-table'>
                     <div className="table-container">
                         <table className="review-table striped-table">

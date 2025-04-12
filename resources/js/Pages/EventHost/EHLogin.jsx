@@ -29,10 +29,10 @@ const EHLogin = () => {
         </header>
 
         <main className="login-page d-flex align-items-stretch">
-          <div className="image-section"></div>
+          <div className="image-section d-none d-md-block col-md-6"></div>
           
-          <div className="login-form-section d-flex justify-content-center ">
-            <div className="login-form">
+          <div className="p-4 login-form-section d-flex justify-content-center align-items-center col-12 col-md-6 min-vh-100">
+            <div className="login-form w-100 " style={{ maxWidth: "400px" }}>
               <div className="border-0 shadow card">
                 <div className="p-4 card-body">
                   <h2 className="mb-4 text-center">Sign in to EventAURA</h2>
@@ -76,7 +76,6 @@ const EHLogin = () => {
             </div>
           </div>
       </main>
-      
       
         <footer>
           <SubFooter />

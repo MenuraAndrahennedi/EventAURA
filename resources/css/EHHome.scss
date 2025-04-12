@@ -71,3 +71,10 @@
       max-width: 100%;
     }
   }  
+  .card-img-small {
+    max-height: 580px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+  
+  

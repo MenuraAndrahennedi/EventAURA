@@ -146,7 +146,71 @@ const ConnectWithUs = () => {
                                                     <a href="https://linkedin.com" target="_blank">LinkedIn</a>
                                                 </div>
                                             </div>*/}
-                </div>
+
+                        <div className="contact-section-container">
+                                    
+                                    
+                                    <div className="top-section">
+                                        <div className="info-box">
+                                            <h2>Contact Information</h2>
+                                            <p><strong>Email:</strong> support@yourwebsite.com</p>
+                                            <p><strong>Phone:</strong> +94 71 234 5678</p>
+                                            <p><strong>Location:</strong> Colombo, Sri Lanka</p>
+                                        </div>
+
+                                        <div className="chat-box">
+                                            <h3>Live Chat</h3>
+
+                                            <a 
+                                                href="https://wa.me/+94710131042" 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                className="whatsapp-button"
+                                            >
+                                                Chat on WhatsApp
+                                            </a>
+
+                                            <div id="fb-root"></div>
+                                            <script async defer crossOrigin="anonymous" 
+                                                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0" 
+                                                nonce="YOUR_NONCE">
+                                            </script>
+
+                                            <div className="fb-customerchat"
+                                                attribution="biz_inbox"
+                                                page_id="YOUR_PAGE_ID"
+                                            >
+                                                <span className="messenger-button">Chat On Messenger</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                   
+                                    <div className="social-box">
+                                        <h3>Follow Us</h3>
+                                        <div className="social-links">
+                                            <div className="social-item">
+                                                <img src={FB} alt="Facebook" />
+                                                <a href="https://facebook.com" target="_blank">Facebook</a>
+                                            </div>
+                                            <div className="social-item">
+                                                <img src={X} alt="X"/>
+                                                <a href="https://twitter.com" target="_blank">X</a>
+                                            </div>
+                                            <div className="social-item">
+                                                <img src={Instar} alt="Instagram" />
+                                                <a href="https://instagram.com" target="_blank">Instagram</a>
+                                            </div>
+                                            <div className="social-item">
+                                                <img src={LinkedIn} alt="LinkedIn" />
+                                                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                         </div>
+                    </div>
+                    
             </main>
             <Footer />
         </>

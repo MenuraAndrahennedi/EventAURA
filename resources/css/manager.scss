@@ -4,6 +4,11 @@ $secondary-color: #9BEEFF;
 $text-color: #000;
 $text-white: #FFFFFF;
 
+footer {
+  position: absolute;
+  bottom: 100;
+  width: 100%;
+}
 .btn-primary {
     background-color: black;
     border: 1px solid black;

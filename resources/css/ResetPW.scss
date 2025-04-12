@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: center;
     min-height: 800px; 
-    background-image: url('../../assets/Images/BG-8.jpg'); 
-    background: linear-gradient(to left, rgba(0,0,0,0.8), rgba(0,0,0,0,)),url('../../assets/Images/BG-8.jpg');
+    background-image: url('../js/assets/Images/BG-8.jpg'); 
+    //background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0,0,0,0,)),url('../../assets/Images/BG-8.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -18,8 +18,8 @@
     color: #fff;
     max-width: 400px;
     width: 100%;
-    position: relative; /* Ensures the overlay stays in place */
-    z-index: 1; /* Stack order for overlay */
+    position: relative; 
+    z-index: 1; 
   
   }
   .reset-password-overlay h2 {
@@ -49,7 +49,18 @@
   .reset-password-overlay button:hover {
   background-color: #0d6efd;
 }
+
 footer {
   margin-top: 0;
   padding: 0; /* Ensures no additional space is added */
+  position: absolute;
+    bottom: 100;
+    width: 100%;
+
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

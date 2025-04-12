@@ -7,7 +7,7 @@
 
 
     h1 {
-        font-size: 4em;
+        font-size: 3em;
         margin-bottom: 50px;
         margin-top: 50px;
     }
@@ -351,23 +351,13 @@
 }
 
 
-footer {
-    position: absolute;
-    bottom: 100;
-    width: 100%;
-  }
-  html, body {
-    height: 100%; /* Ensure the body takes full height */
-    margin: 0; /* Remove default margin */
-  }
-
-  body {
-    background-color: #dbe8eb; 
+.page-wrapper {
     display: flex;
-  flex-direction: column; /* Stack the elements vertically */
-  min-height: 100vh;
+    flex-direction: column;
+    min-height: 100vh;
+  
+    .main-box {
+      flex: 1;
+    }
   }
-
-  .content {
-    flex: 1; /* Allow the content to grow and take up remaining space */
-  }
+  
