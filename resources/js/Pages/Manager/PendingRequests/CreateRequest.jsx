@@ -1,5 +1,5 @@
 import React,  {useState , useEffect } from 'react'
-import ManagerHeader from '../../../Components/Header/ManagerHeader'
+import UserHeader from '../../../Components/Header/UserHeader'
 import ManagerFooter from '../../../Components/Footer/AdminFooter';
 import '../../../../css/manager.scss';
 import HeadBar from './HeadBar'
@@ -17,7 +17,7 @@ const managerCreateRequest = ({ events  }) => {
     console.log("Flash message from Laravel:", flash);  // Debugging log
 //     console.log("Full Page Props:", page.props);
 // console.log("Flash Message:", page.props.flash);
-// console.log("Flash Success:", page.props.flash?.success);
+// console.log("Flash Success:", page.props.flash?.success); 
 
     const [showModal, setShowModal] = useState(false);
     const [selectedEventId, setSelectedEventId] = useState(null);
@@ -83,7 +83,7 @@ const managerCreateRequest = ({ events  }) => {
     return (
         <>
             <header>
-                <ManagerHeader />
+                <UserHeader />
             </header>
 
             <main className='pending-request'>
@@ -191,7 +191,7 @@ const managerCreateRequest = ({ events  }) => {
                                         </td>
                                         <td>
                                         <a
-                            href={`/manager/event-report/${event.id}`} 
+                            href={`/pending/event-report/${event.id}`} 
                             className="btn btn-info btn-sm" 
                             target="_blank" // Open in a new window
                              rel="noopener noreferrer" 

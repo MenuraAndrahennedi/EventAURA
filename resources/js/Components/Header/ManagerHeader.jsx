@@ -8,11 +8,11 @@ import Logo from "../../assets/Images/Logo.png";
 
 
 const ManagerHeader = () => {
-    return (
+    return ( 
         <header>
             {/*<div className="container py-3">*/}
                 <Navbar expand="lg" className="bg-dark navbar-dark">
-                    <Navbar.Brand as={Link} to="/" className="logo">
+                    <Navbar.Brand as={Link} href ={route('home')}  className="logo">
                         <img src={Logo} alt="Logo" className="logo-img" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -20,35 +20,35 @@ const ManagerHeader = () => {
                         <Nav className="ms-auto">
                             <Nav.Link
                                 as={Link}
-                                to="/ManagerDashboard"
+                                href ={route('manager.dashboard')}
                                 className="nav-link"
                             >
                                 Dashboard
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/ongoing"
+                                href="/manager/ongoing"
                                 className="nav-link"
                             >
                                 Ongoing events
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/pendingRequests"
+                                 href="/manager/create-requests"
                                 className="nav-link"
                             >
                                 Pending requests
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/inquiries"
+                                href="/inquiries"
                                 className="nav-link"
                             >
                                 Inquiries
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                to="/manager"
+                                href="/manager/profile"
                                 className="nav-link"
                             >
                                 Manager Account

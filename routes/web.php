@@ -90,8 +90,9 @@ Route::get('/manager', function () {
 
 
 Route::get('/about', function () {return Inertia::render('AboutUs/AboutUS');})->name('about');
-Route::get('/browse', function () {return Inertia::render('BrowseEvent/BrowseEvent');})->name('browse');
+Route::get('/browse-guest', function () {return Inertia::render('BrowseEvent/BrowseEvent');})->name('browse.guest');
 Route::get('/buytickets', function () {return Inertia::render('BuyTickets/BuyTickets');})->name('buytickets');
+Route::get('/browse', [EventController::class, 'showBrowseEvents'])->name('browse');
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -101,7 +102,7 @@ Route::get('/buytickets', function () {return Inertia::render('BuyTickets/BuyTic
 
 
 
-Route::get('/managerDeleteRequest',[ManagerController::class,'showDeleteRequests'])->name('managerDeleteRequest');
+Route::get('/eventDeleteRequest',[ManagerController::class,'showDeleteRequests'])->name('eventDeleteRequest');
 Route::post('/delete-requests/update', [DeleteRequestController::class, 'update'])->name('delete-request.update');
 Route::get('/delete-request/report/{id}', [DeleteRequestController::class, 'generateReport'])->name('delete-request.report');
 
@@ -187,7 +188,7 @@ Route::post('/artists', [ArtistController::class, 'store']);
 Route::get('/eventdetails/{id}', [EventController::class, 'show'])->name('event.details');
 Route::get('/buytickets/{id}', [EventController::class, 'showBuyTickets'])->name('buytickets');
 
-Route::get('/manager/create-requests', [EventController::class, 'getPendingEvents'])->name('manager.create.requests');
+Route::get('/event/create-requests', [EventController::class, 'getPendingEvents'])->name('event.create.requests');
 
 Route::post('/manager/approve-event/{id}', [EventController::class, 'approveEvent'])->name('manager.approve.event');
 
@@ -239,34 +240,34 @@ Route::post('/payment/cancel/update', [StripePaymentController::class, 'updateCa
 Route::get('/payment/cancel', [StripePaymentController::class, 'showCancelPage'])
     ->name('payment.cancel');
 
-Route::get('manager/ongoing',[ManagerController::class,'showManagerOngoingEvents'])->name('manager.ongoing');
+Route::get('ongoing',[ManagerController::class,'showManagerOngoingEvents'])->name('ongoing');
 
-Route::get('manager/view-event/{event}',[ManagerController::class,'showManagerViewEvent'])->name('manager.viewevent');
+Route::get('view-event/{event}',[ManagerController::class,'showManagerViewEvent'])->name('viewevent');
 
-Route::get('/manager/endedEventHistory', [EventController::class, 'getEndedEvents'])->name('manager.ended.events');
+Route::get('ended-event-history', [EventController::class, 'getEndedEvents'])->name('ended.event.history');
 
-Route::get('/manager/pendingPaymentHistory', [EventController::class, 'getPendingPaymentEvents'])->name('manager.pending.payments.events');
+Route::get('pending-payment-history', [EventController::class, 'getPendingPaymentEvents'])->name('pending.payments.history');
 
-Route::get('/manager/event-report/{id}', [EventController::class, 'generateEventReport'])
-    ->name('manager.event.report');
+Route::get('/pending/event-report/{id}', [EventController::class, 'generateEventReport'])
+    ->name('pending.event.report');
 
-Route::get('/manager/rejectedEventHistory', [EventController::class, 'getRejectedEvents'])->name('manager.rejected.events');
+Route::get('/rejectedEventHistory', [EventController::class, 'getRejectedEvents'])->name('rejected.events.history');
 
 Route::get('/ended-event/{id}/report', [EventController::class, 'generateEndedEventReport'])->name('ended.event.report');
 
 Route::get('/rejected-event/{id}/report', [EventController::class, 'generateRejectedEventReport'])->name('rejected.event.report');
 
 Route::middleware(['auth'])->group(function () {
-Route::get('/manager/profile', [ManagerController::class, 'showManagerProfile'])->name('manager.profile');
+Route::get('/other/profile-show', [ManagerController::class, 'showManagerProfile'])->name('manager.profile');
 });
 
-Route::get('/manager/changePW', [ManagerController::class, 'showManagerChangePW'])->name('manager.changepw');
+Route::get('/other/change-password', [ManagerController::class, 'showManagerChangePW'])->name('manager.changepw');
 
-Route::get('/manager/signout', [ManagerController::class, 'showManagerSignOut'])->name('manager.signout');
+Route::get('/other/logout', [ManagerController::class, 'showManagerSignOut'])->name('manager.signout');
 
 Route::get('/manager/sidebar', [ManagerController::class, 'showManagerSideBar'])->name('manager.sidebar');
 
-Route::get('manager/profile/edit', [ManagerController::class, 'editProfile'])->name('manager.profile.edit');
+Route::get('other/profile/edit', [ManagerController::class, 'editProfile'])->name('other.profile.edit');
 
 Route::post('/manager/profile/update', [ManagerController::class, 'updateProfile'])->name('manager.profile.update');
 
@@ -280,7 +281,7 @@ Route::post('/reviews', [WebSiteReviewController::class, 'store'])->name('review
 
 Route::get('/reviewPg', [WebSiteReviewController::class, 'showReviewPage'])->name('reviews.show');
 
-Route::get('/manager/reviews', [WebSiteReviewController::class, 'index'])->middleware('auth')->name('reviews.index');
+Route::get('/show-reviews', [WebSiteReviewController::class, 'index'])->middleware('auth')->name('reviews.index');
 
 Route::post('/reviews/{id}/approve', [WebSiteReviewController::class, 'approve'])->middleware('auth');
 
@@ -317,12 +318,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
     })->name('tb-profile');
 
-    Route::get('/TBPurchaseHistory', function () {
-        return Inertia::render('UserProfile/TB-Profiles/TBPurchaseHistory', [
-            'user' => auth()->user()
-        ]);  
-    
-    })->name('TBPurchaseHistory');
+    Route::get('/TBPurchaseHistory', [UserController::class,'purchaseHistory'])->name('TBPurchaseHistory');
 
     Route::get('/TBSignOut', function () {
         return Inertia::render('UserProfile/TB-Profiles/TBSignOut', [
@@ -376,7 +372,7 @@ Route::get('/events/search', [EventController::class, 'search'])->name('events.s
 
  Route::get('other/ehUserDetails', [AdminController::class, 'ehUserDetails'])->name('eh.userDetails');
 
- Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
+ Route::post('delete/users/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
 
  Route::get('/users/{id}/download', [AdminController::class, 'ticketBuyerHistory'])->name('users.download');
 
@@ -416,7 +412,12 @@ Route::get('/ended-event/report/{id}', [EventHostController::class, 'downloadEve
 
     Route::post('/eventhost/profile/update-password', [EventHostController::class, 'updateEventHostPassword'])->name('eventhost.profile.update-password');
 
+
+
+Route::get('/admin/monthly-user-registrations-by-role', [AdminController::class, 'getMonthlyUserRegistrationsByRole']);
+
     Route::get('/host-contact/{id}', [EventController::class, 'showPage'])->name('host.contact.page');
     Route::post('/host-contact', [EventController::class, 'send'])->name('host.contact');
+
 
 require __DIR__ . '/auth.php';

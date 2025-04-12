@@ -1,5 +1,5 @@
 import React from 'react'
-import ManagerHeader from '../../../Components/Header/ManagerHeader'
+import UserHeader from '../../../Components/Header/UserHeader'
 import ManagerFooter from '../../../Components/Footer/AdminFooter';
 import '../../../../css/manager.scss';
 import HeadBar from './HeadBar'
@@ -106,7 +106,7 @@ const UpdateRequest = ( {requests}) => {
     return (
         <>
             <header>
-                <ManagerHeader />
+                <UserHeader />
             </header>
 
             <main className='pending-request'>

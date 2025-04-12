@@ -293,6 +293,16 @@ const CreateEvent = () => {
                         </div>
 
                         <div className="input-group">
+                            <label>Return Policies*</label>
+                            <textarea
+                                name="return_policies"
+                                placeholder="Enter return policies"
+                                onChange={handleChange}
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div className="input-group">
                             <label>Event Organizer*</label>
                             <input
                                 type="text"

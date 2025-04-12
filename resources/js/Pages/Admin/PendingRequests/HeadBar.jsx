@@ -10,7 +10,7 @@ const EHSidebar = () => {
 
                 <div className="head-bar row">
                     <div className="col text-center p-0">
-                        <Link href='/manager/create-requests' className={location.pathname === '/manager/create-requests' ? 'active-link' : ''}>Create Request</Link>
+                        <Link href='/event/create-requests' className={location.pathname === '/event/create-requests' ? 'active-link' : ''}>Create Request</Link>
                     </div>
                     <div className="col text-center p-0">
                         <Link href='/managerUpdateRequest' className={location.pathname === '/managerUpdateRequest' ? 'active-link' : ''}>Update Request</Link>
