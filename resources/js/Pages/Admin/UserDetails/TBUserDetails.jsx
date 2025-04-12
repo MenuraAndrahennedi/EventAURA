@@ -38,7 +38,7 @@ const TBUserDetails = ({ ticketBuyers }) => {
     
     <main className='main-box'>
 
-                <h1><b>TICKET BUYERS</b></h1>
+                <h1><b>Ticket Buyers</b></h1>
                 <div className='main-table'>
                     <div className="table-container">
                         <table className="review-table striped-table">

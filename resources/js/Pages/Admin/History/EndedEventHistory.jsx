@@ -13,7 +13,7 @@ const EndedEventHistory = ({ endedEvents =[] }) => {
     };
 
   return (
-    <>
+    < >
             <header>
                 <UserHeader />
             </header>
