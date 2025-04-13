@@ -35,7 +35,7 @@ const EHLogin = () => {
             <div className="login-form w-100 " style={{ maxWidth: "400px" }}>
               <div className="border-0 shadow card">
                 <div className="p-4 card-body">
-                  <h2 className="mb-4 text-center">Sign in to EventAURA</h2>
+                  <h1 className="mb-4 text-center">Sign in to EventAURA</h1>
 
                   <form onSubmit={handleSubmit}>
 
@@ -50,7 +50,7 @@ const EHLogin = () => {
                     </div>
 
                     <div className="mb-3 text-end">
-                    <small>< Link href={route('password.request')}>Forgot Password?</Link></small>
+                    <small>< Link href={route('password.request')} className="Guest-link">Forgot Password?</Link></small>
                     </div>
 
                     <button type="submit" className="mb-3 btn btn-primary w-100" disabled={processing}>Sign In</button>
@@ -66,7 +66,7 @@ const EHLogin = () => {
                     </div>
 
                     <div className="mt-4 text-center">
-                      <small>Don’t have an account? <Link href={route('eh.register')}> Create an account</Link></small>
+                      <small>Don’t have an account? <Link href={route('eh.register')}className="Guest-link"> Create an account</Link></small>
                     </div>
 
                   </form>
