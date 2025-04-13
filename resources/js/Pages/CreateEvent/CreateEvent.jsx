@@ -126,7 +126,7 @@ const CreateEvent = () => {
             </header>
 
             {/*form */}
-            <main className="container py-4 create-event">
+            <main className="px-3 py-4 container-fluid create-event">
                 <h1 className="mb-4 text-center"><b>Create Event</b></h1>
 
                 <p className="event-fee-info text-muted">
@@ -320,11 +320,11 @@ const CreateEvent = () => {
 
                         <p className="mb-3">Fill ticket count:</p>
 
-                        <div className="ticket-types">
+                        <div className="ticket-types w-100">
                             {/* Golden Tickets */}
                             <div className="mb-4">
                                 <label className="form-label fw-medium">Golden Tickets</label>
-                                <div className="row g-3">
+                                <div className="row g-3 ">
                                     <div className="col-12 col-sm-6">
                                         <input
                                             type="number"
@@ -350,7 +350,7 @@ const CreateEvent = () => {
                             {/* Silver Tickets */}
                             <div className="mb-4">
                                 <label className="form-label fw-medium">Silver Tickets</label>
-                                <div className="row g-3">
+                                <div className="row g-3 ">
                                     <div className="col-12 col-sm-6">
                                         <input
                                             type="number"
@@ -376,7 +376,7 @@ const CreateEvent = () => {
                             {/* Bronze Tickets */}
                             <div className="mb-4">
                                 <label className="form-label fw-medium">Bronze Tickets</label>
-                                <div className="row g-3">
+                                <div className="row g-3 ">
                                     <div className="col-12 col-sm-6">
                                         <input
                                             type="number"

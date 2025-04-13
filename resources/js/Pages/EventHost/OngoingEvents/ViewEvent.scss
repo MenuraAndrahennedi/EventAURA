@@ -145,3 +145,18 @@ footer {
   width: 100%;
 }
 
+/* Add this inside your <style> tag */
+@media (max-width: 768px) {
+  .info-grid
+   {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
