@@ -43,7 +43,7 @@ const OtherLogin = () => {
                 <input type="password" name="password" placeholder="Password" value={data.password} onChange={handleChange} required />
                 {errors.password && <div className="error text-danger">{errors.password}</div>}
                 <div className="forgot-password">
-                  <small><Link href={route('password.request')}>Forgot Password?</Link></small>
+                  <small><Link href={route('password.request')} className="guest-link">Forgot Password?</Link></small>
                 </div>
                 <button type="submit" disabled={processing} >Sign In</button>
               </form>
