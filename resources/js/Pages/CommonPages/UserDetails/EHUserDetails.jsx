@@ -6,7 +6,7 @@ import AdminFooter from './../../Components/Footer/AdminFooter';
 
 const EHUserDetails = () => {
   return (
-    <>
+    <div className="page-wrapper d-flex flex-column min-vh-100">
       <header>
         <UserHeader />
       </header>
@@ -156,8 +156,8 @@ const EHUserDetails = () => {
 
             <footer>
                 <AdminFooter />
-            </footer> *
-        </>
+            </footer> 
+        </div>
 
 
   

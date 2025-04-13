@@ -33,15 +33,6 @@ img {
       margin-bottom: 1rem;
     }
   }
-  html, body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    margin: 0;           /* Remove any default margin */
-  }
-  
-  * {
-    box-sizing: border-box; /* Ensure padding doesn't add extra width */
-  }
-  
+ 
+  /* Make sure full height is used */
   
