@@ -45,10 +45,11 @@ const HostContact = ({ event }) => {
 
 
     return (
-        <>
+        <div className="contact-wrapper">
             <header>
                 <TBHeader />
             </header>
+            <div className="contact-form-container">
               <h1>Get in Touch with Host</h1> <img
                             src={HostImage}
                             alt="HostIcon"
@@ -56,8 +57,8 @@ const HostContact = ({ event }) => {
                         />
              
               <p>Here we have provided you the chance to contact
-with the event organizer and solve your problems
-about the event.You can send an email to the event host or you can start a live chat with the event host.</p>
+                with the event organizer and solve your problems
+                about the event.You can send an email to the event host or you can start a live chat with the event host.</p>
             <section className="contact-form">
                 {/* {flash.success && <p className="success-message">{flash.success}</p>}
                 {flash.error && <p className="error-message">{flash.error}</p>} */}
@@ -134,10 +135,11 @@ about the event.You can send an email to the event host or you can start a live 
                 
                 </form>
             </section>
+            </div>
             <footer>
                 <SubFooter />
             </footer>
-        </>
+        </div>
     );
 };
 
