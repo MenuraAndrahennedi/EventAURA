@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "@inertiajs/react";
-
+import Container from "react-bootstrap/Container";
 import "../../../css/style.scss";
 import Logo from "../../assets/Images/Logo.png";
 
@@ -18,7 +18,7 @@ const MainHeader = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-                <div id="basic-navbar-nav">
+                <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         <Nav.Link as={Link} href={route('home')} className="nav-link">
                             Home
@@ -52,7 +52,7 @@ const MainHeader = () => {
                             CREATE EVENT
                         </Nav.Link>
                     </Nav>
-                </div>
+                </Navbar.Collapse>
             </Navbar>
            
     </header>
