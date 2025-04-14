@@ -30,7 +30,7 @@ const EHCreateAccount = () => {
         </header>
 
         <main className="login-page d-flex align-items-stretch">
-          <div className="image-section"></div>
+          <div className="image-section d-none d-md-block col-md-6"></div>
           
           <div className="login-form-section d-flex justify-content-center align-items-center">
             <div className="login-form">
@@ -68,13 +68,13 @@ const EHCreateAccount = () => {
                     <button type="submit" disabled={processing} className="mb-3 btn btn-primary w-100">Continue</button>
                     
                     <div className="mb-3 text-center"><small>
-                      < Link to= '/terms' >Terms and Conditions</Link>
+                      < Link to= '/terms'className="Guest-link" >Terms and Conditions</Link>
                     </small></div >
 
                     <hr />
 
                     <div className="mt-4 text-center">
-                      <small>Already have an account? <Link href={route('eh.login')}> Sign in</Link></small>
+                      <small>Already have an account? <Link href={route('eh.login')} className="Guest-link"> Sign in</Link></small>
                     </div>
 
                   </form>

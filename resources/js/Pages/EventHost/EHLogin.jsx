@@ -25,7 +25,7 @@ const EHLogin = () => {
   return (
     <>
         <header>
-          <MainHeader/> 
+          <MainHeader/>
         </header>
 
         <main className="login-page d-flex align-items-stretch">
