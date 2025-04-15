@@ -418,3 +418,31 @@ footer {
     overflow-y: auto;
     margin-bottom: 60px; /* Ensure content is not hidden under the footer */
 }
+
+
+//pending request
+.request-table th {
+    background-color: #12171d; 
+    color: white;
+    text-align: center;
+    padding: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    min-width: 1000px;
+    font-weight: bold;
+    border: 1px solid #ffffff;
+  }
+  
+  
+  .request-table th,
+.request-table td {
+  width: 12.5%; /* 100% ÷ 8 columns */
+  text-align: left;
+  padding: 10px;
+}
+
+  
+  

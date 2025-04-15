@@ -68,10 +68,10 @@ const EHUserDetails = ({eventHosts}) => {
 
       <main className='main-box'>
       {successMessage && (
-  <div className="success-toast">
-    {successMessage}
-  </div>
-)}
+            <div className="success-toast">
+                {successMessage}
+            </div>
+            )}
 
                 <h1><b>Event Hosts</b></h1>
                 <div className='main-table'>
