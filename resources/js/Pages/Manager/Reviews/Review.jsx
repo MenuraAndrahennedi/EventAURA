@@ -58,7 +58,7 @@ const Review = ({reviews}) => {
             <main className='main-box'>
 
 <h1><b>REVIEWS</b></h1>
-  {/* ✅ Success Message */}
+  {/* Success Message */}
   {successMessage && (
                     <div className="success-message">
                         {successMessage}

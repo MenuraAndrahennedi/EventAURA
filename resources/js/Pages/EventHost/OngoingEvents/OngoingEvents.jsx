@@ -26,7 +26,7 @@ const OngoingEvents =({ongoingevents}) => {
   // }, []);
   console.log(ongoingevents); // Debugging output // Debugging output
   return (
-    <>
+    <div className="page-wrapper">
 
       <header>
           <EHHeader />
@@ -77,7 +77,7 @@ const OngoingEvents =({ongoingevents}) => {
       <footer>
           <SubFooter />
         </footer>
-    </>
+    </div>
   )
 }
 

@@ -1,6 +1,6 @@
 
 // General Styles
-.event-details {
+/*.event-details {
   font-family: Arial, sans-serif;
   color: #333;
 
@@ -137,6 +137,169 @@
       background-color: #7f0000;
     }
   }
+}
+*/
+
+// General Styles
+.event-details {
+  font-family: Arial, sans-serif;
+  color: #333;
+
+  .banner {
+    position: relative;
+    background-image: url('../../../assets/Images/BG-10.png');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    .banner-title {
+      font-size: 3rem;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .info-section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      text-align: center;
+
+      div {
+        font-size: 1.1rem;
+
+        b {
+          display: block;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  .attendee-section {
+    margin: 20px;
+    text-align: center;
+
+    b {
+      font-size: 1.2rem;
+    }
+    
+
+    .download-btnn {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-left: 50px;
+      text-decoration: none;
+    }
+
+    .download-btnn:hover {
+      background-color: rgb(92, 91, 91);
+    }
+  }
+
+  .ticket-section {
+    margin: 20px;
+    text-align: center;
+
+    b {
+      font-size: 1.2rem;
+    }
+
+    .ticket-grid {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+
+      div {
+        font-size: 1rem;
+        background-color: #e0f7fa;
+        padding: 10px 15px;
+        border-radius: 8px;
+
+        .ticket-count {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #00796b;
+        }
+      }
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px;
+
+    .update-btnn {
+      padding: 10px 20px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .update-btnn:hover {
+      background-color: rgb(92, 91, 91);
+    }
+
+    .delete-btnn {
+      padding: 10px 20px;
+      background-color: #b71c1c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .delete-btnn:hover {
+      background-color: #7f0000;
+    }
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 100;
+  width: 100%;
+}
+
+/* Add this inside your <style> tag */
+@media (max-width: 768px) {
+  .info-grid
+   {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
 }
 
 

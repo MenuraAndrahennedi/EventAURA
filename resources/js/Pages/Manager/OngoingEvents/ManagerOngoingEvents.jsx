@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from  "@inertiajs/react";
-import '../../../../css/BrowseEvent.scss';
+//import '../../../../css/BrowseEvent.scss';
+import '../../../../css/OngoingEvents.scss';
 import Banner from '../../../assets/Images/banner.png';
 import SearchBar from '../../../Components/SearchBar';
 import UserHeader from '../../../Components/Header/UserHeader';
@@ -24,14 +25,16 @@ const ManagerOngoingEvents = () => {
     }, []);
 
   return (
-    <>
+    <div className="page-wrapper">
         <header>
           <UserHeader />
         </header>
 
+
+        <h1 className="my-5 text-4xl font-extrabold text-center sm:text-3xl md:text-4xl">Ongoing Events</h1>
          {/*Search Bar */}
          <SearchBar />
-
+         
 
             <section className = 'py-5 section-2 bg-light'>
             <div className = 'container'>
@@ -185,7 +188,7 @@ const ManagerOngoingEvents = () => {
         <footer>
           <AdminFooter />
         </footer>
-    </>
+    </div>
   )
 }
 

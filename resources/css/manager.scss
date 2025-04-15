@@ -4,11 +4,7 @@ $secondary-color: #9BEEFF;
 $text-color: #000;
 $text-white: #FFFFFF;
 
-footer {
-  position: absolute;
-  bottom: 100;
-  width: 100%;
-}
+
 .btn-primary {
     background-color: black;
     border: 1px solid black;
@@ -79,11 +75,7 @@ html, body {
     flex: 1; /* Allow the content to grow and take up remaining space */
   }
   
-  footer {
-    position: absolute;
-    bottom: 100;
-    width: 100%;
-  }
+  
   
   @media (max-width: 768px) {
     h1 {
@@ -103,4 +95,22 @@ html, body {
   .text-responsive {
     font-size: 5vw; /* 5% of viewport width */
   }
-  
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: fixed; /* Fix entire page in place */
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #333; /* Make it stand out */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}

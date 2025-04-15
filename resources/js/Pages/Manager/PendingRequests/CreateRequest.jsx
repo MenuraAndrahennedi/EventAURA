@@ -81,7 +81,7 @@ const managerCreateRequest = ({ events  }) => {
     closeModal();
 };
     return (
-        <>
+        <div className="page-wrapper">
             <header>
                 <UserHeader />
             </header>
@@ -127,10 +127,10 @@ const managerCreateRequest = ({ events  }) => {
                                         </Link>
                                     </td>
                                     <td>
-                                        <Link to="#" className="btn btn-success btn-sm mx-1">
+                                        <Link to="#" className="mx-1 btn btn-success btn-sm">
                                             Accept
                                         </Link>
-                                        <Link to="#" className="btn btn-danger btn-sm ml-10">
+                                        <Link to="#" className="ml-10 btn btn-danger btn-sm">
                                             Delete
                                         </Link>
                                     </td>
@@ -147,10 +147,10 @@ const managerCreateRequest = ({ events  }) => {
                                         </Link>
                                     </td>
                                     <td>
-                                        <Link to="#" className="btn btn-success btn-sm mx-1 ">
+                                        <Link to="#" className="mx-1 btn btn-success btn-sm ">
                                             Accept
                                         </Link>
-                                        <Link to="#" className="btn btn-danger btn-sm  ml-10">
+                                        <Link to="#" className="ml-10 btn btn-danger btn-sm">
                                             Delete
                                         </Link>
                                     </td>
@@ -203,19 +203,19 @@ const managerCreateRequest = ({ events  }) => {
                                         <td>
                                             {/* <Link 
                                                 href={`/manager/approve-event/${event.id}`} 
-                                                className="btn btn-success btn-sm mx-1"
+                                                className="mx-1 btn btn-success btn-sm"
                                             >
                                                 Accept
                                             </Link> */}
                                               <button
-                                                    className="btn btn-success btn-sm mx-1"
+                                                    className="mx-1 btn btn-success btn-sm"
                                                     onClick={() => handleApprove(event.id)}
                                                 >
                                                     Accept
                                                 </button>
                                             <button
                                                
-                                                className="btn btn-danger btn-sm ml-10"
+                                                className="ml-10 btn btn-danger btn-sm"
                                                 onClick={() => openDeleteModal(event.id)}
                                                 >
                                             
@@ -271,7 +271,7 @@ const managerCreateRequest = ({ events  }) => {
         onConfirm={handleConfirmDelete}
         title="Are you sure you want to delete this event?"
       />
-        </>
+        </div>
 
     );
 };

@@ -34,7 +34,7 @@ const managerDeleteRequest = ({requests}) => {
     };
 
     return (
-        <>
+        <div className="page-wrapper">
             <header>
                 <UserHeader />
             </header>
@@ -81,22 +81,22 @@ const managerDeleteRequest = ({requests}) => {
                                     <td>
                                     {request.status === 'pending' ? ( 
                                         <> 
-                                        {/* <Link to="#" className="btn btn-success btn-sm mx-1">
+                                        {/* <Link to="#" className="mx-1 btn btn-success btn-sm">
                                             Accept
                                         </Link> */}
-                                        {/* <Link to="#" className="btn btn-danger btn-sm ml-10">
+                                        {/* <Link to="#" className="ml-10 btn btn-danger btn-sm">
                                            Reject
                                         </Link> */}
                                          <button
                                                             onClick={() => handleUpdateStatus(request.id, 'approved')}
-                                                            className="btn btn-success btn-sm mx-1"
+                                                            className="mx-1 btn btn-success btn-sm"
                                                             disabled={processing}
                                                         >
                                                             Accept
                                                         </button>
                                                         <button
                                                             onClick={() => handleUpdateStatus(request.id, 'rejected')}
-                                                            className="btn btn-danger btn-sm ml-10"
+                                                            className="ml-10 btn btn-danger btn-sm"
                                                             disabled={processing}
                                                         >
                                                             Reject
@@ -121,10 +121,10 @@ const managerDeleteRequest = ({requests}) => {
                                 //         </Link>
                                 //     </td>
                                 //     <td>
-                                //         <Link to="#" className="btn btn-success btn-sm mx-1">
+                                //         <Link to="#" className="mx-1 btn btn-success btn-sm">
                                 //             Accept
                                 //         </Link>
-                                //         <Link to="#" className="btn btn-danger btn-sm  ml-10">
+                                //         <Link to="#" className="ml-10 btn btn-danger btn-sm">
                                 //            Reject
                                 //         </Link>
                                 //     </td>
@@ -165,7 +165,7 @@ const managerDeleteRequest = ({requests}) => {
                     }
                 `}
             </style>
-        </>
+        </div>
 
     )
 }
