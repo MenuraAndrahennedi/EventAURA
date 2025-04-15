@@ -9,27 +9,27 @@ import OtherSideBar from './ManagerSideBar';
 const ManagerProfile = () => {
   const { user } = usePage().props; // Get user data from Inertia
   return (
-    <>
+    <div className="page-wrapper">
       <header>
         <UserHeader />
       </header>
 
       <main>
         <div className="container my-5">
-              <div className="card shadow border-0">
-                <div className="card-body text-center">
+              <div className="border-0 shadow card">
+                <div className="text-center card-body">
                     <h1><b>Hi {user.name}!</b></h1>
                     <h4><b>Welcome to Your Profile</b></h4>
                     <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar"className="profile-avatar" />
                 </div>
               </div>
 
-              <div className="row mt-4">
+              <div className="mt-4 row">
                 <div className="col-md-3">
                   <OtherSideBar />
                 </div>
                 <div className="col-md-9">
-                  <div className="card shadow border-0">
+                  <div className="border-0 shadow card">
                     <div className="card-body profile-details">
                     <h5 className="text-center"><b>Profile Details</b></h5>
                     <p className="text-center">@{user.name}</p>
@@ -47,7 +47,7 @@ const ManagerProfile = () => {
                   </div>
 
                   <div className="text-end">
-                    <Link href={route('other.profile.edit')} className="btn btn-primary mt-3">Edit Profile</Link>
+                    <Link href={route('other.profile.edit')} className="mt-3 btn btn-primary">Edit Profile</Link>
                   </div>
                     </div>
                   </div>
@@ -59,7 +59,7 @@ const ManagerProfile = () => {
       <footer>
         < AdminFooter/>
       </footer>
-    </>
+    </div>
   )
 }
 
