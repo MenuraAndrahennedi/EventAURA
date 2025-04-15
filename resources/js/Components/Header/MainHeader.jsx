@@ -18,7 +18,7 @@ const MainHeader = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-                <Navbar.Collapse id="basic-navbar-nav">
+                <div id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         <Nav.Link as={Link} href={route('home')} className="nav-link">
                             Home
@@ -52,7 +52,7 @@ const MainHeader = () => {
                             CREATE EVENT
                         </Nav.Link>
                     </Nav>
-                </Navbar.Collapse>
+                </div>
             </Navbar>
            
     </header>

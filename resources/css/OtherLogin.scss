@@ -148,5 +148,13 @@ footer {
   100% { opacity: 0; }
 }
 
+.guest-link {
+  color: rgb(10, 10, 10);
+  font-weight: 600;
+  text-decoration: none;
+}
 
+.guest-link:hover {
+  text-decoration: underline;
+}
 
