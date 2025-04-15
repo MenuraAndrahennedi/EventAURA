@@ -76,7 +76,7 @@ const handleDeleteClick = (user) => {
   };
 
   return (
-    <>
+    <div className="page-wrapper">
      <header>
         <UserHeader />
     </header> 
@@ -211,7 +211,7 @@ const handleDeleteClick = (user) => {
         onClose={handleCancel}
         onConfirm={handleDeleteConfirmation}
       />
-        </>
+        </div>
 
 
   )

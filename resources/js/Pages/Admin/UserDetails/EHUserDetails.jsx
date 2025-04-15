@@ -61,7 +61,7 @@ const EHUserDetails = ({eventHosts}) => {
       };
 
   return (
-    <>
+    <div className="page-wrapper">
       <header>
         <UserHeader />
       </header>
@@ -276,7 +276,7 @@ const EHUserDetails = ({eventHosts}) => {
         onClose={handleCancel}
         onConfirm={handleDeleteConfirmation}
       />
-        </>
+        </div>
 
 
   
