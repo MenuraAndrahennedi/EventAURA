@@ -50,7 +50,7 @@ const Review = ({reviews}) => {
     
 
   return (
-    <>
+    <div className="page-wrapper">
             <header>
                 <UserHeader />
             </header> 
@@ -258,7 +258,7 @@ const Review = ({reviews}) => {
                 }
                 `}
             </style> 
-        </>
+        </div>
 
 
   )
