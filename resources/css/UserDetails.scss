@@ -2,11 +2,7 @@ h1{
   color : #000;
   font-size: 2.5rem;
 }
-footer {
-  position: absolute;
-  bottom: 100;
-  width: 100%;
-}
+
 
 .cardd{
     height: 500px; /* maximum height */
@@ -115,3 +111,17 @@ footer {
       padding: 10px 20px;
     }
   }  
+
+ /* Fix footer positioning */
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 50px; /* Add spacing only if needed */
+}
+
+/* Ensure the overall layout expands properly */
+body, html {
+  height: auto;
+  min-height: 100%;
+}

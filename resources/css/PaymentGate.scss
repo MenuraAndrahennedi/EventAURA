@@ -3,6 +3,7 @@
     justify-content: space-between;
     padding: 2rem;
     background-color: #f3f3f3;
+    flex-wrap: wrap;
   }
   
   .payment-form {
@@ -157,5 +158,78 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  .payment-form {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .total-amount-box {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .payment-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .input-group input {
+    padding: 0.75rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pay-btn, .cancel-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+  }
+}
+
+/* For screens smaller than 480px */
+@media (max-width: 480px) {
+  .payment-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .payment-form {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .total-amount-box {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pay-btn, .cancel-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+  }
+
+  .alert-box {
+    font-size: 14px;
+    padding: 10px 12px;
   }
 }

@@ -406,8 +406,8 @@ selectedArtists.forEach((artist, index) => {
                         </div>
                     </section>
 
-                    <section className="ticket-categories">
-                        <div className="header-container">
+                    <section className="px-3 py-4 ticket-categories">
+                        <div className="mb-3 header-container">
                             <h3>
                                 <b>3. Tickets Categories</b>
                             </h3>
@@ -415,7 +415,7 @@ selectedArtists.forEach((artist, index) => {
                         <hr />
 
                         <p>Fill ticket count:</p>
-                        <div className="ticket-types">
+                        <div className="ticket-types w-100">
                             <div>
                                 <label>Golden Tickets</label>
                                 <div className="ticket-inputs">

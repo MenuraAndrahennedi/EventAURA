@@ -104,7 +104,7 @@ const UpdateRequest = ( {requests}) => {
     };
 
     return (
-        <>
+        <div className="page-wrapper">
             <header>
                 <UserHeader />
             </header>
@@ -156,11 +156,11 @@ const UpdateRequest = ( {requests}) => {
                     </button>
                                     </td>
                                     <td>
-                                        {/* <Link href={`/event/update/approve/${request.id} `}className="btn btn-success btn-sm mx-1">
+                                        {/* <Link href={`/event/update/approve/${request.id} `}className="mx-1 btn btn-success btn-sm">
                                             Accept
                                         </Link> */}
                                         {/* <button 
-    className="btn btn-success btn-sm mx-1"
+    className="mx-1 btn btn-success btn-sm"
     onClick={() => handleAccept(request.id)}
 >
     Accept
@@ -170,13 +170,13 @@ const UpdateRequest = ( {requests}) => {
 </button>
 ) : (
 <button 
-    className="btn btn-success btn-sm mx-1"
+    className="mx-1 btn btn-success btn-sm"
     onClick={() => handleAccept(request.id)}
 >
     Accept
 </button>
 )}
-                                        <Link to="#" className="btn btn-danger btn-sm ml-10">
+                                        <Link to="#" className="ml-10 btn btn-danger btn-sm">
                                             Delete
                                         </Link>
                                     </td>
@@ -224,7 +224,7 @@ const UpdateRequest = ( {requests}) => {
             <footer>
                 <ManagerFooter />
             </footer>
-        </>
+        </div>
 
     )
 }

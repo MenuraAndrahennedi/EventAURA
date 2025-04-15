@@ -445,3 +445,43 @@
     bottom: 100;
     width: 100%;
   }
+
+  
+    .ticket-categories {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  
+    @media (max-width: 576px) {
+      .ticket-categories .row {
+        flex-direction: column !important;
+      }
+  
+      .ticket-categories input {
+        width: 100% !important;
+      }
+    }
+  
+    .ticket-types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0rem;
+      justify-content: space-between;
+    }
+    
+    .ticket-types > div {
+      flex: 1 1 250px;
+    }
+    
+    .ticket-inputs {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+    
+    @media (max-width: 576px) {
+      .ticket-inputs {
+        flex-direction: column;
+      }
+    }
+    

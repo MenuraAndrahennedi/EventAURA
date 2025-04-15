@@ -16,7 +16,7 @@ import AdminFooter from './../../Components/Footer/AdminFooter';
 
 const TBUserDetails = () => {
   return (
-    <>
+    <div className="page-wrapper d-flex flex-column min-vh-100">
      <header>
         <UserHeader />
     </header> 
@@ -89,7 +89,7 @@ const TBUserDetails = () => {
             <footer>
                 <AdminFooter />
             </footer> 
-        </>
+        </div>
 
 
   )

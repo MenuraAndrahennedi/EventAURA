@@ -23,8 +23,9 @@ const UserHome = () => {
         </header>
 
        
-        <div className="px-3 pt-5 row gx-5">  
-          
+         
+        <div className="container pt-5">
+        <div className="row g-3">
               <div className="mb-4 col-12 col-md-4 position-relative"> 
                 <div className="border-0 shadow cards">
                   <div className="cards-img-top">
@@ -54,7 +55,7 @@ const UserHome = () => {
               </div>
           </div>
           
-            <div className="px-3 pt-5 row gx-5">  
+            <div className="pt-5 row g-3">  
                 <div className="mb-4 col-12 col-md-4 position-relative"> 
                     <div className="border-0 shadow cards">
                         <div className="cards-img-top">
@@ -80,15 +81,15 @@ const UserHome = () => {
                     </div>
                 </div>
             </div>
-
-<section className="section-4 d-flex justify-content-center pt-3">
+</div>
+<section className="pt-3 section-4 d-flex justify-content-center">
                 <Link href="/add-new-member" className="btn btn-primary">
                     Add New Team Member
                 </Link>
             </section>
 
 
-        <footer>
+        <footer >
           <AdminFooter />
          
       </footer>

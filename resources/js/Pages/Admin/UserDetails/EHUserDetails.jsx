@@ -61,17 +61,17 @@ const EHUserDetails = ({eventHosts}) => {
       };
 
   return (
-    <>
+    <div className="page-wrapper">
       <header>
         <UserHeader />
       </header>
 
       <main className='main-box'>
       {successMessage && (
-  <div className="success-toast">
-    {successMessage}
-  </div>
-)}
+            <div className="success-toast">
+                {successMessage}
+            </div>
+            )}
 
                 <h1><b>Event Hosts</b></h1>
                 <div className='main-table'>
@@ -276,7 +276,7 @@ const EHUserDetails = ({eventHosts}) => {
         onClose={handleCancel}
         onConfirm={handleDeleteConfirmation}
       />
-        </>
+        </div>
 
 
   

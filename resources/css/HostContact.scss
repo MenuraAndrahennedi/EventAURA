@@ -115,11 +115,31 @@
 // }
 
 /* resources/css/HostContact.scss */
-footer {
-    position: absolute;
-    bottom: 100;
-    width: 100%;
+
+
+
+
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  
+    .row {
+      padding: 10px;
+    }
+  
+    .col-md-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }  
+
+  .text-responsive {
+    font-size: 5vw; /* 5% of viewport width */
   }
+    
+
 .contact-form-container {
     width: 100%;
     max-width: 600px;
@@ -310,3 +330,83 @@ p{
         margin-left: 0;
     }
 }
+/* General Responsiveness */
+@media (max-width: 1024px) {
+    .contact-form {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    .Host-icon {
+        margin-left: 90%;
+        margin-top: -40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-form {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .Host-icon {
+        margin-left: 85%;
+        margin-top: -35px;
+        width: 40px;
+        display: none;
+    }
+
+    .contact-form-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .contact-form-container p {
+        font-size: 1rem;
+        padding: 30px 10px;
+    }
+
+    .submit-button,
+    .live-chat-button {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .Host-icon {
+        margin-left: 80%;
+        margin-top: -30px;
+        width: 35px;
+    }
+
+    .contact-form-container {
+        padding: 15px 10px;
+    }
+
+    .contact-form-container h1 {
+        font-size: 1.6rem;
+    }
+
+    .contact-form-container p {
+        font-size: 0.95rem;
+        padding: 20px 5px;
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+
+    .submit-button,
+    .live-chat-button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+

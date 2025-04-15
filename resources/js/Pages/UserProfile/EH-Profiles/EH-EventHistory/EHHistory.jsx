@@ -67,6 +67,7 @@ const EHHistory = () => {
                        
 
                         {/* Table */}
+                        <div className="table-responsive">
                         <table className="table table-striped">
                           <thead>
                             <tr>
@@ -106,6 +107,7 @@ const EHHistory = () => {
                             ))}
                           </tbody>
                         </table>
+                        </div>
 
                     </div>
                   </div>

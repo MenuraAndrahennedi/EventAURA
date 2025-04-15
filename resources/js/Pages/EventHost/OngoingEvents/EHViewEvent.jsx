@@ -96,7 +96,7 @@ const EHViewEvent = ({ event }) => {
         </div>
 
         {/* Attendee Count Section */}
-        <div className="attendee-section">
+        <div className="gap-2 attendee-section d-flex flex-column flex-md-row align-items-start align-items-md-center">
           <b>Attendee Count:</b> <span>{attendees.count}</span>
           <a href= {attendees.pdfUrl} download className="download-btnn">Download Attendee List</a> 
         </div>

@@ -16,12 +16,12 @@ const EHHome = () => {
             <EHHeader />
         </header>
        
-        <h1 className="my-5 text-3xl font-bold text-center">Monitor your work here!</h1>
+        <h1 className="my-5 text-2xl font-bold text-center text-md-3xl text-lg-4xl">Monitor your work here!</h1>
 
      
         <div className="px-3 pt-5 row gx-5">  
 
-              <div className="mb-4 col-md-4 position-relative style={{ maxWidth: '200px' }}"> 
+              <div className="mb-4 col-md-4 position-relative style={{ maxWidth: '100px' }}"> 
                 <div className="border-0 shadow card">
                   <div className="card-img-top">
                       <img src={Cover01} alt="Banner1" className="w-100 card-img-small"/>
@@ -30,7 +30,7 @@ const EHHome = () => {
                 </div>
               </div>
 
-              <div className="mb-4 col-md-4 position-relative style={{ maxWidth: '200px' }}">
+              <div className="mb-4 col-md-4 position-relative style={{ maxWidth: '100px' }}">
                 <div className="border-0 shadow card">
                   <div className="card-img-top">
                     <img src={Cover02} alt="Banner2" className="w-100 card-img-small" />
@@ -39,7 +39,7 @@ const EHHome = () => {
               </div>
               </div>
 
-              <div className="mb-4 col-md-4 position-relative style={{ maxWidth: '200px' }}">
+              <div className="mb-4 col-md-4 position-relative style={{ maxWidth: '100px' }}">
                 <div className="border-0 shadow card">
                   <div className="card-img-top">
                       <img src={Cover03} alt="Banner3" className="w-100 card-img-small"/>

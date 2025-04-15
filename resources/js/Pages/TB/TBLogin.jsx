@@ -28,8 +28,8 @@ const TBLogin = () => {
         <main>
           <div className="TB-Loginform-container">
             <div className="TB-Login-overlay">
-              <h2>Sign in to EventAURA</h2>
-              <p>or <Link href= {route('browse.guest')}>continue as Guest </Link></p>
+              <h2><b>Sign in to EventAURA</b></h2>
+              <p>or <Link href= {route('browse.guest')} className="guest-link">continue as Guest </Link></p>
 
               <form onSubmit={handleSubmit}>
                 <input type="text" name ="email" placeholder="Email" value={data.email} onChange={handleChange} required />
@@ -39,7 +39,7 @@ const TBLogin = () => {
                 {errors.password && <div className="error">{errors.password}</div>}
 
                 <div className="forgot-password">
-                  <small><Link  href={route('password.request')}>Forgot Password?</Link></small>
+                  <small><Link  href={route('password.request')}className="guest-link">Forgot Password?</Link></small>
                 </div>
                 <button type="submit" disabled={processing}>Sign In</button>
               </form>
@@ -59,7 +59,7 @@ const TBLogin = () => {
                 </a>
               </div>
               <div className="sign-up">
-                <small>Don’t have an account? <Link href={route('tb.register')}>Create an account</Link></small>
+                <small>Don’t have an account? <Link href={route('tb.register')}className="guestttt-link">Create an account</Link></small>
               </div>
               
             </div>

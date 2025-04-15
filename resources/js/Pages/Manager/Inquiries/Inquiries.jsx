@@ -43,7 +43,7 @@ const Inquiries = ({inquiries}) => {
     };
 
   return (
-    <>
+    <div className="page-wrapper">
    <header>
         <UserHeader />
     </header> 
@@ -116,7 +116,7 @@ const Inquiries = ({inquiries}) => {
     <footer>
         <AdminFooter />
     </footer> 
-</>
+</div>
 
 
   )

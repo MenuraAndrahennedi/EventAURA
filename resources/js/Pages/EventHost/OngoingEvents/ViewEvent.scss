@@ -145,3 +145,36 @@ footer {
   width: 100%;
 }
 
+/* Add this inside your <style> tag */
+@media (max-width: 768px) {
+  .info-grid
+   {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: fixed; /* Fix entire page in place */
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #333; /* Make it stand out */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
