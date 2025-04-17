@@ -1,7 +1,8 @@
 import React from 'react'
 import UserHeader from '../../../Components/Header/UserHeader'
 import ManagerFooter from '../../../Components/Footer/AdminFooter';
-import '../../../../css/manager.scss';
+//import '../../../../css/manager.scss';
+import '../../../../css/TablePages.scss';
 import HeadBar from './HeadBar'
 import { Link ,router } from '@inertiajs/react';
 import jsPDF from 'jspdf';
@@ -109,7 +110,7 @@ const UpdateRequest = ( {requests}) => {
                 <UserHeader />
             </header>
 
-            <main className='pending-request'>
+            <main className='main-box'>
 
                 <h1><b>PENDING REQUESTS</b></h1>
 
@@ -120,10 +121,10 @@ const UpdateRequest = ( {requests}) => {
                 </div>
             )}
             
-                <div className='request-table'>
+                <div className='main-table'>
                     <HeadBar />
-                    <div className="container">
-                        <table className="custom-table">
+                    <div className="table-container">
+                        <table className="request-table stripedd-table">
                             <thead>
                                 <tr>
                                     <th>Event Name</th>
@@ -149,7 +150,7 @@ const UpdateRequest = ( {requests}) => {
                                             Download
                                         </Link> */}
                                          <button 
-                        className="btn btn-info btn-sm"
+                        className="black-button"
                         onClick={() => handleDownloadPDF(request)}
                     >
                         Download

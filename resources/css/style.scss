@@ -178,3 +178,14 @@ header {
   transition: background-color 0.3s ease;
 }
 
+.create-event-btn {
+  color: white !important;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.create-event-btn:hover,
+.create-event-btn:focus,
+.create-event-btn:active {
+  color: #000 !important; // Force full black
+  background-color: #5de6ff !important; // Light info blue
+}

@@ -11,51 +11,44 @@ const MainHeader = () => {
        
 
         <header>
-            
-            <Navbar expand="lg" className="bg-dark navbar-dark ">
-                <Navbar.Brand as={Link} href ={route('home')} className="logo">
-                    <img src={Logo} alt="Logo" className="logo-img" />
-                </Navbar.Brand>
+        <Navbar expand="lg" className="py-3 bg-dark navbar-dark">
+            <Container fluid>
+            <Navbar.Brand as={Link} href ={route('home')} className="logo">
+                <img src={Logo} alt="Logo" className="logo-img" />
+            </Navbar.Brand>
+
+
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
                 <div id="basic-navbar-nav">
-                    <Nav className="ms-auto">
-                        <Nav.Link as={Link} href={route('home')} className="nav-link">
+                    <Nav className="ms-auto align-items-center">
+                        <Nav.Link as={Link} href={route('home')} className="px-3 text-white">
                             Home
                         </Nav.Link>
-                        <Nav.Link
-                            as={Link}
-                            href="/about"
-                            className="nav-link"
-                        >
+                        <Nav.Link as={Link} href="/about" className="px-3 text-white">
                             About US
                         </Nav.Link>
-                        <Nav.Link
-                            as={Link}
-                            href={route('connect-with-us')}
-                            className="nav-link"
-                        >
+                        <Nav.Link as={Link} href={route('connect-with-us')} className="px-3 text-white">
                             Contact US
                         </Nav.Link>
-                        <Nav.Link
-                            as={Link}
-                            href= {route('browse')}
-                            className="nav-link"
-                        >
+                        <Nav.Link as={Link} href={route('browse')} className="px-3 text-white">
                             BROWSE EVENT
                         </Nav.Link>
                         <Nav.Link
                             as={Link}
                             href={route('event.create')}
-                            className="nav-link"
+                            className=" create-event-btn btn btn-info fw-bold ms-3"
+                            style={{ borderRadius: "20px", padding: "6px 16px" }}
                         >
                             CREATE EVENT
                         </Nav.Link>
+
+                                                   
                     </Nav>
                 </div>
-            </Navbar>
-           
-    </header>
+            </Container>
+        </Navbar>
+    </header> 
     
     
     );

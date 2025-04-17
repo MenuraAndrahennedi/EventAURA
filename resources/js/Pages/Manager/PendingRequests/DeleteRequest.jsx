@@ -1,7 +1,8 @@
 import React from 'react'
 import UserHeader from '../../../Components/Header/UserHeader';
 import ManagerFooter from '../../../Components/Footer/AdminFooter';
-import '../../../../css/manager.scss';
+//import '../../../../css/manager.scss';
+import '../../../../css/TablePages.scss';
 import HeadBar from './HeadBar'
 import { Link,useForm ,router } from '@inertiajs/react';
 
@@ -39,13 +40,13 @@ const managerDeleteRequest = ({requests}) => {
                 <UserHeader />
             </header>
 
-            <main className='pending-request'>
+            <main className='main-box'>
 
                 <h1><b>PENDING REQUESTS</b></h1>
-                <div className='request-table'>
+                <div className='main-table'>
                     <HeadBar />
-                    <div className="container">
-                        <table className="custom-table">
+                    <div className="table-container">
+                        <table className="request-table stripedd-table">
                             <thead>
                                 <tr>
                                     <th>Event Name</th>
@@ -89,14 +90,14 @@ const managerDeleteRequest = ({requests}) => {
                                         </Link> */}
                                          <button
                                                             onClick={() => handleUpdateStatus(request.id, 'approved')}
-                                                            className="mx-1 btn btn-success btn-sm"
+                                                            className="ml-5 green-button"
                                                             disabled={processing}
                                                         >
                                                             Accept
                                                         </button>
                                                         <button
                                                             onClick={() => handleUpdateStatus(request.id, 'rejected')}
-                                                            className="ml-10 btn btn-danger btn-sm"
+                                                            className="ml-5 red-button"
                                                             disabled={processing}
                                                         >
                                                             Reject
