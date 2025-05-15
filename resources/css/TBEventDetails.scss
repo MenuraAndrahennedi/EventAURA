@@ -343,6 +343,8 @@ footer {
     max-width: 500px;
     width: 90%;
     position: relative;
+    max-height: 80vh;  // Set a max height for scrollability
+    overflow-y: auto;  // Enable vertical scroll when needed
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 

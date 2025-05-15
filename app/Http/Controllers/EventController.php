@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Session;
 use App\Mail\HostContactMail;
+use App\Mail\EventCreationNotification;
+
 
 
 
@@ -116,6 +118,13 @@ class EventController extends Controller
         if (!empty($validated['artists'])) {
             $event->artists()->sync($validated['artists']);
         }
+
+        //Get managers email
+        $managers = \App\Models\User::where('role_id',2)->get();
+        foreach ($managers as $manager) {
+            Mail::to($manager->email)->send(new EventCreationNotification($event));
+        }
+
         return redirect()->route('eventhost.dashboard')->with('success', 'Event Created Successfully and is pending approval');
     }
 
