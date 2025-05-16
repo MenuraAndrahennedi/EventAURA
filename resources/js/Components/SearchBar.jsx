@@ -7,158 +7,80 @@ import { Link } from '@inertiajs/react';
 import { router } from '@inertiajs/react';
 
 
-const SearchBar = () => {
-    
+const SearchBar = ({ onFilterChange, onSearch }) => {
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState('All');
-    const [events, setEvents] = useState([]);
-    const [showResults, setShowResults] = useState(false);
-    
+
     const handleSearchChange = (e) => {
-        const searchValue = e.target.value;
-        setSearch(searchValue);
-        if (searchValue.trim() === '') {
-            setEvents([]);
-            setShowResults(false);
+        const value = e.target.value;
+        setSearch(value);
+        onSearch(value); 
+    };
+
+    const handleFilterSelect = (selectedFilter) => {
+        setFilter(selectedFilter);
+        setSearch('');
+        onFilterChange(selectedFilter);
+    };
+
+    const handleSearchSubmit = async () => {
+    if (search.trim() === '') {
+        alert('Please enter a search term.');
+        return;
+    }
+
+    try {
+        const response = await axios.post('/event/exists', { search });
+
+        if (response.data.exists) {
+            router.visit('/events/results', {
+                method: 'post',
+                data: {
+                    search,
+                    filter,
+                },
+            });
+
+            onSearch(search); // optional
         } else {
-            performSearch(searchValue, filter);
-        }     
-        
-    };
-    
-    const handleFilterSelect = (filterValue) => {
-        setFilter(filterValue);
-        if (search.trim() !== '') {
-            performSearch(search, filterValue);
+            alert('No event found with that name.');
         }
-    };
-    
-        const performSearch = (searchTerm, selectedFilter) => {
+    } catch (error) {
+        console.error('Error checking event existence', error);
+    }
+};
 
-            if (searchTerm.trim() === ''){setEvents([]);return;} 
-
-            axios
-                .get('/events/search', {
-                    params: { search: searchTerm, filter: selectedFilter },
-                })
-                .then((response) => {
-                    setEvents(response.data); 
-                    setShowResults(true);
-                    setShowResults(response.data.length > 0);
-                })
-                .catch((error) => {
-                    console.error('Error fetching search results:', error);
-                });
-        };
-        
-    const handleSearchSubmit = () => {
-        if (search.trim() === '') {
-            alert('Please enter a search term.');
-            return;
-        }
-    
-        axios
-        .get('/events/search', { params: { search, filter } })
-        .then((response) => {
-            if (response.data.length > 0) {
-                router.visit('/events/results', {
-                    method: 'post',
-                    data: { search, filter },
-                    replace: true, 
-                    preserveState: true, 
-                });
-            } else {
-                alert('No events found matching your search criteria.');
-            }
-        })
-        .catch((error) => {
-            console.error('Error during search:', error);
-            alert('An error occurred while searching. Please try again later.');
-        });
-    };
-
-    const handleBookNowClick = (eventId) => {
-            axios.post(`/event/click/${eventId}`)
-                .then(response => {
-                    if (response.data.success) {
-                        console.log("Click recorded successfully");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error recording click", error);
-                });
-        };
 
     return (
-        <>
-            <section className="search-bar bg-light py-3">
-                <div className="container d-flex justify-content-center">
-                    <InputGroup className="w-75">
+        <section className="search-bar bg-light py-3">
+            <div className="container d-flex justify-content-center">
+                <InputGroup className="w-75">
+                    <Dropdown onSelect={handleFilterSelect}>
+                        <Dropdown.Toggle variant="outline-secondary">
+                            Filter: {filter}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item eventKey="All">All</Dropdown.Item>
+                            <Dropdown.Item eventKey="Upcoming">Upcoming</Dropdown.Item>
+                            <Dropdown.Item eventKey="Past">Past</Dropdown.Item>
+                            <Dropdown.Item eventKey="Popular">Popular</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
 
-                        <Dropdown onSelect={handleFilterSelect}>
-                            <Dropdown.Toggle variant="outline-secondary">
-                                Filter: {filter}
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item eventKey="All">All</Dropdown.Item>
-                                <Dropdown.Item eventKey="Upcoming">Upcoming</Dropdown.Item>
-                                <Dropdown.Item eventKey="Past">Past</Dropdown.Item>
-                                <Dropdown.Item eventKey="Popular">Popular</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                    <FormControl
+                        placeholder="Search events"
+                        value={search}
+                        onChange={handleSearchChange}
+                    />
 
-                        <FormControl
-                            placeholder="Search events"
-                            value={search}
-                            onChange={(e) => {
-                                handleSearchChange(e);
-                                //performSearch(e.target.value, filter);
-                            }}
-                        />
+                    <InputGroup.Text onClick={handleSearchSubmit} style={{ cursor: 'pointer' }}>
+                        <BsSearch />
+                    </InputGroup.Text>
+                </InputGroup>
+            </div>
+        </section>
+    );
+};
 
-                        <InputGroup.Text onClick={handleSearchSubmit} style={{ cursor: 'pointer' }}>
-                            <BsSearch />
-                        </InputGroup.Text>
-
-                    </InputGroup>
-                </div>
-            </section>
-            
-            {showResults && events.length > 0 && (
-             <section className = 'section-2 bg-light py-5'>
-                        <div className='container'>
-                      
-                       <div className = 'row pt-3'>
-                        {events.map ((event) => (
-                          <div className = 'col-md-4' key ={event.id} >
-                          <div className = 'card shadow border-0'>
-                            <div className = 'card-img-top'>
-                                <img src = {event.image} alt= {event.name} className = 'w-100'/>
-                            </div>
-                            <div className = 'card-body p-4'>
-                              <div className='event-details'>
-                                <p className='event-date-time' > {event.date} | {event.startTime} </p>
-                                <p className='event-location'> {event.venue} </p>
-                              </div>
-                              <div className='event-title'>
-                                <h2><b> {event.name} </b></h2>
-                              </div>
-                              <div className = 'event-footer d-flex justify-content-between align-items-center mt-3'>
-                                  <p className='event-price'>{event.bronze_ticket_price} LKR <span className="price-subtext"><br/>upwards</span></p>
-                                  <Link href={route('event.details',{id:event.id})} className='btn btn-primary' onClick={() => handleBookNowClick(event.id)}>Book Now</Link>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        ))}
-                        </div> 
-         
-                </div>
-              
-            </section> 
-        )}
-        </>
-    )
-}
 
 export default SearchBar
