@@ -87,13 +87,18 @@ const BrowseEvent = () => {
                                                 {event.bronze_ticket_price} LKR
                                                 <span className="price-subtext"><br />upwards</span>
                                             </p>
+
                                             <Link
                                                 href={route('event.details', { id: event.id })}
+
                                                 className="btn btn-primary"
                                                 onClick={() => handleBookNowClick(event.id)}
                                             >
                                                 Book Now
                                             </Link>
+                                            )}
+                                           
+                                           
                                         </div>
                                     </div>
                                 </div>

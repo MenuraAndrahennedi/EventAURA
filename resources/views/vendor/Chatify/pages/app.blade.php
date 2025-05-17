@@ -1,4 +1,16 @@
 
+
+@php 
+   $roleId = auth()->user()->role_id;
+   $dashboardUrl = '/';
+
+   if($roleId == 4){
+    $dashboardUrl = route('eventhost.dashboard');   
+   } elseif ($roleId == 5){
+    $dashboardUrl = route('home');
+   }
+
+@endphp
 <div id ="chatifyWrapper">
 @include('Chatify::layouts.headLinks')
 <div class="messenger">
@@ -68,7 +80,7 @@
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-                    <a href="/"><i class="fas fa-home"></i></a>
+                    <a href="{{ $dashboardUrl}}"><i class="fas fa-home"></i></a>
                     <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
                 </nav>
             </nav>

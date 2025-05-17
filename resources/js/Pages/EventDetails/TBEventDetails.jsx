@@ -74,15 +74,34 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                             </div>
                         </div>
                         <div className="event-buttons">
-                            <Link
+                            {/* <Link
+                                href={route("buytickets", { id: event.id })}
+                                className="buy-tickets"
+                            >
+                                Buy Tickets
+                            </Link> */}
+                            {/* <Link href="#" className="return-policies">
+                                Return Policies
+                            </Link> */}
+                            {(event.golden_ticket_count ===0 && event.silver_ticket_count ===0 && event.bronze_ticket_count ===0) ? (
+                                                                        
+                                                                         <button
+                                                                            
+                                                                            className="btn btn-danger"
+                                                                            disabled
+                                                                           
+                                                                        >
+                                                                            Sold Out
+                                                                        </button>
+                                                                        
+                                                                        ):(
+                                                                            <Link
                                 href={route("buytickets", { id: event.id })}
                                 className="buy-tickets"
                             >
                                 Buy Tickets
                             </Link>
-                            {/* <Link href="#" className="return-policies">
-                                Return Policies
-                            </Link> */}
+                                                                        )}
                             <button className="return-policies" onClick={openReturnPolicy}>
     Return Policies
 </button>
