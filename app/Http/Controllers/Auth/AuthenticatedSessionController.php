@@ -72,7 +72,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         if($request->user()->role_id=== 4){
-            return redirect('event/create');
+            return redirect('eventhost/dashboard');
         }
 
         if($request->user()->role_id=== 5){

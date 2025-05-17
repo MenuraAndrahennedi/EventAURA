@@ -84,13 +84,27 @@ const BrowseEvent = () => {
                                                     upwards
                                                 </span>
                                             </p>
-                                            <Link
+                                           {(event.golden_ticket_count ===0 && event.silver_ticket_count ===0 && event.bronze_ticket_count ===0) ? (
+                                            
+                                             <Link
+                                                 href={route('event.details',{id:event.id})}
+                                                className="btn btn-danger"
+                                                onClick={() => handleBookNowClick(event.id)}
+                                            >
+                                                Sold Out
+                                            </Link>
+                                            
+                                            ):(
+                                                 <Link
                                                  href={route('event.details',{id:event.id})}
                                                 className="btn btn-primary"
                                                 onClick={() => handleBookNowClick(event.id)}
                                             >
                                                 Book Now
                                             </Link>
+                                            )}
+                                           
+                                           
                                         </div>
                                     </div>
                                 </div>

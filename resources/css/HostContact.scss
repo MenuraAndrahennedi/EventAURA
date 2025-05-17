@@ -144,7 +144,7 @@
     width: 100%;
     max-width: 600px;
     margin: 40px auto;
-    padding: 30px 25px;
+    //padding: 30px 25px;
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
@@ -168,9 +168,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding-left : 100px;
-    padding-right : 100px;
+    padding-left : 20px;
+    padding-right : 20px;
     padding-top : 0px;
+    padding-bottom: 10px;
 
 }
 h1{
@@ -178,7 +179,7 @@ h1{
     color: #333;
    // margin-bottom: 20px;
    text-align: center;
-   margin-top: 50px;
+   margin-top: 60px;
 }
 
 p{
@@ -193,7 +194,7 @@ p{
 .Host-icon {
     width: 50px;
     height: auto;
-    margin-left: 990px;
+    margin-left: 475px;
     margin-top: -50px;
 }
 
@@ -333,8 +334,8 @@ p{
 /* General Responsiveness */
 @media (max-width: 1024px) {
     .contact-form {
-        padding-left: 60px;
-        padding-right: 60px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .Host-icon {

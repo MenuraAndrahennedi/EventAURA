@@ -42,7 +42,7 @@ const ManagerDashboard = () => {
                                         <div className="border-0 shadow cards">
                                             <div className="cards-img-top">
                                                 {/* <img src={Cover01} alt="Banner1" className="w-100" /> */}
-                                                <Link href="/manager/ongoing" className="image-overlay">Ongoing Events</Link>
+                                                <Link href="/ongoing" className="image-overlay">Ongoing Events</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -51,7 +51,7 @@ const ManagerDashboard = () => {
                                         <div className="border-0 shadow cards">
                                             <div className="cards-img-top">
                                                 {/* <img src={Cover02} alt="Banner2" className="w-100" /> */}
-                                                <Link href="/manager/create-requests" className="image-overlay">Pending Requests</Link>
+                                                <Link href="/event/create-requests" className="image-overlay">Pending Requests</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@ const ManagerDashboard = () => {
                                         <div className="border-0 shadow cards">
                                             <div className="cards-img-top">
                                                 {/* <img src={Cover03} alt="Banner3" className="w-100" /> */}
-                                                <Link href="/manager/endedEventHistory" className="image-overlay">History</Link>
+                                                <Link href="/ended-event-history" className="image-overlay">History</Link>
                                             </div>
                                         </div>
 
