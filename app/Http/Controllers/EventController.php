@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Session;
 use App\Mail\HostContactMail;
+use App\Mail\EventCreationNotification;
+
 
 
 
@@ -116,6 +118,13 @@ class EventController extends Controller
         if (!empty($validated['artists'])) {
             $event->artists()->sync($validated['artists']);
         }
+
+        //Get managers email
+        $managers = \App\Models\User::where('role_id',2)->get();
+        foreach ($managers as $manager) {
+            Mail::to($manager->email)->send(new EventCreationNotification($event));
+        }
+
         return redirect()->route('eventhost.dashboard')->with('success', 'Event Created Successfully and is pending approval');
     }
 
@@ -145,14 +154,17 @@ class EventController extends Controller
            $query->where('name', 'LIKE', "%{$searchTerm}%")
            ;
         }
-    
-        if ($filter === 'Upcoming') {
+        if ($filter === 'All') {
+            $query->where('date', '>', now());
+        }
+        elseif ($filter === 'Upcoming') {
             $query->where('date', '>', now());
         } elseif ($filter === 'Past') {
             $query->where('date', '<', now());
         }elseif ($filter === 'Popular') {
-            $maxClicks = \DB::table('clicks')->max('number_of_clicks');
-            $query->where('clicks.number_of_clicks', '=', $maxClicks);
+            $query->orderByDesc('clicks.number_of_clicks');
+            //$maxClicks = \DB::table('clicks')->max('number_of_clicks');
+           // $query->where('clicks.number_of_clicks', '=', $maxClicks);
         }
 
         $events = $query->get()->map(function ($event) {
@@ -182,7 +194,10 @@ class EventController extends Controller
             $query->where('name', 'LIKE', "%{$searchTerm}%");
         }
 
-        if ($filter === 'Upcoming') {
+        if ($filter === 'All') {
+            $query->where('date', '>', now());
+        }
+        elseif ($filter === 'Upcoming') {
             $query->where('date', '>', now());
         } elseif ($filter === 'Past') {
             $query->where('date', '<', now());
@@ -206,6 +221,14 @@ class EventController extends Controller
         'filter' => $filter,
     ]);
     }
+
+    public function eventExists(Request $request)
+{
+    $searchTerm = $request->input('search');
+    $exists = Event::where('name', 'LIKE', "%{$searchTerm}%")->exists();
+
+    return response()->json(['exists' => $exists]);
+}
 
     public function ongoingEvents()
     {

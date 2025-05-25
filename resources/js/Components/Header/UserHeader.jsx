@@ -4,6 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import { Link, usePage } from '@inertiajs/react';
 import '../../../css/style.scss';
 import Logo from '../../../js/assets/Images/Logo.png';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Image from 'react-bootstrap/Image';
 
 
 const UserHeader = () => {
@@ -42,6 +44,55 @@ const UserHeader = () => {
                     <Nav.Link as={Link} href="/event/create-requests" className = 'nav-link'>Pending requests</Nav.Link>
                     <Nav.Link as={Link} href="/inquiries" className = 'nav-link'>Inquiries</Nav.Link>
                     <Nav.Link as={Link} href="/other/profile-show" className = 'nav-link'>{userType}</Nav.Link>
+                    
+
+                     {/* Profile Dropdown */}
+                     <div style = {{ marginLeft:'500px' }}>
+            <Dropdown align="end" className="ms-3">
+              <Dropdown.Toggle
+                variant="secondary"
+                className="d-flex align-items-center gap-2 bg-transparent border-0 text-white"
+                id="dropdown-basic"
+              >
+                {user?.avatar ? (
+                  <Image
+                    src={`/storage/${user.avatar}`}
+                    roundedCircle
+                    width="30"
+                    height="30"
+                    alt="Profile"
+                  />
+                ) : (
+                  <div
+                    style={{
+                      width: '30px',
+                      height: '30px',
+                      borderRadius: '50%',
+                      backgroundColor: 'rgb(19, 185, 227)',
+                      color: 'white',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    {user?.name?.charAt(0).toUpperCase()}
+                  </div>
+                )}
+                <span>{user?.name?.split(' ')[0]}</span>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} href="/other/profile-show">
+                  User Account
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item as={Link} href={route('logout')} method="post">
+                  Logout
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            </div>
                 </Nav>
                 </div>
             </Navbar>

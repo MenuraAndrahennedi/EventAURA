@@ -359,6 +359,8 @@ Route::get('/addMember', [ProgrammerController::class, 'addMember'])->name('add.
 Route::get('/events/search', [EventController::class, 'search'])->name('events.search');
  //Route::get('/events/details', [EventController::class, 'searchDetails'])->name('events.details');
  Route::post('/events/results', [EventController::class, 'searchResults'])->name('events.results');
+Route::post('/event/exists', [EventController::class, 'eventExists']);
+
 
  Route::get('/event-host/home', [EventHostController::class, 'index'])->name('eventhost.home');
  Route::get('/api/events/ongoing', [EventController::class, 'ongoingEvents'])->name('event.ongoingEvents');
