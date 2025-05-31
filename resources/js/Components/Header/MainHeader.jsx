@@ -30,7 +30,7 @@ const MainHeader = () => {
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-                    <div id="basic-navbar-nav">
+                    <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto align-items-center">
                             <Nav.Link
                                 as={Link}
@@ -72,7 +72,7 @@ const MainHeader = () => {
                                 CREATE EVENT
                             </Nav.Link>
                         </Nav>
-                    </div>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
         </header>
