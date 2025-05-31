@@ -47,10 +47,11 @@ export default function Home() {
                     <div className="topic d-flex align-items-center">
                         <div className="container-fluid">
                             <div className="text-center">
-                                <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}>
+                            <motion.h1
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false, amount: 0.5 }}
+                            transition={{ duration: 1, ease: "easeOut" }}>
                                     FIND YOUR NEXT <br />
                                     AWESOME EVENT <br />
                                     HERE!
