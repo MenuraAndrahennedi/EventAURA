@@ -4,6 +4,7 @@ import MainFooter from "../../Components/Footer/MainFooter";
 import "../../../css/Home.scss";
 import { Link, usePage } from "@inertiajs/react";
 //import '../../style.scss';
+import { motion } from "framer-motion";
 
 import HomeImg1 from "../../assets/Images/Home-1.png";
 import HomeImg2 from "../../assets/Images/Home-2.png";
@@ -46,11 +47,14 @@ export default function Home() {
                     <div className="topic d-flex align-items-center">
                         <div className="container-fluid">
                             <div className="text-center">
-                                <h1>
+                                <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}>
                                     FIND YOUR NEXT <br />
                                     AWESOME EVENT <br />
                                     HERE!
-                                </h1>
+                                </motion.h1>
                                 <p>
                                     Let EventAURA help you find the event that's
                                     just right for you! <br />
