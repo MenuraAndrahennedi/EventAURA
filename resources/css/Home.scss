@@ -6,6 +6,20 @@ $text-white: #ffffff;
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.loading-icon {
+  animation: bounce 2s infinite ease-in-out;
+}
+
 body {
     font-family: "Rubik", sans-serif;
 }

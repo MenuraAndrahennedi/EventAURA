@@ -177,53 +177,53 @@ export default function Home() {
                             <div className="text-center">
                                 <h1>STAY UPDATED</h1>
                                 <div className="flex-wrap gap-2 d-flex justify-content-center">
-                                    <Link
-                                        to="https://www.facebook.com"
+                                    <a href
+                                        ="https://www.facebook.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <img
                                             src={FBIcon}
                                             alt="Facebook"
-                                            className="mx-5 social-icon"
+                                            className="mx-5 social-icon loading-icon"
                                         />
-                                    </Link>
+                                    </a>
 
-                                    <Link
-                                        to="https://www.instagram.com"
+                                    <a href
+                                        ="https://www.instagram.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <img
                                             src={InstargramIcon}
                                             alt="Instagram"
-                                            className="mx-5 social-icon"
+                                            className="mx-5 social-icon loading-icon"
                                         />
-                                    </Link>
+                                    </a>
 
-                                    <Link
-                                        to="https://www.twitter.com"
+                                    <a href
+                                        ="https://www.twitter.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <img
                                             src={XIcon}
                                             alt="X"
-                                            className="mx-5 social-icon"
+                                            className="mx-5 social-icon loading-icon"
                                         />
-                                    </Link>
+                                    </a>
 
-                                    <Link
-                                        to="https://www.linkedin.com"
+                                    <a href
+                                        ="https://www.linkedin.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <img
                                             src={LinkedInIcon}
                                             alt="LinkedIn"
-                                            className="mx-5 social-icon"
+                                            className="mx-5 social-icon loading-icon"
                                         />
-                                    </Link>
+                                    </a>
                                 </div>
                                 <div className="ReviewLink">
                                     <Link href ="/reviewPg" className="Review ">
