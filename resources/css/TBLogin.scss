@@ -162,12 +162,15 @@ footer {
     margin: 20px auto;
 }
 .custom-link {
-    color: #ffffff; // Set text color to white
-    text-decoration: none; // Remove underline
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
 }
 
 .custom-link:hover {
-    text-decoration: underline; // Optional: underline on hover
+    text-decoration: underline; 
+    font-size: medium;
+    font-style: bold;
 }
 @media (min-width: 768px) {
     .TB-Login-overlay {
@@ -185,6 +188,7 @@ footer {
     color: rgb(10, 10, 10);
     font-weight: 600;
     text-decoration: none;
+    font-size: 15px;
   }
   
   .guest-link:hover {
@@ -193,7 +197,12 @@ footer {
   .guestttt-link {
     color: #fff;
     font-weight: 600;
+    font-size: 15px;
+  }
+  .guestttt-link:hover {
     text-decoration: underline;
+    font-size: medium;
+    font-style: bold;
   }
   
   

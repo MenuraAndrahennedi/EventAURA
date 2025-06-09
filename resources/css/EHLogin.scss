@@ -108,7 +108,7 @@ footer {
 
 .mb-3.text-center small a {
     color: black;
-    text-decoration: none; // Optional: remove underline if needed
+    text-decoration: none; 
 }
 
 .mb-3.text-center small a:hover {
@@ -174,10 +174,13 @@ hr {
     color: rgb(18, 111, 169);
     font-weight: 600;
     text-decoration: none;
+    
   }
   
   .Guest-link:hover {
     text-decoration: underline;
+    font-size: 16px;
+    font-style: bold;
   }
   h1{
     font-size: 1.5rem;
