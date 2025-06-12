@@ -38,7 +38,7 @@ const SubFooter = () => {
                 {/* Links Section */}
                 <div className="mt-4 footer-links row">
                     <div className="mb-3 text-center col-md-6">
-                        <h5>© 2024 EventAURA</h5>
+                        <h5>© 2025 EventAURA</h5>
                         <ul className="list-inline">
                             <li className="mx-2 list-inline-item d-block d-md-inline">
                                 <Link href="/about" className="footer-link">About Us</Link>
@@ -59,7 +59,7 @@ const SubFooter = () => {
                     </div>
 
                     <div className="mb-3 text-center col-md-6">
-                        <h5>© 2024 CODECATALYSTS</h5>
+                        <h5>© 2025 CODECATALYSTS</h5>
                         <ul className="list-inline">
                             <li className="mx-3 list-inline-item">
                                 <Link thref="/developers" className="footer-link">Developers</Link>

@@ -4,43 +4,43 @@ import '../../../css/style.scss';
 
 const MainFooter = () => {
     return (
-        <footer className="bg-dark text-white py-4">
+        <footer className="py-4 text-white bg-dark">
             <div className="container">
                 <div className="row justify-content-between">
 
                     {/* EventAURA Section */}
-                    <div className="col-md-6 text-center">
-                        <h5>© 2024 EventAURA</h5>
-                        <ul className="list-inline mb-0">
-                            <li className="list-inline-item mx-3">
+                    <div className="text-center col-md-6">
+                        <h5>© 2025 EventAURA</h5>
+                        <ul className="mb-0 list-inline">
+                            <li className="mx-3 list-inline-item">
                                 <Link to="/about" className="text-white">About US</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
+                            <li className="mx-3 list-inline-item">
                                 <Link to="/terms" className="text-white">Terms</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
+                            <li className="mx-3 list-inline-item">
                                 <Link to="/privacy" className="text-white">Privacy Policies</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
+                            <li className="mx-3 list-inline-item">
                                 <Link to="/cookies" className="text-white">Cookies</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
+                            <li className="mx-3 list-inline-item">
                                 <Link to="/status" className="text-white">Status</Link>
                             </li>
                         </ul>
                     </div>
 
                     {/* CODECATALYSTS Section */}
-                    <div className="col-md-6 text-center">
-                        <h5>© 2024 CODECATALYSTS</h5>
-                        <ul className="list-inline mb-0">
-                            <li className="list-inline-item mx-3">
+                    <div className="text-center col-md-6">
+                        <h5>© 2025 CODECATALYSTS</h5>
+                        <ul className="mb-0 list-inline">
+                            <li className="mx-3 list-inline-item">
                                 <Link to="/developers" className="text-white">Developers</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
+                            <li className="mx-3 list-inline-item">
                                 <Link to="/license" className="text-white">License & Registrations</Link>
                             </li>
-                            <li className="list-inline-item mx-3">
+                            <li className="mx-3 list-inline-item">
                                 <Link to="/privacy-terms" className="text-white">Privacy Terms</Link>
                             </li>
                         </ul>

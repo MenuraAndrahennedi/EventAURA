@@ -114,7 +114,7 @@ const TBCreateAccount = () => {
                         <div className="sign-up">
                             <small>
                                 Already Have an account ?{" "}
-                                <Link href={route("tb.login")}>Sign in</Link>
+                                <Link href={route("tb.login")}className="custom-link">Sign in</Link>
                             </small>
                         </div>
                     </div>

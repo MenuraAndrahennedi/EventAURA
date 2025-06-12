@@ -1,0 +1,108 @@
+.aboutus-section {
+  padding: 4rem 2rem;
+  background-color: #fdfdfd;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.aboutus-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #222;
+
+    .highlight {
+      color: #3d47a4; // Indigo-ish
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+}
+
+.aboutus-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.aboutus-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-style: bold;
+  }
+
+  p,
+  li {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  ul {
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.aboutus-quote {
+  margin-top: 3rem;
+  text-align: center;
+
+  p {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #48cae4;
+  }
+}
+.custom-list {
+  list-style: none;
+  padding-left: 1rem;
+
+  li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.6rem;
+    color: #4b5563;
+    font-size: 1rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: #000; // Indigo
+      border-radius: 50%;
+    }
+  }
+}

@@ -62,7 +62,7 @@ class RegisteredUserController extends Controller
             case 3:
                 return redirect()->route('admin.dashboard');
             case 4:
-                return redirect()->route('event.create');
+                return redirect()->route('eventhost.dashboard');
             case 5:
                 return redirect()->route('browse');
             default:

@@ -4,6 +4,7 @@ import MainFooter from "../../Components/Footer/MainFooter";
 import "../../../css/Home.scss";
 import { Link, usePage } from "@inertiajs/react";
 //import '../../style.scss';
+import { motion } from "framer-motion";
 
 import HomeImg1 from "../../assets/Images/Home-1.png";
 import HomeImg2 from "../../assets/Images/Home-2.png";
@@ -20,60 +21,72 @@ import ReviewIcon from "../../assets/Logos/review.png";
 export default function Home() {
     const { flash = {} } = usePage().props;
     const [showError, setShowError] = useState(!!flash.error);
+    
     return (
         <>
             <header>
                 <MainHeader />
             </header>
 
+
+            {/* Flash message */}
+            {showError && flash.error && (
+            <div className="text-center alert alert-danger alert-dismissible fade show" role="alert">
+                {flash.error}
+                <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                onClick={() => setShowError(false)} // Hide the alert on click
+                ></button>
+            </div>
+            )}
+
             <main>
-                {/* Flash message */}
-                {/* {showError && flash.error && (
-          <div className="text-center alert alert-danger alert-dismissible fade show" role="alert">
-            {flash.error}
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="alert"
-              aria-label="Close"
-              onClick={() => setShowError(false)} // Hide the alert on click
-            ></button>
-          </div>
-        )} */}
 
                 {/*Section 01 */}
                 <section className="section-1">
                     <div className="topic d-flex align-items-center">
                         <div className="container-fluid">
                             <div className="text-center">
-                                <h1>
-                                    FIND YOUR NEXT <br />
-                                    AWESOME EVENT <br />
-                                    HERE!
-                                </h1>
-                                <p>
-                                    Let EventAURA help you find the event that's
-                                    just right for you! <br />
-                                    Browse our awesome events for fun things to
-                                    do in your area.
-                                </p>
-                                {/* <Link href={route('browse')} className='btn btn-primary'>Browse Event</Link> */}
+
+
+                                    <motion.h1
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: false, amount: 0.5 }}
+                                    transition={{ duration: 1, ease: "easeOut" }}>
+                                            FIND YOUR NEXT <br />
+                                            AWESOME EVENT <br />
+                                            HERE!
+                                    </motion.h1>
+
+                                <br />
+
+                                
+                                    <p style={{ fontSize: "19px", color: "#fff" }}>
+                                    Let EventAURA help you find the event that's just right for you! <br />
+                                    </p>
+
+                                    <h2 style={{ fontSize: "22px", fontWeight: "bold", color: "#fff" }}>
+                                    Browse our awesome events for fun things to do in your area.
+                                    </h2>
+
+                               
                                 <Link
                                     href={route("browse")}
                                     className="btn btn-primary"
                                 >
                                     Browse Event
                                 </Link>
-                                {/* <br /><Link  href={route('tb.login')}> #TB Login pg</Link> {/*Do not remove this. */}
-                                {/*<br /><Link  href={route('eh.login')}> #EH Login pg</Link> {/*Do not remove this. */}
+                                
                                 <br />
                                 <Link href={route("oth.login")}>
                                     {" "}
                                     #Other Login pg
                                 </Link>{" "}
-                                {/*Do not remove this. */}
-                                {/*<br /><Link  href={route('tb.register')}> #TB CreateAccount pg</Link> {/*Do not remove this. */}
-                                {/*<br /><Link  href={route('eh.register')}> #EH CreateAccount pg</Link> {/*Do not remove this. */}
+                                
                             </div>
                         </div>
                     </div>
@@ -84,14 +97,30 @@ export default function Home() {
                     <div className="topic d-flex align-items-center">
                         <div className="container-fluid">
                             <div className="text-center">
-                                <h1>LOOKING TO PUBLISH YOUR EVENT?</h1>
-                                <p>
-                                    PLanning your events and selling tickets has
-                                    never benn easier with <br />
-                                    EventAura's super user-friendly platform by
-                                    your side!
-                                </p>
-                                {/*<Link  href={route('event.create')} className='btn btn-primary'>Create Event</Link > */}
+                                
+                                <motion.h2
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: false, amount: 0.5 }}
+                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                                style={{ fontSize: "29px", fontWeight: "bold" }}
+                                >
+                                LOOKING TO PUBLISH YOUR EVENT?
+                                </motion.h2>
+
+                                <br />
+
+                                <motion.p
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: false, amount: 0.5 }}
+                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                                style={{ fontSize: "17px", color: "#000" }}
+                                >
+                                Planning your events and selling tickets has <br />
+                                never been easier with EventAura's super user-friendly platform by your side!
+                                </motion.p>
+                                                                
                                 <Link
                                     href={route("event.create")}
                                     className="btn btn-primary"
@@ -177,53 +206,53 @@ export default function Home() {
                             <div className="text-center">
                                 <h1>STAY UPDATED</h1>
                                 <div className="flex-wrap gap-2 d-flex justify-content-center">
-                                    <Link
-                                        to="https://www.facebook.com"
+                                    <a href
+                                        ="https://www.facebook.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <img
                                             src={FBIcon}
                                             alt="Facebook"
-                                            className="mx-5 social-icon"
+                                            className="mx-5 social-icon loading-icon"
                                         />
-                                    </Link>
+                                    </a>
 
-                                    <Link
-                                        to="https://www.instagram.com"
+                                    <a href
+                                        ="https://www.instagram.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <img
                                             src={InstargramIcon}
                                             alt="Instagram"
-                                            className="mx-5 social-icon"
+                                            className="mx-5 social-icon loading-icon"
                                         />
-                                    </Link>
+                                    </a>
 
-                                    <Link
-                                        to="https://www.twitter.com"
+                                    <a href
+                                        ="https://www.twitter.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <img
                                             src={XIcon}
                                             alt="X"
-                                            className="mx-5 social-icon"
+                                            className="mx-5 social-icon loading-icon"
                                         />
-                                    </Link>
+                                    </a>
 
-                                    <Link
-                                        to="https://www.linkedin.com"
+                                    <a href
+                                        ="https://www.linkedin.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <img
                                             src={LinkedInIcon}
                                             alt="LinkedIn"
-                                            className="mx-5 social-icon"
+                                            className="mx-5 social-icon loading-icon"
                                         />
-                                    </Link>
+                                    </a>
                                 </div>
                                 <div className="ReviewLink">
                                     <Link href ="/reviewPg" className="Review ">
