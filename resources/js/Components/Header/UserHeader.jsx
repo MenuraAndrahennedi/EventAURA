@@ -47,11 +47,11 @@ const UserHeader = () => {
                     
 
                      {/* Profile Dropdown */}
-                     <div style = {{ marginLeft:'500px' }}>
+                     {/*<div style = {{ marginLeft:'500px' }}>
             <Dropdown align="end" className="ms-3">
               <Dropdown.Toggle
                 variant="secondary"
-                className="d-flex align-items-center gap-2 bg-transparent border-0 text-white"
+                className="gap-2 text-white bg-transparent border-0 d-flex align-items-center"
                 id="dropdown-basic"
               >
                 {user?.avatar ? (
@@ -92,7 +92,7 @@ const UserHeader = () => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            </div>
+            </div>*/}
                 </Nav>
                 </div>
             </Navbar>

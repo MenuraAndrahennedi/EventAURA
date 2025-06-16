@@ -141,7 +141,7 @@ return (
                           "No Agenda"
                         )}
                       </td>
-                      <td>
+                      {/*<td>
                         <a
                           href={`/pending/event-report/${event.id}`}
                           className="black-button"
@@ -150,7 +150,7 @@ return (
                         >
                           Download
                         </a>
-                      </td>
+                      </td>*/}
                       <td>
                         <button
                           className="ml-5 green-button"
