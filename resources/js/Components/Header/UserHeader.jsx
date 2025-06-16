@@ -1,6 +1,7 @@
 import React from 'react'
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
 import { Link, usePage } from '@inertiajs/react';
 import '../../../css/style.scss';
 import Logo from '../../../js/assets/Images/Logo.png';
@@ -35,7 +36,8 @@ const UserHeader = () => {
     <header>
        
             <Navbar expand="lg" className="bg-dark navbar-dark">
-                <Navbar.Brand as={Link} href="/" className = 'logo'><img src={Logo} alt="Logo" className="logo-img" /></Navbar.Brand>
+                 <Container fluid>
+                 <Navbar.Brand as={Link} href="/" className = 'logo'><img src={Logo} alt="Logo" className="logo-img" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <div id="basic-navbar-nav">
                 <Nav className="ms-auto">
@@ -95,6 +97,7 @@ const UserHeader = () => {
             </div>*/}
                 </Nav>
                 </div>
+                 </Container>
             </Navbar>
         
     </header>

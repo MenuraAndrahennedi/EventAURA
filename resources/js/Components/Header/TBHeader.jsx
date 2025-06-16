@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
 import { Link, usePage} from "@inertiajs/react";
 import "../../../css/style.scss";
 
@@ -16,7 +17,8 @@ const TBHeader = () => {
         <header>
             
                 <Navbar expand="lg" className="bg-dark navbar-dark">
-                    <Navbar.Brand as={Link} href= {route('home')} className="logo">
+                    <Container fluid>
+                        <Navbar.Brand as={Link} href= {route('home')} className="logo">
                         <img src={Logo} alt="Logo" className="logo-img" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -123,6 +125,7 @@ const TBHeader = () => {
                                                                         </Nav>
                                                                         
                                                                     </div>
+                                                                    </Container>
                                                                 </Navbar>
                                                                 {/* <style>
                                                                     {`

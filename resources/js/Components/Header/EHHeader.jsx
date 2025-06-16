@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
 import { Link ,usePage} from "@inertiajs/react";
 import "../../../css/style.scss";
 import Logo from "../../assets/Images/Logo.png";
@@ -16,7 +17,8 @@ const EHHeader = () => {
         <header>
             {/*<div className="container py-3">*/}
                 <Navbar expand="lg" className="bg-dark navbar-dark">
-                    <Navbar.Brand as={Link} href={route('home')} className="logo">
+                    <Container fluid>
+                        <Navbar.Brand as={Link} href={route('home')} className="logo">
                         <img src={Logo} alt="Logo" className="logo-img" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -122,6 +124,7 @@ const EHHeader = () => {
                         </div>*/}
                         </Nav>
                     </div>
+                    </Container>
                 </Navbar>
            {/* </div>*/}
         </header>
