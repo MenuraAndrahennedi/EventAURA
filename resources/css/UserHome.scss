@@ -25,17 +25,7 @@
   .image-overlay:active {
     transform: translate(-50%, -50%) scale(1.05); 
   }
-  /*.card {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    height: 400px;
-  }
-  
-  .card:hover {
-    transform: scale(1.05);
-  }*/
+ 
   
   .cards {
     background-color: #78929e;
@@ -46,7 +36,8 @@
     justify-content: center;
     text-align: center;
     transition: transform 0.3s ease;
-    overflow: hidden;
+    overflow-x: hidden; // allow Y scroll!
+    overflow-y: auto;   // allow scroll on Y axis
     
       width: 80%;
       max-width: 320px;
@@ -176,7 +167,8 @@ h1, h4 {
   html, body {
     width: 100%;
     height: 100%;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden; // allow Y scroll!
+    overflow-y: auto;   //  allow scroll on Y axis
     margin: 0;           /* Remove any default margin */
   }
   

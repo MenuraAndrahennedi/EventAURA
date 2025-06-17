@@ -39,7 +39,7 @@ const handleAvatarChange = (e) => {
         <UserHeader />
       </header>
 
-      <main>
+      <main className="main-box">
         <div className="container my-5">
           <div className="row">
             <div className="col-md-3">

@@ -24,7 +24,7 @@ const ManagerSignOut = ({user}) => {
       <UserHeader />
     </header>
 
-    <main>
+    <main className="main-box">
       <div className="container my-5">
             <div className="border-0 shadow card">
               <div className="text-center card-body">
