@@ -122,6 +122,63 @@ const EHHeader = () => {
                             </Nav.Link>
                         )}
                         </div>*/}
+                        <div className="d-flex align-items-center ms-3">
+                                {isEventhost ? (
+                                    <Dropdown align="end">
+                                    <Dropdown.Toggle
+                                        variant="secondary"
+                                        className="gap-2 text-white bg-transparent border-0 d-flex align-items-center"
+                                        id="dropdown-basic"
+                                    >
+                                        {auth.user.avatar ? (
+                                        <Image
+                                            src={`/storage/${auth.user.avatar}`}
+                                            roundedCircle
+                                            width="30"
+                                            height="30"
+                                            alt="Profile"
+                                        />
+                                        ) : (
+                                        <div
+                                            style={{
+                                            width: '35px',
+                                            height: '35px',
+                                            borderRadius: '50%',
+                                            backgroundColor: 'rgb(19, 185, 227)',
+                                            color: 'white',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            fontWeight: 'bold',
+                                            }}
+                                        >
+                                            {auth.user.name.charAt(0).toUpperCase()}
+                                        </div>
+                                        )}
+                                        <span className="ms-2">{auth.user.name.split(" ")[0]}</span>
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item as={Link} href={route('eventhost.profile')}>
+                                        User Account
+                                        </Dropdown.Item>
+                                        <Dropdown.Divider />
+                                        <Dropdown.Item as={Link} href={route('logout')} method="post">
+                                        Logout
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                    </Dropdown>
+                                ) : (
+                                    <Nav.Link
+                                    as={Link}
+                                    href={route('tb.login')}
+                                    className={`nav-link ${url === '/tb/login' ? 'nav-link-active' : ''}`}
+                                    >
+                                    Login
+                                    </Nav.Link>
+                                )}
+                            </div>
+
                         </Nav>
                     </div>
                     </Container>

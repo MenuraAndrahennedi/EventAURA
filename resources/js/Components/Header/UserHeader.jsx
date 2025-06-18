@@ -95,6 +95,54 @@ const UserHeader = () => {
               </Dropdown.Menu>
             </Dropdown>
             </div>*/}
+
+            <div className="d-flex align-items-center ms-3">
+                  <Dropdown align="end">
+                    <Dropdown.Toggle
+                      variant="secondary"
+                      className="gap-2 text-white bg-transparent border-0 d-flex align-items-center"
+                      id="dropdown-basic"
+                    >
+                      {user?.avatar ? (
+                        <Image
+                          src={`/storage/${user.avatar}`}
+                          roundedCircle
+                          width="30"
+                          height="30"
+                          alt="Profile"
+                        />
+                      ) : (
+                        <div
+                          style={{
+                            width: '30px',
+                            height: '30px',
+                            borderRadius: '50%',
+                            backgroundColor: 'rgb(19, 185, 227)',
+                            color: 'white',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          {user?.name?.charAt(0).toUpperCase()}
+                        </div>
+                      )}
+                      <span className="ms-2">{user?.name?.split(' ')[0]}</span>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item as={Link} href="/other/profile-show">
+                        User Account
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item as={Link} href={route('logout')} method="post">
+                        Logout
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+               </div>
+
                 </Nav>
                 </div>
                  </Container>
