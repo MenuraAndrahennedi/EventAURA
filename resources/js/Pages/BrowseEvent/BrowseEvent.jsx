@@ -96,7 +96,7 @@ const BrowseEvent = () => {
                                             >
                                                 Book Now
                                             </Link>
-                                            )}
+                                            )
                                            
                                            
                                         </div>
