@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from "@inertiajs/react"; 
 import profilelogo from '../../../assets/Images/Profile-logo.png';
 import '../../../../css/profile.scss';
+import '../../UserProfile/profile.scss';
 import AdminFooter from '../../../Components/Footer/AdminFooter';
 import OtherSideBar from './ManagerSideBar';
 import UserHeader from '../../../Components/Header/UserHeader';
@@ -46,8 +47,8 @@ const ManagerSignOut = ({user}) => {
                       <h5 className="text-center">Are you sure ?</h5><br />
                     <div className=" text-end">
                     <div className="text-center" style={{ display: "flex", justifyContent: "center", gap: "10px", marginTop: "20px" }}>
-                        <button onClick={handleSignOut} className="btn btn-primary " style={{ width: "150px", height: "45px" }}>Yes,Sign Out</button>
-                        <button onClick={handleKeepSignedIn}className="btn btn-secondary" style={{ width: "150px", height: "45px" }}>Keep,Signed in</button>
+                        <button className="btn btn-blue me-2" onClick={handleSignOut}  style={{ width: "150px", height: "45px" }}>Yes,Sign Out</button>
+                        <button  className="btn btn-secondary "onClick={handleKeepSignedIn} style={{ width: "150px", height: "45px" }}>Keep,Signed in</button>
                         </div>
                       </div>
                   </div>

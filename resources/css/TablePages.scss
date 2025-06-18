@@ -119,8 +119,7 @@
 }
 
 .request-table td:nth-child(7) {
-    display: flex;
-    /* Use flexbox for inline buttons */
+   
     justify-content: center;
     /* Center the buttons */
     align-items: center;
@@ -348,6 +347,15 @@
     &:hover {
         background-color: #cccccc !important;
     }
+}
+
+.approval-buttons {
+  display: flex;
+  flex-direction: row; 
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Makes it responsive */
 }
 
 @media screen and (max-width: 768px) {

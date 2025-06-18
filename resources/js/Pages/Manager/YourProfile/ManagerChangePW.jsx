@@ -3,6 +3,7 @@ import { useForm } from '@inertiajs/react';
 import { Eye, EyeOff } from 'lucide-react';
 import profilelogo from '../../../assets/Images/Profile-logo.png';
 import '../../../../css/profile.scss';
+import '../../UserProfile/profile.scss';
 import UserHeader from '../../../Components/Header/UserHeader';
 import OtherSideBar from './ManagerSideBar';
 import AdminFooter from '../../../Components/Footer/AdminFooter';
@@ -149,8 +150,8 @@ const ManagerChangePW = ({ user,flash }) => {
                     </div>
 
                     <div className="text-end">
-                      <button type="button" className="mt-3 btn btn-secondary me-2">Cancel</button>
-                      <button type="submit" className="mt-3 btn btn-primary" disabled={processing}>
+                      <button type="button" className="btn btn-secondaryy me-2">Cancel</button>
+                      <button type="submit" className="btn btn-blue" disabled={processing}>
                         {processing ? 'Updating...' : 'Change Password'}
                       </button>
                     </div>
