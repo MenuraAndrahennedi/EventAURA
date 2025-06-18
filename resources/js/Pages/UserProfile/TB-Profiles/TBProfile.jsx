@@ -39,6 +39,7 @@ const TBProfile = () => {
                 src={user.avatar ? `/storage/${user.avatar}` : profilelogo} 
                 alt="Avatar" 
                 className="profile-avatar" 
+                style={{ display: 'block', margin: '0 auto' }}
               />
               </div>
               </div>
