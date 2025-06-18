@@ -17,12 +17,12 @@ const EHRejectedHistory = () => {
   //   { name: 'Dara 3', date: '2024/10/10' },
   // ];
   return (
-    <>
+    <div className="page-wrapper">
       <header>
         <EHHeader />
       </header>
 
-      <main>
+      <main className="main-box">
         <div className="container my-5">
               <div className="border-0 shadow card">
                 <div className="text-center card-body">
@@ -95,7 +95,7 @@ const EHRejectedHistory = () => {
       <footer>
         <SubFooter />
       </footer>
-    </>
+    </div>
     
   )
 }
