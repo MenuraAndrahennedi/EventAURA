@@ -14,7 +14,7 @@ import UserHeader from './../../../Components/Header/UserHeader';
 
 const PendingPaymentsHistory = ({pendingPaymentEvents}) => {
   return (
-    <>
+    <div className="page-wrapper d-flex flex-column min-vh-100">
     <header>
         <UserHeader />
     </header> 
@@ -91,7 +91,7 @@ const PendingPaymentsHistory = ({pendingPaymentEvents}) => {
     <footer>
         <AdminFooter />
     </footer> 
-</>
+</div>
 
 
   )

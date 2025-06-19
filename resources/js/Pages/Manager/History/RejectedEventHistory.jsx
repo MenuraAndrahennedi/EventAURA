@@ -12,7 +12,7 @@ const RejectedEventHistory = ({rejectedEvents=[]}) => {
     };
 
   return (
-    <>
+    <div className="page-wrapper d-flex flex-column min-vh-100">
            <header>
                 <UserHeader />
             </header> 
@@ -88,7 +88,7 @@ const RejectedEventHistory = ({rejectedEvents=[]}) => {
            <footer>
                 <AdminFooter />
             </footer> 
-        </>
+        </div>
 
 
   )
