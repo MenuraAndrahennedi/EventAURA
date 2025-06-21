@@ -24,12 +24,12 @@ const TBProfile = () => {
     post(route('profile.update'), { onSuccess: () => setIsEditing(false) });
   };
   return (
-    <>
+    <div className="page-wrapper">
       <header>
         <TBHeader />
       </header>
 
-      <main>
+      <main className="main-box">
         <div className="container my-5">
               <div className="border-0 shadow card">
                 <div className="text-center card-body">
@@ -39,6 +39,7 @@ const TBProfile = () => {
                 src={user.avatar ? `/storage/${user.avatar}` : profilelogo} 
                 alt="Avatar" 
                 className="profile-avatar" 
+                style={{ display: 'block', margin: '0 auto' }}
               />
               </div>
               </div>
@@ -100,7 +101,7 @@ const TBProfile = () => {
       <footer>
         <SubFooter />
       </footer>
-    </>
+    </div>
     
   )
 }

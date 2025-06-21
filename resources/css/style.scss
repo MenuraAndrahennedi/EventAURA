@@ -73,11 +73,44 @@ header {
       }
  }
 
- footer {
-  position: absolute;
-  bottom: 100;
+.admin-footer {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem 0;
   width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+
+  h5 {
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .col-auto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column; // Optional for future stacked content
+    margin-bottom: 0.5rem;
+
+    @media (min-width: 577px) {
+      margin-bottom: 0; // remove vertical spacing on desktop
+    }
+  }
 }
+
 
 
  /*Sub Footer*/
@@ -188,4 +221,49 @@ header {
 .create-event-btn:active {
   color: #000 !important; // Force full black
   background-color: #5de6ff !important; // Light info blue
+}
+
+@media (max-width: 991px) {
+  .navbar-nav .nav-link {
+    padding: 10px 0;
+    display: block;
+  }
+
+  .create-event-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/*navbar*/
+
+.custom-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media (max-width: 991px) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #212529;
+    flex-direction: column;
+    padding: 1rem 0;
+    z-index: 999;
+    display: none;
+
+    &.open {
+      display: flex;
+    }
+
+    .nav-link {
+      padding: 10px 0;
+    }
+
+    .btn {
+      width: 80%;
+      text-align: center;
+    }
+  }
 }

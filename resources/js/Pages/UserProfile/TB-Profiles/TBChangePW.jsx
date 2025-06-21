@@ -19,18 +19,18 @@ const TBChangePW = ({ user, success }) => {
   };
 
   return (
-    <>
+    <div className="page-wrapper">
       <header>
         <TBHeader />
       </header>
 
-      <main>
+      <main className="main-box">
         <div className="container my-5">
           <div className="border-0 shadow card">
             <div className="text-center card-body">
               <h1><b>Hi {user.name}!</b></h1>
               <h4><b>Welcome to Your Profile</b></h4>
-              <img src= {profilelogo} alt="Avatar"className="profile-avatar" />
+              <img src= {profilelogo} alt="Avatar"className="profile-avatar" style={{ display: 'block', margin: '0 auto' }} />
             </div>
           </div>
 
@@ -100,7 +100,7 @@ const TBChangePW = ({ user, success }) => {
       <footer>
         <SubFooter />
       </footer>
-    </>
+    </div>
   );
 };
 

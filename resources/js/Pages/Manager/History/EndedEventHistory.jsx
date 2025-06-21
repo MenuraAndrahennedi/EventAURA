@@ -13,7 +13,7 @@ const EndedEventHistory = ({ endedEvents =[] }) => {
     };
 
   return (
-    <>
+    <div className="page-wrapper d-flex flex-column min-vh-100">
             <header>
                 <UserHeader />
             </header>
@@ -84,7 +84,7 @@ const EndedEventHistory = ({ endedEvents =[] }) => {
             <footer>
                 <AdminFooter />
             </footer>
-        </>
+        </div>
 
 
   )

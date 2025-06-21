@@ -1,10 +1,42 @@
-footer {
-  position: absolute;
-  bottom: 100;
-  width: 100%;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden; 
+  overflow-y: auto;
 }
+ 
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative; 
+   
+  }
+
+  .main-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    flex: 1;
+    overflow-x: hidden; // allow Y scroll!
+    overflow-y: auto;   // allow scroll on Y axis
+    padding-bottom: 60px; /* Ensure space for the footer */
+}
+
+  /*footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: #333; 
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      
+  }*/
   .sidebar {
-    background-color: #f0f8ff; // Adjust as needed for sidebar background
+    background-color: #f0f8ff; 
   }
   .sidebar-menu {
     list-style: none;
@@ -114,10 +146,10 @@ footer {
     text-align: center;
   }
   
-  footer {
+  /*footer {
     background-color: #f8f9fa;
     padding: 10px 0;
-  }
+  }*/
   
   
   
@@ -128,21 +160,3 @@ footer {
     align-items: center; /* Align content vertically */
     justify-content: center; /* Align content horizontally */
   }
-  .page-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    position: fixed; /* Fix entire page in place */
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #333; /* Make it stand out */
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-}

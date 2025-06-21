@@ -3,7 +3,7 @@ import '../../../css/style.scss';
 const AdminFooter = () => {
   return (
     <>
-    <footer className="py-4 text-white bg-dark">
+    <footer className="admin-footer">
      <div className="container">
         <div className="row justify-content-center align-items-center">
           <div className="col-auto mx-5">

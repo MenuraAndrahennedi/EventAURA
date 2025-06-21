@@ -88,7 +88,8 @@ const managerDeleteRequest = ({requests}) => {
                                         {/* <Link to="#" className="ml-10 btn btn-danger btn-sm">
                                            Reject
                                         </Link> */}
-                                         <button
+                                         <div className="approval-buttons">
+                                            <button
                                                             onClick={() => handleUpdateStatus(request.id, 'approved')}
                                                             className="ml-5 green-button"
                                                             disabled={processing}
@@ -102,6 +103,7 @@ const managerDeleteRequest = ({requests}) => {
                                                         >
                                                             Reject
                                                         </button>
+                                        </div>
  </>
 ) : (
     <span className={`status-badge ${request.status}`}>

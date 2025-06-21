@@ -100,6 +100,7 @@ return (
           <HeadBar />
           <div className="table-container">
             <table className="request-table stripedd-table">
+
               <thead>
                 <tr>
                   <th>Event Name</th>
@@ -108,10 +109,11 @@ return (
                   <th>Time</th>
                   <th>Venue</th>
                   <th>Agenda</th>
-                  <th>Report</th>
+                  {/*<th>Report</th>*/}
                   <th>Approval</th>
                 </tr>
               </thead>
+              
               <tbody>
                 {events.length === 0 ? (
                   <tr>
@@ -152,18 +154,20 @@ return (
                         </a>
                       </td>*/}
                       <td>
-                        <button
-                          className="ml-5 green-button"
-                          onClick={() => handleApprove(event.id)}
-                        >
-                          Accept
-                        </button>
-                        <button
-                          className="ml-5 red-button"
-                          onClick={() => openDeleteModal(event.id)}
-                        >
-                          Delete
-                        </button>
+                         <div className="approval-buttons">
+                            <button
+                              className="ml-5 green-button"
+                              onClick={() => handleApprove(event.id)}
+                            >
+                              Accept
+                            </button>
+                            <button
+                              className="ml-5 red-button"
+                              onClick={() => openDeleteModal(event.id)}
+                            >
+                              Delete
+                            </button>
+                        </div>
                       </td>
                     </tr>
                   ))

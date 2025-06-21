@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    text-align: center; 
     background-color: #ffffff;
 
 
@@ -119,8 +119,7 @@
 }
 
 .request-table td:nth-child(7) {
-    display: flex;
-    /* Use flexbox for inline buttons */
+   
     justify-content: center;
     /* Center the buttons */
     align-items: center;
@@ -211,8 +210,8 @@
 .review-table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
-    min-width: 1000px;
+    table-layout: auto;
+    min-width: 600px;
 }
 
 .review-table th,
@@ -350,6 +349,15 @@
     }
 }
 
+.approval-buttons {
+  display: flex;
+  flex-direction: row; 
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Makes it responsive */
+}
+
 @media screen and (max-width: 768px) {
     .green-button,
     .red-button,
@@ -359,6 +367,7 @@
       font-size: 11px;
       padding: 5px 14px;
     }
+    
   }
   
   @media screen and (max-width: 480px) {
@@ -379,10 +388,11 @@
   }
   
 .page-wrapper {
-    display: flex;
+    position: relative;
     flex-direction: column;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden; // allow Y scroll!
+    overflow-y: auto;   // allow scroll on Y axis
     .main-box {
       flex: 1;
     }
@@ -392,27 +402,22 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: hidden; // allow Y scroll!
+    overflow-y: auto;   // allow scroll on Y axis
   }
 
-  footer {
+  /*footer {
     position:fixed;
     bottom: 100;
     width: 100%;
-  }
+  }*/
 
-  html, body {
-    height: 100%; /* Ensure the body takes full height */
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Disable any body scrolling */
-}
-
+  
 .page-wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    position: fixed; /* Fix entire page in place */
+    position: relative; 
     width: 100%;
     top: 0;
     left: 0;
@@ -424,19 +429,20 @@
     align-items: center;
     background-color: #ffffff;
     flex: 1;
-    overflow: hidden; /* Prevent scrolling in the main content */
+    overflow-x: hidden; // allow Y scroll!
+    overflow-y: auto;   // allow scroll on Y axis
     padding-bottom: 60px; /* Ensure space for the footer */
 }
 
-footer {
+/*footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: #333; /* Make it stand out */
+    background-color: #333; 
     color: white;
     text-align: center;
     padding: 10px 0;
-}
+}*/
 
 .table-container {
     overflow-x: auto;
@@ -472,4 +478,10 @@ footer {
 }
 
   
-  
+  @media screen and (max-width: 768px) {
+  .main-box h1 {
+    font-size: 2em;
+    margin: 20px 0;
+    text-align: center;     //  Ensure text is centered
+  }
+}

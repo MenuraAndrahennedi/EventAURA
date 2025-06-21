@@ -51,12 +51,12 @@ const handleAvatarChange = (e) => {
   };
 
   return (
-    <>
+    <div className="page-wrapper">
       <header>
         <TBHeader />
       </header>
 
-      <main>
+      <main className="main-box">
         <div className="container my-5">
           <div className="row">
             <div className="col-md-3">
@@ -107,7 +107,7 @@ const handleAvatarChange = (e) => {
       <footer>
         <AdminFooter />
       </footer>
-    </>
+    </div>
   );
 };
 

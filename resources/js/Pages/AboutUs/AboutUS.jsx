@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import '../../../css/AboutUs.scss';
 const AboutUS = () => {
   return (
-    <>
+    <div className="page-wrapper d-flex flex-column min-vh-100">
       <header>
           <MainHeader />
       </header>
@@ -76,7 +76,7 @@ const AboutUS = () => {
       {/*<footer>
         <MainFooter />
       </footer>*/}
-      </>
+      </div>
   )
 }
 

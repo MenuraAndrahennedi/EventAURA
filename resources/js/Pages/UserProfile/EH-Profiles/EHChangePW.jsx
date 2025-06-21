@@ -159,18 +159,18 @@ const EHChangePW = ({user,flash} ) => {
   };
 
   return (
-    <>
+    <div className="page-wrapper">
     <header>
       <EHHeader />
     </header>
 
-    <main>
+    <main className="main-box">
       <div className="container my-5">
             <div className="border-0 shadow card">
               <div className="text-center card-body">
                   <h1 className="profile-heading"><b>Hi {user.name}!</b></h1>
                   <h4><b>Welcome to Your Profile</b></h4>
-                  <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar"className="profile-avatar" />
+                  <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar"className="profile-avatar" style={{ display: 'block', margin: '0 auto' }}/>
               </div>
             </div>
 
@@ -276,7 +276,7 @@ const EHChangePW = ({user,flash} ) => {
     <footer>
       <SubFooter />
     </footer>
-  </>
+  </div>
   )
 };
 

@@ -150,33 +150,27 @@ const UpdateRequest = ( {requests}) => {
                                             Download
                                         </Link> */}
                                          <button 
-                        className="black-button"
-                        onClick={() => handleDownloadPDF(request)}
-                    >
-                        Download
-                    </button>
+                                            className="black-button"
+                                            onClick={() => handleDownloadPDF(request)}
+                                            >
+                                            Download
+                                        </button>
                                     </td>
                                     <td>
-                                        {/* <Link href={`/event/update/approve/${request.id} `}className="mx-1 btn btn-success btn-sm">
+                                         {approvedRequests.includes(request.id) ? (
+                                            
+                                            <button className="btn btn-secondary btn-sm" disabled>
+                                                Accepted
+                                            </button>
+                                        ) : (
+                                        <button 
+                                            className="mx-1 btn btn-success btn-sm"
+                                            onClick={() => handleAccept(request.id)}
+                                            >
                                             Accept
-                                        </Link> */}
-                                        {/* <button 
-    className="mx-1 btn btn-success btn-sm"
-    onClick={() => handleAccept(request.id)}
->
-    Accept
-</button> */} {approvedRequests.includes(request.id) ? (
-    <button className="btn btn-secondary btn-sm" disabled>
-    Accepted
-</button>
-) : (
-<button 
-    className="mx-1 btn btn-success btn-sm"
-    onClick={() => handleAccept(request.id)}
->
-    Accept
-</button>
-)}
+                                        </button>
+                                        )}
+                                        
                                         <Link to="#" className="ml-10 btn btn-danger btn-sm">
                                             Delete
                                         </Link>
