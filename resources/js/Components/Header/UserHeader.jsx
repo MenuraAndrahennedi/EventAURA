@@ -12,6 +12,7 @@ import Image from 'react-bootstrap/Image';
 const UserHeader = () => {
   const { auth } = usePage().props;
   const user = auth?.user;
+  console.log("User:",user);
 
    // Determine the dashboard route based on user ID or role
    let dashboardRoute = '/';
@@ -45,7 +46,7 @@ const UserHeader = () => {
                       <Nav.Link as={Link} href="/ongoing" className = 'nav-link'>Ongoing events</Nav.Link>
                       <Nav.Link as={Link} href="/event/create-requests" className = 'nav-link'>Pending requests</Nav.Link>
                       <Nav.Link as={Link} href="/inquiries" className = 'nav-link'>Inquiries</Nav.Link>
-                      <Nav.Link as={Link} href="/other/profile-show" className = 'nav-link'>{userType}</Nav.Link>
+                     {/* <Nav.Link as={Link} href="/other/profile-show" className = 'nav-link'>{userType}</Nav.Link> */}
                     
 
                     

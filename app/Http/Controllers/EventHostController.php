@@ -22,8 +22,20 @@ class EventHostController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+
+
     {
-        return inertia ('EventHost/EHHome');
+        if(!Auth::check()){
+            return redirect()->route('eh.login');
+        }
+
+        $user = Auth::user();
+        if($user->role_id == 4){
+           return inertia ('EventHost/EHHome');
+        }else{
+            return redirect()->route('home');
+        }
+       
     }
 
     public function profile()
@@ -51,7 +63,7 @@ class EventHostController extends Controller
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email,' . $user->id,
         'telephone' => 'nullable|string|max:15',
-        'avatar' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        'avatar' => 'nullable|image|mimes:jpg,png,jpeg',
     ]);
 
     if ($request->hasFile('avatar')) {

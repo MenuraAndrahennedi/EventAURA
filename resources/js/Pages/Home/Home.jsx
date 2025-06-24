@@ -122,7 +122,7 @@ export default function Home() {
                                 </motion.p>
                                                                 
                                 <Link
-                                    href={route("event.create")}
+                                    href={route("eventhost.dashboard")}
                                     className="btn btn-primary"
                                 >
                                     Create Event

@@ -117,7 +117,7 @@ const HostContact = ({ event }) => {
                     </button>
 
                     <div className="chat-section">
-                    {auth.user ? (
+                    {(auth.user  && auth.user.role_id === 5 ) ?(
                         <Link 
                             href={`/chatify/${event.event_host_id}`} // Verify your Chatify route
                             className="live-chat-button"

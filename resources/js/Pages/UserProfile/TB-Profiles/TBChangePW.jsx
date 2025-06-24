@@ -30,7 +30,7 @@ const TBChangePW = ({ user, success }) => {
             <div className="text-center card-body">
               <h1><b>Hi {user.name}!</b></h1>
               <h4><b>Welcome to Your Profile</b></h4>
-              <img src= {profilelogo} alt="Avatar"className="profile-avatar" style={{ display: 'block', margin: '0 auto' }} />
+               <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar"className="profile-avatar" />
             </div>
           </div>
 

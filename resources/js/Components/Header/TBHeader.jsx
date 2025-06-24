@@ -58,9 +58,9 @@ const TBHeader = () => {
                                             className="gap-2 text-white bg-transparent border-0 d-flex align-items-center"
                                             id="dropdown-basic"
                                         >
-                                            {auth.user.profile_image ? (
+                                            {auth.user.avatar ? (
                                             <Image
-                                                src={`/storage/${auth.user.profile_image}`}
+                                                src={`/storage/${auth.user.avatar}`}
                                                 roundedCircle
                                                 width="30"
                                                 height="30"

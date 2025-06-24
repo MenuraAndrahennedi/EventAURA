@@ -60,26 +60,26 @@ class UserController extends Controller
         // ]);
 
         // return back()->with('success', 'Profile updated successfully!');
-        $user = auth()->user();
+    //     $user = auth()->user();
 
-    $validated = $request->validate([
-        //'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email,' . $user->id,
-        'telephone' => 'nullable|string|max:15',
-        'avatar' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-    ]);
+    // $validated = $request->validate([
+    //     //'name' => 'required|string|max:255',
+    //     'email' => 'required|email|unique:users,email,' . $user->id,
+    //     'telephone' => 'nullable|string|max:15',
+    //     'avatar' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+    // ]);
 
-    if ($request->hasFile('avatar')) {
-        $path = $request->file('avatar')->store('avatars', 'public');
-        $validated['avatar'] = $path;
-    } else {
-        // Keep the existing avatar if no new file is uploaded
-        $validated['avatar'] = $user->avatar;
-    }
+    // if ($request->hasFile('avatar')) {
+    //     $path = $request->file('avatar')->store('avatars', 'public');
+    //     $validated['avatar'] = $path;
+    // } else {
+    //     // Keep the existing avatar if no new file is uploaded
+    //     $validated['avatar'] = $user->avatar;
+    // }
 
-    $user->update($validated);
+    // $user->update($validated);
 
-    return back()->with('success', 'Profile updated successfully!');
+    // return back()->with('success', 'Profile updated successfully!');
 
     }
 
@@ -183,5 +183,39 @@ $purchases = $grouped->map(function ($group) {
             'success' => 'Your password has been changed successfully.',
         ]);
     }
+
+       
+    
+    public function editProfile()
+{
+    $user = auth()->user();
+    return inertia("UserProfile/TB-Profiles/TBEditProfile", ['user' => $user]);
+}
+
+
+public function updateProfile(Request $request)
+{
+    $user = auth()->user();
+
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+        'telephone' => 'nullable|string|max:15',
+        'avatar' => 'nullable|image|mimes:jpg,png,jpeg',
+    ]);
+
+    if ($request->hasFile('avatar')) {
+        $path = $request->file('avatar')->store('avatars', 'public');
+        $validated['avatar'] = $path;
+    } else {
+        // Keep the existing avatar if no new file is uploaded
+        $validated['avatar'] = $user->avatar;
+    }
+
+    $user->update($validated);
+    
+    return redirect()->route('tb-profile')->with('success', 'Profile updated successfully.');
+}
+
 
 }
