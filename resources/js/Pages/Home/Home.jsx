@@ -136,7 +136,7 @@ export default function Home() {
                 {/*Section 03 */}
                 <section className="py-5 section-3">
                     <div className="container py-5">
-                        <div className="row">
+                        <div className="row ml-10">
                             <div className="mb-4 col-12 col-md-6 ">
                                 <h3>
                                     EASIEST EVENT HANDLING AND TICKETING
@@ -166,7 +166,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="row">
+                        <div className="row ml-10">
                             <div className="mb-4 col-12 col-md-6 ">
                                 <img
                                     src={HomeImg1}

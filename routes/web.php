@@ -304,7 +304,7 @@ Route::get('/connect-with-us', function () {
     return Inertia::render('ConnectWithUs/ConnectWithUs');
 })->name('connect-with-us');
 
-Route::get('/manager/stats', [ManagerController::class, 'getStats'])->middleware(['auth', 'manager']);
+Route::get('/manager/stats', [ManagerController::class, 'getStats'])->middleware(['auth', 'adminManagerProgrammer']);
 
 Route::get('/add-new-member', [NewMemberController::class, 'index'])->name('add.new.memeber')->middleware(['auth', 'adminManagerProgrammer']);
 
@@ -422,13 +422,13 @@ Route::get('/admin/monthly-user-registrations-by-role', [AdminController::class,
     Route::get('/host-contact/{id}', [EventController::class, 'showPage'])->name('host.contact.page');
     Route::post('/host-contact', [EventController::class, 'send'])->name('host.contact');
 
-Route::get('/admin/monthly-user-registrations-by-role', [AdminController::class, 'getMonthlyUserRegistrationsByRole'])->middleware(['auth', 'admin']);
+Route::get('/admin/monthly-user-registrations-by-role', [AdminController::class, 'getMonthlyUserRegistrationsByRole'])->middleware(['auth', 'adminProgrammer']);
 
-Route::get('/paymenthistory', [PaymentReportController::class, 'index'])->name('payment.details')->middleware(['auth', 'manager']);
+Route::get('/paymenthistory', [PaymentReportController::class, 'index'])->name('payment.details')->middleware(['auth', 'adminManagerProgrammer']);
 
 
 
-Route::get('/payment-details/pdf', [PaymentReportController::class, 'exportPdf'])->name('payment.details.pdf')->middleware(['auth', 'manager']);
+Route::get('/payment-details/pdf', [PaymentReportController::class, 'exportPdf'])->name('payment.details.pdf')->middleware(['auth', 'adminManagerProgrammer']);
 
 Route::get('/customer/edit-profile', [UserController::class, 'editProfile'])->name('customer.editProfile')->middleware(['auth', 'customer']);
 

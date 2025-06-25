@@ -17,15 +17,17 @@ $text-white: #ffffff;
 
 .section-2 {
     .card {
-        border-radius: 40px;
+        border-radius: 0px;
+        margin-bottom: 30px;
         img {
-            border-top-left-radius: 40px;
-            border-top-right-radius: 40px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
         }
         .card-body {
             a.title {
                 font-size: 1.4 em;
             }
+             min-height: 200px;
         }
         .event-title {
             white-space: nowrap; /* Ensures text stays in one line */
@@ -59,6 +61,13 @@ $text-white: #ffffff;
             font-weight: 700;
 
         }
+
+        .btn {
+           width: 50%;              // makes both buttons stretch full width
+           padding: 12px 0;          // consistent vertical padding
+           font-size: 1em;           // consistent font size
+           text-align: center;
+}
     }
 }
 
