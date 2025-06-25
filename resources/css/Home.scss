@@ -34,13 +34,20 @@ body {
                 rgba(0, 0, 0, 0)
             ),
             url("../js/assets/Images/Home_cover.png");
-        min-height: 690px;
+        min-height: 100vh;
+        background-repeat: no-repeat;
+        width:100%;
+        background-size: cover;
+        background-position: center;
+
         color: $text-white;
         h1 {
             font-size: 4em;
             font-weight: bold;
             font-family: 'Poppins', sans-serif;
         }
+
+       
     }
 }
 

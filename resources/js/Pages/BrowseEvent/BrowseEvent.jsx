@@ -60,21 +60,27 @@ const BrowseEvent = () => {
                  onFilterChange={handleFilterChange}
                  onSearch={(term) => {
                    setSearchTerm(term);
-                   fetchEvents(term, filter, true); // Append search results
+                   fetchEvents(term, filter, false); // Append search results
             }}
             />
 
-
-            <section className="py-5 section-2 bg-light">
+            <h1 style={{
+                fontSize:'3em',
+                textAlign:'center',
+                fontWeight:'bold'
+            }}>Browse Events</h1>
+            <section className="py-5 px-5 section-2 bg-light">
+                
                 <div className="container">
                     <div className="pt-3 row d-flex justify-content-center">
                         {events.map((event) => (
-                            <div className="col-12 col-sm-6 col-md-3" key={event.id}>
+
+                            <div className="col-12 col-sm-6 col-sm-4 col-md-4 col-lg-3" key={event.id}>
                                 <div className="border-0 shadow card">
                                     <div className="card-img-top">
                                         <img src={event.image} alt={event.name} className="w-100" />
                                     </div>
-                                    <div className="p-2 card-body">
+                                    <div className="p-4 card-body">
                                         <div className="event-details">
                                             <p className="event-date-time">{event.date} | {event.startTime}</p>
                                             <p className="event-location">{event.venue}</p>
@@ -88,22 +94,40 @@ const BrowseEvent = () => {
                                                 <span className="price-subtext"><br />upwards</span>
                                             </p>
 
-                                            <Link
+                                            {/* <Link
                                                 href={route('event.details', { id: event.id })}
 
                                                 className="btn btn-primary"
                                                 onClick={() => handleBookNowClick(event.id)}
                                             >
                                                 Book Now
-                                            </Link>
-                                            )
+                                            </Link> */}
+
+                                            {(event.golden_ticket_count <= 0 && event.silver_ticket_count <= 0 && event.bronze_ticket_count <= 0) ? (
+  <Link href={route('event.details',{id:event.id})} className="btn btn-danger" >
+    Sold Out
+  </Link>
+) : (
+  <Link
+    href={route('event.details', { id: event.id })}
+    className="btn btn-primary"
+    onClick={() => handleBookNowClick(event.id)}
+  >
+    Book Now
+  </Link>
+)}
+
+                                            
                                            
                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            
                         ))}
+                        
                     </div>
                 </div>
             </section>

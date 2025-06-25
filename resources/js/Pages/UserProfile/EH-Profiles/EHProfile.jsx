@@ -6,6 +6,7 @@ import profilelogo from '../../../assets/Images/Profile-logo.png';
 import '../profile.scss';
 import EHSidebar from './EHSidebar';
 import axios from 'axios';
+import EHHeader from '../../../Components/Header/EHHeader';
 
 const EHProfile = () => {
   
@@ -52,7 +53,7 @@ const EHProfile = () => {
   return (
     <div className="page-wrapper">
       <header>
-        <TBHeader />
+        <EHHeader/>
       </header>
 
       <main className="main-box">

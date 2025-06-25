@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { usePage, useForm,router } from '@inertiajs/react';
+import { usePage, useForm } from '@inertiajs/react';
 import '../../../../css/profile.scss';
-import TBHeader from '../../../Components/Header/EHHeader';
-import AdminFooter from '../../../Components/Footer/AdminFooter';
-import EHSidebar from './EHSidebar';
-import EHHeader from '../../../Components/Header/EHHeader';
 
-const EHEditProfile = () => {
+
+import TBHeader from '@/Components/Header/TBHeader';
+
+import SubFooter from '@/Components/Footer/SubFooter';
+import TBSideBar from '@/Components/SideBar/TBSideBar';
+
+const ManagerEditProfile = () => {
   const { user } = usePage().props; // Get user data from Inertia
   const { data, setData, post, processing, errors } = useForm({
     name: user.name || '',
@@ -18,50 +20,33 @@ const EHEditProfile = () => {
  // Handle file input change
 const handleAvatarChange = (e) => {
     const file = e.target.files[0];
-    setData('avatar', file); // Only set if a file is selected
+    setData('avatar', file || null); // Only set if a file is selected
   }; 
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-  //     // Remove avatar field if no new file is selected
-  // const updatedData = { ...data };
-  // if (!data.avatar) {
-  //   delete updatedData.avatar;
-  // }
-
-  // post(route('eventhost.profile.update'), updatedData);// Submit form using Inertia
-  const formData = new FormData();
-  formData.append('name', data.name);
-  formData.append('email', data.email);
-  formData.append('telephone', data.telephone);
-
-  if (data.avatar) {
-      formData.append('avatar', data.avatar); // Append file
+      // Remove avatar field if no new file is selected
+  const updatedData = { ...data };
+  if (!data.avatar) {
+    delete updatedData.avatar;
   }
 
-  // post(route('eventhost.profile.update'), {
-  //     data: formData,
-  //     forceFormData: true, // Ensure Inertia sends it as FormData
-  // });
-  
-  router.post(route('eventhost.profile.update'), formData, {
-    forceFormData: true, // Forces Inertia to send as multipart/form-data
-    preserveScroll: true, // Prevents the page from scrolling up after submission
-});
+  post(route('customer.updateProfile'), updatedData);// Submit form using Inertia
   };
 
   return (
-    <div className="page-wrapper">
+    <div className="page-wrapper"
+>
       <header>
-        <EHHeader />
+        <TBHeader />
       </header>
 
       <main className="main-box">
         <div className="container my-5">
           <div className="row">
             <div className="col-md-3">
-              <EHSidebar />
+              <TBSideBar />
             </div>
             <div className="col-md-9">
               <div className="border-0 shadow card">
@@ -106,10 +91,10 @@ const handleAvatarChange = (e) => {
       </main>
 
       <footer>
-        <AdminFooter />
+        <SubFooter />
       </footer>
     </div>
   );
 };
 
-export default EHEditProfile;
+export default ManagerEditProfile;

@@ -101,11 +101,32 @@ const ManagerDashboard = () => {
                             </div>
                         </section>
 
-            <section className="pt-3 section-4 d-flex justify-content-center">
+        {/* <div className = "flex-row items-center justify-center">
+           <section className="pt-3 section-4 d-flex justify-content-center px-3">
                 <Link href="/add-new-member" className="btn btn-primary">
                     Add New Team Member
                 </Link>
             </section>
+
+            <section className="pt-3 section-4 d-flex justify-content-center px-3">
+                <Link href="/paymenthistory" className="btn btn-primary">
+                    View Payment History
+                </Link>
+            </section>
+
+        </div> */}
+
+        <div className="flex flex-row justify-center items-center gap-4 pt-3">
+  <Link href="/add-new-member" className="btn btn-primary px-3 py-3">
+    Add New Team Member
+  </Link>
+  <Link href="/paymenthistory" className="btn btn-primary px-3 py-3">
+    View Payment History
+  </Link>
+</div>
+
+        
+           
 
             <section className="section-5">
                 <h1 className="text-center" style={{ color: "#ffffff", fontSize: "3.5rem", fontWeight: "bold" }}>

@@ -106,12 +106,7 @@ class ManagerController extends Controller
         $user = Auth::user(); // Get the currently logged-in user
 
         return Inertia::render('Manager/YourProfile/ManagerProfile', [
-            'user' => [
-                'name' => $user->name,
-                'email' => $user->email,
-                'telephone' => $user->telephone,
-                'avatar' => $user->avatar ? asset('storage/' . $user->avatar) : null, // Send `null` if no avatar
-            ],
+           'user' => $user,
         ]);
     }
 
@@ -129,7 +124,7 @@ public function updateProfile(Request $request)
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email,' . $user->id,
         'telephone' => 'nullable|string|max:15',
-        'avatar' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        'avatar' => 'nullable|image|mimes:jpg,png,jpeg',
     ]);
 
     if ($request->hasFile('avatar')) {

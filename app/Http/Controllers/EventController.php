@@ -148,7 +148,8 @@ class EventController extends Controller
         $query = Event::query()
         ->leftJoin('clicks', 'events.id', '=', 'clicks.event_id')
         ->select('events.*', \DB::raw('COALESCE(clicks.number_of_clicks, 0) as click_count'))
-        ->where('event_status', 'completed');
+        ->where('event_status', 'completed')
+         ->groupBy('events.id');
 
         if (!empty($searchTerm)) {
            $query->where('name', 'LIKE', "%{$searchTerm}%")
@@ -175,6 +176,9 @@ class EventController extends Controller
                 'startTime' => $event->startTime,
                 'location' => $event->location,
                 'bronze_ticket_price' => $event->bronze_ticket_price,
+                'golden_ticket_count' => $event->golden_ticket_count,
+                'silver_ticket_count' => $event->silver_ticket_count,
+                'bronze_ticket_count' => $event->bronze_ticket_count,
                 'image' => asset('storage/' . $event->image), 
             ];
         });

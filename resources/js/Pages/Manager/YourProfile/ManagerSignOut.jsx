@@ -31,7 +31,7 @@ const ManagerSignOut = ({user}) => {
               <div className="text-center card-body">
                   <h1><b>Hi {user.name}!</b></h1>
                   <h4><b>Welcome to Your Profile</b></h4>
-                  <img src= {user.avatar || profilelogo} alt="Avatar"className="profile-avatar" />
+                <img src= {user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar"className="profile-avatar" />
               </div>
             </div>
 
