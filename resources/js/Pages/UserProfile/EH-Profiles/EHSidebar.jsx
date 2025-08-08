@@ -1,5 +1,5 @@
 import React from 'react'
-import '../profile.scss';
+import '../../../../css/profile2.scss';
 import { Link, usePage } from '@inertiajs/react';
 
 const EHSidebar = () => {

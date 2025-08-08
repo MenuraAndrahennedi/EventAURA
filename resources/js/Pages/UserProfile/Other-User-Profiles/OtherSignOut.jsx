@@ -1,7 +1,7 @@
 import React from 'react'
 import { usePage, router} from '@inertiajs/react'
 import profilelogo from '../../../assets/Images/Profile-logo.png';
-import '../profile.scss';
+import '../../../../css/profile2.scss';
 import AdminFooter from './../../../Components/Footer/AdminFooter';
 import OtherSideBar from './OtherSideBar';
 import UserHeader from './../../../Components/Header/UserHeader';

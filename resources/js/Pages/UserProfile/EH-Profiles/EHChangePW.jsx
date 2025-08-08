@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { usePage, useForm } from '@inertiajs/react';
 import profilelogo from '../../../assets/Images/Profile-logo.png';
 import { Eye, EyeOff } from 'lucide-react';
-import '../profile.scss';
+import '../../../../css/profile2.scss';
 import EHSidebar from './EHSidebar';
 import EHHeader from '../../../Components/Header/EHHeader';
 import SubFooter from '../../../Components/Footer/SubFooter';

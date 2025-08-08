@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { usePage, useForm } from '@inertiajs/react';
 import profilelogo from '../../../assets/Images/Profile-logo.png';
-import '../profile.scss';
+import '../../../../css/profile2.scss';
 import UserHeader from './../../../Components/Header/UserHeader';
 import OtherSideBar from './OtherSideBar';
 import AdminFooter from './../../../Components/Footer/AdminFooter';
