@@ -11,6 +11,7 @@ const PWVerfication = () => {
         <MainHeader /> 
       </header>
 
+      {/* Verification code input form */}
       <div className="reset-password-container">
         <div className="reset-password-overlay">
           <h2>Password Reset</h2>
