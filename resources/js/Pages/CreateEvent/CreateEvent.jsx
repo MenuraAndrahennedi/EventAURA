@@ -30,48 +30,7 @@ const CreateEvent = () => {
         window.open(mapUrl, "_blank", "width=800,height=600");
     };
 
-    // const handleLocationSelection = (newLocation) => {
-    //     // Populate the location input with the selected location
-    //     setLocation(newLocation);
-    //     formData.set("location", newLocation);
-    //     setFormData(formData);
-    // };
-
-    // const handleArtistsChange = (artists) => {
-    //     setSelectedArtists(artists);
-    
-    //     const newFormData = new FormData();
-    //     artists.forEach((artist) => {
-    //     newFormData.append("artists[]", artist.id);
-    // });
-
-    //     setFormData(newFormData); 
-    // };  
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-       
-    //      // Create new formData including selected artists
-    // const newFormData = new FormData();
-    // selectedArtists.forEach((artist) => {
-    //     newFormData.append("artists[]", artist.id);
-    // });
-
-    //     // Optional: Debugging formData content
-    // for (let [key, value] of formData.entries()) {
-    //     console.log(`${key}: ${value}`);}
-
-    //     try {
-    //         await axios.post("/event/store", formData, {
-    //             headers: { "Content-Type": "multipart/form-data" },
-    //         });
-    //         alert("Event created successfully!");
-    //     } catch (error) {
-
-    //         console.error(error.response.data);
-    //         alert("Error creating event.");
-    //     }
-    // };
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
     

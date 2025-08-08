@@ -17,23 +17,9 @@ const AddNewMember = () => {
     password_confirmation: "",
   });
 
-//   const { props } = usePage(); // Get success message from Laravel session
-//   const successMessage = props.flash.success || null; // Access success message
-//  // const [showSuccess, setShowSuccess] = useState(false);
-//  const [showMessage, setShowMessage] = useState(true);
 
 const [successMessage, setSuccessMessage] = useState("");
 
-
-//  useEffect(() => {
-//   if (successMessage) {
-//     // Hide the message after 5 seconds
-//     const timer = setTimeout(() => {
-//       setShowMessage(false);
-//     }, 5000);
-//     return () => clearTimeout(timer);
-//   }
-// }, [successMessage]);
 useEffect(() => {
   if (successMessage) {
     const timer = setTimeout(() => setSuccessMessage(""), 5000);
