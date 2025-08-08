@@ -4,7 +4,6 @@ import MainFooter from "../../Components/Footer/MainFooter";
 import SubFooter from "../../Components/Footer/SubFooter";
 import "../../../css/TBEventDetails.scss";
 import { Link } from "@inertiajs/react";
-//import { Link } from "@inertiajs/react";
 import axios from "axios";
 
 import SearchBar from "../../Components/SearchBar";
@@ -13,13 +12,14 @@ import HostImage from "../../assets/Logos/HostLogo.png";
 
 const TBEventDetails = ({ event }) => {
     console.log("Event data:", event);
-    // if (!event) {
-    //     return <div>Loading...</div>;
+    
+    // State to control visibility of return policy modal
     const [showReturnPolicy, setShowReturnPolicy] = useState(false);
-
-const openReturnPolicy = () => setShowReturnPolicy(true);
-const closeReturnPolicy = () => setShowReturnPolicy(false);
-    // }
+    // Open return policy modal
+    const openReturnPolicy = () => setShowReturnPolicy(true);
+    // Close return policy modal
+    const closeReturnPolicy = () => setShowReturnPolicy(false);
+    
     return (
         <>
             <header>
@@ -39,20 +39,17 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                         <img src={`/storage/${event.image}`}  alt={event.name} />
                     </div>
 
+                    {/* Event description and meta */}
                     <div className="event-description">
                         <p>{event.description}</p>
                         <div className="event-meta">
-                            <p>
-                                <strong>Date:</strong> {event.date}
-                            </p>
-                            <p>
-                                <strong>Venue:</strong> {event.venue}
-                            </p>
-                            <p>
-                                <strong>Organizer:</strong>
-                                {event.organizer}
-                            </p>
+                           <p><strong>Date:</strong> {event.date}</p>
+                           <p><strong>Venue:</strong> {event.venue}</p>
+                           <p><strong>Organizer:</strong> {event.organizer}</p>
+
                             <div className="button-row">
+                                
+                                {/* Location link */}
                                 <a
                                     href={event.location}
                                     target="_blank"
@@ -61,6 +58,8 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                                 >
                                     Location
                                 </a>
+
+
                                 {/* Download PDF */}
                                 <a
                                     href={`/storage/${event.agenda_pdf}`}
@@ -70,41 +69,30 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                                 >
                                     Agenda.pdf
                                 </a>{" "}
-                                {/*set the path */}
+                                
                             </div>
                         </div>
                         <div className="event-buttons">
-                            {/* <Link
-                                href={route("buytickets", { id: event.id })}
-                                className="buy-tickets"
-                            >
-                                Buy Tickets
-                            </Link> */}
-                            {/* <Link href="#" className="return-policies">
-                                Return Policies
-                            </Link> */}
-                            {(event.golden_ticket_count ===0 && event.silver_ticket_count ===0 && event.bronze_ticket_count ===0) ? (
-                                                                        
-                                                                         <button
-                                                                            
-                                                                            className="btn btn-danger"
-                                                                            disabled
-                                                                           
-                                                                        >
-                                                                            Sold Out
-                                                                        </button>
-                                                                        
-                                                                        ):(
-                                                                            <Link
-                                href={route("buytickets", { id: event.id })}
-                                className="buy-tickets"
-                            >
-                                Buy Tickets
-                            </Link>
-                                                                        )}
+                            {/* Show Sold Out button if no tickets available */}
+                            {(event.golden_ticket_count === 0 &&
+                              event.silver_ticket_count === 0 &&
+                              event.bronze_ticket_count === 0) ? (
+                                <button className="btn btn-danger" disabled>
+                                    Sold Out
+                                </button>
+                            ) : (
+                                // Otherwise, show Buy Tickets link
+                                <Link
+                                    href={route("buytickets", { id: event.id })}
+                                    className="buy-tickets"
+                                >
+                                    Buy Tickets
+                                </Link>
+                            )}
+                            {/* Return Policies button */}
                             <button className="return-policies" onClick={openReturnPolicy}>
-    Return Policies
-</button>
+                                Return Policies
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -141,10 +129,6 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                         <p>No video available for this event.</p>
                     </div>
                 )}
-                {/* <p>VIDEO</p> */}
-                {/* Placeholder text for now */}
-                {/* <video src="path/to/event-video.mp4" controls /> */}
-                {/* Uncomment and replace src  */}
             </section>
 
             {/* Contact Host Section */}
@@ -170,17 +154,18 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                     </p>
                 </div>
 
+                {/* Return Policy Modal */}
                 {showReturnPolicy && (
-    <div className="modal-overlay" onClick={closeReturnPolicy}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-button" onClick={closeReturnPolicy}>×</button>
-            <h2>Return Policies</h2>
-            <p>
-               {event.return_policies}
-            </p>
-        </div>
-    </div>
-)}
+                    <div className="modal-overlay" onClick={closeReturnPolicy}>
+                        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                            <button className="close-button" onClick={closeReturnPolicy}>×</button>
+                            <h2>Return Policies</h2>
+                            <p>
+                            {event.return_policies}
+                            </p>
+                        </div>
+                    </div>
+                )}
             </section>
 
             <footer>

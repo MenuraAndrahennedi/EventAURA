@@ -3,23 +3,21 @@ import MainHeader from "../../Components/Header/MainHeader";
 import MainFooter from "../../Components/Footer/MainFooter";
 import "../../../css/Home.scss";
 import { Link, usePage } from "@inertiajs/react";
-//import '../../style.scss';
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // Import framer-motion for animations
 
+// Import images and icons used in the page
 import HomeImg1 from "../../assets/Images/Home-1.png";
 import HomeImg2 from "../../assets/Images/Home-2.png";
 import FBIcon from "../../assets/Logos/fb.png";
 import InstargramIcon from "../../assets/Logos/Instargram.png";
 import XIcon from "../../assets/Logos/logo X.png";
 import LinkedInIcon from "../../assets/Logos/linkedIn.png";
-{
-    /*import WhiteCircle from '../../assets/Logos/Eclipse white.svg';
-import BlueCircle from '../../assets/Logos/Eclipse blue.svg';*/
-}
 import ReviewIcon from "../../assets/Logos/review.png";
 
 export default function Home() {
+    // Extract flash messages from page props
     const { flash = {} } = usePage().props;
+    // State to control visibility of error alert
     const [showError, setShowError] = useState(!!flash.error);
     
     return (
@@ -29,29 +27,31 @@ export default function Home() {
             </header>
 
 
-            {/* Flash message */}
+            {/* Show flash error alert if error exists and alert is visible */}
             {showError && flash.error && (
-            <div className="text-center alert alert-danger alert-dismissible fade show" role="alert">
-                {flash.error}
-                <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Close"
-                onClick={() => setShowError(false)} // Hide the alert on click
-                ></button>
-            </div>
+                <div className="text-center alert alert-danger alert-dismissible fade show" role="alert">
+                    {flash.error}
+                    
+                    {/* Button to dismiss alert */}
+                    <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"
+                        onClick={() => setShowError(false)} // Hide the alert on click
+                    ></button>
+                </div>
             )}
 
             <main>
 
-                {/*Section 01 */}
+                {/* Section 01: Main promotional banner with animated headline */}
                 <section className="section-1">
                     <div className="topic d-flex align-items-center">
                         <div className="container-fluid">
                             <div className="text-center">
 
-
+                                    {/* Animated main headline */}
                                     <motion.h1
                                     initial={{ opacity: 0, y: 50 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -62,42 +62,41 @@ export default function Home() {
                                             HERE!
                                     </motion.h1>
 
-                                <br />
+                                    <br />
 
-                                
+                                   {/* Supporting description */}
                                     <p style={{ fontSize: "19px", color: "#fff" }}>
-                                    Let EventAURA help you find the event that's just right for you! <br />
+                                        Let EventAURA help you find the event that's just right for you! <br />
                                     </p>
-
                                     <h2 style={{ fontSize: "22px", fontWeight: "bold", color: "#fff" }}>
-                                    Browse our awesome events for fun things to do in your area.
+                                        Browse our awesome events for fun things to do in your area.
                                     </h2>
 
-                               
-                                <Link
-                                    href={route("browse")}
-                                    className="btn btn-primary"
-                                >
-                                    Browse Event
-                                </Link>
-                                
-                                <br />
-                                <Link href={route("oth.login")}>
-                                    {" "}
-                                    #Other Login pg
-                                </Link>{" "}
+                                    {/* Browse Event button */}
+                                    <Link href={route("browse")}className="btn btn-primary">
+                                        Browse Event
+                                    </Link>
+                                    
+                                    <br />
+
+                                    {/* Link to other login page (for development purpose only) */}
+                                    <Link href={route("oth.login")}>
+                                        {" "}
+                                        #Other Login pg
+                                    </Link>{" "}
                                 
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/*Section 02 */}
+                {/*Section 02: Call to action for event hosts  */}
                 <section className="section-2">
                     <div className="topic d-flex align-items-center">
                         <div className="container-fluid">
                             <div className="text-center">
                                 
+                                 {/* Animated heading */}
                                 <motion.h2
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -105,11 +104,12 @@ export default function Home() {
                                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                                 style={{ fontSize: "29px", fontWeight: "bold" }}
                                 >
-                                LOOKING TO PUBLISH YOUR EVENT?
+                                    LOOKING TO PUBLISH YOUR EVENT?
                                 </motion.h2>
 
                                 <br />
 
+                                {/* Animated paragraph */}
                                 <motion.p
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -117,26 +117,29 @@ export default function Home() {
                                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
                                 style={{ fontSize: "17px", color: "#000" }}
                                 >
-                                Planning your events and selling tickets has <br />
-                                never been easier with EventAura's super user-friendly platform by your side!
+                                    Planning your events and selling tickets has <br />
+                                    never been easier with EventAura's super user-friendly platform by your side!
                                 </motion.p>
-                                                                
-                                <Link
-                                    href={route("eventhost.dashboard")}
-                                    className="btn btn-primary"
-                                >
+
+                                {/* Button to create event */}                                
+                                <Link href={route("eventhost.dashboard")} className="btn btn-primary">
                                     Create Event
                                 </Link>
+
                             </div>
                         </div>
                     </div>
+
+                    {/* Horizontal divider */}
                     <hr className="centered-line" />
                 </section>
 
-                {/*Section 03 */}
+                {/*Section 03About and Help info  */}
                 <section className="py-5 section-3">
                     <div className="container py-5">
-                        <div className="row ml-10">
+                        <div className="ml-10 row">
+                            
+                            {/* About Us text and button */}
                             <div className="mb-4 col-12 col-md-6 ">
                                 <h3>
                                     EASIEST EVENT HANDLING AND TICKETING
@@ -157,6 +160,8 @@ export default function Home() {
                                     ABOUT US
                                 </Link>
                             </div>
+
+                             {/* Image section */}
                             <div className="mb-4 col-12 col-md-6">
                                 <img
                                     src={HomeImg2}
@@ -166,14 +171,18 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="row ml-10">
+
+
+                        <div className="ml-10 row">
                             <div className="mb-4 col-12 col-md-6 ">
-                                <img
+                                 {/* Image section */}
+                                 <img
                                     src={HomeImg1}
                                     alt="Img1"
                                     className="Img-fluid"
                                 />
                             </div>
+                            {/* Help Center text and button */}
                             <div className="mb-4 col-12 col-md-6 ">
                                 <h2>NEED HELP</h2>
                                 <p>
@@ -199,12 +208,14 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/*Section 04 */}
+                {/* Section 04: Social media links and review */}
                 <section className="section-4">
                     <div className="topic d-flex align-items-center">
                         <div className="container-fluid">
                             <div className="text-center">
                                 <h1>STAY UPDATED</h1>
+
+                                {/* Social media icons with external links */}
                                 <div className="flex-wrap gap-2 d-flex justify-content-center">
                                     <a href
                                         ="https://www.facebook.com"
@@ -254,6 +265,8 @@ export default function Home() {
                                         />
                                     </a>
                                 </div>
+
+                                {/* Link to review page */}
                                 <div className="ReviewLink">
                                     <Link href ="/reviewPg" className="Review ">
                                         Leave Us a Review

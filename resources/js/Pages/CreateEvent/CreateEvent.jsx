@@ -7,18 +7,27 @@ import { Link } from "@inertiajs/react";
 import axios from "axios";
 
 const CreateEvent = () => {
+    // State to store all form data in FormData object
     const [formData, setFormData] = useState(new FormData());
-    const [selectedArtists, setSelectedArtists] = useState([]);
-    const [location, setLocation] = useState("");
-    const [successMessage,setSuccessMessage] = useState ("");
 
+    // List of selected artists for the event
+    const [selectedArtists, setSelectedArtists] = useState([]);
+
+    // State for storing event location (optional for additional handling)
+    const [location, setLocation] = useState("");
+
+    // State for showing a success message after form submission
+    const [successMessage, setSuccessMessage] = useState("");
+
+    // Handle input changes for text, file, and other inputs
     const handleChange = (e) => {
         const { name, value, files } = e.target;
         
-
+        // If file input, store the first file in FormData
         if (files && files.length > 0) {
             formData.set(name, files[0]);
         } else {
+            // Otherwise store regular text or number values
             formData.set(name, value);
         }
         setFormData(formData);
@@ -30,27 +39,29 @@ const CreateEvent = () => {
         window.open(mapUrl, "_blank", "width=800,height=600");
     };
 
-   
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
     
-        // Create new formData including selected artists
+         // Create a fresh FormData to combine artists and other fields
         const newFormData = new FormData();
-        selectedArtists.forEach((artist) => {
+         // Append artist IDs to form data
+         selectedArtists.forEach((artist) => {
             newFormData.append("artists[]", artist.id);
         });
     
-        // Add other fields to the formData as needed
+        // Append all other form fields
         for (let [key, value] of formData.entries()) {
             newFormData.append(key, value); // Ensure previously set fields are included
         }
     
         try {
-            // Debugging formData content
+            /// Debug log of formData content
             for (let [key, value] of newFormData.entries()) {
                 console.log(`${key}: ${value}`);
             }
     
+            // Send form data to the backend
             await axios.post("/event/store", newFormData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
@@ -59,6 +70,7 @@ const CreateEvent = () => {
             // alert("Event created successfully!");
             setSuccessMessage("Event creation request send successfully!");
 
+            // Auto-hide success message after 4 seconds
             setTimeout(() => {
                 setSuccessMessage('');
               }, 4000);
@@ -88,6 +100,7 @@ const CreateEvent = () => {
             <main className="px-3 py-4 container-fluid create-event">
                 <h1 className="mb-4 text-center"><b>Create Event</b></h1>
 
+                {/* Information about event hosting fees */}
                 <p className="event-fee-info text-muted">
                     Hosting an event incurs a fee of Rs. 1000. You can pay this fee after the 
                     manager's approval. Once approved, you can view pending payments for your 
@@ -99,7 +112,10 @@ const CreateEvent = () => {
                     <div className="mt-3 alert alert-success">{successMessage}</div>
                 )}
 
+                {/* Event creation form */}
                 <form onSubmit={handleSubmit} method="POST" action="/event/store" className="event-form">
+                    
+                    {/* Event details section */}
                     <section className="mb-5 event-details">
                         <h2 className="mb-3"><b>1. Event Details</b></h2>
                         <hr />
@@ -147,6 +163,7 @@ const CreateEvent = () => {
                             </div>
                         </div>
 
+                        {/* City and Venue */}
                         <div className="mb-3 row">
                             <div className="mb-3 col-md-6">
                                 <label>City*</label>
@@ -170,6 +187,7 @@ const CreateEvent = () => {
                             </div>
                         </div>
 
+                        {/* Google Maps location */}
                         <div className="mb-3">
                             <label>Location (Google Maps Link)*</label>
                             <input
@@ -185,6 +203,7 @@ const CreateEvent = () => {
                             </button>
                         </div>
 
+                        {/* Agenda PDF */}
                         <div className="mb-3">
                             <label>Agenda (PDF)*</label>
                             <input
@@ -197,6 +216,7 @@ const CreateEvent = () => {
                             />
                         </div>
 
+                         {/* Event Banner Image */}
                         <div className="mb-3">
                             <label>Event Banner*</label>
                             <input
@@ -208,6 +228,7 @@ const CreateEvent = () => {
                             />
                         </div>
 
+                        {/* Optional Event Video */}
                         <div className="mb-3">
                             <label>Event Video</label>
                             <input
@@ -219,6 +240,7 @@ const CreateEvent = () => {
                             />
                         </div>
 
+                         {/* Event Description */}
                         <div className="mb-3">
                             <label>Event Description*</label>
                             <textarea
@@ -230,34 +252,35 @@ const CreateEvent = () => {
                             ></textarea>
                         </div>
 
-
+                        {/* Return policies and organizer */}
                         <div className="mb-3">
-                          
-                        <div className="input-group">
-                            <label>Return Policies*</label>
-                            <textarea
-                                name="return_policies"
-                                placeholder="Enter return policies"
-                                onChange={handleChange}
-                                required
-                            ></textarea>
-                        </div>
+                            <div className="input-group">
+                                <label>Return Policies*</label>
+                                <textarea
+                                    name="return_policies"
+                                    placeholder="Enter return policies"
+                                    onChange={handleChange}
+                                    required
+                                ></textarea>
+                            </div>
 
-                        <div className="input-group">
-                            <label>Event Organizer*</label>
-                            <input
-                                type="text"
-                                name="organizer"
-                                className="form-control"
-                                placeholder="Enter organizer's name"
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-                        
+                            <div className="input-group">
+                                <label>Event Organizer*</label>
+                                <input
+                                    type="text"
+                                    name="organizer"
+                                    className="form-control"
+                                    placeholder="Enter organizer's name"
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
                         </div>
                     </section>
 
+
+                        
+                    {/* Artists section */}
                     <section className="mb-5 artists">
                         <h3 className="mb-3"><b>2. Artists</b></h3>
                         <hr />
@@ -269,6 +292,7 @@ const CreateEvent = () => {
                         </div>
                     </section>
 
+                     {/* Tickets section */}
                     <section className="px-3 py-4 ticket-categories">
                         <div className="mb-3 header-container">
                             <h3>
@@ -360,7 +384,7 @@ const CreateEvent = () => {
                         </div>
                     </section>
 
-
+                     {/* Submit Button */}
                     <div className="text-center">
                         <h4 className="mb-3">Submit event creation request</h4>
                         <button type="submit" className="px-4 py-2 btn btn-primary">
