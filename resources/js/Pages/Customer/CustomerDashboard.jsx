@@ -31,15 +31,15 @@
 //         </div>
 //     );
 // }
-import { Link } from '@inertiajs/react';
+// import { Link } from '@inertiajs/react';
 
-export default function CustomerDashboard() {
-    return (
-        <div>
-            <h1>Customer Dashboard</h1>
-            <Link href="/logout" method="post" as="button">
-                Logout
-            </Link>
-        </div>
-    );
-}
+// export default function CustomerDashboard() {
+//     return (
+//         <div>
+//             <h1>Customer Dashboard</h1>
+//             <Link href="/logout" method="post" as="button">
+//                 Logout
+//             </Link>
+//         </div>
+//     );
+// }

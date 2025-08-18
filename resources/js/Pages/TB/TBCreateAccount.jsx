@@ -5,6 +5,7 @@ import SubFooter from "./../../Components/Footer/SubFooter";
 import { Link, useForm } from "@inertiajs/react";
 
 const TBCreateAccount = () => {
+    // Initialize form state using Inertia's useForm hook
     const { data, setData, post, processing, errors } = useForm({
         name: "",
         email: "",
@@ -14,14 +15,18 @@ const TBCreateAccount = () => {
         role_id: 5, // Assuming 2 represents the role of "Ticket Buyer"
     });
 
+    // Handle input field value changes
     const handleChange = (e) => {
-        setData(e.target.name, e.target.value); 
+        setData(e.target.name, e.target.value); // Update form data state dynamically
     };
 
+    // Handle form submission
     const handleSubmit = (e) => {
-        e.preventDefault();
-        post("/register");
+        e.preventDefault();// Prevent page reload
+        post("/register");// Send POST request to register route
     };
+
+
     return (
         <>
             <header>
@@ -29,10 +34,15 @@ const TBCreateAccount = () => {
             </header>
 
             <main>
+
+                {/* Container for account creation form */}
                 <div className="TB-Loginform-container">
                     <div className="TB-Login-overlay">
                         <h2>Create your Account</h2>
+                        
+                        {/* Registration form */}
                         <form onSubmit={handleSubmit}>
+                           
                             <input
                                 type="text"
                                 name="name"
@@ -99,6 +109,7 @@ const TBCreateAccount = () => {
                                 Continue
                             </button>
 
+                            {/* Link to terms and conditions */}
                             <div className="sign-up">
                                 <small>
                                     {" "}
@@ -111,12 +122,14 @@ const TBCreateAccount = () => {
 
                         <hr className="custom-hr" />
 
+                        {/* Link to login page */}
                         <div className="sign-up">
                             <small>
                                 Already Have an account ?{" "}
                                 <Link href={route("tb.login")}className="custom-link">Sign in</Link>
                             </small>
                         </div>
+                        
                     </div>
                 </div>
             </main>

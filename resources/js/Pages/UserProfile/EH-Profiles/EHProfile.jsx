@@ -3,7 +3,7 @@ import { usePage, useForm,Link } from '@inertiajs/react';
 import TBHeader from '../../../Components/Header/EHHeader';
 import SubFooter from '../../../Components/Footer/SubFooter';
 import profilelogo from '../../../assets/Images/Profile-logo.png';
-import '../profile.scss';
+import '../../../../css/profile2.scss';
 import EHSidebar from './EHSidebar';
 import axios from 'axios';
 import EHHeader from '../../../Components/Header/EHHeader';

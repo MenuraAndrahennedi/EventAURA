@@ -5,13 +5,18 @@ const AdminFooter = () => {
     <>
     <footer className="admin-footer">
      <div className="container">
-        <div className="row justify-content-center align-items-center">
+        
+        {/*  align content horizontally and vertically */}
+        <div className="row justify-content-center align-items-center">{/* Row to align content horizontally and vertically */}
+          
           <div className="col-auto mx-5">
             <h5>© 2025 EventAURA</h5>
           </div>
+
           <div className="col-auto mx-5">
             <h5>© 2025 CODECATALYSTS</h5>
           </div>
+          
         </div>
       </div>
      </footer>

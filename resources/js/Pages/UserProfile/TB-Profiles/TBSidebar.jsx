@@ -1,5 +1,5 @@
 import React from 'react'
-import '../profile.scss';
+import '../../../../css/profile2.scss';
 import { Link, usePage } from '@inertiajs/react';
 
 const TBSidebar = () => {
@@ -8,8 +8,8 @@ console.log("Current URL:", url);
 
   return (
   <main>
-     <div className="card shadow border-0 sidebar">
-        <div className="card-body p-4">
+     <div className="border-0 shadow card sidebar">
+        <div className="p-4 card-body">
                 <ul className="sidebar-menu">
                     <li><Link href='/tb-profile' className={url === '/TBaccount' ? 'active-link' : ''}>Profile Details</Link></li>
                     <li><Link href='/TBPurchaseHistory' className={url === '/TBPurchaseHistory' ? 'active-link' : ''}>Purchase History</Link></li>

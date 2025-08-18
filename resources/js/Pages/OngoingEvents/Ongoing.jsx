@@ -1,11 +1,11 @@
-import React from 'react'
+// import React from 'react'
 
-const Ongoing = () => {
-  return (
-    <div>
-      <h1></h1>Ongoing event pg
-    </div>
-  )
-}
+// const Ongoing = () => {
+//   return (
+//     <div>
+//       <h1></h1>Ongoing event pg
+//     </div>
+//   )
+// }
 
-export default Ongoing
+// export default Ongoing

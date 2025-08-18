@@ -2,69 +2,55 @@ import React, { useEffect, useState,useContext  } from "react";
 import TBHeader from "../../Components/Header/TBHeader";
 import MainFooter from "../../Components/Footer/MainFooter";
 import SubFooter from "../../Components/Footer/SubFooter";
-//import React, { useContext } from "re
 import { CartContext } from "../../../js/contexts/CartContext";
-
 import "../../../css/BuyTickets.scss";
 import { Link } from "@inertiajs/react";
 import axios from "axios";
-
 import SearchBar from "../../Components/SearchBar";
 import HostImage from "../../assets/Logos/HostLogo.png";
 
 const BuyTickets = ({ event }) => {
 
     const [goldenCount, setGoldenCount] = useState(0);
-const [silverCount, setSilverCount] = useState(0);
-const [bronzeCount, setBronzeCount] = useState(0);
-const { cart, updateCart, lockedTickets } = useContext(CartContext);
-const [showReturnPolicy, setShowReturnPolicy] = useState(false);
+    const [silverCount, setSilverCount] = useState(0);
+    const [bronzeCount, setBronzeCount] = useState(0);
+    // Using React context to manage cart and locked ticket states
+  const { cart, updateCart, lockedTickets } = useContext(CartContext);
 
-const handleTicketChange = (type, value) => {
+  // Show/hide modal for return policies
+  const [showReturnPolicy, setShowReturnPolicy] = useState(false);
+
+  /**
+   * Handles ticket count changes
+   * Ensures non-negative count and updates cart context for the current event
+   */
+  const handleTicketChange = (type, value) => {
     const count = Math.max(0, Number(value)); // Ensure non-negative values
 
     if (!event || !event.id) {
         console.error("Error: event or event.id is undefined");
         return;
     }
+    // Update the cart with new ticket count for this event
     updateCart({ [type]: count }, event.id);
+  };
 
-    // updateCart({
-    //     [event.id]: {
-    //         ...cart[event.id],  // Keep existing cart data
-    //         [type]: count
-    //     }
-    // }, event.id);
-     
-     
-   
-};
+  /**
+   * Calculate the total price based on selected ticket counts in cart
+   */
+    const calculateTotal = () => {
+        const eventCart = cart[event.id] || {};
+        return (
+            (eventCart.golden||0) * event.golden_ticket_price +
+            (eventCart.silver ||0) * event.silver_ticket_price +
+            (eventCart.bronze ||0) * event.bronze_ticket_price
+        );
+    };
 
-const calculateTotal = () => {
-    const eventCart = cart[event.id] || {};
-    return (
-        (eventCart.golden||0) * event.golden_ticket_price +
-        (eventCart.silver ||0) * event.silver_ticket_price +
-        (eventCart.bronze ||0) * event.bronze_ticket_price
-    );
-};
 
-// const updateDatabase = async () => {
-//     try {
-//         await axios.post('/update-ticket-count', {
-//             event_id: event.id,
-//             golden_count: goldenCount,
-//             silver_count: silverCount,
-//             bronze_count: bronzeCount, 
-//         });
-//         console.log('Ticket counts updated successfully!');
-//     } catch (error) {
-//         console.error('Error updating ticket counts:', error);
-//     }
-// };
-
-const openReturnPolicy = () => setShowReturnPolicy(true);
-const closeReturnPolicy = () => setShowReturnPolicy(false);
+  // Modal open/close handlers
+    const openReturnPolicy = () => setShowReturnPolicy(true);
+    const closeReturnPolicy = () => setShowReturnPolicy(false);
 
 
 
@@ -73,13 +59,9 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
             <header>
                 <TBHeader />
             </header>
-{/* 
-            // {/*Search Bar */}
-           {/*} // <div className="search-bar-section">
-            //     <SearchBar />
-            // </div> */}
 
-            {/* ticket Section */}
+
+            {/* Event Title Banner */}
             <section className="event-Details">
                 <div className="banner">
                     <h1 className="banner-title">
@@ -91,11 +73,10 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                     View Event Details
                 </Link>
 
+                {/* Event description and meta info */}
                 <div className="event-info">
                     <div className="event-description">
-                        <p>
-                        {event.description} 
-                        </p>
+                        <p>{event.description} </p>
                         <div className="event-meta">
                             <p>
                                 <strong>Date:</strong> {event.date}
@@ -107,6 +88,7 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                                 <strong>Organizer:</strong>{event.organizer}
                             </p>
                             <div className="button-row">
+                                {/* Link to location (Google Maps ) */}
                                 <a
                                     href={event.location}
                                     target="_blank"
@@ -115,9 +97,10 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                                 >
                                     Location
                                 </a>
-                                {/* Download PDF */}
+
+
+                                {/* Download event agenda PDF */}
                                 <a
-                                    
                                     href={`/storage/${event.agenda_pdf}`}
                                     target="_blank" // Open in a new window
                                     rel="noopener noreferrer" // Ensure secure behavior
@@ -125,14 +108,16 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                                 >
                                     Agenda.pdf
                                 </a>{" "}
-                                {/*set the path */}
                             </div>
                         </div>
                     </div>
 
+
+                    {/* Ticket Categories and selection inputs */}
                     <div className="ticket-categories">
                         <h3>Ticket Categories</h3>
 
+                        {/* Golden Ticket */}
                         <div className="ticket-option">
                             <div className="ticket-details">
                                 <span className="ticket-name">
@@ -164,7 +149,9 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
 
                             </div>
                         </div>
+                        
 
+                        {/* Silver Ticket */}
                         <div className="ticket-option">
                             <div className="ticket-details">
                                 <span className="ticket-name">
@@ -196,6 +183,7 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                             </div>
                         </div>
 
+                        {/* Bronze Ticket */}
                         <div className="ticket-option">
                             <div className="ticket-details">
                                 <span className="ticket-name">
@@ -226,17 +214,14 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                             )}
                             </div>
                         </div>
-
-                        {/* <Link to="/TBCart">
-                            <button onClick={updateDatabase} className="add-to-cart">Add to Cart</button>
-                        </Link> */}
                     </div>
                 </div>
                 
 
             </section>
 
-            {/* Cart Details */}
+            
+             {/* Cart summary section */}
             <section className="cart-details">
                 <h3>Cart Details</h3>
                 <table>
@@ -277,29 +262,31 @@ const closeReturnPolicy = () => setShowReturnPolicy(false);
                 </table>
 
                 <div className="event-buttons">
-                    {/* <Link to="/return-policies" className="return-policies">
+                   
+                   {/* Return policy modal toggle */}
+                   <button className="return-policies" onClick={openReturnPolicy}>
                         Return Policies
-                    </Link> */}<button className="return-policies" onClick={openReturnPolicy}>
-    Return Policies
-</button>
-
+                    </button>
+                    
+                    {/* Continue to cart page */}
                     <Link href= {route('buyticketscart',{id:event.id}) } className="tbCart">
                         {" "}
                         Continue
                     </Link>
                 </div>
 
+                {/* Return policy modal */}
                 {showReturnPolicy && (
-    <div className="modal-overlay" onClick={closeReturnPolicy}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-button" onClick={closeReturnPolicy}>×</button>
-            <h2>Return Policies</h2>
-            <p>
-               {event.return_policies}
-            </p>
-        </div>
-    </div>
-)}
+                    <div className="modal-overlay" onClick={closeReturnPolicy}>
+                        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                            <button className="close-button" onClick={closeReturnPolicy}>×</button>
+                            <h2>Return Policies</h2>
+                            <p>
+                            {event.return_policies}
+                            </p>
+                        </div>
+                    </div>
+                )}
             </section>
 
             {/* Contact Host Section */}

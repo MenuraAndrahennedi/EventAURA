@@ -20,6 +20,7 @@ const VerficationPg02 = () => {
 
           <br />
 
+          {/* Verification form */}
           <form>
             <input type="text" placeholder="Email/Username" required /><br />
             <input type="password" placeholder="Password" required />

@@ -5,7 +5,7 @@ import profilelogo from '../../../assets/Logos/Profile-logo.jpg';
 import TBHeader from './../../../Components/Header/TBHeader';
 import TBSidebar from './TBSidebar';
 import SubFooter from './../../../Components/Footer/SubFooter';
-import '../profile.scss';
+import '../../../../css/profile2.scss';
 
 const TBSignOut = () => {
   const { post } = useForm();

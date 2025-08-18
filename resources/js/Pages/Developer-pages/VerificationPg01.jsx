@@ -19,6 +19,7 @@ const VerificationPg01 = () => {
 
             <br />
 
+            {/* Verification form */}
             <form>
               <input type="password" placeholder="Password" required />
               <Link to='/VerificationPg02' className='CustomButton1'>Verify</Link >

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import '../../profile.scss';
+import '../../../../../css/profile2.scss';
 import profilelogo from '../../../../assets/Images/Profile-logo.png';
 import EHHeader from './../../../../Components/Header/EHHeader';
 import EHSidebar from './../EHSidebar';
