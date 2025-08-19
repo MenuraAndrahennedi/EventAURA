@@ -80,23 +80,7 @@ const ManagerChangePW = ({ user,flash }) => {
                       <button type="button" className="btn-close" onClick={() => setSuccessMessage('')} aria-label="Close"></button>
                     </div>
                   )}
-                      {/* <p className="text-center">@username</p>
-
-                      <div className="details-grid">
-                          {/* <div className="detail-label">Full Name:</div> */}
-                          {/* <input type="text" className="form-control" placeholder="Enter Full Name" />
-                          
-                          <div className="detail-label">Email:</div>
-                          <input type="email" className="form-control" placeholder="Enter Email" />
-
-                          <div className="detail-label">Telephone No:</div>
-                          <input type="text" className="form-control" placeholder="Enter Telephone No" />
-                      </div>
-
-                      <div className="text-end">
-                        <button className="mt-3 btn btn-secondary me-2">Cancel</button>
-                        <button className="mt-3 btn btn-primary ">Save Changes</button>
-                      </div> */} 
+                      
                       <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <label className="form-label">Current Password</label>

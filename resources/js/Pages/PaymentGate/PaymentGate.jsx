@@ -99,9 +99,9 @@ const PaymentGate = () => {
   return (
     <>
 
-      <header>
+      {/* <header>
         <TBHeader />
-      </header>
+      </header> */}
 
       <main className="payment-container">
           

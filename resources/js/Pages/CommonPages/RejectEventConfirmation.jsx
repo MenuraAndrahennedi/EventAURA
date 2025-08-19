@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './RejectEventConfirmation.scss';
+import '../../../css/RejectEventConfirmation.scss';
 
 const RejectEventConfirmation = ({
   isOpen,

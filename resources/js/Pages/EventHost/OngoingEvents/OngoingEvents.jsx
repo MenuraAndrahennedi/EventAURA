@@ -9,21 +9,7 @@ import Banner from '../../../assets/Images/banner.png';
 
 const OngoingEvents =({ongoingevents}) => {
 
-  //const { events = [] } = usePage().props; // Ensure events is always an array
-
-
-  //  const [events , setEvents] = useState([]);
-
-  //  useEffect(() => {
-  //   axios.get('/api/events/ongoing')
-  //   .then (response =>{
-  //     setEvents(response.data);
-  //   })
-  //   .catch (error =>{
-  //     console.error("There was an error fetching events" , error);
-
-  //   });
-  // }, []);
+  
   console.log(ongoingevents); // Debugging output // Debugging output
   return (
     <div className="page-wrapper">

@@ -135,39 +135,7 @@ const handleDeleteClick = (user) => {
                                     </tr>
                                 ))}
 
-                                {/* <tr>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>
-                                        <Link to="#" className="ml-5 black-button">
-                                            Download
-                                        </Link>
-                                    </td>
-
-
-                                    <td>
-                                        <Link to="#" className="ml-5 red-button">
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>hello1</td>
-                                    <td>hello1</td>
-                                    <td>hello1</td>
-                                    <td>
-                                        <Link to="#" className="ml-5 black-button">
-                                            Download
-                                        </Link>
-                                    </td>
-
-                                    <td>
-                                        <Link to="#" className="ml-5 red-button">
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr> */}
+                                
 
 
                             </tbody>

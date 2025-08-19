@@ -1,4 +1,3 @@
-
 // General Styles
 .event-details {
   font-family: Arial, sans-serif;
@@ -139,4 +138,26 @@
   }
 }
 
+@media (max-width: 768px) {
+  .info-grid
+   {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
 
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: fixed; /* Fix entire page in place */
+  width: 100%;
+  top: 0;
+  left: 0;
+}

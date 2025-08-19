@@ -1,84 +1,84 @@
-import React from 'react'
-import { Link } from '@inertiajs/react';
-import HeadBar from '../../../Components/Header/EventHistoryHeadBar';
-import '../../../../css/TablePages.scss';
-import AdminFooter from './../../../Components/Footer/AdminFooter';
-import UserHeader from './../../../Components/Header/UserHeader';
+// import React from 'react'
+// import { Link } from '@inertiajs/react';
+// import HeadBar from '../../../Components/Header/EventHistoryHeadBar';
+// import '../../../../css/TablePages.scss';
+// import AdminFooter from './../../../Components/Footer/AdminFooter';
+// import UserHeader from './../../../Components/Header/UserHeader';
 
-{/************Implement the function to select the header of the page based on the
-    user role ids  - manageer, admin, developer*************************/}
+// {/************Implement the function to select the header of the page based on the
+//     user role ids  - manageer, admin, developer*************************/}
 
-{/************Implement the function to select the footer of the page based on the
-    user role manageer, admin, developer*************************/}
-
-
-const PendingPaymentsHistory = () => {
-  return (
-    <>
-    <header>
-        <UserHeader />
-    </header> 
-
-    <main className='main-box'>
-
-        <h1><b>EVENT HISTORY</b></h1>
-        <div className='main-table'>
-            <HeadBar />
-            <div className="table-container">
-                <table className="history-table striped-table">
-                    <thead>
-                        <tr>
-                            <th>Event Name</th>
-                            <th>Amount to be paid</th>
-                            <th></th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <td>hello</td>
-                            <td>hello</td>
+// {/************Implement the function to select the footer of the page based on the
+//     user role manageer, admin, developer*************************/}
 
 
-                            <td>
-                                <Link to="#" className="blue-button">
-                                    Event Report
-                                </Link>
-                            </td>
+// const PendingPaymentsHistory = () => {
+//   return (
+//     <>
+//     <header>
+//         <UserHeader />
+//     </header> 
 
-                        </tr>
-                        <tr>
-                            <td>hello1</td>
-                            <td>hello1</td>
+//     <main className='main-box'>
 
-                            <td>
-                                <Link to="#" className="blue-button">
-                                    Event Report
-                                </Link>
-                            </td>
+//         <h1><b>EVENT HISTORY</b></h1>
+//         <div className='main-table'>
+//             <HeadBar />
+//             <div className="table-container">
+//                 <table className="history-table striped-table">
+//                     <thead>
+//                         <tr>
+//                             <th>Event Name</th>
+//                             <th>Amount to be paid</th>
+//                             <th></th>
 
-                        </tr>
+//                         </tr>
+//                     </thead>
+//                     <tbody>
 
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
+//                         <tr>
+//                             <td>hello</td>
+//                             <td>hello</td>
 
 
+//                             <td>
+//                                 <Link to="#" className="blue-button">
+//                                     Event Report
+//                                 </Link>
+//                             </td>
 
-    </main>
+//                         </tr>
+//                         <tr>
+//                             <td>hello1</td>
+//                             <td>hello1</td>
+
+//                             <td>
+//                                 <Link to="#" className="blue-button">
+//                                     Event Report
+//                                 </Link>
+//                             </td>
+
+//                         </tr>
+
+//                     </tbody>
+//                 </table>
+//             </div>
+
+//         </div>
 
 
 
-    <footer>
-        <AdminFooter />
-    </footer> 
-</>
+//     </main>
 
 
-  )
-}
 
-export default PendingPaymentsHistory
+//     <footer>
+//         <AdminFooter />
+//     </footer> 
+// </>
+
+
+//   )
+// }
+
+// export default PendingPaymentsHistory
