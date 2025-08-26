@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react';
 import { Link } from '@inertiajs/react';
 import axios from 'axios';
-import './ViewEvent.scss';
+import '../../../../css/ViewEvent.scss';
 import MainFooter from './../../../Components/Footer/MainFooter';
 import EHHeader from './../../../Components/Header/EHHeader';
 import EventDeletionReason from './EventDeletionReason'; 

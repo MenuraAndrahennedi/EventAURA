@@ -1,7 +1,7 @@
 import React,{ useEffect, useState } from 'react';
 import { Link ,usePage} from '@inertiajs/react';
 import axios from 'axios';
-import './ViewEvent.scss';
+import '../../../../css/ViewEvent.scss';
 import AdminFooter from '../../../Components/Footer/AdminFooter';
 import UserHeader from '../../../Components/Header/UserHeader';
 

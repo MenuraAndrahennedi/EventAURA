@@ -1,167 +1,167 @@
-import React from 'react'
-import { Link } from '@inertiajs/react';
-import '../../../css/TablePages.scss';
-import UserHeader from '@/Components/Header/UserHeader';
-import AdminFooter from './../../Components/Footer/AdminFooter';
+// import React from 'react'
+// import { Link } from '@inertiajs/react';
+// import '../../../css/TablePages.scss';
+// import UserHeader from '@/Components/Header/UserHeader';
+// import AdminFooter from './../../Components/Footer/AdminFooter';
 
-const EHUserDetails = () => {
-  return (
-    <div className="page-wrapper d-flex flex-column min-vh-100">
-      <header>
-        <UserHeader />
-      </header>
+// const EHUserDetails = () => {
+//   return (
+//     <div className="page-wrapper d-flex flex-column min-vh-100">
+//       <header>
+//         <UserHeader />
+//       </header>
 
-      <main className='main-box'>
+//       <main className='main-box'>
 
-                <h1><b>EVENT HOSTS</b></h1>
-                <div className='main-table'>
-                    <div className="table-container">
-                        <table className="review-table striped-table">
-                            <thead>
-                                <tr>
-                                    <th>User</th>
-                                    <th>Email</th>
-                                    <th>Contact Number</th>
-                                    <th>History</th>
-                                    <th>Delete User</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+//                 <h1><b>EVENT HOSTS</b></h1>
+//                 <div className='main-table'>
+//                     <div className="table-container">
+//                         <table className="review-table striped-table">
+//                             <thead>
+//                                 <tr>
+//                                     <th>User</th>
+//                                     <th>Email</th>
+//                                     <th>Contact Number</th>
+//                                     <th>History</th>
+//                                     <th>Delete User</th>
+//                                 </tr>
+//                             </thead>
+//                             <tbody>
 
-                                <tr>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td><Link to="#" className="ml-5 black-button">
-                                        Download
-                                    </Link>
-                                    </td>
-
-
-                                    <td>
-                                        <Link to="#" className="ml-5 red-button">
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>hello1</td>
-                                    <td>hello1</td>
-                                    <td>hello1</td>
-                                    <td><Link to="#" className="ml-5 black-button">
-                                        Download
-                                    </Link>
-                                    </td>
-
-                                    <td>
-                                        <Link to="#" className="ml-5 red-button">
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
+//                                 <tr>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td><Link to="#" className="ml-5 black-button">
+//                                         Download
+//                                     </Link>
+//                                     </td>
 
 
-                                    <td>
-                                        <Link to="#" className="ml-5 red-button">
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
+//                                     <td>
+//                                         <Link to="#" className="ml-5 red-button">
+//                                             Delete
+//                                         </Link>
+//                                     </td>
+//                                 </tr>
+//                                 <tr>
+//                                     <td>hello1</td>
+//                                     <td>hello1</td>
+//                                     <td>hello1</td>
+//                                     <td><Link to="#" className="ml-5 black-button">
+//                                         Download
+//                                     </Link>
+//                                     </td>
+
+//                                     <td>
+//                                         <Link to="#" className="ml-5 red-button">
+//                                             Delete
+//                                         </Link>
+//                                     </td>
+//                                 </tr>
+//                                 <tr>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
 
 
-                                    <td>
-                                        <Link to="#" className="ml-5 red-button">
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
+//                                     <td>
+//                                         <Link to="#" className="ml-5 red-button">
+//                                             Delete
+//                                         </Link>
+//                                     </td>
+//                                 </tr>
+//                                 <tr>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
 
 
-                                    <td>
-
-                                        <Link to="#" className="ml-5 red-button">
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
-
-
-                                    <td>
-
-                                        <Link to="#" className="ml-5 red-button">
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
+//                                     <td>
+//                                         <Link to="#" className="ml-5 red-button">
+//                                             Delete
+//                                         </Link>
+//                                     </td>
+//                                 </tr>
+//                                 <tr>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
 
 
-                                    <td>
+//                                     <td>
 
-                                        <Link to="#" className="ml-5 red-button">
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
-                                    <td>hello</td>
-
-
-                                    <td>
-
-                                        <Link to="#" className="ml-5 red-button">
-                                            Delete
-                                        </Link>
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
+//                                         <Link to="#" className="ml-5 red-button">
+//                                             Delete
+//                                         </Link>
+//                                     </td>
+//                                 </tr>
+//                                 <tr>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
 
 
+//                                     <td>
 
-            </main>
+//                                         <Link to="#" className="ml-5 red-button">
+//                                             Delete
+//                                         </Link>
+//                                     </td>
+//                                 </tr>
+//                                 <tr>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+
+
+//                                     <td>
+
+//                                         <Link to="#" className="ml-5 red-button">
+//                                             Delete
+//                                         </Link>
+//                                     </td>
+//                                 </tr>
+//                                 <tr>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+//                                     <td>hello</td>
+
+
+//                                     <td>
+
+//                                         <Link to="#" className="ml-5 red-button">
+//                                             Delete
+//                                         </Link>
+//                                     </td>
+//                                 </tr>
+
+//                             </tbody>
+//                         </table>
+//                     </div>
+
+//                 </div>
 
 
 
-            <footer>
-                <AdminFooter />
-            </footer> 
-        </div>
+//             </main>
+
+
+
+//             <footer>
+//                 <AdminFooter />
+//             </footer> 
+//         </div>
 
 
   
-  )
-}
+//   )
+// }
 
-export default EHUserDetails
+// export default EHUserDetails

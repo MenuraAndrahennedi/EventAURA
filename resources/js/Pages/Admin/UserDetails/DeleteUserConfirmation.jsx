@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../CommonPages/RejectEventConfirmation.scss';
+import '../../../../css/RejectEventConfirmation.scss';
 
 const DeleteUserConfirmation = ({
   isOpen,
