@@ -22,7 +22,7 @@ const CreateEvent = () => {
     // Handle input changes for text, file, and other inputs
     const handleChange = (e) => {
         const { name, value, files } = e.target;
-        
+
         // If file input, store the first file in FormData
         if (files && files.length > 0) {
             formData.set(name, files[0]);
@@ -35,60 +35,67 @@ const CreateEvent = () => {
 
     const handleLocationClick = () => {
         // Open Google Maps to let the user pick a location
-        const mapUrl = "https://www.google.com/maps/search/?api=1&query=40.748817,-73.985428"; // Placeholder location
+        const mapUrl =
+            "https://www.google.com/maps/search/?api=1&query=40.748817,-73.985428"; // Placeholder location
         window.open(mapUrl, "_blank", "width=800,height=600");
     };
 
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
-         // Create a fresh FormData to combine artists and other fields
+
+        // Create a fresh FormData to combine artists and other fields
         const newFormData = new FormData();
-         // Append artist IDs to form data
-         selectedArtists.forEach((artist) => {
+        // Append artist IDs to form data
+        selectedArtists.forEach((artist) => {
             newFormData.append("artists[]", artist.id);
         });
-    
+
         // Append all other form fields
         for (let [key, value] of formData.entries()) {
             newFormData.append(key, value); // Ensure previously set fields are included
         }
-    
+
         try {
             /// Debug log of formData content
             for (let [key, value] of newFormData.entries()) {
                 console.log(`${key}: ${value}`);
             }
-    
+
             // Send form data to the backend
             await axios.post("/event/store", newFormData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
-    
 
             // alert("Event created successfully!");
             setSuccessMessage("Event creation request send successfully!");
 
+            // Scroll to the top to show the message
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+            // Reset form state (you already do this)
+            setFormData(new FormData());
+            setSelectedArtists([]);
+            setLocation("");
+            document.querySelector("form").reset();
+
             // Auto-hide success message after 4 seconds
             setTimeout(() => {
-                setSuccessMessage('');
-              }, 4000);
+                setSuccessMessage("");
+            }, 10000);
 
-             // Reset form state
+            // Reset form state
             setFormData(new FormData());
             setSelectedArtists([]);
             setLocation("");
 
             // Reset the form element visually
-        document.querySelector("form").reset();
-        
+            document.querySelector("form").reset();
         } catch (error) {
             console.error(error.response.data);
             alert("Error creating event.");
         }
     };
-    
 
     return (
         <>
@@ -98,26 +105,37 @@ const CreateEvent = () => {
 
             {/*form */}
             <main className="px-3 py-4 container-fluid create-event">
-                <h1 className="mb-4 text-center"><b>Create Event</b></h1>
+                <h1 className="mb-4 text-center">
+                    <b>Create Event</b>
+                </h1>
 
                 {/* Information about event hosting fees */}
                 <p className="event-fee-info text-muted">
-                    Hosting an event incurs a fee of Rs. 1000. You can pay this fee after the 
-                    manager's approval. Once approved, you can view pending payments for your 
-                    hosted events on your profile's "Pending Payments" page. We will send you an 
-                    email after approval. Thank you for choosing us!
+                    Hosting an event incurs a fee of Rs. 1000. You can pay this
+                    fee after the manager's approval. Once approved, you can
+                    view pending payments for your hosted events on your
+                    profile's "Pending Payments" page. We will send you an email
+                    after approval. Thank you for choosing us!
                 </p>
 
                 {successMessage && (
-                    <div className="mt-3 alert alert-success">{successMessage}</div>
+                    <div className="mt-3 alert alert-success">
+                        {successMessage}
+                    </div>
                 )}
 
                 {/* Event creation form */}
-                <form onSubmit={handleSubmit} method="POST" action="/event/store" className="event-form">
-                    
+                <form
+                    onSubmit={handleSubmit}
+                    method="POST"
+                    action="/event/store"
+                    className="event-form"
+                >
                     {/* Event details section */}
                     <section className="mb-5 event-details">
-                        <h2 className="mb-3"><b>1. Event Details</b></h2>
+                        <h2 className="mb-3">
+                            <b>1. Event Details</b>
+                        </h2>
                         <hr />
 
                         <div className="mb-3">
@@ -198,7 +216,11 @@ const CreateEvent = () => {
                                 onChange={handleChange}
                                 required
                             />
-                            <button type="button" onClick={handleLocationClick} className="mt-2 btn btn-outline-primary">
+                            <button
+                                type="button"
+                                onClick={handleLocationClick}
+                                className="mt-2 btn btn-outline-primary"
+                            >
                                 Pick from Google Maps
                             </button>
                         </div>
@@ -216,7 +238,7 @@ const CreateEvent = () => {
                             />
                         </div>
 
-                         {/* Event Banner Image */}
+                        {/* Event Banner Image */}
                         <div className="mb-3">
                             <label>Event Banner*</label>
                             <input
@@ -240,7 +262,7 @@ const CreateEvent = () => {
                             />
                         </div>
 
-                         {/* Event Description */}
+                        {/* Event Description */}
                         <div className="mb-3">
                             <label>Event Description*</label>
                             <textarea
@@ -278,11 +300,11 @@ const CreateEvent = () => {
                         </div>
                     </section>
 
-
-                        
                     {/* Artists section */}
                     <section className="mb-5 artists">
-                        <h3 className="mb-3"><b>2. Artists</b></h3>
+                        <h3 className="mb-3">
+                            <b>2. Artists</b>
+                        </h3>
                         <hr />
                         <div className="artist-input-container">
                             <ArtistInput
@@ -292,7 +314,7 @@ const CreateEvent = () => {
                         </div>
                     </section>
 
-                     {/* Tickets section */}
+                    {/* Tickets section */}
                     <section className="px-3 py-4 ticket-categories">
                         <div className="mb-3 header-container">
                             <h3>
@@ -306,7 +328,9 @@ const CreateEvent = () => {
                         <div className="ticket-types w-100">
                             {/* Golden Tickets */}
                             <div className="mb-4">
-                                <label className="form-label fw-medium">Golden Tickets</label>
+                                <label className="form-label fw-medium">
+                                    Golden Tickets
+                                </label>
                                 <div className="row g-3 ">
                                     <div className="col-12 col-sm-6">
                                         <input
@@ -332,7 +356,9 @@ const CreateEvent = () => {
 
                             {/* Silver Tickets */}
                             <div className="mb-4">
-                                <label className="form-label fw-medium">Silver Tickets</label>
+                                <label className="form-label fw-medium">
+                                    Silver Tickets
+                                </label>
                                 <div className="row g-3 ">
                                     <div className="col-12 col-sm-6">
                                         <input
@@ -358,7 +384,9 @@ const CreateEvent = () => {
 
                             {/* Bronze Tickets */}
                             <div className="mb-4">
-                                <label className="form-label fw-medium">Bronze Tickets</label>
+                                <label className="form-label fw-medium">
+                                    Bronze Tickets
+                                </label>
                                 <div className="row g-3 ">
                                     <div className="col-12 col-sm-6">
                                         <input
@@ -384,10 +412,13 @@ const CreateEvent = () => {
                         </div>
                     </section>
 
-                     {/* Submit Button */}
+                    {/* Submit Button */}
                     <div className="text-center">
                         <h4 className="mb-3">Submit event creation request</h4>
-                        <button type="submit" className="px-4 py-2 btn btn-primary">
+                        <button
+                            type="submit"
+                            className="px-4 py-2 btn btn-primary"
+                        >
                             Submit
                         </button>
                     </div>
@@ -398,9 +429,9 @@ const CreateEvent = () => {
                 <SubFooter />
             </footer>
 
-              {/* Success Message Styles */}
-      <style>
-        {`
+            {/* Success Message Styles */}
+            <style>
+                {`
           .success-message {
             position: fixed;
             top: 20px;
@@ -416,10 +447,9 @@ const CreateEvent = () => {
             transition: opacity 0.5s ease-in-out;
           }
         `}
-      </style> 
+            </style>
         </>
     );
 };
-
 
 export default CreateEvent;

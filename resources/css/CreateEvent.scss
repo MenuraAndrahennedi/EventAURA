@@ -5,483 +5,551 @@
     padding: 20px;
     background-color: #ffffff;
     //background-color:#f2f6f7;
-  
+
     h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
+        font-size: 2em;
+        margin-bottom: 20px;
     }
-  
+
     .event-form {
-      width: 80%;
-      max-width: 800px;
-      //background-color: #a0a3a5;
-      background-color:#e1ecee;
-      padding: 30px;
-      border-radius: 10px;
-      color: #333;
-  
-      
-      .event-details {
-        display: flex;
-        flex-direction: column;
-    
+        width: 80%;
+        max-width: 800px;
+        //background-color: #a0a3a5;
+        background-color: #e1ecee;
+        padding: 30px;
+        border-radius: 10px;
+        color: #333;
+
+        .event-details {
+            display: flex;
+            flex-direction: column;
+
+            .header-container {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+
+                h2 {
+                    font-size: 1.5em;
+                    margin: 0;
+                    padding-right: 10px;
+                }
+            }
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            input,
+            textarea,
+            button {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: none;
+                border-radius: 5px;
+            }
+
+            .horizontal-group {
+                display: flex;
+                gap: 10px;
+
+                & > div {
+                    flex: 1;
+                }
+                .artists {
+                    margin-top: 20px;
+                    width: 100%;
+                    background-color: #f9f9f9;
+                    padding: 15px;
+                    border-radius: 10px;
+                    border: 1px solid #ddd;
+
+                    .header-container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        h3 {
+                            font-size: 1.8rem;
+                            color: #333;
+                            margin: 0;
+                        }
+                    }
+
+                    hr {
+                        margin: 10px 0;
+                        border: none;
+                        border-top: 1px solid #ccc;
+                    }
+
+                    .artist-input-container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+
+                        input {
+                            padding: 10px;
+                            border: 1px solid #ddd;
+                            border-radius: 5px;
+                            font-size: 1rem;
+                        }
+
+                        .add-artist-btn {
+                            padding: 10px 20px;
+                            background-color: #48cae4;
+                            color: white;
+                            font-weight: bold;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            transition: background-color 0.3s ease;
+
+                            &:hover {
+                                background-color: #0056b3;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .artists {
+        margin-top: 20px;
+        width: 100%;
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+
         .header-container {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
-    
-            h2 {
-                font-size: 1.5em;
+            justify-content: space-between;
+
+            h3 {
+                font-size: 1.8rem;
+                color: #333;
                 margin: 0;
-                padding-right: 10px;
             }
-      }
-    
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
         }
-    
-        input, textarea, button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
+
+        hr {
+            margin: 10px 0;
             border: none;
-            border-radius: 5px;
+            border-top: 1px solid #ccc;
         }
-    
-        .horizontal-group {
+
+        .artist-input-container {
             display: flex;
+            flex-direction: column;
             gap: 10px;
-    
-            & > div {
-                flex: 1;
+
+            input {
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 1rem;
             }
-             .artists {
-        margin-top: 20px;
-        width: 100%;
-        background-color: #f9f9f9;
-        padding: 15px;
-        border-radius: 10px;
+
+            .add-artist-btn {
+                padding: 10px 20px;
+                background-color: #48cae4;
+                color: white;
+                font-weight: bold;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: #0056b3;
+                }
+            }
+        }
+    }
+}
+
+/* Add New button bold */
+.add-new-btn {
+    background-color: #b7b7b7; /* Bootstrap blue */
+    color: #000000; /* White text */
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Existing Artists heading */
+.existing-artists-title {
+    font-weight: bold;
+    margin: 3px 0;
+}
+
+/* Optional spacing */
+.existing-artists {
+    margin-top: 10px;
+}
+
+/* Hover effect for search results */
+.artist-item {
+    padding: 6px;
+    cursor: pointer;
+    &:hover {
+        background-color: #e6ffe6; /* light green background */
+        color: green; /* green text */
+    }
+}
+
+/* Selected Artists heading bold */
+.selected-artists-title {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Clear separation for selected artists */
+.selected-artists-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .selected-artist {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 10px;
+        margin-bottom: 6px;
         border: 1px solid #ddd;
-    
-        .header-container {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-    
-          h3 {
-            font-size: 1.8rem;
-            color: #333;
-            margin: 0;
-          }
-        }
-    
-        hr {
-          margin: 10px 0;
-          border: none;
-          border-top: 1px solid #ccc;
-        }
-    
-        .artist-input-container {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-    
-          input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-          }
-    
-          .add-artist-btn {
-            padding: 10px 20px;
-            background-color: #48CAE4;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-    
-            &:hover {
-              background-color: #0056b3;
-            }
-          }
-        }
-      }
+        border-radius: 4px;
+        background: #fafafa;
     }
-      }
-      
-      }
-      .artists {
-        margin-top: 20px;
-        width: 100%;
-        background-color: #f9f9f9;
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid #ddd;
-    
-        .header-container {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-    
-          h3 {
-            font-size: 1.8rem;
-            color: #333;
-            margin: 0;
-          }
-        }
-    
-        hr {
-          margin: 10px 0;
-          border: none;
-          border-top: 1px solid #ccc;
-        }
-    
-        .artist-input-container {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-    
-          input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-          }
-    
-          .add-artist-btn {
-            padding: 10px 20px;
-            background-color: #48CAE4;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-    
-            &:hover {
-              background-color: #0056b3;
-            }
-          }
-        }
-      }
-    
-     
-    
-    }
-    .button-row {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-    
-    .button-link {
-      padding: 10px 20px;
-      background-color: rgb(225, 220, 220);
-      color: black;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    
-    .event-buttons {
-      display: flex;               
-      justify-content: center;     
-      align-items: center;         
-      margin-top: 20px;
+}
 
-    }
-    
-    .date-input {
-      display: flex;
-      flex-direction: column;
-      margin-right: 20rem;
-      margin-bottom: 0.6rem;;
-    }
-    
-    .time-inputs {
-      display: flex;
-      gap: 1rem;
-     
-    }
-    
-    .start-time, .end-time {
-      display: flex;
-      flex-direction: column;
-    }
+/* Remove button red */
+.remove-btn {
+    color: red;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
 
-    .city-input, .venue-input {
-      display: flex;
-      flex-direction: column;
+    &:hover {
+        text-decoration: underline;
     }
+}
 
-    .city-input {
-      margin-right: 15rem; 
-    }
-    .venue-input{
-      margin-right: 4.5rem;
-    }
-    
-    label {
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-      text-align: left;
-      display: block;
-    }
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
 
-   
-    .file-upload {
-      display: flex;
-      align-items: center; 
-      gap: 0.5rem; 
-      margin-bottom: 0.2rem;
-      margin-top: 0.5rem;
-      justify-content: flex-start; 
-      width: 100%; 
-    }
-    
-    input[type="file"] {
-      padding: 0.5rem;
-    }
-    
-    input[type="text"] {
-      width: 100%; 
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .file-upload input {
-      margin-right: 22rem; /* Reduce space between input and button */
-    }
-    .upload-btn {
-      padding: 0.5rem 1rem;
-      background-color: #48CAE4;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 5px;
-    }
-    
-    .upload-btn:hover {
-      background-color: #0056b3;
-    }
-    .input-group {
-      display: flex;
-      /*justify-content: space-between; */
-      margin-bottom: 1rem; 
-      align-items: flex-start;
-    }
+.button-link {
+    padding: 10px 20px;
+    background-color: rgb(225, 220, 220);
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
 
-    .artist-section {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem; 
-      justify-content: flex-start; 
-      width: 100%;
-    }
-    .add-artist, .remove-artist {
-      padding: 0.5rem 1rem;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 5px;
-    }
-    .add-artist {
-      background-color: #48CAE4; 
-    }
-    
-    .remove-artist {
-      background-color: #333; 
-    }
-    .add-artist:hover, .remove-artist:hover {
-      background-color: #0056b3;
-    }
-    .ticket-categories {
-      padding: 1rem;
-    }
-    
-    .header-container {
-      margin-bottom: 0.5rem;
-    }
-    
-    .ticket-types {
-      display: flex;
-      justify-content: space-between; 
-      gap: 1rem;
-    }
-    
-    .ticket-types div {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-    }
-    
-    .ticket-types label {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-    
-    .ticket-inputs {
-      display: flex;
-      flex-direction: column; 
-      gap: 0.5rem;
-    }
-    
-    .ticket-inputs input[type="number"] {
-      padding: 0.5rem;
-      width: 80px; 
-    }
-    
-    button[type="button"] {
-      padding: 0.5rem 1rem;
-      background-color: #48CAE4;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 5px;
-      margin-top: 1rem;
-      transition: background-color 0.3s ease;
-    }
-    
-    button[type="button"]:hover {
-      background-color: #0056b3;
-    }
-    
-    .center-content {
-      text-align: center;
-      font-weight: bold;
-      font-style:italic;
-    }
-    
-    .submit-btn {
-      padding: 0.5rem 1rem;
-      background-color: #333;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 5px;
-      margin-top: 1rem;
-      transition: background-color 0.3s ease;
-    }
-    
-    .submit-btn:hover {
-      background-color: #48CAE4;
-    }
-    
-    .submit-btn:active {
-      background-color: #48CAE4;
-    }
-    
-    .file-input-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .file-display {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .file-button {
-      padding: 8px 12px;
-      background: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    
-    .file-info {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #f8f8f8;
-      padding: 6px 12px;
-      border-radius: 4px;
-    }
-    
-    .remove-file {
-      background: none;
-      border: none;
-      color: #ff4444;
-      font-size: 1.2em;
-      cursor: pointer;
-      padding: 0 5px;
-    }
-    
-    .remove-file:hover {
-      color: #cc0000;
-    }
-    
-    .file-name {
-      max-width: 200px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    
-    .event-fee-info {
-      background-color: #fffae6;  // Light yellow background to grab attention
-      border-left: 5px solid #ffa500;  // Orange left border for emphasis
-      padding: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      color: #333;  // Dark text for readability
-      margin-bottom: 20px;
-      border-radius: 5px;
-      text-align: center;
-  }
-  
-  /*footer {
+.event-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.date-input {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20rem;
+    margin-bottom: 0.6rem;
+}
+
+.time-inputs {
+    display: flex;
+    gap: 1rem;
+}
+
+.start-time,
+.end-time {
+    display: flex;
+    flex-direction: column;
+}
+
+.city-input,
+.venue-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.city-input {
+    margin-right: 15rem;
+}
+.venue-input {
+    margin-right: 4.5rem;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    text-align: left;
+    display: block;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+input[type="file"] {
+    padding: 0.5rem;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.file-upload input {
+    margin-right: 22rem; /* Reduce space between input and button */
+}
+.upload-btn {
+    padding: 0.5rem 1rem;
+    background-color: #48cae4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.upload-btn:hover {
+    background-color: #0056b3;
+}
+.input-group {
+    display: flex;
+    /*justify-content: space-between; */
+    margin-bottom: 1rem;
+    align-items: flex-start;
+}
+
+.artist-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    width: 100%;
+}
+.add-artist,
+.remove-artist {
+    padding: 0.5rem 1rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.add-artist {
+    background-color: #48cae4;
+}
+
+.remove-artist {
+    background-color: #333;
+}
+.add-artist:hover,
+.remove-artist:hover {
+    background-color: #0056b3;
+}
+.ticket-categories {
+    padding: 1rem;
+}
+
+.header-container {
+    margin-bottom: 0.5rem;
+}
+
+.ticket-types {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.ticket-types div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.ticket-types label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.ticket-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ticket-inputs input[type="number"] {
+    padding: 0.5rem;
+    width: 80px;
+}
+
+button[type="button"] {
+    padding: 0.5rem 1rem;
+    background-color: #48cae4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+.center-content {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.submit-btn {
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #48cae4;
+}
+
+.submit-btn:active {
+    background-color: #48cae4;
+}
+
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-button {
+    padding: 8px 12px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8f8f8;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.remove-file {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.remove-file:hover {
+    color: #cc0000;
+}
+
+.file-name {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.event-fee-info {
+    background-color: #fffae6; // Light yellow background to grab attention
+    border-left: 5px solid #ffa500; // Orange left border for emphasis
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333; // Dark text for readability
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/*footer {
     position: absolute;
     bottom: 100;
     width: 100%;
   }*/
 
-  
-    .ticket-categories {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-  
-    @media (max-width: 576px) {
-      .ticket-categories .row {
+.ticket-categories {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media (max-width: 576px) {
+    .ticket-categories .row {
         flex-direction: column !important;
-      }
-  
-      .ticket-categories input {
+    }
+
+    .ticket-categories input {
         width: 100% !important;
-      }
     }
-  
-    .ticket-types {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0rem;
-      justify-content: space-between;
-    }
-    
-    .ticket-types > div {
-      flex: 1 1 250px;
-    }
-    
+}
+
+.ticket-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0rem;
+    justify-content: space-between;
+}
+
+.ticket-types > div {
+    flex: 1 1 250px;
+}
+
+.ticket-inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+@media (max-width: 576px) {
     .ticket-inputs {
-      display: flex;
-      flex-direction: row;
-      gap: 0.5rem;
-    }
-    
-    @media (max-width: 576px) {
-      .ticket-inputs {
         flex-direction: column;
-      }
     }
-    
+}

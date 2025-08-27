@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import '../../../css/ArtistInput.scss';
+import "../../../css/ArtistInput.scss";
 
-const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
+const ArtistInput = ({ selectedArtists, setSelectedArtists }) => {
     // State for search term input
     const [searchTerm, setSearchTerm] = useState("");
     // State for storing search results from API
@@ -12,12 +12,11 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
         name: "",
         role: "",
         bio: "",
-       
     });
     // Toggle between search mode and add-new mode
     const [isAddingNew, setIsAddingNew] = useState(false);
 
-     /**
+    /**
      * Handle search input change
      * - Updates searchTerm
      * - Sends a request to the API to get matching artists
@@ -55,7 +54,6 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
         setSearchResults([]);
     };
 
-    
     /**
      * Handle changes in the "Add New Artist" form
      * - Updates form state based on input fields
@@ -70,7 +68,6 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
         }
     };
 
-    
     /**
      * Save new artist to backend
      * - Submits FormData to handle file uploads if needed
@@ -91,27 +88,26 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
 
             const addedArtist = response.data;
             setSelectedArtists([...selectedArtists, addedArtist]);
-            setNewArtist({ name: "", role: "", bio: ""});
+            setNewArtist({ name: "", role: "", bio: "" });
             setIsAddingNew(false);
         } catch (error) {
             console.error("Error adding new artist", error);
         }
     };
 
-    
     /**
      * Remove an artist from the selected list
      * - Filters out the artist by id
      */
     const handleRemoveArtist = (id) => {
-        setSelectedArtists(selectedArtists.filter((artist) => artist.id !== id));
+        setSelectedArtists(
+            selectedArtists.filter((artist) => artist.id !== id)
+        );
     };
 
     return (
         <div className="artist-input">
-            <div className="header-container">
-            {/* <h3></h3> */}
-            </div>
+            <div className="header-container">{/* <h3></h3> */}</div>
 
             {/* Display Search or Add New Artist form */}
             {!isAddingNew ? (
@@ -120,47 +116,46 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
                     <div className="add-artist-form">
                         <input
                             type="text"
-                            placeholder="Search or add a new artist"
+                            placeholder="Search artists"
                             value={searchTerm}
                             onChange={handleSearch}
                         />
                         {/* Show "Add New" button when search term exists */}
-                        {searchTerm && (
-                                <button onClick={() => setIsAddingNew(true)}>
-                                    Add New
-                                </button>
-                            )}
+                        {
+                            <button
+                                className="add-new-btn"
+                                onClick={() => setIsAddingNew(true)}
+                            >
+                                Add Newest Artist
+                            </button>
+                        }
                     </div>
 
                     {/* Search results list */}
-                    <ul>
-                        {searchResults.map((artist) => (
-                            <li
-                                key={artist.id}
-                                className="artist-item"
-                                onClick={() => handleSelectArtist(artist)}>
-                                <span className="artist-name">
-                                    {artist.name} ({artist.role})
-                                </span>
-                            </li>
-                        ))}
-
-                        {/* If no results found, allow adding as new artist */}
-                        {searchTerm && searchResults.length === 0 && (
-                            <li
-                                className="artist-item"
-                                style={{ color: "blue", cursor: "pointer" }}
-                                onClick={() => setIsAddingNew(true)}
-                            >
-                                Add "{searchTerm}" as a new artist
-                            </li>
-                        )}
-                    </ul>
+                    {searchResults.length > 0 && (
+                        <div className="existing-artists">
+                            <h4 className="existing-artists-title">
+                                Add from existing artists:
+                            </h4>
+                            <ul>
+                                {searchResults.map((artist) => (
+                                    <li
+                                        key={artist.id}
+                                        className="artist-item"
+                                        onClick={() =>
+                                            handleSelectArtist(artist)
+                                        }
+                                    >
+                                        <span className="artist-name">
+                                            {artist.name} ({artist.role})
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </>
-
-
-                ) : (
-
+            ) : (
                 // Add new artist form
                 <div className="add-artist-form">
                     <input
@@ -185,26 +180,37 @@ const ArtistInput = ({ selectedArtists ,setSelectedArtists }) => {
                     ></textarea>
 
                     <div className="button-group">
-                    <button onClick={handleAddNewArtist}>Save Artist</button>
-                    <button className="cancel-btn" onClick={() => setIsAddingNew(false)}>Cancel</button>
+                        <button onClick={handleAddNewArtist}>
+                            Save Artist
+                        </button>
+                        <button
+                            className="cancel-btn"
+                            onClick={() => setIsAddingNew(false)}
+                        >
+                            Cancel
+                        </button>
                     </div>
                 </div>
             )}
 
             {/* Display selected artists list */}
             <div>
-                <h4>Selected Artists:</h4>
-                <ul>
+                <h4 className="selected-artists-title">Selected Artists:</h4>
+                <ul className="selected-artists-list">
                     {selectedArtists.map((artist) => (
-                        <li key={artist.id} className="artist-item">
+                        <li
+                            key={artist.id}
+                            className="artist-item selected-artist"
+                        >
                             <span className="artist-name">
-                            {artist.name} ({artist.role})
+                                {artist.name} ({artist.role})
                             </span>
-                            <div>
-                            <button onClick={() => handleRemoveArtist(artist.id)}>
+                            <button
+                                className="remove-btn"
+                                onClick={() => handleRemoveArtist(artist.id)}
+                            >
                                 Remove
                             </button>
-                            </div>
                         </li>
                     ))}
                 </ul>
