@@ -168,10 +168,11 @@ const CreateEvent = () => {
                                     name="startTime"
                                     className="form-control"
                                     onChange={handleChange}
+                                    required
                                 />
                             </div>
                             <div className="mb-3 col-md-3">
-                                <label>End Time*</label>
+                                <label>End Time</label>
                                 <input
                                     type="time"
                                     name="endTime"
@@ -227,14 +228,13 @@ const CreateEvent = () => {
 
                         {/* Agenda PDF */}
                         <div className="mb-3">
-                            <label>Agenda (PDF)*</label>
+                            <label>Agenda (PDF)</label>
                             <input
                                 type="file"
                                 name="agenda_pdf"
                                 accept=".pdf"
                                 className="form-control"
                                 onChange={handleChange}
-                                required
                             />
                         </div>
 

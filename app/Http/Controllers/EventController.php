@@ -1,31 +1,21 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
-use App\Models\Artist;
-use App\Models\Click;
-use App\Models\StripePayment;
-use PDF;
-use Illuminate\Support\Facades\Storage;
-use Carbon\Carbon;
-use App\Models\EventDeletionRequest;
 use App\Mail\EventApprovedMail;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Auth;
-
-use Illuminate\Support\Facades\Session;
-use App\Mail\HostContactMail;
 use App\Mail\EventCreationNotification;
-
-
-
-
-
-
+use App\Mail\HostContactMail;
+use App\Models\Event;
+use App\Models\EventDeletionRequest;
+use App\Models\StripePayment;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
+use PDF;
 
 class EventController extends Controller
 {
@@ -42,85 +32,84 @@ class EventController extends Controller
      */
     public function create()
     {
-        if(!Auth::check()){
-           return redirect()->route('eh.login');
-         }
+        if (! Auth::check()) {
+            return redirect()->route('eh.login');
+        }
 
-         $user = Auth::user();
-         if($user->role_id == 4){
+        $user = Auth::user();
+        if ($user->role_id == 4) {
             return Inertia::render('CreateEvent/CreateEvent');
-         }else{
+        } else {
             return redirect()->route('home');
-         }
+        }
     }
 
-    public function showBrowseEvents(){
-        if (!Auth::check()) {
+    public function showBrowseEvents()
+    {
+        if (! Auth::check()) {
             return redirect()->route('tb.login');
         }
-    
+
         $user = Auth::user();
-    
+
         if ($user->role_id == 5) {
             return Inertia::render('BrowseEvent/BrowseEvent');
         }
-    
-        return redirect()->route('tb.login');  
+
+        return redirect()->route('tb.login');
     }
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-      
+
         $validated = $request->validate([
-            'name' => 'required|string|max:225',
-            'date' => 'required|date',
-            'description' => 'required|string',
-            'location' => 'required|url',
-            'image' => 'required|image',
-            'city' => 'required|string',
-            'venue' => 'required|string',
-            'artists' => 'required|array',
-            'artists.*' => 'exists:artists,id',
-            'agenda_pdf' => 'nullable|file|mimes:pdf',
-            'event_video' => 'nullable|file|mimes:mp4,avi,mkv',
-            'organizer' => 'required|string',
-            'bronze_ticket_count' => 'integer|min:0',
-            'golden_ticket_count' => 'integer|min:0',
-            'silver_ticket_count' => 'integer|min:0',
+            'name'                => 'required|string|max:225',
+            'date'                => 'required|date',
+            'description'         => 'required|string',
+            'location'            => 'required|url',
+            'image'               => 'required|image',
+            'city'                => 'required|string',
+            'venue'               => 'required|string',
+            'artists'             => 'required|array',
+            'artists.*'           => 'exists:artists,id',
+            'agenda_pdf'          => 'nullable|file|mimes:pdf',
+            'event_video'         => 'nullable|file|mimes:mp4,avi,mkv',
+            'organizer'           => 'required|string',
+            'bronze_ticket_count' => 'required|integer|min:0',
+            'golden_ticket_count' => 'required|integer|min:0',
+            'silver_ticket_count' => 'required|integer|min:0',
             'bronze_ticket_price' => 'required|numeric|min:0',
             'golden_ticket_price' => 'required|numeric|min:0',
             'silver_ticket_price' => 'required|numeric|min:0',
-            'return_policies' => 'required|string',
-            'startTime' => 'required|date_format:H:i',
-            'endTime' => 'required|date_format:H:i|after:startTime',
+            'return_policies'     => 'required|string',
+            'startTime'           => 'required|date_format:H:i',
+            'endTime'             => 'nullable|date_format:H:i|after:startTime',
         ]);
 
-         // Handle file uploads
-        $validated['image'] = $request->file('image')->store('images', 'public');
-        $validated['agenda_pdf'] = $request->file('agenda_pdf')?->store('pdfs', 'public');
+        // Handle file uploads
+        $validated['image']       = $request->file('image')->store('images', 'public');
+        $validated['agenda_pdf']  = $request->file('agenda_pdf')?->store('pdfs', 'public');
         $validated['event_video'] = $request->file('event_video')?->store('videos', 'public');
 
         $validated['event_host_id'] = auth()->id();
 
+        // Set total ticket counts to the initial ticket counts
+        $validated['total_golden_ticket_count'] = $validated['golden_ticket_count'];
+        $validated['total_silver_ticket_count'] = $validated['silver_ticket_count'];
+        $validated['total_bronze_ticket_count'] = $validated['bronze_ticket_count'];
 
-    // Set total ticket counts to the initial ticket counts
-    $validated['total_golden_ticket_count'] = $validated['golden_ticket_count'];
-    $validated['total_silver_ticket_count'] = $validated['silver_ticket_count'];
-    $validated['total_bronze_ticket_count'] = $validated['bronze_ticket_count'];
-
-       
         // Create the event
-       $event = Event::create($validated);
+        $event = Event::create($validated);
 
         // Attach artists
-        if (!empty($validated['artists'])) {
+        if (! empty($validated['artists'])) {
             $event->artists()->sync($validated['artists']);
         }
 
         //Get managers email
-        $managers = \App\Models\User::where('role_id',2)->get();
+        $managers = \App\Models\User::where('role_id', 2)->get();
         foreach ($managers as $manager) {
             Mail::to($manager->email)->send(new EventCreationNotification($event));
         }
@@ -131,55 +120,54 @@ class EventController extends Controller
     public function getCompletedEvents()
     {
         $completedEvents = Event::where('event_status', 'completed')
-        ->whereDate('date', '>', Carbon::today())
+            ->whereDate('date', '>', Carbon::today())
             ->get()
             ->map(function ($event) {
                 $event->image = asset('storage/' . $event->image);
                 return $event;
             });
         return response()->json($completedEvents);
-    } 
+    }
 
     public function search(Request $request)
     {
         $searchTerm = $request->input('search');
-        $filter = $request->input('filter', 'All');
+        $filter     = $request->input('filter', 'All');
 
         $query = Event::query()
-        ->leftJoin('clicks', 'events.id', '=', 'clicks.event_id')
-        ->select('events.*', \DB::raw('COALESCE(clicks.number_of_clicks, 0) as click_count'))
-        ->where('event_status', 'completed')
-         ->groupBy('events.id');
+            ->leftJoin('clicks', 'events.id', '=', 'clicks.event_id')
+            ->select('events.*', \DB::raw('COALESCE(clicks.number_of_clicks, 0) as click_count'))
+            ->where('event_status', 'completed')
+            ->groupBy('events.id');
 
-        if (!empty($searchTerm)) {
-           $query->where('name', 'LIKE', "%{$searchTerm}%")
-           ;
+        if (! empty($searchTerm)) {
+            $query->where('name', 'LIKE', "%{$searchTerm}%")
+            ;
         }
         if ($filter === 'All') {
             $query->where('date', '>', now());
-        }
-        elseif ($filter === 'Upcoming') {
+        } elseif ($filter === 'Upcoming') {
             $query->where('date', '>', now());
         } elseif ($filter === 'Past') {
             $query->where('date', '<', now());
-        }elseif ($filter === 'Popular') {
+        } elseif ($filter === 'Popular') {
             $query->orderByDesc('clicks.number_of_clicks');
             //$maxClicks = \DB::table('clicks')->max('number_of_clicks');
-           // $query->where('clicks.number_of_clicks', '=', $maxClicks);
+            // $query->where('clicks.number_of_clicks', '=', $maxClicks);
         }
 
         $events = $query->get()->map(function ($event) {
             return [
-                'id' => $event->id,
-                'name' => $event->name,
-                'date' => $event->date,
-                'startTime' => $event->startTime,
-                'location' => $event->location,
+                'id'                  => $event->id,
+                'name'                => $event->name,
+                'date'                => $event->date,
+                'startTime'           => $event->startTime,
+                'location'            => $event->location,
                 'bronze_ticket_price' => $event->bronze_ticket_price,
                 'golden_ticket_count' => $event->golden_ticket_count,
                 'silver_ticket_count' => $event->silver_ticket_count,
                 'bronze_ticket_count' => $event->bronze_ticket_count,
-                'image' => asset('storage/' . $event->image), 
+                'image'               => asset('storage/' . $event->image),
             ];
         });
 
@@ -190,49 +178,48 @@ class EventController extends Controller
     public function searchResults(Request $request)
     {
         $searchTerm = $request->input('search', '');
-        $filter = $request->input('filter', 'All');
+        $filter     = $request->input('filter', 'All');
 
         $query = Event::query();
 
-        if (!empty($searchTerm)) {
+        if (! empty($searchTerm)) {
             $query->where('name', 'LIKE', "%{$searchTerm}%");
         }
 
         if ($filter === 'All') {
             $query->where('date', '>', now());
-        }
-        elseif ($filter === 'Upcoming') {
+        } elseif ($filter === 'Upcoming') {
             $query->where('date', '>', now());
         } elseif ($filter === 'Past') {
             $query->where('date', '<', now());
-        } 
+        }
 
         $events = $query->get()->map(function ($event) {
             return [
-                'id' => $event->id,
-                'name' => $event->name,
-                'date' => $event->date,
-                'startTime' => $event->startTime,
-                'location' => $event->location,
+                'id'                  => $event->id,
+                'name'                => $event->name,
+                'date'                => $event->date,
+                'startTime'           => $event->startTime,
+                'location'            => $event->location,
                 'bronze_ticket_price' => $event->bronze_ticket_price,
-                'image' => asset('storage/' . $event->image), 
+                'image'               => asset('storage/' . $event->image),
             ];
         });
 
-    return Inertia::render('SearchResult/SearchResult', [
-        'events' => $events,
-        'searchTerm' => $searchTerm,
-        'filter' => $filter,
-    ]);
+        return Inertia::render('SearchResult/SearchResult', [
+            'events'     => $events,
+            'searchTerm' => $searchTerm,
+            'filter'     => $filter,
+        ]);
     }
 
     public function eventExists(Request $request)
-{
-    $searchTerm = $request->input('search');
-    $exists = Event::where('name', 'LIKE', "%{$searchTerm}%")->exists();
+    {
+        $searchTerm = $request->input('search');
+        $exists     = Event::where('name', 'LIKE', "%{$searchTerm}%")->exists();
 
-    return response()->json(['exists' => $exists]);
-}
+        return response()->json(['exists' => $exists]);
+    }
 
     public function ongoingEvents()
     {
@@ -240,22 +227,22 @@ class EventController extends Controller
 
         if ($user->role_id == 4) {
             $ongoingevents = Event::where('event_host_id', $user->id)
-                            ->where('event_status', 'approved')  
-                            ->get()
-                            ->map (function ($event) {
-                                $event->image = asset('storage/' . $event->image);
-                                return $event;
-                            })
-                            ->toArray(); 
-                            
-        }               
-        
+                ->where('event_status', 'approved')
+                ->get()
+                ->map(function ($event) {
+                    $event->image = asset('storage/' . $event->image);
+                    return $event;
+                })
+                ->toArray();
+
+        }
+
         return Inertia::render('EventHost/OngoingEvents', [
-            'events' => $ongoingevents
+            'events' => $ongoingevents,
         ]);
-       
+
     }
-    
+
     // public function updateEvent(Request $request, $eventId)
     // {
     // //     $request->validate([
@@ -316,11 +303,11 @@ class EventController extends Controller
     // if ($request->hasFile('agenda_pdf')) {
     //     $validated['agenda_pdf'] = $request->file('agenda_pdf')->store('agendas');
     // }
-    
+
     // if ($request->hasFile('image')) {
     //     $validated['image'] = $request->file('image')->store('event-images');
     // }
-    
+
     // if ($request->hasFile('event_video')) {
     //     $validated['event_video'] = $request->file('event_video')->store('event-videos');
     // }
@@ -346,25 +333,25 @@ class EventController extends Controller
     public function send(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
+            'name'      => 'required',
+            'email'     => 'required|email',
             'telephone' => 'required',
-            'message' => 'required',
-            'event_id' => 'required|exists:events,id',
+            'message'   => 'required',
+            'event_id'  => 'required|exists:events,id',
         ]);
-        
+
         $event = Event::with('eventHost')->find($validated['event_id']);
 
-        if (!$event || !$event->eventHost) {
+        if (! $event || ! $event->eventHost) {
             return redirect()->back()->with('error', 'Event host not found.');
         }
 
         Mail::to($event->eventHost->email)->send(new HostContactMail($request->all()));
         \Log::info('Email sent to: ' . $event->eventHost->email);
-        
+
         return redirect()->back()->with('success', 'Message sent successfully!');
     }
-    
+
     public function showEvent(string $id)
     {
         $event = Event::findOrFail($id);
@@ -377,8 +364,8 @@ class EventController extends Controller
     public function show($id)
     {
         $event = Event::with('artists')->findOrFail($id); // Fetch the event by ID
-       
-        return inertia('EventDetails/TBEventDetails', ['event' => $event]); // Pass data to Inertia 
+
+        return inertia('EventDetails/TBEventDetails', ['event' => $event]); // Pass data to Inertia
     }
 
     public function delete(string $id)
@@ -390,131 +377,131 @@ class EventController extends Controller
     public function showBuyTickets($id)
     {
         $event = Event::with('artists')->findOrFail($id); // Fetch the event by ID
-       
-        return inertia('BuyTickets/BuyTickets', ['event' => $event]); // Pass data to Inertia 
+
+        return inertia('BuyTickets/BuyTickets', ['event' => $event]); // Pass data to Inertia
     }
 
     public function getPendingEvents()
-{
-    $pendingEvents = Event::where('event_status', 'pending')->get();
-    return inertia('Manager/PendingRequests/CreateRequest', [
-        'events' => $pendingEvents,
-        'flash' =>[
-            'success'=>session('success'),
-            'error'=>session('error'),
-        ],
+    {
+        $pendingEvents = Event::where('event_status', 'pending')->get();
+        return inertia('Manager/PendingRequests/CreateRequest', [
+            'events' => $pendingEvents,
+            'flash'  => [
+                'success' => session('success'),
+                'error'   => session('error'),
+            ],
 
-]);
-}
-
-public function approveEvent($id)
-{
-    $event = Event::findOrFail($id);
-    $event->update(['event_status' => 'approved']);
-
-     // Add event to the clicks table with default clicks
-     \App\Models\Click::create([
-        'event_id' => $event->id,
-        'number_of_clicks' => 0, // Initially set to 0
-    ]);
-
-     // Send email notification to the event host
-     Mail::to($event->eventHost->email)->send(new EventApprovedMail($event));
-
-     // Flash message for Inertia
-    // Session::flash('success', 'Event approved successfully.');
-
-    return redirect()->back()
-    ->with('success', 'Event approved successfully.');
-}
-
-public function deleteEvent(Request $request, $id)
-{
-    $event = Event::findOrFail($id);
-    $event->update([
-    'event_status' => 'rejected',
-    'rejected_at' => now(),  // Store the rejection date
-    'rejection_reason' => $request->input('rejection_reason', 'No reason provided') // Store reason
-]);
-    return redirect()->route('manager.create.requests')->with('success', 'Event rejected.');
-}
-
-public function showTBCart($id)
-{
-    $event = Event::find($id);
-
-    if (!$event) {
-        return redirect()->route('browse')->with('error', 'Event not found.');
+        ]);
     }
 
-    return Inertia::render('Cart/TBCart/TBCart', [
-        'event' => $event
-    ]);
-}
+    public function approveEvent($id)
+    {
+        $event = Event::findOrFail($id);
+        $event->update(['event_status' => 'approved']);
 
-public function getEvent(Event $event)
-{
-   // $event = Event::findOrFail($id);
-    $event->image = asset('storage/' . $event->image);
-    return response()->json($event);
-}
+        // Add event to the clicks table with default clicks
+        \App\Models\Click::create([
+            'event_id'         => $event->id,
+            'number_of_clicks' => 0, // Initially set to 0
+        ]);
 
-public function getAttendees($eventId)
-{
-    $attendees = StripePayment::where('event_id', $eventId)
-        ->where('status', 'Completed')
-        ->with(['customer:id,name,email,telephone'])
-        ->get()
-        ->map(function ($payment) {
-            return $payment->customer_id ? [
-                'name' => $payment->customer->name,
-                'email' => $payment->customer->email,
-                'phone' => $payment->customer->telephone,
-                'amount' => number_format($payment->amount / 100, 2)
-            ] : [
-                'name' => $payment->guest_name,
-                'email' => $payment->guest_email,
-                'phone' => $payment->guest_phone,
-                'amount' => number_format($payment->amount / 100, 2)
-            ];
-        });
+        // Send email notification to the event host
+        Mail::to($event->eventHost->email)->send(new EventApprovedMail($event));
 
-    return response()->json([
-        'count' => $attendees->count(),
-        'attendees' => $attendees
-    ]);
-}
+        // Flash message for Inertia
+        // Session::flash('success', 'Event approved successfully.');
 
-public function generateAttendeesPdf($eventId)
-{
-    $attendees = StripePayment::where('event_id', $eventId)
-        ->where('status', 'Completed')
-        ->with(['customer:id,name,email,telephone'])
-        ->get()
-        ->map(function ($payment) {
-            return $payment->customer_id ? [
-                'name' => $payment->customer->name,
-                'email' => $payment->customer->email,
-                'phone' => $payment->customer->telephone,
-                'amount' => number_format($payment->amount)
-            ] : [
-                'name' => $payment->guest_name,
-                'email' => $payment->guest_email,
-                'phone' => $payment->guest_phone,
-                'amount' => number_format($payment->amount)
-            ];
-        });
+        return redirect()->back()
+            ->with('success', 'Event approved successfully.');
+    }
 
-    $pdf = PDF::loadView('pdf.attendees', [
-        'attendees' => $attendees,
-        'event' => Event::findOrFail($eventId)
-    ]);
+    public function deleteEvent(Request $request, $id)
+    {
+        $event = Event::findOrFail($id);
+        $event->update([
+            'event_status'     => 'rejected',
+            'rejected_at'      => now(),                                                     // Store the rejection date
+            'rejection_reason' => $request->input('rejection_reason', 'No reason provided'), // Store reason
+        ]);
+        return redirect()->route('manager.create.requests')->with('success', 'Event rejected.');
+    }
 
-    return $pdf->download("attendees-list-{$eventId}.pdf");
-}
+    public function showTBCart($id)
+    {
+        $event = Event::find($id);
 
-public function getEndedEvents()
-{
+        if (! $event) {
+            return redirect()->route('browse')->with('error', 'Event not found.');
+        }
+
+        return Inertia::render('Cart/TBCart/TBCart', [
+            'event' => $event,
+        ]);
+    }
+
+    public function getEvent(Event $event)
+    {
+        // $event = Event::findOrFail($id);
+        $event->image = asset('storage/' . $event->image);
+        return response()->json($event);
+    }
+
+    public function getAttendees($eventId)
+    {
+        $attendees = StripePayment::where('event_id', $eventId)
+            ->where('status', 'Completed')
+            ->with(['customer:id,name,email,telephone'])
+            ->get()
+            ->map(function ($payment) {
+                return $payment->customer_id ? [
+                    'name'   => $payment->customer->name,
+                    'email'  => $payment->customer->email,
+                    'phone'  => $payment->customer->telephone,
+                    'amount' => number_format($payment->amount / 100, 2),
+                ] : [
+                    'name'   => $payment->guest_name,
+                    'email'  => $payment->guest_email,
+                    'phone'  => $payment->guest_phone,
+                    'amount' => number_format($payment->amount / 100, 2),
+                ];
+            });
+
+        return response()->json([
+            'count'     => $attendees->count(),
+            'attendees' => $attendees,
+        ]);
+    }
+
+    public function generateAttendeesPdf($eventId)
+    {
+        $attendees = StripePayment::where('event_id', $eventId)
+            ->where('status', 'Completed')
+            ->with(['customer:id,name,email,telephone'])
+            ->get()
+            ->map(function ($payment) {
+                return $payment->customer_id ? [
+                    'name'   => $payment->customer->name,
+                    'email'  => $payment->customer->email,
+                    'phone'  => $payment->customer->telephone,
+                    'amount' => number_format($payment->amount),
+                ] : [
+                    'name'   => $payment->guest_name,
+                    'email'  => $payment->guest_email,
+                    'phone'  => $payment->guest_phone,
+                    'amount' => number_format($payment->amount),
+                ];
+            });
+
+        $pdf = PDF::loadView('pdf.attendees', [
+            'attendees' => $attendees,
+            'event'     => Event::findOrFail($eventId),
+        ]);
+
+        return $pdf->download("attendees-list-{$eventId}.pdf");
+    }
+
+    public function getEndedEvents()
+    {
 //     $endedEvents = Event::where('date', '<', now()->toDateString())
 //                         ->where('event_status', 'completed')
 //                         ->orderBy('date', 'desc')
@@ -523,83 +510,83 @@ public function getEndedEvents()
 //         'endedEvents' => $endedEvents
 //     ]);
 // }
-$today = Carbon::today(); // Get today's date
+        $today = Carbon::today(); // Get today's date
 
-$endedEvents = Event::whereDate('date', '<', $today)
-                    ->orWhere(function ($query) use ($today) {
-                        $query->whereDate('date', '=', $today)
-                              ->whereTime('endTime', '<', Carbon::now()->format('H:i:s'));
-                    })
-                    ->where('event_status', 'completed')
-                    ->orderBy('date', 'desc')
-                    ->get();
+        $endedEvents = Event::whereDate('date', '<', $today)
+            ->orWhere(function ($query) use ($today) {
+                $query->whereDate('date', '=', $today)
+                    ->whereTime('endTime', '<', Carbon::now()->format('H:i:s'));
+            })
+            ->where('event_status', 'completed')
+            ->orderBy('date', 'desc')
+            ->get();
 
-if ($endedEvents->isEmpty()) {
-    return inertia('Manager/History/EndedEventHistory', ['endedEvents' => []]);
-}
-\Log::info("Ended Events Query: ", ['query' => $endedEvents->toArray()]);
+        if ($endedEvents->isEmpty()) {
+            return inertia('Manager/History/EndedEventHistory', ['endedEvents' => []]);
+        }
+        \Log::info("Ended Events Query: ", ['query' => $endedEvents->toArray()]);
 
+        return inertia('Manager/History/EndedEventHistory', ['endedEvents' => $endedEvents]);
+    }
 
-return inertia('Manager/History/EndedEventHistory', ['endedEvents' => $endedEvents]);
-}
+    public function generateEndedEventReport($id)
+    {
+        $event = Event::findOrFail($id);
 
-public function generateEndedEventReport($id)
-{
-    $event = Event::findOrFail($id);
+        $data = [
+            'event_name'                => $event->name,
+            'event_date'                => $event->date,
+            'start_time'                => $event->startTime,
+            'end_time'                  => $event->endTime,
+            'venue'                     => $event->venue,
+            'city'                      => $event->city,
+            'organizer'                 => $event->organizer,
+            'description'               => $event->description,
+            'bronze_ticket_count'       => $event->bronze_ticket_count,
+            'silver_ticket_count'       => $event->silver_ticket_count,
+            'golden_ticket_count'       => $event->golden_ticket_count,
+            'total_bronze_ticket_count' => $event->total_bronze_ticket_count,
+            'total_silver_ticket_count' => $event->total_silver_ticket_count,
+            'total_golden_ticket_count' => $event->total_golden_ticket_count,
+            'bronze_ticket_price'       => $event->bronze_ticket_price,
+            'silver_ticket_price'       => $event->silver_ticket_price,
+            'golden_ticket_price'       => $event->golden_ticket_price,
+            'total_revenue'             => ((($event->total_bronze_ticket_count) - ($event->bronze_ticket_count)) * ($event->bronze_ticket_price)) +
+            ((($event->total_silver_ticket_count) - ($event->silver_ticket_count)) * ($event->silver_ticket_price)) +
+            ((($event->total_golden_ticket_count) - ($event->golden_ticket_count)) * ($event->golden_ticket_price)),
+            'agenda_pdf'                => $event->agenda_pdf,
+            'event_video'               => $event->event_video,
+            'return_policies'           => $event->return_policies,
+        ];
 
-    $data = [
-        'event_name' => $event->name,
-        'event_date' => $event->date,
-        'start_time' => $event->startTime,
-        'end_time' => $event->endTime,
-        'venue' => $event->venue,
-        'city' => $event->city,
-        'organizer' => $event->organizer,
-        'description' => $event->description,
-        'bronze_ticket_count' => $event->bronze_ticket_count,
-        'silver_ticket_count' => $event->silver_ticket_count,
-        'golden_ticket_count' => $event->golden_ticket_count,
-        'total_bronze_ticket_count' => $event->total_bronze_ticket_count,
-        'total_silver_ticket_count' => $event->total_silver_ticket_count,
-        'total_golden_ticket_count' => $event->total_golden_ticket_count,
-        'bronze_ticket_price' => $event->bronze_ticket_price,
-        'silver_ticket_price' => $event->silver_ticket_price,
-        'golden_ticket_price' => $event->golden_ticket_price,
-        'total_revenue' => ((($event->total_bronze_ticket_count)-($event->bronze_ticket_count) )* ($event->bronze_ticket_price)) +
-                           ((($event->total_silver_ticket_count)- ($event->silver_ticket_count))* ($event->silver_ticket_price)) +
-                           ((($event->total_golden_ticket_count)-($event->golden_ticket_count)) * ($event->golden_ticket_price)),
-        'agenda_pdf' => $event->agenda_pdf,
-        'event_video' => $event->event_video,
-        'return_policies' => $event->return_policies,
-    ];
+        $pdf = Pdf::loadView('pdf.ended_event_report', $data);
 
-    $pdf = Pdf::loadView('pdf.ended_event_report', $data);
+        return $pdf->download('Event_Report_' . $event->name . '.pdf');
+    }
 
-    return $pdf->download('Event_Report_'.$event->name.'.pdf');
-}
+    public function getPendingPaymentEvents()
+    {
+        $pendingPaymentEvents = Event::where('event_status', 'approved')->get();
+        return inertia('Manager/History/PendingPaymentsHistory', [
+            'pendingPaymentEvents' => $pendingPaymentEvents,
+        ]
+        );
+    }
 
-public function getPendingPaymentEvents()
-{
-    $pendingPaymentEvents = Event::where('event_status', 'approved')->get();
-    return inertia('Manager/History/PendingPaymentsHistory',[
-        'pendingPaymentEvents' => $pendingPaymentEvents
-    ]
-);
-}
+    public function generateEventReport($eventId)
+    {
 
-public function generateEventReport($eventId){
+        $event = Event::findOrFail($eventId);
 
-    $event = Event::findOrFail($eventId);
+        $pdf = Pdf::loadView('pdf.event_report', ['event' => $event]);
 
-    $pdf = Pdf::loadView('pdf.event_report', ['event' => $event]);
+        return $pdf->download('event_report_' . $event->name . '.pdf');
 
-    return $pdf->download('event_report_'.$event->name.'.pdf');
+    }
 
-}
+    public function getRejectedEvents()
+    {
 
-public function getRejectedEvents()
-{
-    
         $rejectedEvents = Event::where('event_status', 'rejected')
             ->get()
             ->map(function ($event) {
@@ -607,50 +594,49 @@ public function getRejectedEvents()
                 return $event;
             });
         // return response()->json($approvedEvents);
-        if($rejectedEvents->isEmpty()){
-            return inertia('Manager/History/RejectedEventHistory',['rejectedEvents'=>[]]); 
+        if ($rejectedEvents->isEmpty()) {
+            return inertia('Manager/History/RejectedEventHistory', ['rejectedEvents' => []]);
         }
-    
-    return inertia('Manager/History/RejectedEventHistory',['rejectedEvents'=>$rejectedEvents]);
-}
 
-public function generateRejectedEventReport($id)
-{
-    $event = Event::findOrFail($id);
+        return inertia('Manager/History/RejectedEventHistory', ['rejectedEvents' => $rejectedEvents]);
+    }
 
-    $data = [
-        'event_name' => $event->name,
-        'event_date' => $event->date,
-        'start_time' => $event->startTime,
-        'end_time' => $event->endTime,
-        'venue' => $event->venue,
-        'city' => $event->city,
-        'organizer' => $event->organizer,
-        'description' => $event->description,
-        // 'bronze_ticket_count' => $event->bronze_ticket_count,
-        // 'silver_ticket_count' => $event->silver_ticket_count,
-        // 'golden_ticket_count' => $event->golden_ticket_count,
-        'total_bronze_ticket_count' => $event->total_bronze_ticket_count,
-        'total_silver_ticket_count' => $event->total_silver_ticket_count,
-        'total_golden_ticket_count' => $event->total_golden_ticket_count,
-        'bronze_ticket_price' => $event->bronze_ticket_price,
-        'silver_ticket_price' => $event->silver_ticket_price,
-        'golden_ticket_price' => $event->golden_ticket_price,
-        'rejected_at' => $event->rejected_at,
-        'rejection_reason' => $event->rejection_reason,
-        // 'total_revenue' => ((($event->total_bronze_ticket_count)-($event->bronze_ticket_count) )* ($event->bronze_ticket_price)) +
-        //                    ((($event->total_silver_ticket_count)- ($event->silver_ticket_count))* ($event->silver_ticket_price)) +
-        //                    ((($event->total_golden_ticket_count)-($event->golden_ticket_count)) * ($event->golden_ticket_price)),
-        'agenda_pdf' => $event->agenda_pdf,
-        'event_video' => $event->event_video,
-        'return_policies' => $event->return_policies,
-    ];
+    public function generateRejectedEventReport($id)
+    {
+        $event = Event::findOrFail($id);
 
-    $pdf = Pdf::loadView('pdf.rejected_event_report', $data);
+        $data = [
+            'event_name'                => $event->name,
+            'event_date'                => $event->date,
+            'start_time'                => $event->startTime,
+            'end_time'                  => $event->endTime,
+            'venue'                     => $event->venue,
+            'city'                      => $event->city,
+            'organizer'                 => $event->organizer,
+            'description'               => $event->description,
+            // 'bronze_ticket_count' => $event->bronze_ticket_count,
+            // 'silver_ticket_count' => $event->silver_ticket_count,
+            // 'golden_ticket_count' => $event->golden_ticket_count,
+            'total_bronze_ticket_count' => $event->total_bronze_ticket_count,
+            'total_silver_ticket_count' => $event->total_silver_ticket_count,
+            'total_golden_ticket_count' => $event->total_golden_ticket_count,
+            'bronze_ticket_price'       => $event->bronze_ticket_price,
+            'silver_ticket_price'       => $event->silver_ticket_price,
+            'golden_ticket_price'       => $event->golden_ticket_price,
+            'rejected_at'               => $event->rejected_at,
+            'rejection_reason'          => $event->rejection_reason,
+            // 'total_revenue' => ((($event->total_bronze_ticket_count)-($event->bronze_ticket_count) )* ($event->bronze_ticket_price)) +
+            //                    ((($event->total_silver_ticket_count)- ($event->silver_ticket_count))* ($event->silver_ticket_price)) +
+            //                    ((($event->total_golden_ticket_count)-($event->golden_ticket_count)) * ($event->golden_ticket_price)),
+            'agenda_pdf'                => $event->agenda_pdf,
+            'event_video'               => $event->event_video,
+            'return_policies'           => $event->return_policies,
+        ];
 
-    return $pdf->download('Rejected_Event_Report_'.$event->name.'.pdf');
-}
+        $pdf = Pdf::loadView('pdf.rejected_event_report', $data);
 
+        return $pdf->download('Rejected_Event_Report_' . $event->name . '.pdf');
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -677,7 +663,7 @@ public function generateRejectedEventReport($id)
     //     $event = Event::findOrFail($id);
     //     $event->delete();
     //     return Redirect::route('eventhost.home')->with('success', 'Event deleted successfully!');
-        
+
     // }
 
     // public function delete(string $id)
@@ -687,28 +673,28 @@ public function generateRejectedEventReport($id)
     // }
 
     public function storeDeleteRequest(Request $request)
-{
-    $request->validate([
-        'event_id' => 'required|exists:events,id',
-        'reason' => 'required|string|max:500',
-    ]);
+    {
+        $request->validate([
+            'event_id' => 'required|exists:events,id',
+            'reason'   => 'required|string|max:500',
+        ]);
 
-    // Check if request already exists
-    $existingRequest = EventDeletionRequest::where('event_id', $request->event_id)
-        ->where('status', 'pending')
-        ->first();
+        // Check if request already exists
+        $existingRequest = EventDeletionRequest::where('event_id', $request->event_id)
+            ->where('status', 'pending')
+            ->first();
 
-    if ($existingRequest) {
-        return response()->json(['message' => 'A delete request is already pending for this event.'], 400);
+        if ($existingRequest) {
+            return response()->json(['message' => 'A delete request is already pending for this event.'], 400);
+        }
+
+        EventDeletionRequest::create([
+            'event_id'      => $request->event_id,
+            'event_host_id' => auth()->id(),
+            'reason'        => $request->reason,
+            'status'        => 'pending',
+        ]);
+
+        return response()->json(['message' => 'Delete request submitted successfully.'], 200);
     }
-
-    EventDeletionRequest::create([
-        'event_id' => $request->event_id,
-        'event_host_id' => auth()->id(),
-        'reason' => $request->reason,
-        'status' => 'pending'
-    ]);
-
-    return response()->json(['message' => 'Delete request submitted successfully.'], 200);
-}
 }
