@@ -6,7 +6,6 @@
 // import "../../../css/style.scss";
 // import Logo from "../../assets/Images/Logo.png";
 
-
 import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -62,7 +61,7 @@ const MainHeader = () => {
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
-                                href={route("event.create")}
+                                href={route("eventhost.dashboard")}
                                 className=" create-event-btn btn btn-info fw-bold ms-3"
                                 style={{
                                     borderRadius: "20px",

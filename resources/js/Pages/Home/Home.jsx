@@ -19,19 +19,21 @@ export default function Home() {
     const { flash = {} } = usePage().props;
     // State to control visibility of error alert
     const [showError, setShowError] = useState(!!flash.error);
-    
+
     return (
         <>
             <header>
                 <MainHeader />
             </header>
 
-
             {/* Show flash error alert if error exists and alert is visible */}
             {showError && flash.error && (
-                <div className="text-center alert alert-danger alert-dismissible fade show" role="alert">
+                <div
+                    className="text-center alert alert-danger alert-dismissible fade show"
+                    role="alert"
+                >
                     {flash.error}
-                    
+
                     {/* Button to dismiss alert */}
                     <button
                         type="button"
@@ -44,47 +46,54 @@ export default function Home() {
             )}
 
             <main>
-
                 {/* Section 01: Main promotional banner with animated headline */}
                 <section className="section-1">
                     <div className="topic d-flex align-items-center">
                         <div className="container-fluid">
                             <div className="text-center">
-
-                                    {/* Animated main headline */}
-                                    <motion.h1
+                                {/* Animated main headline */}
+                                <motion.h1
                                     initial={{ opacity: 0, y: 50 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: false, amount: 0.5 }}
-                                    transition={{ duration: 1, ease: "easeOut" }}>
-                                            FIND YOUR NEXT <br />
-                                            AWESOME EVENT <br />
-                                            HERE!
-                                    </motion.h1>
-
-                                    <br />
-
-                                   {/* Supporting description */}
-                                    <p style={{ fontSize: "19px", color: "#fff" }}>
-                                        Let EventAURA help you find the event that's just right for you! <br />
-                                    </p>
-                                    <h2 style={{ fontSize: "22px", fontWeight: "bold", color: "#fff" }}>
-                                        Browse our awesome events for fun things to do in your area.
-                                    </h2>
-
-                                    {/* Browse Event button */}
-                                    <Link href={route("browse")}className="btn btn-primary">
-                                        Browse Event
-                                    </Link>
-                                    
-                                    <br />
-
-                                    {/* Link to other login page (for development purpose only) */}
-                                    <Link href={route("oth.login")}>
-                                        {" "}
-                                        #Other Login pg
-                                    </Link>{" "}
-                                
+                                    transition={{
+                                        duration: 1,
+                                        ease: "easeOut",
+                                    }}
+                                >
+                                    FIND YOUR NEXT <br />
+                                    AWESOME EVENT <br />
+                                    HERE!
+                                </motion.h1>
+                                <br />
+                                {/* Supporting description */}
+                                <p style={{ fontSize: "19px", color: "#fff" }}>
+                                    Let EventAURA help you find the event that's
+                                    just right for you! <br />
+                                </p>
+                                <h2
+                                    style={{
+                                        fontSize: "22px",
+                                        fontWeight: "bold",
+                                        color: "#fff",
+                                    }}
+                                >
+                                    Browse our awesome events for fun things to
+                                    do in your area.
+                                </h2>
+                                {/* Browse Event button */}
+                                <Link
+                                    href={route("browse")}
+                                    className="btn btn-primary"
+                                >
+                                    Browse Event
+                                </Link>
+                                <br />
+                                {/* Link to other login page (for development purpose only) */}
+                                {/*<Link href={route("oth.login")}>
+                                    {" "}
+                                    #Other Login pg
+                                </Link>{" "}*/}
                             </div>
                         </div>
                     </div>
@@ -95,14 +104,20 @@ export default function Home() {
                     <div className="topic d-flex align-items-center">
                         <div className="container-fluid">
                             <div className="text-center">
-                                
-                                 {/* Animated heading */}
+                                {/* Animated heading */}
                                 <motion.h2
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: false, amount: 0.5 }}
-                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                                style={{ fontSize: "29px", fontWeight: "bold" }}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: false, amount: 0.5 }}
+                                    transition={{
+                                        duration: 0.8,
+                                        ease: "easeOut",
+                                        delay: 0.2,
+                                    }}
+                                    style={{
+                                        fontSize: "29px",
+                                        fontWeight: "bold",
+                                    }}
                                 >
                                     LOOKING TO PUBLISH YOUR EVENT?
                                 </motion.h2>
@@ -111,21 +126,29 @@ export default function Home() {
 
                                 {/* Animated paragraph */}
                                 <motion.p
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: false, amount: 0.5 }}
-                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                                style={{ fontSize: "17px", color: "#000" }}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: false, amount: 0.5 }}
+                                    transition={{
+                                        duration: 0.8,
+                                        ease: "easeOut",
+                                        delay: 0.3,
+                                    }}
+                                    style={{ fontSize: "17px", color: "#000" }}
                                 >
-                                    Planning your events and selling tickets has <br />
-                                    never been easier with EventAura's super user-friendly platform by your side!
+                                    Planning your events and selling tickets has{" "}
+                                    <br />
+                                    never been easier with EventAura's super
+                                    user-friendly platform by your side!
                                 </motion.p>
 
-                                {/* Button to create event */}                                
-                                <Link href={route("eventhost.dashboard")} className="btn btn-primary">
+                                {/* Button to create event */}
+                                <Link
+                                    href={route("eventhost.dashboard")}
+                                    className="btn btn-primary"
+                                >
                                     Create Event
                                 </Link>
-
                             </div>
                         </div>
                     </div>
@@ -138,7 +161,6 @@ export default function Home() {
                 <section className="py-5 section-3">
                     <div className="container py-5">
                         <div className="ml-10 row">
-                            
                             {/* About Us text and button */}
                             <div className="mb-4 col-12 col-md-6 ">
                                 <h3>
@@ -161,7 +183,7 @@ export default function Home() {
                                 </Link>
                             </div>
 
-                             {/* Image section */}
+                            {/* Image section */}
                             <div className="mb-4 col-12 col-md-6">
                                 <img
                                     src={HomeImg2}
@@ -171,12 +193,10 @@ export default function Home() {
                             </div>
                         </div>
 
-
-
                         <div className="ml-10 row">
                             <div className="mb-4 col-12 col-md-6 ">
-                                 {/* Image section */}
-                                 <img
+                                {/* Image section */}
+                                <img
                                     src={HomeImg1}
                                     alt="Img1"
                                     className="Img-fluid"
@@ -217,8 +237,8 @@ export default function Home() {
 
                                 {/* Social media icons with external links */}
                                 <div className="flex-wrap gap-2 d-flex justify-content-center">
-                                    <a href
-                                        ="https://www.facebook.com"
+                                    <a
+                                        href="https://www.facebook.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -229,8 +249,8 @@ export default function Home() {
                                         />
                                     </a>
 
-                                    <a href
-                                        ="https://www.instagram.com"
+                                    <a
+                                        href="https://www.instagram.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -241,8 +261,8 @@ export default function Home() {
                                         />
                                     </a>
 
-                                    <a href
-                                        ="https://www.twitter.com"
+                                    <a
+                                        href="https://www.twitter.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -253,8 +273,8 @@ export default function Home() {
                                         />
                                     </a>
 
-                                    <a href
-                                        ="https://www.linkedin.com"
+                                    <a
+                                        href="https://www.linkedin.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -268,10 +288,9 @@ export default function Home() {
 
                                 {/* Link to review page */}
                                 <div className="ReviewLink">
-                                    <Link href ="/reviewPg" className="Review ">
+                                    <Link href="/reviewPg" className="Review ">
                                         Leave Us a Review
                                     </Link>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -284,5 +303,4 @@ export default function Home() {
             </footer>
         </>
     );
-
 }

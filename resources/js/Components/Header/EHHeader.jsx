@@ -27,7 +27,7 @@ const EHHeader = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <div id="basic-navbar-nav">
-                        <Nav className="ms-auto">
+                        <Nav className="ms-auto align-items-center">
                             <Nav.Link
                                 as={Link}
                                 href={route("eventhost.dashboard")}
@@ -48,7 +48,7 @@ const EHHeader = () => {
                                 href={route("event.create")}
                                 className="nav-link"
                             >
-                                CREATE EVENT
+                                Create Event
                             </Nav.Link>
                             <Nav.Link
                                 as={Link}
@@ -69,7 +69,7 @@ const EHHeader = () => {
                                     <Dropdown align="end">
                                         <Dropdown.Toggle
                                             variant="secondary"
-                                            className="gap-2 text-white bg-transparent border-0 d-flex align-items-center"
+                                            className="text-white bg-transparent border-0 d-flex align-items-center"
                                             id="dropdown-basic"
                                         >
                                             {auth.user.avatar ? (
