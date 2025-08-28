@@ -66,7 +66,7 @@ class EventController extends Controller
 
         $validated = $request->validate([
             'name'                => 'required|string|max:225',
-            'date'                => 'required|date',
+            'date'                => 'required|date|after_or_equal:today',
             'description'         => 'required|string',
             'location'            => 'required|url',
             'image'               => 'required|image',
@@ -87,6 +87,12 @@ class EventController extends Controller
             'startTime'           => 'required|date_format:H:i',
             'endTime'             => 'nullable|date_format:H:i|after:startTime',
         ]);
+
+        if (Carbon::parse($validated['date'])->lt(Carbon::today())) {
+        return redirect()->back()
+            ->withInput()
+            ->withErrors(['date' => 'Event date cannot be in the past.']);
+        }
 
         // Handle file uploads
         $validated['image']       = $request->file('image')->store('images', 'public');
