@@ -180,7 +180,9 @@ const ManagerDashboard = () => {
                 </Link>
             </section>
 
-        </div> */}
+        </div>
+        
+
 
             <section className="section-5">
                 <h1
