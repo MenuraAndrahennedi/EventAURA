@@ -19,15 +19,17 @@ $text-white: #ffffff;
     .card {
         border-radius: 0px;
         margin-bottom: 30px;
+        height: 580px;
         img {
             border-top-left-radius: 0px;
             border-top-right-radius: 0px;
+            height: 370px;
         }
         .card-body {
             a.title {
                 font-size: 1.4 em;
             }
-             min-height: 200px;
+            min-height: 200px;
         }
         .event-title {
             white-space: nowrap; /* Ensures text stays in one line */
@@ -54,24 +56,20 @@ $text-white: #ffffff;
             line-height: 1.4;
             max-width: 100%;
         }
-        
 
         .event-price {
             color: $primary-color;
             font-weight: 700;
-
         }
 
         .btn {
-           width: 50%;              // makes both buttons stretch full width
-           padding: 12px 0;          // consistent vertical padding
-           font-size: 1em;           // consistent font size
-           text-align: center;
-}
+            width: 50%; // makes both buttons stretch full width
+            padding: 12px 0; // consistent vertical padding
+            font-size: 1em; // consistent font size
+            text-align: center;
+        }
     }
 }
-
-
 
 .section-5 {
     background: transparent;
@@ -84,11 +82,9 @@ $text-white: #ffffff;
     text-decoration: none;
 }
 
-
 .Review:hover {
     text-decoration: underline;
 }
-
 
 .section-5 {
     background: transparent;

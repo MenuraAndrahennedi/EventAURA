@@ -1,35 +1,44 @@
-// import React from 'react';
-// import { Link ,usePage  } from "@inertiajs/react";
-// // import MainHeader from '../../Components/Header/MainHeader';
-// // import MainFooter from '../../Components/Footer/MainFooter';
-// import '../../../../css/PaymentCancel.scss';  // SCSS file for styling
+import React from "react";
+import { Link, usePage } from "@inertiajs/react";
+// import MainHeader from '../../Components/Header/MainHeader';
+// import MainFooter from '../../Components/Footer/MainFooter';
+import "../../../../css/PaymentCancel.scss"; // SCSS file for styling
 
-// const PaymentCancel = () => {
-//   const { event, cart, message } = usePage().props;
-//   return (
-//     <>
-//       {/* <header>
-//         <MainHeader />
-//       </header> */}
+const PaymentCancel = () => {
+    const { event, cart, message } = usePage().props;
+    return (
+        <>
+            {/* <header>
+        <MainHeader />
+      </header> */}
 
-//       <main className="payment-cancel-container">
-//         <h1> Payment Cancelled</h1>
-//          <p>Your payment was cancelled.</p>{/*</p> <p>{message}</p>  */}
-//         {/* <p>You can return to your cart to try again or go back to home.</p> */}
+            <main className="payment-cancel-container">
+                <h1> Payment Cancelled</h1>
+                <p>Your payment was cancelled.</p>
+                {/*</p> <p>{message}</p>  */}
+                {/* <p>You can return to your cart to try again or go back to home.</p> */}
 
-//         <div className="button-group">
-//           <Link href={route('eh.pendingPayments')}
-          
-//           className="cart-btn">Go Back to Events</Link>
-//           <Link href={route('eventhost.dashboard')} className="home-btn">Back to Home</Link>
-//         </div>
-//       </main>
+                <div className="button-group">
+                    <Link
+                        href={route("eh.pendingPayments")}
+                        className="cart-btn"
+                    >
+                        Go Back to Events
+                    </Link>
+                    <Link
+                        href={route("eventhost.dashboard")}
+                        className="home-btn"
+                    >
+                        Back to Home
+                    </Link>
+                </div>
+            </main>
 
-//       {/* <footer>
-//         <MainFooter />
-//       </footer> */}
-//     </>
-//   );
-// };
+            {/* <footer>
+        <MainFooter />
+      </footer> */}
+        </>
+    );
+};
 
-// export default PaymentCancel;
+export default PaymentCancel;

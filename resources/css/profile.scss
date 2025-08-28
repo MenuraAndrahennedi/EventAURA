@@ -1,31 +1,31 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-x: hidden; 
-  overflow-y: auto;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
- 
-  .page-wrapper {
+
+.page-wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    position: relative; 
-   
-  }
+    position: relative;
+}
 
-  .main-box {
+.main-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
     flex: 1;
     overflow-x: hidden; // allow Y scroll!
-    overflow-y: auto;   // allow scroll on Y axis
+    overflow-y: auto; // allow scroll on Y axis
     padding-bottom: 60px; /* Ensure space for the footer */
 }
 
-  /*footer {
+/*footer {
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -35,128 +35,139 @@ html, body {
       padding: 10px 0;
       
   }*/
-  .sidebar {
-    background-color: #f0f8ff; 
-  }
-  .sidebar-menu {
+.sidebar {
+    background-color: #f0f8ff;
+}
+.sidebar-menu {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  .sidebar-menu li {
+}
+.sidebar-menu li {
     margin-bottom: 22px;
-  }
-  
-  .sidebar-menu li a {
+}
+
+.sidebar-menu li a {
     display: block;
     padding: 10px 15px;
     color: #333;
     text-decoration: none;
-    border-bottom: 1px solid #C3EDF6;
-  }
-  
-  .sidebar-menu li a:hover {
-    background-color: #80c9e3; 
-  }
-  .sidebar-menu li .active-link {
-    background-color: #D7ECFF;  
+    border-bottom: 1px solid #c3edf6;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #80c9e3;
+}
+.sidebar-menu li .active-link {
+    background-color: #d7ecff;
     font-weight: bold;
-    color: #000; 
-    border-left: 4px solid #96E7F8;  
-  }
-  .profile-avatar {
+    color: #000;
+    border-left: 4px solid #96e7f8;
+}
+.profile-avatar {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 2px solid #96E7F8;
+    border: 2px solid #96e7f8;
     display: block;
     margin: 0 auto;
-  }
-  
-  .profile-details {
-    background-color: #D7ECFF;
+}
+
+.profile-details {
+    background-color: #d7ecff;
     padding: 20px;
     border-radius: 8px;
     text-align: left;
-  
+
     .details-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 10px;
-      margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 10px;
+        margin-top: 20px;
     }
-  
+
     .detail-label {
-      font-weight: bold;
-      color: #333333;
+        font-weight: bold;
+        color: #333333;
     }
-  
+
     .detail-value {
-      color: #555;
+        color: #555;
     }
-  }
-  
-  .btn-primary {
-    border: none;
-  }
-  .btn-secondary{
-    background-color: #000;
-    border: 1px solid #000;
-    padding: 15px 20px;
+}
+
+.btn-primary {
+    background-color: #ff0000;
+    padding: 0px 20px;
     font-size: 1em;
     font-weight: 500;
-    margin-bottom: 40px;    
-    margin-top:30px;
+    margin-bottom: 20px;
 }
-  
-  .container {
-    padding: 0; 
-  }
-  
-  .row {
-    margin: 0; 
-  }
-  .profile-avatar {
+.btn-primary:hover {
+    background-color: #de0000;
+    transform: scale(1.05);
+    color: white; /* Slightly enlarges the button */
+}
+.btn-secondary {
+    background-color: #0000ff;
+    padding: 0px 20px;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.btn-secondary:hover {
+    background-color: #0039d7;
+    transform: scale(1.05);
+    color: white; /* Slightly enlarges the button */
+}
+
+.container {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+}
+.profile-avatar {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     margin: 20px auto;
-  }
-  
-  .card {
+}
+
+.card {
     border-radius: 10px;
-  }
-  
-  .btn.active {
+}
+
+.btn.active {
     background-color: #007bff !important;
     color: white !important;
     border: none;
-  }
-  
-  .btn-outline-primary {
+}
+
+.btn-outline-primary {
     border-color: #007bff;
     color: #007bff;
-  }
-  
-  table {
+}
+
+table {
     margin-top: 20px;
-  }
-  
-  table th, table td {
+}
+
+table th,
+table td {
     text-align: center;
-  }
-  
-  /*footer {
+}
+
+/*footer {
     background-color: #f8f9fa;
     padding: 10px 0;
   }*/
-  
-  
-  
-  .btn-group .btn {
+
+.btn-group .btn {
     height: 50px; /* Set a fixed height for all buttons */
     line-height: 50px; /* Center text vertically if necessary */
     display: flex; /* Use flexbox for alignment */
     align-items: center; /* Align content vertically */
     justify-content: center; /* Align content horizontally */
-  }
+}

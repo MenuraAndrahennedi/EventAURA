@@ -20,7 +20,7 @@ const SubFooter = () => {
                     <Link href="/reviewPg" className="element">
                         Leave a Review
                     </Link>
-                    <Link to="/help" className="element">
+                    <Link to="/connect-with-us" className="element">
                         <br />
                         Help Center
                     </Link>
@@ -87,17 +87,17 @@ const SubFooter = () => {
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link href="/privacy" className="footer-link">
+                                <Link href="/terms" className="footer-link">
                                     Privacy Policies
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link href="/cookies" className="footer-link">
+                                <Link href="/terms" className="footer-link">
                                     Cookies
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link href="/status" className="footer-link">
+                                <Link href="/terms" className="footer-link">
                                     Status
                                 </Link>
                             </li>
@@ -109,23 +109,17 @@ const SubFooter = () => {
                         <h5>© 2025 CODECATALYSTS</h5>
                         <ul className="list-inline">
                             <li className="mx-3 list-inline-item">
-                                <Link
-                                    thref="/developers"
-                                    className="footer-link"
-                                >
+                                <Link href="/terms" className="footer-link">
                                     Developers
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link href="/license" className="footer-link">
+                                <Link href="/terms" className="footer-link">
                                     License & Registrations
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link
-                                    href="/privacy-terms"
-                                    className="footer-link"
-                                >
+                                <Link href="/terms" className="footer-link">
                                     Privacy Terms
                                 </Link>
                             </li>
