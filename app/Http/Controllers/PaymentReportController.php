@@ -76,7 +76,7 @@ public function exportPdf(Request $request)
         'filter' => $filter
     ]);
 
-    return $pdf->download('payment-report.pdf');
+    return $pdf->download('finance-report.pdf');
 }
 
 }

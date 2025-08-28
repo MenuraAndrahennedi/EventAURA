@@ -66,7 +66,7 @@ const AddNewMember = () => {
                       required
                     >
                       <option value="">Select Role</option>
-                      <option value="1">Programmer</option>
+                      
                       <option value="2">Manager</option>
                       <option value="3">Admin</option>
                     </select>

@@ -117,9 +117,9 @@ const ManagerDashboard = () => {
         </div> */}
 
         <div className="flex flex-row justify-center items-center gap-4 pt-3">
-  <Link href="/add-new-member" className="btn btn-primary px-3 py-3">
+  {/* <Link href="/add-new-member" className="btn btn-primary px-3 py-3">
     Add New Team Member
-  </Link>
+  </Link> */}
   <Link href="/paymenthistory" className="btn btn-primary px-3 py-3">
     View Payment History
   </Link>

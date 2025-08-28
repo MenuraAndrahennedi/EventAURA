@@ -307,7 +307,7 @@ Route::get('/connect-with-us', function () {
 
 Route::get('/manager/stats', [ManagerController::class, 'getStats'])->middleware(['auth', 'adminManagerProgrammer']);
 
-Route::get('/add-new-member', [NewMemberController::class, 'index'])->name('add.new.memeber')->middleware(['auth', 'adminManagerProgrammer']);
+Route::get('/add-new-member', [NewMemberController::class, 'index'])->name('add.new.memeber')->middleware(['auth', 'admin']);
 
 Route::post('/register-new-member', [NewMemberController::class, 'store']);
 

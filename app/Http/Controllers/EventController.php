@@ -423,7 +423,7 @@ class EventController extends Controller
             'rejected_at'      => now(),                                                     // Store the rejection date
             'rejection_reason' => $request->input('rejection_reason', 'No reason provided'), // Store reason
         ]);
-        return redirect()->route('manager.create.requests')->with('success', 'Event rejected.');
+        return redirect()->route('event.create.requests')->with('success', 'Event rejected.');
     }
 
     public function showTBCart($id)
