@@ -19,12 +19,12 @@ import "../../../css/UserHome.scss";
 
 import { Link } from "@inertiajs/react";
 
-//import Cover01 from '../../assets/Images/Tile 1.jpg';
-//import Cover02 from '../../assets/Images/Tile 2.jpg';
-//import Cover03 from '../../assets/Images/Tile 3.jpg';
-//import Cover04 from '../../assets/Images/Tile 4.jpg';
-//import Cover05 from '../../assets/Images/Tile 5.jpg';
-//import Cover06 from '../../assets/Images/Tile 6.jpg';
+import Cover01 from "../../assets/Images/Tile 1.jpg";
+import Cover02 from "../../assets/Images/Tile 2.jpg";
+import Cover03 from "../../assets/Images/Tile 3.jpg";
+import Cover04 from "../../assets/Images/Tile 4.jpg";
+import Cover05 from "../../assets/Images/Tile 5.jpg";
+import Cover06 from "../../assets/Images/Tile 6.jpg";
 
 const UserHome = () => {
     const [ticketSales, setTicketSales] = useState([]);
@@ -83,103 +83,130 @@ const UserHome = () => {
             <Link href={route('admin.profile')} className="image-overlay">Admin Profile</Link>
         </div> */}
 
-            <div className="px-3 pt-5 row gx-5">
-                <div className="mb-4 col-md-4 position-relative">
-                    <div className="border-0 shadow cards">
-                        <div className="cards-img-top">
-                            {/* <img src={Cover01} alt="Banner1" className="w-100"/> */}
-                            <Link
-                                href={route("ongoing")}
-                                className="image-overlay"
-                            >
-                                Ongoing Events
-                            </Link>
+            <section className="py-5 section-2">
+                <div className="container">
+                    {/* 1st Row */}
+                    <div className="px-3 pt-5 row gx-5">
+                        <div className="mb-4 col-12 col-md-4 position-relative">
+                            <div className="border-0 shadow cards">
+                                <div className="overflow-hidden cards-img-top">
+                                    <img
+                                        src={Cover01}
+                                        alt="Banner1"
+                                        className="w-100 image1"
+                                    />
+                                    <Link
+                                        href="/ongoing"
+                                        className="image-overlay"
+                                    >
+                                        Ongoing Events
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div className="mb-4 col-md-4 position-relative">
-                    <div className="border-0 shadow cards">
-                        <div className="cards-img-top">
-                            {/* <img src={Cover02} alt="Banner2" className="w-100"/> */}
-                            <Link
-                                href="/event/create-requests"
-                                className="image-overlay"
-                            >
-                                Pending Requests
-                            </Link>
+                        <div className="mb-4 col-12 col-md-4 position-relative">
+                            <div className="border-0 shadow cards">
+                                <div className="overflow-hidden cards-img-top">
+                                    <img
+                                        src={Cover02}
+                                        alt="Banner2"
+                                        className="w-100 image1"
+                                    />
+                                    <Link
+                                        href="/event/create-requests"
+                                        className="image-overlay"
+                                    >
+                                        Pending Requests
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div className="mb-4 col-md-4 position-relative">
-                    <div className="border-0 shadow cards">
-                        <div className="cards-img-top">
-                            {/* <img src={Cover03} alt="Banner3" className="w-100"/> */}
-                            <Link
-                                href="/ended-event-history"
-                                className="image-overlay"
-                            >
-                                History
-                            </Link>
+                        <div className="mb-4col-12 col-md-4 position-relative">
+                            <div className="border-0 shadow cards">
+                                <div className="overflow-hidden cards-img-top">
+                                    <img
+                                        src={Cover03}
+                                        alt="Banner3"
+                                        className="w-100 image1"
+                                    />
+                                    <Link
+                                        href="/ended-event-history"
+                                        className="image-overlay"
+                                    >
+                                        History
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div className="px-3 pt-5 row gx-5">
-                <div className="mb-4 col-md-4 position-relative">
-                    <div className="border-0 shadow cards">
-                        <div className="cards-img-top">
-                            {/* <img src={Cover04} alt="Banner4" className="w-100"/> */}
-                            <Link
-                                href={route("admin.userDetails")}
-                                className="image-overlay"
-                            >
-                                User Details
-                            </Link>
+                    {/* 2nd Row */}
+                    <div className="px-3 pt-5 row gx-5">
+                        <div className="mb-4 col-12 col-md-4 position-relative">
+                            <div className="border-0 shadow cards">
+                                <div className="overflow-hidden cards-img-top">
+                                    <img
+                                        src={Cover04}
+                                        alt="Banner4"
+                                        className="w-100 image1"
+                                    />
+                                    <Link
+                                        href="/other/profile-show"
+                                        className="image-overlay"
+                                    >
+                                        Your Profile
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div className="mb-4 col-md-4 position-relative">
-                    <div className="border-0 shadow cards">
-                        <div className="cards-img-top">
-                            {/* <img src={Cover05} alt="Banner5" className="w-100"/> */}
-                            <Link
-                                href="/show-reviews"
-                                className="image-overlay"
-                            >
-                                Reviews
-                            </Link>
+                        <div className="mb-4 col-12 col-md-4 position-relative">
+                            <div className="border-0 shadow cards">
+                                <div className="overflow-hidden cards-img-top">
+                                    <img
+                                        src={Cover05}
+                                        alt="Banner5"
+                                        className="w-100 image1"
+                                    />
+                                    <Link
+                                        href="/show-reviews"
+                                        className="image-overlay"
+                                    >
+                                        Reviews
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div className="mb-4 col-md-4 position-relative">
-                    <div className="border-0 shadow cards">
-                        <div className="cards-img-top">
-                            {/* <img src={Cover06} alt="Banner6" className="w-100"/> */}
-                            <Link href="/inquiries" className="image-overlay">
-                                Inquiries
-                            </Link>
+                        <div className="mb-4 col-12 col-md-4 position-relative">
+                            <div className="border-0 shadow cards">
+                                <div className="overflow-hidden cards-img-top">
+                                    <img
+                                        src={Cover06}
+                                        alt="Banner6"
+                                        className="w-100 image1"
+                                    />
+                                    <Link
+                                        href="/inquiries"
+                                        className="image-overlay"
+                                    >
+                                        Inquiries
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <div className="flex flex-row items-center justify-center gap-4 pt-3 mb-4">
                 <Link
                     href="/add-new-member"
-                    className="px-3 py-3 btn btn-primary"
+                    className="px-3 py-3 btn btn-primary2"
                 >
                     Add New Team Member
-                </Link>
-                <Link
-                    href="/paymenthistory"
-                    className="px-3 py-3 btn btn-primary"
-                >
-                    View Payment History
                 </Link>
             </div>
 
@@ -305,6 +332,22 @@ const UserHome = () => {
                         <div className="col-md-4">
                             <RevenuePieChart />
                         </div>
+                    </div>
+                    <div className="flex flex-row items-center justify-center gap-4 pt-3">
+                        <Link
+                            href="/paymenthistory"
+                            className="px-3 py-3 btn btn-primary"
+                        >
+                            Finance Statistics
+                        </Link>
+                    </div>
+                    <div className="flex flex-row items-center justify-center gap-4 pt-3">
+                        <Link
+                            href={route("admin.userDetails")}
+                            className="px-3 py-3 btn btn-primary1"
+                        >
+                            User Details
+                        </Link>
                     </div>
                 </div>
             </section>
