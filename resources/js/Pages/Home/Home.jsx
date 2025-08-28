@@ -204,7 +204,7 @@ export default function Home() {
                             </div>
                             {/* Help Center text and button */}
                             <div className="mb-4 col-12 col-md-6 ">
-                                <h2>NEED HELP</h2>
+                                <h2>NEED HELP?</h2>
                                 <p>
                                     Our user-friendly TicketLeap help center is
                                     always <br />
@@ -218,10 +218,10 @@ export default function Home() {
                                     need for <br />a successful event!
                                 </p>
                                 <Link
-                                    href={route("help")}
+                                    href={route("connect-with-us")}
                                     className="btn btn-primary"
                                 >
-                                    HELP CENTRE
+                                    CONTACT US
                                 </Link>
                             </div>
                         </div>
