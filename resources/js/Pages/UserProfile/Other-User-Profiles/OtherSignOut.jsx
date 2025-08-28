@@ -1,66 +1,107 @@
-import React from 'react'
-import { usePage, router} from '@inertiajs/react'
-import profilelogo from '../../../assets/Images/Profile-logo.png';
-import '../../../../css/profile2.scss';
-import AdminFooter from './../../../Components/Footer/AdminFooter';
-import OtherSideBar from './OtherSideBar';
-import UserHeader from './../../../Components/Header/UserHeader';
+import React from "react";
+import { usePage, router } from "@inertiajs/react";
+import profilelogo from "../../../assets/Images/Profile-logo.png";
+import "../../../../css/profile2.scss";
+import AdminFooter from "./../../../Components/Footer/AdminFooter";
+import OtherSideBar from "./OtherSideBar";
+import UserHeader from "./../../../Components/Header/UserHeader";
 
 const OtherSignOut = () => {
+    const { user } = usePage().props;
 
-  const { user } = usePage().props; 
-    
     const handleSignOut = () => {
-      router.post('/logout'); // Call Laravel's logout route
-    };
-    
-    const handleCancel = () => {
-      // Do nothing, stay on the same page
+        router.post("/logout"); // Call Laravel's logout route
     };
 
-  return (
-    <div className="page-wrapper">
-    <header>
-      <UserHeader />
-    </header>
+    const handleKeepSignedIn = () => {
+        window.history.back(); // Goes back to the previous page
+    };
 
-    <main className="main-box">
-      <div className="container my-5">
-            <div className="border-0 shadow card">
-              <div className="text-center card-body">
-                  <h1><b>Hi {user.name}!</b></h1>
-                  <h4><b>Welcome to Your Profile</b></h4>
-                  <img src= {profilelogo} alt="Avatar"className="profile-avatar" style={{ display: 'block', margin: '0 auto' }}/>
-              </div>
-            </div>
+    return (
+        <div className="page-wrapper">
+            <header>
+                <UserHeader />
+            </header>
 
-            <div className="mt-4 row">
-              <div className="col-md-3">
-                <OtherSideBar />
-              </div>
-              <div className="col-md-9">
-                <div className="border-0 shadow card">
-                  <div className="card-body profile-details">
-                      <h5 className="text-center"><b>Do you want to sign out?</b></h5>
-                      <p className="text-center">@{user.name}</p><br />
-                      <h5 className="text-center">Are you sure ?</h5><br />
-                    <div className=" text-end">
-                        <button className="mt-3 btn btn-primary me-2"onClick={handleSignOut}>Yes,Sign Out</button>
-                        <button className="mt-3 btn btn-secondary"onClick={handleCancel}>Keep,Signed in</button>
-                      </div>
-                  </div>
-                  
+            <main className="main-box">
+                <div className="container my-5">
+                    <div className="border-0 shadow card">
+                        <div className="text-center card-body">
+                            <h1>
+                                <b>Hi {user.name}!</b>
+                            </h1>
+                            <h4>
+                                <b>Welcome to Your Profile</b>
+                            </h4>
+                            <img
+                                src={profilelogo}
+                                alt="Avatar"
+                                className="profile-avatar"
+                                style={{ display: "block", margin: "0 auto" }}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="mt-4 row">
+                        <div className="col-md-3">
+                            <OtherSideBar />
+                        </div>
+                        <div className="col-md-9">
+                            <div className="border-0 shadow card">
+                                <div className="card-body profile-details">
+                                    <h5 className="text-center">
+                                        <b>Do you want to sign out?</b>
+                                    </h5>
+                                    <p className="text-center">@{user.name}</p>
+                                    <br />
+                                    <h5 className="text-center">
+                                        Are you sure ?
+                                    </h5>
+                                    <br />
+                                    <div className=" text-end">
+                                        <div
+                                            className="text-center"
+                                            style={{
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                gap: "10px",
+                                                marginTop: "20px",
+                                            }}
+                                        >
+                                            <button
+                                                className="btn btn-yes me-2"
+                                                onClick={handleSignOut}
+                                                style={{
+                                                    width: "150px",
+                                                    height: "45px",
+                                                }}
+                                            >
+                                                Yes,Sign Out
+                                            </button>
+                                            <button
+                                                className="btn btn-no "
+                                                onClick={handleKeepSignedIn}
+                                                style={{
+                                                    width: "150px",
+                                                    height: "45px",
+                                                }}
+                                            >
+                                                Keep,Signed in
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-          </div>
-      </div>
-    </main>
+            </main>
 
-    <footer>
-      <AdminFooter />
-    </footer>
-  </div>
-  )
-}
+            <footer>
+                <AdminFooter />
+            </footer>
+        </div>
+    );
+};
 
-export default OtherSignOut
+export default OtherSignOut;

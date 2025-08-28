@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-import MainHeader from "../../../Components/Header/MainHeader";
+import MainHeader from "../../../Components/Header/EHHeader";
 import MainFooter from "../../../Components/Footer/MainFooter";
 import { usePage, router } from "@inertiajs/react"; // Get Laravel props from Inertia.js
 
