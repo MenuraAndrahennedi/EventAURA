@@ -43,7 +43,7 @@ const UserHeader = () => {
                     >
                         <img src={Logo} alt="Logo" className="logo-img" />
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
                     <div id="basic-navbar-nav">
                         <Nav className="ms-auto align-items-center">
                             <Nav.Link
