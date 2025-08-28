@@ -18,7 +18,7 @@ export default function PaymentDetails() {
 
       <main className="min-h-screen bg-gray-50 py-10 px-6 md:px-20">
         <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-8 space-y-8">
-          <h1 className="text-4xl font-bold text-center text-gray-800">Payment Report</h1>
+          <h1 className="text-4xl font-bold text-center text-gray-800">Finance Report</h1>
 
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="flex items-center gap-3">
@@ -39,7 +39,7 @@ export default function PaymentDetails() {
               target="_blank"
               className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
             >
-              Download Payment Report
+              Download Finance Report
             </a>
           </div>
 
