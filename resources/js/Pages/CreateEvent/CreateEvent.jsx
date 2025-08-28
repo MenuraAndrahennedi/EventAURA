@@ -36,7 +36,7 @@ const CreateEvent = () => {
     const handleLocationClick = () => {
         // Open Google Maps to let the user pick a location
         const mapUrl =
-            "https://www.google.com/maps/search/?api=1&query=40.748817,-73.985428"; // Placeholder location
+            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.63215410917!2d79.77380240286995!3d6.921831560765602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae253d10f7a7003%3A0x320b2e4d32d3838d!2sColombo!5e0!3m2!1sen!2slk!4v1756377282041!5m2!1sen!2slk"; // Placeholder location
         window.open(mapUrl, "_blank", "width=800,height=600");
     };
 
@@ -93,7 +93,9 @@ const CreateEvent = () => {
             document.querySelector("form").reset();
         } catch (error) {
             console.error(error.response.data);
-            alert("Error creating event.");
+            alert(
+                "Error creating event. Check fo the emptyness of essential input fields."
+            );
         }
     };
 
@@ -318,7 +320,11 @@ const CreateEvent = () => {
                     <section className="px-3 py-4 ticket-categories">
                         <div className="mb-3 header-container">
                             <h3>
-                                <b>3. Tickets Categories</b>
+                                <b>3. Tickets Categories </b>
+                                <samll className="text-muted ms-2">
+                                    (Input 0 for both count and price, for
+                                    unwanted categories)*
+                                </samll>
                             </h3>
                         </div>
                         <hr className="mb-4" />
@@ -327,9 +333,9 @@ const CreateEvent = () => {
 
                         <div className="ticket-types w-100">
                             {/* Golden Tickets */}
-                            <div className="mb-4">
+                            <div className="mb-4 align-items-center">
                                 <label className="form-label fw-medium">
-                                    Golden Tickets
+                                    Golden Tickets*
                                 </label>
                                 <div className="row g-3 ">
                                     <div className="col-12 col-sm-6">
@@ -355,9 +361,9 @@ const CreateEvent = () => {
                             </div>
 
                             {/* Silver Tickets */}
-                            <div className="mb-4">
-                                <label className="form-label fw-medium">
-                                    Silver Tickets
+                            <div className="mb-4 align-items-center">
+                                <label className="form-label fw-medium ms-5">
+                                    Silver Tickets*
                                 </label>
                                 <div className="row g-3 ">
                                     <div className="col-12 col-sm-6">
@@ -383,11 +389,11 @@ const CreateEvent = () => {
                             </div>
 
                             {/* Bronze Tickets */}
-                            <div className="mb-4">
+                            <div className="mb-4 align-items-center">
                                 <label className="form-label fw-medium">
-                                    Bronze Tickets
+                                    Bronze Tickets*
                                 </label>
-                                <div className="row g-3 ">
+                                <div className="row g-3 ms-2">
                                     <div className="col-12 col-sm-6">
                                         <input
                                             type="number"
