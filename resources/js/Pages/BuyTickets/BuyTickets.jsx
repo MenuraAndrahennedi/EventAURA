@@ -24,12 +24,41 @@ const BuyTickets = ({ event }) => {
      * Ensures non-negative count and updates cart context for the current event
      */
     const handleTicketChange = (type, value) => {
-        const count = Math.max(0, Number(value)); // Ensure non-negative values
+       // const count = Math.max(0, Number(value)); // Ensure non-negative values
 
         if (!event || !event.id) {
             console.error("Error: event or event.id is undefined");
             return;
         }
+
+        // Convert value to number, ensure non-negative
+    let count = Math.max(0, Number(value));
+
+    // Determine max available tickets for this type
+    let available = 0;
+    if (type === "golden") {
+        available = Math.max(
+            event.golden_ticket_count - (lockedTickets[event.id]?.golden || 0),
+            0
+        );
+    } else if (type === "silver") {
+        available = Math.max(
+            event.silver_ticket_count - (lockedTickets[event.id]?.silver || 0),
+            0
+        );
+    } else if (type === "bronze") {
+        available = Math.max(
+            event.bronze_ticket_count - (lockedTickets[event.id]?.bronze || 0),
+            0
+        );
+    }
+
+    // Restrict to available tickets
+    if (count > available) {
+        count = available;
+        alert(`Only ${available} tickets are available for ${type}!`);
+    }
+
         // Update the cart with new ticket count for this event
         updateCart({ [type]: count }, event.id);
     };
@@ -145,6 +174,7 @@ const BuyTickets = ({ event }) => {
                                     <input
                                         type="number"
                                         min="0"
+                                        max={Math.max(event.golden_ticket_count - (lockedTickets[event.id]?.golden || 0), 0)}
                                         value={cart[event.id]?.golden || 0}
                                         placeholder="count"
                                         onChange={(e) =>

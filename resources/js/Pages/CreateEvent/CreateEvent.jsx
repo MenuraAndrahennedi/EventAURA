@@ -43,6 +43,15 @@ const CreateEvent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Check if event date is in the past
+    const eventDate = new Date(formData.get("date"));
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // ignore time part
+
+    if (eventDate < today) {
+        alert("You have selected a past date. Please confirm before submitting.");
+        return; // stop submission
+    }
         // Create a fresh FormData to combine artists and other fields
         const newFormData = new FormData();
         // Append artist IDs to form data
@@ -320,10 +329,10 @@ const CreateEvent = () => {
                         <div className="mb-3 header-container">
                             <h3>
                                 <b>3. Tickets Categories </b>
-                                <samll className="text-muted ms-2">
+                                <small className="text-muted ms-2">
                                     (Input 0 for both count and price, for
                                     unwanted categories)*
-                                </samll>
+                                </small>
                             </h3>
                         </div>
                         <hr className="mb-4" />
