@@ -96,26 +96,28 @@ body {
     }
 }
 
-.btn-primary {
+.btn-yes {
     background-color: #ff0000;
+    color: rgb(233, 233, 233);
     padding: 0px 20px;
     font-size: 1em;
     font-weight: 500;
     margin-bottom: 20px;
 }
-.btn-primary:hover {
+.btn-yes:hover {
     background-color: #de0000;
     transform: scale(1.05);
     color: white; /* Slightly enlarges the button */
 }
-.btn-secondary {
+.btn-no {
     background-color: #0000ff;
+    color: rgb(233, 233, 233);
     padding: 0px 20px;
     font-size: 1em;
     font-weight: 500;
     margin-bottom: 0px;
 }
-.btn-secondary:hover {
+.btn-no:hover {
     background-color: #0039d7;
     transform: scale(1.05);
     color: white; /* Slightly enlarges the button */

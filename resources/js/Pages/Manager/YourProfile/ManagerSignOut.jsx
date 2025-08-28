@@ -72,7 +72,7 @@ const ManagerSignOut = ({ user }) => {
                                             }}
                                         >
                                             <button
-                                                className="btn btn-primary me-2"
+                                                className="btn btn-yes me-2"
                                                 onClick={handleSignOut}
                                                 style={{
                                                     width: "150px",
@@ -82,7 +82,7 @@ const ManagerSignOut = ({ user }) => {
                                                 Yes,Sign Out
                                             </button>
                                             <button
-                                                className="btn btn-secondary "
+                                                className="btn btn-no "
                                                 onClick={handleKeepSignedIn}
                                                 style={{
                                                     width: "150px",
