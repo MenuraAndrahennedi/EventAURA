@@ -4,6 +4,16 @@
 
 /* === GLOBAL QUICK FIX FOR RESPONSIVENESS === */
 
+/* Global style for all alerts */
+.alert {
+
+  color: #842029;          
+  /* border: 1px solid #f5c2c7;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: 500; */
+}
+
 /* Make all images responsive */
 img {
     max-width: 100%;

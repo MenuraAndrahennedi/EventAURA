@@ -10,6 +10,8 @@ import TBSideBar from '@/Components/SideBar/TBSideBar';
 
 const ManagerEditProfile = () => {
   const { user } = usePage().props; // Get user data from Inertia
+
+  // Initialize form state using Inertia's useForm hook
   const { data, setData, post, processing, errors } = useForm({
     name: user.name || '',
     email: user.email || '',
