@@ -10,8 +10,14 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Image from "react-bootstrap/Image";
 
 const TBHeader = () => {
-    const { auth, url } = usePage().props;
-    const isCustomer = auth.user && auth.user.role_id === 5;
+    
+    // const { auth, url } = usePage().props;
+    // const isCustomer = auth.user && auth.user.role_id === 5;
+    // const hasUnreadMessages = auth.user && auth.user.hasUnreadMessages;
+const { props } = usePage();
+const { auth, url } = props;
+const isCustomer = auth.user && auth.user.role_id === 4;
+const hasUnreadMessages = props.hasUnreadMessages;
     return (
         <header>
             <Navbar expand="lg" className="bg-dark navbar-dark">
@@ -54,6 +60,21 @@ const TBHeader = () => {
                                 }`}
                             >
                                 Contact US
+                            </Nav.Link>
+
+                            <Nav.Link
+                                as={Link}
+                                href="/chatify"
+                                className="nav-link position-relative"
+                            >
+                                View Messages
+                                {hasUnreadMessages && (
+                                    <span className="top-0 p-1 position-absolute start-100 translate-middle bg-primary rounded-circle">
+                                        <span className="visually-hidden">
+                                            New messages
+                                        </span>
+                                    </span>
+                                )}
                             </Nav.Link>
 
                             <div className="d-flex align-items-center ms-3">
