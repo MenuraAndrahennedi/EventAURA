@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Payment Report</title>
+    <title>Finance Report</title>
     <style>
         body { font-family: sans-serif; }
         table { width: 100%; border-collapse: collapse; margin-bottom: 20px;}
@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-    <h1>Payment Report ({{ ucfirst($filter) }})</h1>
+    <h1>Finance Report ({{ ucfirst($filter) }})</h1>
 
     <p><strong>Total Revenue from Customers:</strong> LKR {{ number_format($totalRevenueCustomer) }}</p>
     <p><strong>Total Revenue from Event Hosting:</strong> LKR {{ number_format($totalRevenueHost) }}</p>
