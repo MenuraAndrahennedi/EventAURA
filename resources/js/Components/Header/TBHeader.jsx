@@ -18,7 +18,7 @@ const TBHeader = () => {
                 <Container fluid>
                     <Navbar.Brand
                         as={Link}
-                        href={route("home")}
+                        href={route("browse")}
                         className="logo"
                     >
                         <img src={Logo} alt="Logo" className="logo-img" />

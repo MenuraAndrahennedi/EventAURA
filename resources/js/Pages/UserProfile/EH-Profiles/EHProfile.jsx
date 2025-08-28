@@ -1,81 +1,94 @@
-import React, { useState } from 'react';
-import { usePage, useForm,Link } from '@inertiajs/react';
-import TBHeader from '../../../Components/Header/EHHeader';
-import SubFooter from '../../../Components/Footer/SubFooter';
-import profilelogo from '../../../assets/Images/Profile-logo.png';
-import '../../../../css/profile2.scss';
-import EHSidebar from './EHSidebar';
-import axios from 'axios';
-import EHHeader from '../../../Components/Header/EHHeader';
+import React, { useState } from "react";
+import { usePage, useForm, Link } from "@inertiajs/react";
+import TBHeader from "../../../Components/Header/EHHeader";
+import SubFooter from "../../../Components/Footer/SubFooter";
+import profilelogo from "../../../assets/Images/Profile-logo.png";
+import "../../../../css/profile2.scss";
+import EHSidebar from "./EHSidebar";
+import axios from "axios";
+import EHHeader from "../../../Components/Header/EHHeader";
 
 const EHProfile = () => {
-  
-  const { user } = usePage().props; 
+    const { user } = usePage().props;
 
-  // const { data, setData, post, processing, reset, errors } = useForm({
-  //     fullName: user.name || '',
-  //     email: user.email || '',
-  //     telephone: user.telephone || '',
-  //   });
-  
-  //   const [showProfileForm, setShowProfileForm] = useState(false);
-  
-  //   const handleChange = (e) => {
-  //     setData(e.target.name, e.target.value);
-  //   };
-  
-  //   const handleSaveChanges = () => {
-  //     post(route('eventhost.updateProfile'), {
-  //       onSuccess: () => {
-  //         setShowProfileForm(true); 
-  //       },
-  //     });
-  //   };
+    // const { data, setData, post, processing, reset, errors } = useForm({
+    //     fullName: user.name || '',
+    //     email: user.email || '',
+    //     telephone: user.telephone || '',
+    //   });
 
-  //   const handleSave = () => {
-  //     post(route('eventhost.updateProfile'), {
-  //       onSuccess: () => {
-  //         alert("Profile updated successfully!"); 
-  //         setShowProfileForm(false); 
-  //       },
-  //       onError: (errors) => {
-  //         console.error(errors); 
-  //       }
-  //     });
-  //   };
-  
-  //   const handleCancel = () => {
-  //     reset();
-  //     setShowProfileForm(false);
-  //   };
- 
+    //   const [showProfileForm, setShowProfileForm] = useState(false);
 
-  return (
-    <div className="page-wrapper">
-      <header>
-        <EHHeader/>
-      </header>
+    //   const handleChange = (e) => {
+    //     setData(e.target.name, e.target.value);
+    //   };
 
-      <main className="main-box">
-        <div className="container my-5">
-          <div className="border-0 shadow card">
-            <div className="text-center card-body">
-              <h1 className="profile-heading"><b>Hi {user.name}!</b></h1> 
-              <h4><b>Welcome to Your Profile</b></h4>
-              <img src={user.avatar ? `/storage/${user.avatar}` : profilelogo}  alt="Avatar" className="profile-avatar" style={{ display: 'block', margin: '0 auto' }}/>
-            </div>
-          </div>
+    //   const handleSaveChanges = () => {
+    //     post(route('eventhost.updateProfile'), {
+    //       onSuccess: () => {
+    //         setShowProfileForm(true);
+    //       },
+    //     });
+    //   };
 
-          <div className="mt-4 row">
-            <div className="col-md-3">
-              <EHSidebar />
-            </div>
-            <div className="col-md-9">
-              <div className="border-0 shadow card">
-                <div className="card-body profile-details">
-                  <h5 className="text-center"><b>Profile Details</b></h5>
-                  <p className="text-center">@{user.name}</p>
-                  {/* {showProfileForm ? (
+    //   const handleSave = () => {
+    //     post(route('eventhost.updateProfile'), {
+    //       onSuccess: () => {
+    //         alert("Profile updated successfully!");
+    //         setShowProfileForm(false);
+    //       },
+    //       onError: (errors) => {
+    //         console.error(errors);
+    //       }
+    //     });
+    //   };
+
+    //   const handleCancel = () => {
+    //     reset();
+    //     setShowProfileForm(false);
+    //   };
+
+    return (
+        <div className="page-wrapper">
+            <header>
+                <EHHeader />
+            </header>
+
+            <main className="main-box">
+                <div className="container my-5">
+                    <div className="border-0 shadow card">
+                        <div className="text-center card-body">
+                            <h1 className="profile-heading">
+                                <b>Hi {user.name}!</b>
+                            </h1>
+                            <h4>
+                                <b>Welcome to Your Profile</b>
+                            </h4>
+                            <img
+                                src={
+                                    user.avatar
+                                        ? `/storage/${user.avatar}`
+                                        : profilelogo
+                                }
+                                alt="Avatar"
+                                className="profile-avatar"
+                                style={{ display: "block", margin: "0 auto" }}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="mt-4 row">
+                        <div className="col-md-3">
+                            <EHSidebar />
+                        </div>
+                        <div className="col-md-9">
+                            <div className="border-0 shadow card">
+                                <div className="card-body profile-details">
+                                    <h5 className="text-center">
+                                        <b>Profile Details</b>
+                                    </h5>
+                                    <p className="text-center">@{user.name}</p>
+                                    {/* {showProfileForm ? (
                     
                       <div className="details-grid">
                         <div className="detail-label">Full Name:</div>
@@ -133,32 +146,51 @@ const EHProfile = () => {
                       </div>
                     </>
                   )} */}
-                   <div className="details-grid">
-                    <div className="detail-label">Full Name:</div>
-                    <div className="detail-value">{user.name}</div>
-                    
-                    <div className="detail-label">Email:</div>
-                    <div className="detail-value">{user.email}</div>
-                    
-                    <div className="detail-label">Telephone No:</div>
-                    <div className="detail-value">{user.telephone}</div>
-                  </div>
+                                    <div className="details-grid">
+                                        <div className="detail-label">
+                                            Full Name:
+                                        </div>
+                                        <div className="detail-value">
+                                            {user.name}
+                                        </div>
 
-                  <div className="text-end">
-                    <Link href={route('eventhost.profile.edit') }className="mt-3 btn btn-blue">Edit Profile</Link>
-                  </div>
+                                        <div className="detail-label">
+                                            Email:
+                                        </div>
+                                        <div className="detail-value">
+                                            {user.email}
+                                        </div>
+
+                                        <div className="detail-label">
+                                            Telephone No:
+                                        </div>
+                                        <div className="detail-value">
+                                            {user.telephone}
+                                        </div>
+                                    </div>
+
+                                    <div className="text-end">
+                                        <Link
+                                            href={route(
+                                                "eventhost.profile.edit"
+                                            )}
+                                            className="mt-3 btn btn-blue"
+                                        >
+                                            Edit Profile
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
+            </main>
+
+            <footer>
+                <SubFooter />
+            </footer>
         </div>
-      </main>
-      
-      <footer>
-        <SubFooter />
-      </footer>
-    </div>
-  );
-}
+    );
+};
 
 export default EHProfile;
