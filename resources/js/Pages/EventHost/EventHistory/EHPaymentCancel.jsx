@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link, usePage } from "@inertiajs/react";
 // import MainHeader from '../../Components/Header/MainHeader';
@@ -39,6 +40,7 @@ const PaymentCancel = () => {
       </footer> */}
         </>
     );
+
 };
 
 export default PaymentCancel;

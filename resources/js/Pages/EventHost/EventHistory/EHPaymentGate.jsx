@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
@@ -11,6 +12,7 @@ const stripePromise = loadStripe(
     "pk_test_51QwdwpPxzbr1WYso8H9OFdQvYi78pwIi5w1qExB1MO4edWNeO22QesA0ClJI7p5Z8tiscBdMXPrzM2KOC9xe3pLk00kg3VIPUz"
 );
 
+
 const EHPaymentGate = () => {
     const { user } = usePage().props; // Get event host details from Laravel
     const [name, setName] = useState(user?.name || "");
@@ -23,6 +25,7 @@ const EHPaymentGate = () => {
         event.preventDefault(); // Prevent page refresh
         setLoading(true);
         try {
+
             console.log("Sending payment request...");
             const response = await axios.post("/eventhost/payment/process", {
                 amount: totalAmount, // Event host fixed payment
