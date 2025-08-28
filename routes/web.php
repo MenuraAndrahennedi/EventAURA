@@ -91,6 +91,7 @@ Route::get('/manager', function () {
 
 
 Route::get('/about', function () {return Inertia::render('AboutUs/AboutUS');})->name('about');
+Route::get('/terms', function () {return Inertia::render('TermsnPolicies');})->name('terms');
 Route::get('/browse-guest', function () {return Inertia::render('BrowseEvent/BrowseEvent');})->name('browse.guest');
 Route::get('/buytickets', function () {return Inertia::render('BuyTickets/BuyTickets');})->name('buytickets');
 Route::get('/browse', [EventController::class, 'showBrowseEvents'])->name('browse');
