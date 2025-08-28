@@ -1,95 +1,177 @@
-import React from 'react'
-import '../../../css/EHLogin.scss';
-import MainHeader from './../../Components/Header/MainHeader';
-import SubFooter from './../../Components/Footer/SubFooter';
-import { Link ,useForm} from '@inertiajs/react';
+import React from "react";
+import "../../../css/EHLogin.scss";
+import MainHeader from "./../../Components/Header/MainHeader";
+import SubFooter from "./../../Components/Footer/SubFooter";
+import { Link, useForm } from "@inertiajs/react";
 
 const EHCreateAccount = () => {
-  const { data, setData, post, processing, errors } = useForm({
-    name: '',
-    email: '',
-    telephone: '',
-    password: '',
-    password_confirmation: '',
-    role_id: 4, // Assuming 3 represents the role of "Event Host"
-  });
- 
-  const handleChange = (e) => {
-    setData(e.target.name, e.target.value);
-  };
+    const { data, setData, post, processing, errors } = useForm({
+        name: "",
+        email: "",
+        telephone: "",
+        password: "",
+        password_confirmation: "",
+        role_id: 4, // Assuming 3 represents the role of "Event Host"
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    post('/register'); // Laravel Breeze's register route
-  };
+    const handleChange = (e) => {
+        setData(e.target.name, e.target.value);
+    };
 
-  return (
-    <>
-        <header>
-          <MainHeader/> 
-        </header>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post("/register"); // Laravel Breeze's register route
+    };
 
-        <main className="login-page d-flex align-items-stretch">
-          <div className="image-section d-none d-md-block col-md-6"></div>
-          
-          <div className="login-form-section d-flex justify-content-center align-items-center">
-            <div className="login-form">
-              <div className="border-0 shadow card">
-                <div className="p-4 card-body">
-                  <h2 className="mb-4 text-center"> Create Your account</h2>
+    return (
+        <>
+            <header>
+                <MainHeader />
+            </header>
 
-                  <form onSubmit={handleSubmit}>
+            <main className="login-page d-flex align-items-stretch">
+                <div className="image-section d-none d-md-block col-md-6"></div>
 
-                    <div className="mb-3">
-                      <input type="text" name ="name" placeholder="Name" value={data.name} onChange={handleChange}  className="form-control"  required/>
-                      {errors.name && <div className="error">{errors.name}</div>}
+                <div className="login-form-section d-flex justify-content-center align-items-center">
+                    <div className="login-form">
+                        <div className="border-0 shadow card">
+                            <div className="p-4 card-body">
+                                <h2 className="mb-4 text-center">
+                                    {" "}
+                                    Create Your account
+                                </h2>
+
+                                <form onSubmit={handleSubmit}>
+                                    <div className="mb-3">
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            placeholder="Name"
+                                            value={data.name}
+                                            onChange={handleChange}
+                                            className="form-control"
+                                            required
+                                        />
+                                        {errors.name && (
+                                            <div className="error">
+                                                {errors.name}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="mb-3">
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            placeholder="Email"
+                                            value={data.email}
+                                            onChange={handleChange}
+                                            className="form-control"
+                                            required
+                                        />
+                                        {errors.email && (
+                                            <div className="error">
+                                                {errors.email}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="mb-3">
+                                        <input
+                                            type=" text"
+                                            name="telephone"
+                                            placeholder="Telephone No"
+                                            value={data.telephone}
+                                            onChange={handleChange}
+                                            className="form-control"
+                                            required
+                                        />
+                                        {errors.telephone && (
+                                            <div className="error">
+                                                {errors.telephone}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="mb-3">
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            placeholder="Password"
+                                            value={data.password}
+                                            onChange={handleChange}
+                                            className="form-control"
+                                            required
+                                        />
+                                        {errors.password && (
+                                            <div className="error">
+                                                {errors.password}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="mb-3">
+                                        <input
+                                            type="password"
+                                            name="password_confirmation"
+                                            placeholder=" Confirm Password"
+                                            value={data.password_confirmation}
+                                            onChange={handleChange}
+                                            className="form-control"
+                                            required
+                                        />
+                                        {errors.password_confirmation && (
+                                            <div className="error">
+                                                {errors.password_confirmation}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        disabled={processing}
+                                        className="mb-3 btn btn-primary w-100"
+                                    >
+                                        Continue
+                                    </button>
+
+                                    <div className="mb-3 text-center">
+                                        <small>
+                                            <Link
+                                                href="/terms"
+                                                className="Guest-link"
+                                            >
+                                                Terms and Conditions
+                                            </Link>
+                                        </small>
+                                    </div>
+
+                                    <hr />
+
+                                    <div className="mt-4 text-center">
+                                        <small>
+                                            Already have an account?{" "}
+                                            <Link
+                                                href={route("eh.login")}
+                                                className="Guest-link"
+                                            >
+                                                {" "}
+                                                Sign in
+                                            </Link>
+                                        </small>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="mb-3">
-                      <input type="email" name="email" placeholder="Email"  value={data.email} onChange={handleChange} className="form-control" required />
-                      {errors.email && <div className="error">{errors.email}</div>}
-                    </div>
-
-                    <div className="mb-3">
-                      <input type=" text" name="telephone" placeholder="Telephone No" value={data.telephone} onChange={handleChange} className="form-control"  required/>
-                      {errors.telephone && <div className="error">{errors.telephone}</div>}
-                    </div>
-
-                    <div className="mb-3">
-                      <input type="password" name="password" placeholder="Password" value={data.password} onChange={handleChange} className="form-control" required />
-                      {errors.password && <div className="error">{errors.password}</div>}
-                    </div>
-
-                    <div className="mb-3">
-                      <input type="password" name="password_confirmation" placeholder=" Confirm Password" value={data.password_confirmation} onChange={handleChange} className="form-control" required />
-                      {errors.password_confirmation && <div className="error">{errors.password_confirmation}</div>}
-                    </div>
-
-                    <button type="submit" disabled={processing} className="mb-3 btn btn-primary w-100">Continue</button>
-                    
-                    <div className="mb-3 text-center"><small>
-                      < Link to= '/terms'className="Guest-link" >Terms and Conditions</Link>
-                    </small></div >
-
-                    <hr />
-
-                    <div className="mt-4 text-center">
-                      <small>Already have an account? <Link href={route('eh.login')} className="Guest-link"> Sign in</Link></small>
-                    </div>
-
-                  </form>
-
                 </div>
-              </div>
-            </div>
-          </div>
-      </main>
-      
-        <footer>
-          <SubFooter />
-        </footer>
-    </>
-  )
-}
+            </main>
 
-export default EHCreateAccount
+            <footer>
+                <SubFooter />
+            </footer>
+        </>
+    );
+};
+
+export default EHCreateAccount;

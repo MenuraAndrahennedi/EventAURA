@@ -22,10 +22,9 @@ const TBCreateAccount = () => {
 
     // Handle form submission
     const handleSubmit = (e) => {
-        e.preventDefault();// Prevent page reload
-        post("/register");// Send POST request to register route
+        e.preventDefault(); // Prevent page reload
+        post("/register"); // Send POST request to register route
     };
-
 
     return (
         <>
@@ -34,15 +33,13 @@ const TBCreateAccount = () => {
             </header>
 
             <main>
-
                 {/* Container for account creation form */}
                 <div className="TB-Loginform-container">
                     <div className="TB-Login-overlay">
                         <h2>Create your Account</h2>
-                        
+
                         {/* Registration form */}
                         <form onSubmit={handleSubmit}>
-                           
                             <input
                                 type="text"
                                 name="name"
@@ -113,7 +110,7 @@ const TBCreateAccount = () => {
                             <div className="sign-up">
                                 <small>
                                     {" "}
-                                    <Link to="/terms" className="custom-link">
+                                    <Link href="/terms" className="custom-link">
                                         Terms and Conditions
                                     </Link>
                                 </small>
@@ -126,10 +123,14 @@ const TBCreateAccount = () => {
                         <div className="sign-up">
                             <small>
                                 Already Have an account ?{" "}
-                                <Link href={route("tb.login")}className="custom-link">Sign in</Link>
+                                <Link
+                                    href={route("tb.login")}
+                                    className="custom-link"
+                                >
+                                    Sign in
+                                </Link>
                             </small>
                         </div>
-                        
                     </div>
                 </div>
             </main>
