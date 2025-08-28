@@ -350,7 +350,10 @@ const BuyTickets = ({ event }) => {
             <section className="contact-host">
                 <div className="text-center">
                     <div className="host-text-image">
-                        <Link to="/HostContact" className="Host">
+                        <Link
+                            href={route("host.contact.page", { id: event.id })} // This link now navigates to the contact form page
+                            className="Host"
+                        >
                             Get in touch with the host
                         </Link>
                         <img

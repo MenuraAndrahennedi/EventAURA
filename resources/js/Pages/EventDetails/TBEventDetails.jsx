@@ -12,14 +12,14 @@ import HostImage from "../../assets/Logos/HostLogo.png";
 
 const TBEventDetails = ({ event }) => {
     console.log("Event data:", event);
-    
+
     // State to control visibility of return policy modal
     const [showReturnPolicy, setShowReturnPolicy] = useState(false);
     // Open return policy modal
     const openReturnPolicy = () => setShowReturnPolicy(true);
     // Close return policy modal
     const closeReturnPolicy = () => setShowReturnPolicy(false);
-    
+
     return (
         <>
             <header>
@@ -36,19 +36,24 @@ const TBEventDetails = ({ event }) => {
 
                 <div className="event-info">
                     <div className="event-poster">
-                        <img src={`/storage/${event.image}`}  alt={event.name} />
+                        <img src={`/storage/${event.image}`} alt={event.name} />
                     </div>
 
                     {/* Event description and meta */}
                     <div className="event-description">
                         <p>{event.description}</p>
                         <div className="event-meta">
-                           <p><strong>Date:</strong> {event.date}</p>
-                           <p><strong>Venue:</strong> {event.venue}</p>
-                           <p><strong>Organizer:</strong> {event.organizer}</p>
+                            <p>
+                                <strong>Date:</strong> {event.date}
+                            </p>
+                            <p>
+                                <strong>Venue:</strong> {event.venue}
+                            </p>
+                            <p>
+                                <strong>Organizer:</strong> {event.organizer}
+                            </p>
 
                             <div className="button-row">
-                                
                                 {/* Location link */}
                                 <a
                                     href={event.location}
@@ -58,8 +63,6 @@ const TBEventDetails = ({ event }) => {
                                 >
                                     Location
                                 </a>
-
-
                                 {/* Download PDF */}
                                 <a
                                     href={`/storage/${event.agenda_pdf}`}
@@ -69,14 +72,13 @@ const TBEventDetails = ({ event }) => {
                                 >
                                     Agenda.pdf
                                 </a>{" "}
-                                
                             </div>
                         </div>
                         <div className="event-buttons">
                             {/* Show Sold Out button if no tickets available */}
-                            {(event.golden_ticket_count === 0 &&
-                              event.silver_ticket_count === 0 &&
-                              event.bronze_ticket_count === 0) ? (
+                            {event.golden_ticket_count === 0 &&
+                            event.silver_ticket_count === 0 &&
+                            event.bronze_ticket_count === 0 ? (
                                 <button className="btn btn-danger" disabled>
                                     Sold Out
                                 </button>
@@ -90,7 +92,10 @@ const TBEventDetails = ({ event }) => {
                                 </Link>
                             )}
                             {/* Return Policies button */}
-                            <button className="return-policies" onClick={openReturnPolicy}>
+                            <button
+                                className="return-policies"
+                                onClick={openReturnPolicy}
+                            >
                                 Return Policies
                             </button>
                         </div>
@@ -135,7 +140,7 @@ const TBEventDetails = ({ event }) => {
             <section className="contact-host">
                 <div className="text-center">
                     <div className="host-text-image">
-                    <Link
+                        <Link
                             href={route("host.contact.page", { id: event.id })} // This link now navigates to the contact form page
                             className="Host"
                         >
@@ -157,12 +162,18 @@ const TBEventDetails = ({ event }) => {
                 {/* Return Policy Modal */}
                 {showReturnPolicy && (
                     <div className="modal-overlay" onClick={closeReturnPolicy}>
-                        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                            <button className="close-button" onClick={closeReturnPolicy}>×</button>
+                        <div
+                            className="modal-content"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                className="close-button"
+                                onClick={closeReturnPolicy}
+                            >
+                                ×
+                            </button>
                             <h2>Return Policies</h2>
-                            <p>
-                            {event.return_policies}
-                            </p>
+                            <p>{event.return_policies}</p>
                         </div>
                     </div>
                 )}
