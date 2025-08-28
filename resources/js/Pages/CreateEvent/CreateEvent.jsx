@@ -35,8 +35,7 @@ const CreateEvent = () => {
 
     const handleLocationClick = () => {
         // Open Google Maps to let the user pick a location
-        const mapUrl =
-            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.63215410917!2d79.77380240286995!3d6.921831560765602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae253d10f7a7003%3A0x320b2e4d32d3838d!2sColombo!5e0!3m2!1sen!2slk!4v1756377282041!5m2!1sen!2slk"; // Placeholder location
+        const mapUrl = "https://maps.app.goo.gl/kj1XknExTeGSYtA28"; // Placeholder location
         window.open(mapUrl, "_blank", "width=800,height=600");
     };
 
@@ -44,6 +43,15 @@ const CreateEvent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Check if event date is in the past
+    const eventDate = new Date(formData.get("date"));
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // ignore time part
+
+    if (eventDate < today) {
+        alert("You have selected a past date. Please confirm before submitting.");
+        return; // stop submission
+    }
         // Create a fresh FormData to combine artists and other fields
         const newFormData = new FormData();
         // Append artist IDs to form data
@@ -321,10 +329,10 @@ const CreateEvent = () => {
                         <div className="mb-3 header-container">
                             <h3>
                                 <b>3. Tickets Categories </b>
-                                <samll className="text-muted ms-2">
+                                <small className="text-muted ms-2">
                                     (Input 0 for both count and price, for
                                     unwanted categories)*
-                                </samll>
+                                </small>
                             </h3>
                         </div>
                         <hr className="mb-4" />

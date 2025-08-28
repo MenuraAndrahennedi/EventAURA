@@ -16,27 +16,27 @@ const MainFooter = () => {
                         {/* Inline navigation list */}
                         <ul className="mb-0 list-inline">
                             <li className="mx-3 list-inline-item">
-                                <Link to="/about" className="text-white">
+                                 <Link href="/about" className="text-white">
                                     About US
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link to="/terms" className="text-white">
+                                <Link href="/terms" className="text-white">
                                     Terms
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link to="/privacy" className="text-white">
+                                <Link href="/terms" className="text-white">
                                     Privacy Policies
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link to="/cookies" className="text-white">
+                                <Link href="/terms" className="text-white">
                                     Cookies
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link to="/status" className="text-white">
+                                <Link href="/terms" className="text-white">
                                     Status
                                 </Link>
                             </li>
@@ -50,18 +50,18 @@ const MainFooter = () => {
                         {/* Inline navigation list */}
                         <ul className="mb-0 list-inline">
                             <li className="mx-3 list-inline-item">
-                                <Link to="/developers" className="text-white">
+                                <Link href="/terms" className="text-white">
                                     Developers
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
-                                <Link to="/license" className="text-white">
+                                <Link href="/terms" className="text-white">
                                     License & Registrations
                                 </Link>
                             </li>
                             <li className="mx-3 list-inline-item">
                                 <Link
-                                    to="/privacy-terms"
+                                    href="/terms"
                                     className="text-white"
                                 >
                                     Privacy Terms
