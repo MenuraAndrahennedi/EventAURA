@@ -109,8 +109,8 @@ return (
                   <th>Time</th>
                   <th>Venue</th>
                   <th>Agenda</th>
-                  {/*<th>Report</th>*/}
-                  <th>Approval</th>
+                  <th style= {{textAlign: 'center'}}>Report</th>
+                  <th style={{width: '150px', textAlign: 'center'}}>Approval</th>
                 </tr>
               </thead>
               
@@ -143,7 +143,9 @@ return (
                           "No Agenda"
                         )}
                       </td>
-                      {/*<td>
+                      <td style = {{
+                        padding: '12px 20px', textAlign: 'center'
+                      }}>
                         <a
                           href={`/pending/event-report/${event.id}`}
                           className="black-button"
@@ -152,7 +154,7 @@ return (
                         >
                           Download
                         </a>
-                      </td>*/}
+                      </td>
                       <td>
                          <div className="approval-buttons">
                             <button
