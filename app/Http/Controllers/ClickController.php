@@ -16,13 +16,7 @@ class ClickController extends Controller
     );
         // Increment the click count
     $click->increment('number_of_clicks');
-        //$click = Click::where('event_id', $id)->first();
-
-
-        // if ($click) {
-        //     $click->increment('number_of_clicks');
-        // }
-
+       
         return response()->json(['success' => true, 'message' => 'Click recorded']);
     } 
 }

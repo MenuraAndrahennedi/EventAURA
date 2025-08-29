@@ -60,7 +60,7 @@ const OngoingEvents = ({ ongoingevents }) => {
                       ) : (
                         <Link to='/BuyTickets' className='remaining-tickets-button'>Remaining Tickets</Link>
                       )} */}
-                                            <Link
+                                            {/* <Link
                                                 href={route(
                                                     "eventhost.view-event",
                                                     { id: event.id }
@@ -68,7 +68,24 @@ const OngoingEvents = ({ ongoingevents }) => {
                                                 className="btn btn-primary"
                                             >
                                                 View Event
-                                            </Link>
+                                            </Link> */}
+                                             {new Date(event.date) < new Date() ? (
+        // If event is past
+        <Link
+            href={route("eventhost.view-event", { id: event.id })}
+            className="btn btn-secondary"
+        >
+            Ended
+        </Link>
+    ) : (
+        // If event is upcoming/ongoing
+        <Link
+            href={route("eventhost.view-event", { id: event.id })}
+            className="btn btn-primary"
+        >
+            View Event
+        </Link>
+    )}
                                         </div>
                                     </div>
                                 </div>
