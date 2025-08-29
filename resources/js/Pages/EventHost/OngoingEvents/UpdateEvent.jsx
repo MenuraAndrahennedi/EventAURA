@@ -1,93 +1,94 @@
- import React, { useState } from "react";
+import React, { useState } from "react";
 import SubFooter from "../../../Components/Footer/SubFooter";
 import EHHeader from "../../../Components/Header/EHHeader";
 import ArtistInput from "../../CreateEvent/ArtistInput";
 import "../../../../css/CreateEvent.scss";
-import { Link,usePage,router } from "@inertiajs/react";
+import { Link, usePage, router } from "@inertiajs/react";
 import axios from "axios";
 import UpdateArtists from "./UpdateArtists";
 
 const UpdateEvent = () => {
-  const { event } = usePage().props;
-  const [formData, setFormData] = useState({
-    name: event.name,
-    date: event.date,
-    startTime: event.startTime,
-    endTime: event.endTime,
-    city: event.city,
-    venue: event.venue,
-    location: event.location,
-    description: event.description,
-    organizer: event.organizer,
-    golden_ticket_count: event.golden_ticket_count,
-    silver_ticket_count: event.silver_ticket_count,
-    bronze_ticket_count: event.bronze_ticket_count,
-    golden_ticket_price: event.golden_ticket_price,
-    silver_ticket_price: event.silver_ticket_price,
-    bronze_ticket_price: event.bronze_ticket_price,
-    return_policies: event.return_policies,
-  });
-  
-  const [selectedArtists, setSelectedArtists] = useState(event.artists);
-  const [imageFile, setImageFile] = useState(null);
-  const [agendaFile, setAgendaFile] = useState(null);
-  const [videoFile, setVideoFile] = useState(null);
-  const [removeImage, setRemoveImage] = useState(false);
-  const [successMessage,setSuccessMessage] = useState ("");
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const data = new FormData();
-    
-    // Append basic fields
-    Object.entries(formData).forEach(([key, value]) => {
-      data.append(key, value);
+    const { event } = usePage().props;
+    const [formData, setFormData] = useState({
+        name: event.name,
+        date: event.date,
+        startTime: event.startTime,
+        endTime: event.endTime,
+        city: event.city,
+        venue: event.venue,
+        location: event.location,
+        description: event.description,
+        organizer: event.organizer,
+        golden_ticket_count: event.golden_ticket_count,
+        silver_ticket_count: event.silver_ticket_count,
+        bronze_ticket_count: event.bronze_ticket_count,
+        golden_ticket_price: event.golden_ticket_price,
+        silver_ticket_price: event.silver_ticket_price,
+        bronze_ticket_price: event.bronze_ticket_price,
+        return_policies: event.return_policies,
     });
-    
-    // // Append artists as IDs
-    // data.append('artists', JSON.stringify(selectedArtists.map(artist => artist.id)));
-    // Append artists as an array correctly
-selectedArtists.forEach((artist, index) => {
-  data.append(`artists[${index}]`, artist.id);
-});
 
-    const formatTime = (time) => time.slice(0, 5);
-    data.append('startTime', formatTime(formData.startTime));
-    data.append('endTime', formatTime(formData.endTime));
-    
-    // Append files
-    if (imageFile) data.append('image', imageFile);
-    if (agendaFile) data.append('agenda_pdf', agendaFile);
-    if (videoFile) data.append('event_video', videoFile);
+    const [selectedArtists, setSelectedArtists] = useState(event.artists);
+    const [imageFile, setImageFile] = useState(null);
+    const [agendaFile, setAgendaFile] = useState(null);
+    const [videoFile, setVideoFile] = useState(null);
+    const [removeImage, setRemoveImage] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
-    console.log("Submitting data:", Object.fromEntries(data));
-    
-    router.post(`/event/update/${event.id}`, data, {
-      forceFormData: true,
-      onSuccess: (response) => {
-        console.log("Success:", response);
-       
-        setSuccessMessage("Event update request send successfully!");
-    },
-    onError: (error) => {
-        console.error("Error:", error);
-        alert("Something went wrong. Please check the console for details.");
-    }
-    });
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
+        const data = new FormData();
 
-  const handleLocationClick = () => {
-    // Open Google Maps to let the user pick a location
-    const mapUrl = "https://www.google.com/maps/search/?api=1&query=40.748817,-73.985428"; // Placeholder location
-    window.open(mapUrl, "_blank", "width=800,height=600");
-};
+        // Append basic fields
+        Object.entries(formData).forEach(([key, value]) => {
+            data.append(key, value);
+        });
 
+        // // Append artists as IDs
+        // data.append('artists', JSON.stringify(selectedArtists.map(artist => artist.id)));
+        // Append artists as an array correctly
+        selectedArtists.forEach((artist, index) => {
+            data.append(`artists[${index}]`, artist.id);
+        });
+
+        const formatTime = (time) => time.slice(0, 5);
+        data.append("startTime", formatTime(formData.startTime));
+        data.append("endTime", formatTime(formData.endTime));
+
+        // Append files
+        if (imageFile) data.append("image", imageFile);
+        if (agendaFile) data.append("agenda_pdf", agendaFile);
+        if (videoFile) data.append("event_video", videoFile);
+
+        console.log("Submitting data:", Object.fromEntries(data));
+
+        router.post(`/event/update/${event.id}`, data, {
+            forceFormData: true,
+            onSuccess: (response) => {
+                console.log("Success:", response);
+
+                setSuccessMessage("Event update request send successfully!");
+            },
+            onError: (error) => {
+                console.error("Error:", error);
+                alert(
+                    "Something went wrong. Please check the console for details."
+                );
+            },
+        });
+    };
+
+    const handleLocationClick = () => {
+        // Open Google Maps to let the user pick a location
+        const mapUrl =
+            "https://www.google.com/maps/search/?api=1&query=40.748817,-73.985428"; // Placeholder location
+        window.open(mapUrl, "_blank", "width=800,height=600");
+    };
 
     return (
         <>
@@ -101,11 +102,10 @@ selectedArtists.forEach((artist, index) => {
                     <b>Update Event</b>
                 </h1>
 
-                 {/* Success Message Section */}
-   {successMessage && (
-        <div className="success-message">{successMessage}</div>
-      )}
-
+                {/* Success Message Section */}
+                {successMessage && (
+                    <div className="success-message">{successMessage}</div>
+                )}
 
                 <form className="event-form" onSubmit={handleSubmit}>
                     <section className="event-details">
@@ -123,7 +123,6 @@ selectedArtists.forEach((artist, index) => {
                                 placeholder="Enter event title"
                                 value={formData.name}
                                 onChange={handleChange}
-                                
                             />
                         </div>
 
@@ -136,7 +135,6 @@ selectedArtists.forEach((artist, index) => {
                                     id="eventDate"
                                     value={formData.date}
                                     onChange={handleChange}
-                                    
                                 />
                             </div>
                             <div className="time-inputs">
@@ -154,7 +152,7 @@ selectedArtists.forEach((artist, index) => {
                                     />
                                 </div>
                                 <div className="end-time">
-                                    <label htmlFor="endTime">End Time*</label>
+                                    <label htmlFor="endTime">End Time</label>
                                     <input
                                         type="time"
                                         name="endTime"
@@ -187,7 +185,6 @@ selectedArtists.forEach((artist, index) => {
                                     id="venue"
                                     value={formData.venue}
                                     onChange={handleChange}
-                                  
                                 />
                             </div>
                         </div>
@@ -201,11 +198,10 @@ selectedArtists.forEach((artist, index) => {
                                 //value={location}
                                 value={formData.location}
                                 onChange={handleChange}
-                               
                             />
-                             <button type="button" onClick={handleLocationClick}>
-                        Pick from Google Maps
-                    </button>
+                            <button type="button" onClick={handleLocationClick}>
+                                Pick from Google Maps
+                            </button>
                         </div>
 
                         <div className="input-group">
@@ -220,39 +216,50 @@ selectedArtists.forEach((artist, index) => {
                                     />
                                     {/* {event.agenda_pdf && !agendaFile && (
                                      <span>Current: {event.agenda_pdf}</span>
-                                     )}  */} 
-                                                  <div className="file-input-wrapper">
-      {/* Hidden actual file input */}
-      <input
-        type="file"
-        name="agenda_pdf"
-        accept=".pdf"
-        onChange={(e) => setAgendaFile(e.target.files[0])}
-        id="fileInput"
-        style={{ display: 'none' }}
-      />
-      
-      {/* Custom styled file input */}
-      <div className="file-display">
-        <button 
-          type="button"
-          className="file-button"
-          onClick={() => document.getElementById('fileInput').click()}
-        >
-          Choose File
-        </button>
-        
-        {(event.agenda_pdf || agendaFile) && (
-          <div className="file-info">
-            <span className="file-name">
-              {agendaFile ? agendaFile.name : event.agenda_pdf.split('/').pop()}
-            </span>
-           
-          </div>
-        )}
-      </div>
-    </div>
-                                
+                                     )}  */}
+                                    <div className="file-input-wrapper">
+                                        {/* Hidden actual file input */}
+                                        <input
+                                            type="file"
+                                            name="agenda_pdf"
+                                            accept=".pdf"
+                                            onChange={(e) =>
+                                                setAgendaFile(e.target.files[0])
+                                            }
+                                            id="fileInput"
+                                            style={{ display: "none" }}
+                                        />
+
+                                        {/* Custom styled file input */}
+                                        <div className="file-display">
+                                            <button
+                                                type="button"
+                                                className="file-button"
+                                                onClick={() =>
+                                                    document
+                                                        .getElementById(
+                                                            "fileInput"
+                                                        )
+                                                        .click()
+                                                }
+                                            >
+                                                Choose File
+                                            </button>
+
+                                            {(event.agenda_pdf ||
+                                                agendaFile) && (
+                                                <div className="file-info">
+                                                    <span className="file-name">
+                                                        {agendaFile
+                                                            ? agendaFile.name
+                                                            : event.agenda_pdf
+                                                                  .split("/")
+                                                                  .pop()}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -270,37 +277,46 @@ selectedArtists.forEach((artist, index) => {
                                     //   {event.image}
                                     //    )}
                                 /> )} */}
-                               <div className="file-input-wrapper">
-      {/* Hidden actual file input */}
-      <input
-        type="file"
-        name="image"
-        accept="image/*"
-        onChange={(e) => setImageFile(e.target.files[0])}
-        id="fileInput"
-        style={{ display: 'none' }}
-      />
-      
-      {/* Custom styled file input */}
-      <div className="file-display">
-        <button 
-          type="button"
-          className="file-button"
-          onClick={() => document.getElementById('fileInput').click()}
-        >
-          Choose File
-        </button>
-        
-        {(event.image || imageFile) && (
-          <div className="file-info">
-            <span className="file-name">
-              {imageFile ? imageFile.name : event.image.split('/').pop()}
-            </span>
-           
-          </div>
-        )}
-      </div>
-    </div>
+                                <div className="file-input-wrapper">
+                                    {/* Hidden actual file input */}
+                                    <input
+                                        type="file"
+                                        name="image"
+                                        accept="image/*"
+                                        onChange={(e) =>
+                                            setImageFile(e.target.files[0])
+                                        }
+                                        id="fileInput"
+                                        style={{ display: "none" }}
+                                    />
+
+                                    {/* Custom styled file input */}
+                                    <div className="file-display">
+                                        <button
+                                            type="button"
+                                            className="file-button"
+                                            onClick={() =>
+                                                document
+                                                    .getElementById("fileInput")
+                                                    .click()
+                                            }
+                                        >
+                                            Choose File
+                                        </button>
+
+                                        {(event.image || imageFile) && (
+                                            <div className="file-info">
+                                                <span className="file-name">
+                                                    {imageFile
+                                                        ? imageFile.name
+                                                        : event.image
+                                                              .split("/")
+                                                              .pop()}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -317,41 +333,53 @@ selectedArtists.forEach((artist, index) => {
                              {event.event_video && !videoFile && (
     <span>Current: {event.event_video}</span>
   )} */}
-                  <div className="file-input-wrapper">
-      {/* Hidden actual file input */}
-      <input
-        type="file"
-        name="event_video"
-        accept="video/*"
-        onChange={(e) => setVideoFile(e.target.files[0])}
-        id="fileInput"
-        style={{ display: 'none' }}
-      />
-      
-      {/* Custom styled file input */}
-      <div className="file-display">
-        <button 
-          type="button"
-          className="file-button"
-          onClick={() => document.getElementById('fileInput').click()}
-        >
-          Choose File
-        </button>
-        
-        {(event.event_video || videoFile) && (
-          <div className="file-info">
-            <span className="file-name">
-              {videoFile ? videoFile.name : event.event_video.split('/').pop()}
-            </span>
-           
-          </div>
-        )}:{(
-          <div className="file-info">
-            <span className="file-name">No file selected</span>
-          </div>
-        )}
-      </div>
-    </div>
+                                <div className="file-input-wrapper">
+                                    {/* Hidden actual file input */}
+                                    <input
+                                        type="file"
+                                        name="event_video"
+                                        accept="video/*"
+                                        onChange={(e) =>
+                                            setVideoFile(e.target.files[0])
+                                        }
+                                        id="fileInput"
+                                        style={{ display: "none" }}
+                                    />
+
+                                    {/* Custom styled file input */}
+                                    <div className="file-display">
+                                        <button
+                                            type="button"
+                                            className="file-button"
+                                            onClick={() =>
+                                                document
+                                                    .getElementById("fileInput")
+                                                    .click()
+                                            }
+                                        >
+                                            Choose File
+                                        </button>
+                                        {(event.event_video || videoFile) && (
+                                            <div className="file-info">
+                                                <span className="file-name">
+                                                    {videoFile
+                                                        ? videoFile.name
+                                                        : event.event_video
+                                                              .split("/")
+                                                              .pop()}
+                                                </span>
+                                            </div>
+                                        )}
+                                        :
+                                        {
+                                            <div className="file-info">
+                                                <span className="file-name">
+                                                    No file selected
+                                                </span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -362,7 +390,6 @@ selectedArtists.forEach((artist, index) => {
                                 placeholder="Enter event description"
                                 value={formData.description}
                                 onChange={handleChange}
-                               
                             ></textarea>
                         </div>
 
@@ -371,9 +398,8 @@ selectedArtists.forEach((artist, index) => {
                             <textarea
                                 name="return_policies"
                                 placeholder="Enter return policies"
-                                value={formData.return_policies }
+                                value={formData.return_policies}
                                 onChange={handleChange}
-                               
                             ></textarea>
                         </div>
 
@@ -387,8 +413,6 @@ selectedArtists.forEach((artist, index) => {
                                 onChange={handleChange}
                             />
                         </div>
-
-                    
                     </section>
                     <section className="artists">
                         <div className="header-container">
@@ -398,11 +422,10 @@ selectedArtists.forEach((artist, index) => {
                         </div>
                         <hr />
                         <div className="artist-input-container">
-                        <UpdateArtists
-                             selectedArtists={selectedArtists}
-
-                            setSelectedArtists={setSelectedArtists}
-                        />
+                            <UpdateArtists
+                                selectedArtists={selectedArtists}
+                                setSelectedArtists={setSelectedArtists}
+                            />
                         </div>
                     </section>
 
@@ -424,15 +447,19 @@ selectedArtists.forEach((artist, index) => {
                                         name="golden_ticket_count"
                                         min="0"
                                         placeholder="Count"
-                                        value={formData.golden_ticket_count || ""}
-      onChange={handleChange}
+                                        value={
+                                            formData.golden_ticket_count || ""
+                                        }
+                                        onChange={handleChange}
                                     />
                                     <input
                                         type="text"
                                         name="golden_ticket_price"
                                         placeholder="Price"
-                                        value={formData.golden_ticket_price || ""}
-      onChange={handleChange}
+                                        value={
+                                            formData.golden_ticket_price || ""
+                                        }
+                                        onChange={handleChange}
                                     />
                                 </div>
                             </div>
@@ -445,14 +472,18 @@ selectedArtists.forEach((artist, index) => {
                                         name="silver_ticket_count"
                                         min="0"
                                         placeholder="Count"
-                                        value={formData.silver_ticket_count || ""}
-      onChange={handleChange}
+                                        value={
+                                            formData.silver_ticket_count || ""
+                                        }
+                                        onChange={handleChange}
                                     />
                                     <input
                                         type="text"
                                         name="silver_ticket_price"
                                         placeholder="Price"
-                                        value={formData.silver_ticket_price || ""}
+                                        value={
+                                            formData.silver_ticket_price || ""
+                                        }
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -466,20 +497,23 @@ selectedArtists.forEach((artist, index) => {
                                         name="bronze_ticket_count"
                                         min="0"
                                         placeholder="Count"
-                                        value={formData.bronze_ticket_count || ""}
+                                        value={
+                                            formData.bronze_ticket_count || ""
+                                        }
                                         onChange={handleChange}
                                     />
                                     <input
                                         type="text"
                                         name="bronze_ticket_price"
                                         placeholder="Price"
-                                        value={formData.bronze_ticket_price || ""}
-      onChange={handleChange}
+                                        value={
+                                            formData.bronze_ticket_price || ""
+                                        }
+                                        onChange={handleChange}
                                     />
                                 </div>
                             </div>
                         </div>
-                        
                     </section>
                     <div className="center-content">
                         <h4>Submit event update request</h4>
@@ -494,10 +528,9 @@ selectedArtists.forEach((artist, index) => {
                 <SubFooter />
             </footer>
 
-            
-              {/* Success Message Styles */}
-      <style>
-        {`
+            {/* Success Message Styles */}
+            <style>
+                {`
           .success-message {
             position: fixed;
             top: 20px;
@@ -513,10 +546,9 @@ selectedArtists.forEach((artist, index) => {
             transition: opacity 0.5s ease-in-out;
           }
         `}
-      </style> 
+            </style>
         </>
     );
 };
-
 
 export default UpdateEvent;
