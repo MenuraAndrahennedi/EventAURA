@@ -307,7 +307,7 @@ const ManagerDashboard = () => {
                 <div className="flex flex-row items-center justify-center gap-4 pt-3">
                     <Link
                         href="/paymenthistory"
-                        className="px-3 py-3 btn btn-primary"
+                        className="px-3 py-3 btn btn-primary3"
                     >
                         Finance Statistics
                     </Link>
