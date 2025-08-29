@@ -59,7 +59,7 @@ const TBHeader = () => {
                             >
                                 Contact US
                             </Nav.Link>
-                            <Nav.Link
+                            {/* <Nav.Link
                                 as={Link}
                                 href="/chatify"
                                 className="nav-link position-relative"
@@ -72,9 +72,24 @@ const TBHeader = () => {
                                         </span>
                                     </span>
                                 )}
-                            </Nav.Link>
+                            </Nav.Link> */}
+                            {auth.user && (
+    <Nav.Link
+        as={Link}
+        href="/chatify"
+        className="nav-link position-relative"
+    >
+        View Messages
+        {hasUnreadMessages && (
+            <span className="top-0 p-1 position-absolute start-100 translate-middle bg-primary rounded-circle">
+                <span className="visually-hidden">New messages</span>
+            </span>
+        )}
+    </Nav.Link>
+)}
 
-                            <Nav.Link
+
+                            {/* <Nav.Link
                                 as={Link}
                                 href="/chatify"
                                 className="nav-link position-relative"
@@ -87,7 +102,7 @@ const TBHeader = () => {
                                         </span>
                                     </span>
                                 )}
-                            </Nav.Link>
+                            </Nav.Link> */}
 
                             <div className="d-flex align-items-center ms-3">
                                 {isCustomer ? (
