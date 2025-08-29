@@ -20,7 +20,7 @@ const SubFooter = () => {
                     <Link href="/reviewPg" className="element">
                         Leave a Review
                     </Link>
-                    <Link to="/connect-with-us" className="element">
+                    <Link href="/connect-with-us" className="element">
                         <br />
                         Help Center
                     </Link>

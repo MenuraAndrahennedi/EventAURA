@@ -27,10 +27,11 @@ import Cover05 from "../../assets/Images/Tile 5.jpg";
 import Cover06 from "../../assets/Images/Tile 6.jpg";
 
 const UserHome = () => {
-    const [ticketSales, setTicketSales] = useState([]);
-    const [monthlySales, setMonthlySales] = useState([]);
-    const [monthlyUsersByRole, setMonthlyUsersByRole] = useState([]);
+    const [ticketSales, setTicketSales] = useState([]); // State to store ticket sales data
+    const [monthlySales, setMonthlySales] = useState([]);// State to store monthly sales data
+    const [monthlyUsersByRole, setMonthlyUsersByRole] = useState([]);// State to store monthly user registrations grouped by role
 
+      // Fetch general statistics when the component mounts
     useEffect(() => {
         axios.get("/manager/stats").then((response) => {
             setTicketSales(response.data.ticketSales);
@@ -43,8 +44,8 @@ const UserHome = () => {
         axios
             .get("/admin/monthly-user-registrations-by-role")
             .then((response) => {
-                const raw = response.data;
-                const grouped = {};
+                const raw = response.data;// Raw data from API
+                const grouped = {};// Object to group users by month
 
                 raw.forEach((item) => {
                     if (!grouped[item.month]) {
@@ -55,6 +56,7 @@ const UserHome = () => {
                         };
                     }
 
+                    // Assign counts based on role_id
                     if (item.role_id === 4) {
                         grouped[item.month].event_hosts = item.count;
                     } else if (item.role_id === 5) {
@@ -62,6 +64,7 @@ const UserHome = () => {
                     }
                 });
 
+                // Convert grouped object into an array and update state
                 const formatted = Object.values(grouped);
                 setMonthlyUsersByRole(formatted);
             })

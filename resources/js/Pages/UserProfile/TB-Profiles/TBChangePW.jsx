@@ -6,6 +6,7 @@ import SubFooter from './../../../Components/Footer/SubFooter';
 import '../../../../css/profile.scss';
 import profilelogo from '../../../assets/Logos/Profile-logo.jpg';
 
+// Component for changing a user's password
 const TBChangePW = ({ user, success }) => {
   const { data, setData, post, processing, errors } = useForm({
     old_password: '',
@@ -13,9 +14,10 @@ const TBChangePW = ({ user, success }) => {
     new_password_confirmation: '',
   });
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
-    post(route('user.change-password'));
+    e.preventDefault();// Prevent default form reload behavior
+    post(route('user.change-password'));// Send POST request to change password
   };
 
   return (
