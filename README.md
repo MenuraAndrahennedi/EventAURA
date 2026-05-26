@@ -1,66 +1,264 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# EventAURA
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+EventAURA is a Laravel and React event management platform for browsing events, purchasing tickets, hosting events, and managing platform operations through separate role-based dashboards.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Ticket buyer registration and event browsing
+- Event host registration and event creation
+- Admin, manager, and programmer dashboards
+- Event approval and update request workflows
+- Ticket purchasing and payment reporting
+- Reviews, inquiries, and internal moderation tools
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Laravel 11
+- PHP 8.2
+- React with Inertia.js
+- Vite
+- MySQL or MariaDB
+- Bootstrap and Sass
 
-## Learning Laravel
+## Setup and Run
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Clone the repository
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+git clone <your-repository-url>
+cd EventAURA
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. Install backend dependencies
 
-## Laravel Sponsors
+```bash
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 3. Install frontend dependencies
 
-### Premium Partners
+```bash
+npm install
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 4. Create the local database
 
-## Contributing
+Create a MySQL or MariaDB database named `eventaura` using phpMyAdmin or the MySQL CLI.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Example:
 
-## Code of Conduct
+```sql
+CREATE DATABASE eventaura;
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 5. Configure the environment
 
-## Security Vulnerabilities
+Copy `.env.example` to `.env` if it does not already exist.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Set the basic app and database values in `.env`:
 
-## License
+```env
+APP_URL=http://127.0.0.1:8000
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=eventaura
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Add Stripe test keys in `.env`:
+
+```env
+VITE_STRIPE_KEY=pk_test_your_publishable_key
+STRIPE_KEY=pk_test_your_publishable_key
+STRIPE_SECRET=sk_test_your_secret_key
+```
+
+Stripe key usage:
+
+- `VITE_STRIPE_KEY` = frontend Stripe publishable key
+- `STRIPE_KEY` = backend reference to the same publishable key
+- `STRIPE_SECRET` = backend Stripe secret key required to create checkout sessions
+
+Also make sure:
+
+- the `eventaura` database exists
+- the Stripe keys are copied from the Stripe dashboard in test mode
+
+### 6. Generate the application key
+
+```bash
+php artisan key:generate
+```
+
+### 7. Create the public storage link
+
+```bash
+php artisan storage:link
+```
+
+This makes uploaded images, PDFs, and videos available through `/storage/...` URLs.
+
+### 8. Clear Laravel config cache
+
+```bash
+php artisan config:clear
+php artisan cache:clear
+```
+
+### 9. Run migrations and seed the required roles and first admin
+
+```bash
+php artisan migrate --seed
+```
+
+During seeding, the app will ask you to enter:
+
+- the email address for the first admin account
+- the password for the first admin account
+
+This setup will automatically create:
+
+- all required roles in the `roles` table
+- the first admin user with `role_id = 3`
+
+The following role IDs are required by the current application logic:
+
+- `1` = Programmer
+- `2` = Manager
+- `3` = Admin
+- `4` = Event Host
+- `5` = Ticket Buyer
+
+### 10. Start the application
+
+Open two terminals in the project folder.
+
+In terminal 1, run the Laravel server:
+
+```bash
+php artisan serve
+```
+
+In terminal 2, run the Vite development server:
+
+```bash
+npm run dev
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8000
+```
+
+You can also use the combined Laravel development command:
+
+```bash
+composer run dev
+```
+
+## Fresh Run Summary
+
+For a brand-new clone, the normal order is:
+
+1. `git clone <repo>`
+2. `composer install`
+3. `npm install`
+4. create the `eventaura` database
+5. configure `.env`
+6. add Stripe keys
+7. `php artisan key:generate`
+8. `php artisan storage:link`
+9. `php artisan config:clear`
+10. `php artisan cache:clear`
+11. `php artisan migrate --seed`
+12. `php artisan serve`
+13. `npm run dev`
+
+## Login and Registration Paths
+
+### Admin, manager, and programmer login
+
+- `http://127.0.0.1:8000/other-login`
+
+### Ticket buyer login and signup
+
+- Login: `http://127.0.0.1:8000/tb-login`
+- Register: `http://127.0.0.1:8000/tb-register`
+
+### Event host login and signup
+
+- Login: `http://127.0.0.1:8000/eh-login`
+- Register: `http://127.0.0.1:8000/eh-register`
+
+### Admin dashboard
+
+After logging in with an admin account, the app redirects to:
+
+- `http://127.0.0.1:8000/admin/dashboard`
+
+## First-Time Admin Workflow
+
+After signing in as admin:
+
+1. Open the admin dashboard.
+2. Go to the add-member page at `/add-new-member`.
+3. Create manager accounts from there.
+4. Event hosts can register from `/eh-register`.
+5. Ticket buyers can register from `/tb-register`.
+
+## Folder Structure
+
+```text
+EventAURA/
+|-- app/                    Core application code, controllers, models, middleware
+|-- bootstrap/             Laravel bootstrap and app configuration
+|-- config/                Framework and package configuration
+|-- database/
+|   |-- migrations/        Database schema definitions
+|   |-- seeders/           Initial roles and admin setup
+|   |-- factories/         Model factories for tests and sample data
+|-- public/                Public entrypoint and static assets
+|-- resources/
+|   |-- js/                React and Inertia frontend
+|   |-- css/               Sass and CSS styles
+|   |-- views/             Blade views, emails, PDFs, vendor templates
+|-- routes/                Web, auth, console, and package routes
+|-- storage/               Logs, cache, sessions, generated files
+|-- tests/                 Feature and unit tests
+|-- vendor/                Composer dependencies
+|-- package.json           Frontend dependency manifest
+|-- composer.json          Backend dependency manifest
+|-- .env.example           Environment template
+```
+
+## Database Notes
+
+- Local account registration depends on valid rows existing in the `roles` table.
+- Ticket buyer registration uses `role_id = 5`.
+- Event host registration uses `role_id = 4`.
+- If the roles table is missing those rows, signup will fail because of the `users.role_id` foreign key.
+- The first admin account is created during `php artisan migrate --seed`.
+
+## Common Commands
+
+```bash
+php artisan migrate
+php artisan db:seed
+php artisan migrate:fresh --seed
+php artisan storage:link
+php artisan config:clear
+php artisan cache:clear
+php artisan test
+npm run dev
+npm run build
+```
+
+## Notes for Contributors
+
+- Use `php artisan migrate --seed` on a fresh setup so the required role data exists.
+- The first admin account is intentionally chosen interactively during seeding instead of being hardcoded.
+- This repository currently uses role IDs directly throughout route middleware and controllers, so those IDs must remain consistent unless the authorization logic is refactored.

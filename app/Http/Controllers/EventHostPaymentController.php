@@ -32,7 +32,13 @@ class EventHostPaymentController extends Controller
             'event_host_id' => 'required|exists:users,id',
         ]);
 
-        Stripe::setApiKey(env('STRIPE_SECRET'));
+        $stripeSecret = config('services.stripe.secret');
+
+        if (blank($stripeSecret)) {
+            throw new \RuntimeException('Stripe secret key is not configured. Set STRIPE_SECRET in .env and clear the Laravel config cache.');
+        }
+
+        Stripe::setApiKey($stripeSecret);
 
         $session = StripeSession::create([
             'payment_method_types' => ['card'],
