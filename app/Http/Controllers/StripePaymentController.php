@@ -29,7 +29,13 @@ class StripePaymentController extends Controller
     // Log incoming request for debugging
     \Log::info('Payment request data:', $request->all());
     
-    \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+    $stripeSecret = config('services.stripe.secret');
+
+    if (blank($stripeSecret)) {
+        throw new \RuntimeException('Stripe secret key is not configured. Set STRIPE_SECRET in .env and clear the Laravel config cache.');
+    }
+
+    \Stripe\Stripe::setApiKey($stripeSecret);
 
    
       // Ensure the guest identifier is retrieved in the same way as in getCart

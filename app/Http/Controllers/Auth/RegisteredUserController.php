@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'telephone' => 'required|string|max:15',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role_id' => 'required|integer',
+            'role_id' => 'required|integer|exists:roles,id',
 
         ]);
 
