@@ -53,9 +53,13 @@ CREATE DATABASE eventaura;
 
 ### 5. Configure the environment
 
-Copy `.env.example` to `.env` if it does not already exist.
+Copy the template file and create your local environment file:
 
-Set the basic app and database values in `.env`:
+```bash
+copy .env.example .env
+```
+
+Then open `.env` and set the basic app and database values:
 
 ```env
 APP_URL=http://127.0.0.1:8000
@@ -86,6 +90,51 @@ Also make sure:
 
 - the `eventaura` database exists
 - the Stripe keys are copied from the Stripe dashboard in test mode
+
+Set SMTP mail values in `.env` if you want real email delivery instead of local logging:
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_gmail_app_password
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS="your_email@gmail.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+Mail notes:
+
+- for Gmail, `MAIL_PASSWORD` must be a Google App Password, not your normal Gmail password
+- if you leave mail settings blank or switch back to `MAIL_MAILER=log`, Laravel will write emails to `storage/logs/laravel.log` instead of sending them
+
+Optional third-party keys in `.env`:
+
+```env
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/google/call-back
+
+FACEBOOK_CLIENT_ID=
+FACEBOOK_CLIENT_SECRET=
+FACEBOOK_REDIRECT_URI=https://127.0.0.1:8000/auth/facebook/call-back
+
+APPLE_CLIENT_ID=
+APPLE_CLIENT_SECRET=
+APPLE_REDIRECT_URI=http://127.0.0.1:8000/auth/apple/call-back
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_APP_CLUSTER=
+```
+
+Security notes:
+
+- `.env.example` contains only dummy placeholders and is safe to commit
+- `.env` is your local machine file and must contain your real private keys
+- never commit real SMTP, Stripe secret, OAuth, Pusher, or app keys to GitHub
 
 ### 6. Generate the application key
 
