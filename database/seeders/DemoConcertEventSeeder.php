@@ -16,7 +16,13 @@ use Illuminate\Support\Str;
 
 class DemoConcertEventSeeder extends Seeder
 {
-    private string $sourceRoot = 'D:/Projects/Academic/Group Project - 2nd year/Documentations/Demonstration/Exsisting/Events';
+    //private string $sourceRoot = 'Events';
+    private string $sourceRoot;
+
+    public function __construct()
+    {
+        $this->sourceRoot = database_path('Events');
+    }
 
     public function run(): void
     {

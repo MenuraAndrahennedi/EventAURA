@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Thank you for your purchase!</h1>
-    <p>Event: {{ $payment->event->title }}</p>
+    <p>Event: {{ $payment->event->name }}</p>
     <p>Order Date: {{ $payment->created_at->format('M d, Y H:i') }}</p>
     
     <h2>Your Tickets:</h2>

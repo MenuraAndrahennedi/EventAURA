@@ -46,7 +46,7 @@ class TicketEmail extends Mailable
         'attendeeName' => $attendeeName
     ]);
         
-    return $this->subject('Your Tickets for '. $event->title)
+    return $this->subject('Your Tickets for '. $event->name)
     ->view('emails.tickets',[
         'tickets' => $this->tickets, // Explicitly pass to view
         'payment' => $this->payment,

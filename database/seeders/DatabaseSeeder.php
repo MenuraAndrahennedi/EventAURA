@@ -15,5 +15,19 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             AdminUserSeeder::class,
         ]);
+
+        if (! $this->command) {
+            return;
+        }
+
+        if (! $this->command->confirm('Do you want to add events automatically?', false)) {
+            $this->command->info('Skipping demo event host and event seeding.');
+            return;
+        }
+
+        $this->call([
+            DemoEventHostSeeder::class,
+            DemoConcertEventSeeder::class,
+        ]);
     }
 }
