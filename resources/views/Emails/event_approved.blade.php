@@ -10,7 +10,7 @@
 
     <p>To host this event on our platform, please complete the payment of Rs.1000.</p>
 
-    <p>You can pay the fee by visiting your <a href="{{ url('/event-host/pending-payments') }}">Pending Payments</a> page.</p>
+    <p>You can pay the fee by visiting your <a href="{{ route('eh.pendingPayments') }}">Pending Payments</a> page.</p>
 
     <p>Thank you for choosing our platform!</p>
 

@@ -57,7 +57,7 @@ class EventCompleted extends Mailable
                     ->with([
                         'eventName' => $this->event->name,
                         'eventDate' => $this->event->date,
-                        'eventUrl' => url('/events/' . $this->event->id),
+                        'eventUrl' => route('event.details', ['id' => $this->event->id]),
                     ]);
     }
 }

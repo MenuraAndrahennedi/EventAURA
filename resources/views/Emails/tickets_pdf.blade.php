@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tickets - {{ $event->title }}</title>
+    <title>Tickets - {{ $event->name }}</title>
     <style>
         .ticket {
             page-break-inside: avoid;
@@ -33,7 +33,7 @@
     <div class="attendee-info">
         <h2>Attendee Information</h2>
         <p>Name: {{ $attendeeName }}</p>
-        <p>Email: {{ $payment->guest_email }}</p>
+        <p>Email: {{ $payment->customer?->email ?? $payment->guest_email }}</p>
     </div>
     
     @foreach($tickets as $ticket)
