@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EventDeletionRequest;
+use App\Models\Event;
+
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class DeleteRequestController extends Controller
@@ -22,6 +24,15 @@ class DeleteRequestController extends Controller
         $deleteRequest->save();
 
         // return response()->json(['message' => 'Status updated successfully']);
+// If request is approved -> mark event as cancelled
+    if ($request->status === 'approved') {
+        $event = Event::find($deleteRequest->event_id); 
+        if ($event) {
+            $event->event_status = 'cancelled';
+            $event->save();
+        }
+    }
+
         return redirect()->back()->with('success', 'Status updated successfully!');
     }
 

@@ -126,7 +126,7 @@ const BrowseEvent = () => {
                                             </p>
 
                                             {/* Conditional rendering of booking button based on ticket availability */}
-                                            {event.golden_ticket_count <= 0 &&
+                                            {/* {event.golden_ticket_count <= 0 &&
                                             event.silver_ticket_count <= 0 &&
                                             event.bronze_ticket_count <= 0 ? (
                                                 <Link
@@ -153,7 +153,28 @@ const BrowseEvent = () => {
                                                 >
                                                     Book Now
                                                 </Link>
-                                            )}
+                                            )} */}
+                                             {/* Check if event is in the past */}
+    {new Date(event.date) < new Date() ? (
+        <span className="btn btn-secondary disabled">Ended</span>
+    ) : event.golden_ticket_count <= 0 &&
+      event.silver_ticket_count <= 0 &&
+      event.bronze_ticket_count <= 0 ? (
+        <Link
+            href={route("event.details", { id: event.id })}
+            className="btn btn-danger"
+        >
+            Sold Out
+        </Link>
+    ) : (
+        <Link
+            href={route("event.details", { id: event.id })}
+            className="btn btn-primary"
+            onClick={() => handleBookNowClick(event.id)}
+        >
+            Book Now
+        </Link>
+    )}
                                         </div>
                                     </div>
                                 </div>

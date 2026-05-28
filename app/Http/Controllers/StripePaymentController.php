@@ -42,8 +42,7 @@ class StripePaymentController extends Controller
       if (auth()->check()) {
         $guestId = null; // Authenticated users don't need a guest ID
     } else {
-        // $guestId = "guest_" . Session::get('guest_identifier', Str::uuid()->toString());
-        // Session::put('guest_identifier', str_replace("guest_", "", $guestId)); // Ensure consistency
+        
         $guestId = \Illuminate\Support\Facades\Session::get('guest_identifier', (string) Str::uuid());
 \Illuminate\Support\Facades\Session::put('guest_identifier', $guestId);
 
@@ -118,11 +117,7 @@ class StripePaymentController extends Controller
     $payment->update(['stripe_session_id' => $session->id]);
 
     //   //Store stripeSessionId in session
-    //   session(['stripe_session_id' => $session->id]);
-    //   session()->save(); // Force save session
-
-    //   \Log::info('Stored stripe_session_id:', ['stripe_session_id' => session('stripe_session_id')]);
-
+    
     return response()->json(['id' => $session->id]);
 }catch (\Exception $e) {
     \Log::error("Stripe Payment Error: " . $e->getMessage());
@@ -233,7 +228,7 @@ foreach (['golden', 'silver', 'bronze'] as $type) {
     }
 }
     try {
-        // Mail::to($payment->guest_email)->send(new TicketEmail($tickets, $payment));
+      
         $recipient = $payment->customer_id 
         ? $payment->customer->email 
         : $payment->guest_email;

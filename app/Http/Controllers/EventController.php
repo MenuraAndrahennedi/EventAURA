@@ -152,8 +152,7 @@ class EventController extends Controller
             $query->where('date', '<', now());
         } elseif ($filter === 'Popular') {
             $query->orderByDesc('clicks.number_of_clicks');
-            //$maxClicks = \DB::table('clicks')->max('number_of_clicks');
-            // $query->where('clicks.number_of_clicks', '=', $maxClicks);
+        
         }
 
         $events = $query->get()->map(function ($event) {
@@ -243,86 +242,7 @@ class EventController extends Controller
 
     }
 
-    // public function updateEvent(Request $request, $eventId)
-    // {
-    // //     $request->validate([
-    // //         'date' => 'nullable|date',
-    // //         'startTime' => 'nullable|date_format:H:i',
-    // //         'endTime' => 'nullable|date_format:H:i|after:startTime',
-    // //         'city' => 'nullable|string',
-    // //         'venue' => 'nullable|string',
-    // //         'location' => 'nullable|string',
-    // //         'artist' => 'nullable|string',
-    // //         'bronze_ticket_count' => 'integer|min:0',
-    // //         'golden_ticket_count' => 'integer|min:0',
-    // //         'silver_ticket_count' => 'integer|min:0',
-    // //         'bronze_ticket_price' => 'nullable|numeric|min:0',
-    // //         'golden_ticket_price' => 'nullable|numeric|min:0',
-    // //         'silver_ticket_price' => 'nullable|numeric|min:0',
-    // //     ]);
-
-    // //     $event = Event::findOrFail($eventId);
-
-    // //     $event->update([
-    // //         'date' => $request->date,
-    // //         'startTime' => $request->startTime,
-    // //         'endTime' => $request->endTime,
-    // //         'city' => $request->city,
-    // //         'venue' => $request->venue,
-    // //         'location' => $request->location,
-    // //         'artist' => $request->artist,
-    // //         'bronze_ticket_count' => $request->bronze_ticket_count,
-    // //         'golden_ticket_count' => $request->golden_ticket_count,
-    // //         'silver_ticket_count' => $request->silver_ticket_count,
-    // //         'bronze_ticket_price' => $request->bronze_ticket_price,
-    // //         'golden_ticket_price' => $request->golden_ticket_price,
-    // //         'silver_ticket_price' => $request->silver_ticket_price,
-    // //     ]);
-
-    // // return redirect()->back()->with('success', 'Event updated successfully.');
-    // $validated = $request->validate([
-    //     'date' => 'required|date',
-    //     'startTime' => 'required',
-    //     'endTime' => 'required',
-    //     'city' => 'required|string',
-    //     'venue' => 'required|string',
-    //     'location' => 'required|string',
-    //     'golden_ticket_count' => 'required|integer',
-    //     'silver_ticket_count' => 'required|integer',
-    //     'bronze_ticket_count' => 'required|integer',
-    //     'golden_ticket_price' => 'required|numeric',
-    //     'silver_ticket_price' => 'required|numeric',
-    //     'bronze_ticket_price' => 'required|numeric',
-    //     'artists' => 'array',
-    //     'agenda_pdf' => 'nullable|file|mimes:pdf',
-    //     'image' => 'nullable|image',
-    //     'event_video' => 'nullable|file',
-    // ]);
-
-    // // Handle file uploads
-    // if ($request->hasFile('agenda_pdf')) {
-    //     $validated['agenda_pdf'] = $request->file('agenda_pdf')->store('agendas');
-    // }
-
-    // if ($request->hasFile('image')) {
-    //     $validated['image'] = $request->file('image')->store('event-images');
-    // }
-
-    // if ($request->hasFile('event_video')) {
-    //     $validated['event_video'] = $request->file('event_video')->store('event-videos');
-    // }
-
-    // $event->update($validated);
-
-    // // Sync artists
-    // if ($request->has('artists')) {
-    //     $event->artists()->sync($request->artists);
-    // }
-
-    // return redirect()->back()->with('success', 'Event updated successfully');
-
-    // }
-
+    
     public function showPage($id)
     {
         $event = Event::findOrFail($id);
